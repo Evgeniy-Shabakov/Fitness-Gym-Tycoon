@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class ObjectForBuild : MonoBehaviour
+public class PreBuildingCollision : MonoBehaviour
 {
     [SerializeField] private Material red;
 

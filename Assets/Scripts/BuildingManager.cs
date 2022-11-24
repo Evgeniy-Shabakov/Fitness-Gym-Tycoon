@@ -4,15 +4,8 @@ public class BuildingManager : MonoBehaviour
 {
     [SerializeField] private GameObject prefabObjForBuild;
     
-    private Camera mainCamera;
-
     private GameObject objectForBuild;
 
-    private void Start()
-    {
-        mainCamera = Camera.main;
-    }
-    
     public void CreateObjectForBuild()
     {
         if (objectForBuild != null) Destroy(objectForBuild);
@@ -20,7 +13,7 @@ public class BuildingManager : MonoBehaviour
         Vector3 targetPosition = new Vector3();
         Vector3 rayDirection = new Vector3(Screen.width/2, Screen.height/2, 0);
         
-        Ray ray = mainCamera.ScreenPointToRay(rayDirection);
+        Ray ray = Camera.main.ScreenPointToRay(rayDirection);
         
         RaycastHit hit; 
         Physics.Raycast(ray, out hit);
@@ -31,18 +24,18 @@ public class BuildingManager : MonoBehaviour
         objectForBuild = Instantiate(prefabObjForBuild, targetPosition, Quaternion.identity);
         
         objectForBuild.GetComponent<BoxCollider>().isTrigger = true;
-        objectForBuild.transform.SetParent(mainCamera.transform);
+        objectForBuild.transform.SetParent(Camera.main.transform);
     }
 
     public void SetObject()
     {
         if (objectForBuild == null) return;
-        if (objectForBuild.GetComponent<ObjectForBuild>().PlaceForBuilIsClear() == false) return;
+        if (objectForBuild.GetComponent<PreBuildingCollision>().PlaceForBuilIsClear() == false) return;
             
         objectForBuild.GetComponent<BoxCollider>().isTrigger = false;
         objectForBuild.transform.SetParent(null);
         
-        Destroy(objectForBuild.GetComponent<ObjectForBuild>());
+        Destroy(objectForBuild.GetComponent<PreBuildingCollision>());
         objectForBuild = null;
     }
 
