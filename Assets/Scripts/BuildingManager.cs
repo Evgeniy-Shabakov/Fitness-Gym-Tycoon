@@ -3,6 +3,7 @@ using UnityEngine;
 public class BuildingManager : MonoBehaviour
 {
     [SerializeField] private GameObject prefabObjForBuild;
+    [SerializeField] private LayerMask layerMask;
     
     private GameObject objectForBuild;
 
@@ -16,7 +17,7 @@ public class BuildingManager : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(rayDirection);
         
         RaycastHit hit; 
-        Physics.Raycast(ray, out hit);
+        Physics.Raycast(ray, out hit, layerMask);
 
         targetPosition = hit.point;
         targetPosition.y = 0.5f;
