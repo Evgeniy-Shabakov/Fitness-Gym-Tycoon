@@ -1,13 +1,18 @@
+using System;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private Camera mainCamera;
-    
+    private Camera mainCamera;
     private Vector3 touch;
 
     private float minZoom = 1;
     private float maxZoom = 8;
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
 
     void Update()
     {

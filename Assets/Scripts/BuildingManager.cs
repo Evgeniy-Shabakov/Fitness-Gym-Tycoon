@@ -3,10 +3,16 @@ using UnityEngine;
 public class BuildingManager : MonoBehaviour
 {
     [SerializeField] private GameObject prefabObjForBuild;
-    [SerializeField] private Camera mainCamera;
+    
+    private Camera mainCamera;
 
     private GameObject objectForBuild;
 
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
+    
     public void CreateObjectForBuild()
     {
         if (objectForBuild != null) Destroy(objectForBuild);
