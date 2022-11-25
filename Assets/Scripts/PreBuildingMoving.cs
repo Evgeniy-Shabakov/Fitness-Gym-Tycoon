@@ -7,17 +7,35 @@ public class PreBuildingMoving : MonoBehaviour
 
     private bool cameraPositionIsChanged;
     private Vector3 cameraPositionMouseDown;
+
+    private bool movingAllowed;
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             cameraPositionMouseDown = Camera.main.transform.position;
+            
+            if(EventSystem.current.IsPointerOverGameObject ())
+            {
+                movingAllowed = false;
+            } 
+            
+            else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                {
+                    movingAllowed = false;
+                }
+            }
+
+            else movingAllowed = true;
         }
         
-        if (Input.GetMouseButtonUp(0) && EventSystem.current.IsPointerOverGameObject() == false)
+        if (Input.GetMouseButtonUp(0) && movingAllowed)
         {
             if (Camera.main.transform.position != cameraPositionMouseDown) return;
-                
+            
             Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
             RaycastHit hit; 
             Physics.Raycast(ray, out hit, 100f, layerMask);
