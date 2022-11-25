@@ -14,22 +14,30 @@ public class PreBuildingMoving : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            cameraPositionMouseDown = Camera.main.transform.position;
-            
             if(EventSystem.current.IsPointerOverGameObject ())
             {
                 movingAllowed = false;
-            } 
-            
-            else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-                {
-                    movingAllowed = false;
-                }
             }
 
-            else movingAllowed = true;
+            else
+            {
+                movingAllowed = true;
+                cameraPositionMouseDown = Camera.main.transform.position;
+            }
+        }
+        
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                movingAllowed = false;
+            }
+
+            else
+            {
+                movingAllowed = true;
+                cameraPositionMouseDown = Camera.main.transform.position;
+            }
         }
         
         if (Input.GetMouseButtonUp(0) && movingAllowed)
