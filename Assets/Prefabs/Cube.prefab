@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   red: {fileID: 2100000, guid: dd163119516a8854cbf949c567f94a9e, type: 2}
+  blue: {fileID: 2100000, guid: bac66fc0dd4843b4c8e3d5d9ccd12b61, type: 2}
 --- !u!114 &3027145971612633206
 MonoBehaviour:
   m_ObjectHideFlags: 0

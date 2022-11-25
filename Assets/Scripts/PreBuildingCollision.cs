@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PreBuildingCollision : MonoBehaviour
 {
     [SerializeField] private Material red;
+    [SerializeField] private Material blue;
 
     private bool placeForBuildIsClear;
     
@@ -15,6 +17,12 @@ public class PreBuildingCollision : MonoBehaviour
 
         placeForBuildIsClear = true;
         defaultMaterial = mr.material;
+        mr.material = blue;
+    }
+
+    private void OnDestroy()
+    {
+        mr.material = defaultMaterial;
     }
 
     private void OnTriggerStay(Collider other)
@@ -28,7 +36,7 @@ public class PreBuildingCollision : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         placeForBuildIsClear = true;
-        mr.material = defaultMaterial;
+        mr.material = blue;
     }
 
     public bool PlaceForBuilIsClear()
