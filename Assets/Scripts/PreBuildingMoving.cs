@@ -39,7 +39,12 @@ public class PreBuildingMoving : MonoBehaviour
                 cameraPositionMouseDown = Camera.main.transform.position;
             }
         }
-        
+
+        if (Input.touchCount >= 2)
+        {
+            movingAllowed = false;
+        }
+
         if (Input.GetMouseButtonUp(0) && movingAllowed)
         {
             if (Camera.main.transform.position != cameraPositionMouseDown) return;
