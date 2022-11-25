@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
@@ -11,14 +12,12 @@ public class BuildingManager : MonoBehaviour
     {
         if (objectForBuild != null) Destroy(objectForBuild);
         
-        Vector3 targetPosition = new Vector3();
-        Vector3 rayDirection = new Vector3(Screen.width/2, Screen.height/2, 0);
-        
-        Ray ray = Camera.main.ScreenPointToRay(rayDirection);
-        
-        RaycastHit hit; 
-        Physics.Raycast(ray, out hit, layerMask);
+        Vector3 targetPosition;
 
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward*100);
+        RaycastHit hit; 
+        Physics.Raycast(ray, out hit, 100f, layerMask);
+        
         targetPosition = hit.point;
         targetPosition.y = 0.5f;
         

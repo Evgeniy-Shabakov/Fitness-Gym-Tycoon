@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 183260854}
   - component: {fileID: 183260853}
   - component: {fileID: 183260852}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f35049d688b8a4aaf44fd5e41961c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 963194227}
 --- !u!1 &1080342210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabObjForBuild: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
-  mainCamera: {fileID: 963194227}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!4 &1080834364
 Transform:
   m_ObjectHideFlags: 0
