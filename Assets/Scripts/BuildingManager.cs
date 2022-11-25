@@ -36,6 +36,7 @@ public class BuildingManager : MonoBehaviour
         objectForBuild.transform.SetParent(null);
         
         Destroy(objectForBuild.GetComponent<PreBuildingCollision>());
+        Destroy(objectForBuild.GetComponent<PreBuildingMoving>());
         objectForBuild = null;
     }
 
