@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,20 +9,39 @@ public class PreBuildingMoving : MonoBehaviour
     private bool cameraPositionIsChanged;
     private Vector3 cameraPositionMouseDown;
 
-    private bool movingAllowed;
+    private bool movingClickAllowed;
+
+    private Vector3 touch;
     
+    private void OnMouseDrag()
+    {
+        movingClickAllowed = false;
+        Camera.main.gameObject.GetComponent<CameraController>().enabled = false;
+        
+        Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
+        RaycastHit hit; 
+        Physics.Raycast(ray, out hit, 100f, layerMask);
+
+        gameObject.transform.position = new Vector3(hit.point.x, 0.5f, hit.point.z);
+    }
+
+    private void OnMouseUp()
+    {
+        Camera.main.gameObject.GetComponent<CameraController>().enabled = true;
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             if(EventSystem.current.IsPointerOverGameObject ())
             {
-                movingAllowed = false;
+                movingClickAllowed = false;
             }
 
             else
             {
-                movingAllowed = true;
+                movingClickAllowed = true;
                 cameraPositionMouseDown = Camera.main.transform.position;
             }
         }
@@ -30,22 +50,22 @@ public class PreBuildingMoving : MonoBehaviour
         {
             if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
             {
-                movingAllowed = false;
+                movingClickAllowed = false;
             }
 
             else
             {
-                movingAllowed = true;
+                movingClickAllowed = true;
                 cameraPositionMouseDown = Camera.main.transform.position;
             }
         }
 
         if (Input.touchCount >= 2)
         {
-            movingAllowed = false;
+            movingClickAllowed = false;
         }
 
-        if (Input.GetMouseButtonUp(0) && movingAllowed)
+        if (Input.GetMouseButtonUp(0) && movingClickAllowed)
         {
             if (Camera.main.transform.position != cameraPositionMouseDown) return;
             
