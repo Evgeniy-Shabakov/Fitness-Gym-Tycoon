@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     private Vector3 touch;
 
     private float minZoom = 1;
-    private float maxZoom = 8;
+    private float maxZoom = 25;
 
     private void Start()
     {
