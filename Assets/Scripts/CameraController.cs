@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     private Vector3 touch;
 
     private float minZoom = 1;
-    private float maxZoom = 25;
+    private float maxZoom = 100;
 
     private void Start()
     {
@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
 
             float difference = currentDistTouch - distTouch;
             
-            Zoom(difference * 0.01f);
+            Zoom(difference * Time.deltaTime);
         }
         
         else if (Input.GetMouseButton(0))
@@ -52,19 +52,19 @@ public class CameraController : MonoBehaviour
 
             direction.z = direction.y;
             direction.y = 0;
-            mainCamera.transform.position += direction.normalized*25f*Time.deltaTime;
+            mainCamera.transform.position += direction.normalized * Time.deltaTime * mainCamera.fieldOfView / 5f;
             
             touch = mainCamera.ScreenToViewportPoint(Input.mousePosition);
         } 
         
-        Zoom(Input.GetAxis("Mouse ScrollWheel"));
+        Zoom(Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 500);
 
         //transform.position = ClampCamera(transform.position);
     }
 
     void Zoom(float increment)
     {
-        mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize - increment, minZoom, maxZoom);
+        mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView - increment, minZoom, maxZoom);
     }
 
     private Vector3 ClampCamera(Vector3 targetPosition)
