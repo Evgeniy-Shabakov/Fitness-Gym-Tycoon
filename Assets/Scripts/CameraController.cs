@@ -18,7 +18,10 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            touch = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            //var mousePosNearClipPlane = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane);
+            //touch = mainCamera.ScreenToWorldPoint(mousePosNearClipPlane);
+            
+            touch = mainCamera.ScreenToViewportPoint(Input.mousePosition);
         }
 
         if (Input.touchCount == 2)
@@ -39,9 +42,19 @@ public class CameraController : MonoBehaviour
         
         else if (Input.GetMouseButton(0))
         {
-            Vector3 direction = touch - mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            //var mousePosNearClipPlane = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane); 
+            //Vector3 direction = touch - mainCamera.ScreenToWorldPoint(mousePosNearClipPlane);
+            
+            //direction.y = 0;
+            //mainCamera.transform.position += direction.normalized;
+            
+            Vector3 direction = touch - mainCamera.ScreenToViewportPoint(Input.mousePosition);
+
+            direction.z = direction.y;
             direction.y = 0;
-            mainCamera.transform.position += direction;
+            mainCamera.transform.position += direction.normalized*25f*Time.deltaTime;
+            
+            touch = mainCamera.ScreenToViewportPoint(Input.mousePosition);
         } 
         
         Zoom(Input.GetAxis("Mouse ScrollWheel"));
