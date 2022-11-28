@@ -3,25 +3,18 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private Camera mainCamera;
+    [SerializeField] private Camera mainCamera;
+    
     private Vector3 touch;
 
     private float minZoom = 1;
-    private float maxZoom = 100;
-
-    private void Start()
-    {
-        mainCamera = Camera.main;
-    }
+    private float maxZoom = 80;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //var mousePosNearClipPlane = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane);
-            //touch = mainCamera.ScreenToWorldPoint(mousePosNearClipPlane);
-            
-            touch = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+            touch = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         }
 
         if (Input.touchCount == 2)
@@ -37,34 +30,24 @@ public class CameraController : MonoBehaviour
 
             float difference = currentDistTouch - distTouch;
             
-            Zoom(difference * Time.deltaTime);
+            Zoom(difference * 0.01f);
         }
         
         else if (Input.GetMouseButton(0))
         {
-            //var mousePosNearClipPlane = new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane); 
-            //Vector3 direction = touch - mainCamera.ScreenToWorldPoint(mousePosNearClipPlane);
-            
-            //direction.y = 0;
-            //mainCamera.transform.position += direction.normalized;
-            
-            Vector3 direction = touch - mainCamera.ScreenToViewportPoint(Input.mousePosition);
-
-            direction.z = direction.y;
+            Vector3 direction = touch - mainCamera.ScreenToWorldPoint(Input.mousePosition);
             direction.y = 0;
-            mainCamera.transform.position += direction.normalized * Time.deltaTime * mainCamera.fieldOfView / 5f;
-            
-            touch = mainCamera.ScreenToViewportPoint(Input.mousePosition);
+            mainCamera.transform.position += direction;
         } 
         
-        Zoom(Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 500);
+        Zoom(Input.GetAxis("Mouse ScrollWheel"));
 
         //transform.position = ClampCamera(transform.position);
     }
 
     void Zoom(float increment)
     {
-        mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView - increment, minZoom, maxZoom);
+        mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize - increment, minZoom, maxZoom);
     }
 
     private Vector3 ClampCamera(Vector3 targetPosition)
