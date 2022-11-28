@@ -22,7 +22,7 @@ public class PreBuildingMoving : MonoBehaviour
         RaycastHit hit; 
         Physics.Raycast(ray, out hit, 100f, layerMask);
 
-        gameObject.transform.position = new Vector3(hit.point.x, 0.5f, hit.point.z);
+        gameObject.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
     }
 
     private void OnMouseUp()
@@ -73,7 +73,7 @@ public class PreBuildingMoving : MonoBehaviour
             RaycastHit hit; 
             Physics.Raycast(ray, out hit, 100f, layerMask);
 
-            gameObject.transform.position = new Vector3(hit.point.x, 0.5f, hit.point.z);
+            gameObject.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
         }
     }
 }

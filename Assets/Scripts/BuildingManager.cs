@@ -19,7 +19,7 @@ public class BuildingManager : MonoBehaviour
         Physics.Raycast(ray, out hit, 100f, layerMask);
         
         targetPosition = hit.point;
-        targetPosition.y = 0.5f;
+        targetPosition.y = 0f;
         
         objectForBuild = Instantiate(prefabObjForBuild, targetPosition, Quaternion.identity);
         
