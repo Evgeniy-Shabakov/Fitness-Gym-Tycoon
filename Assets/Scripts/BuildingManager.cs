@@ -40,6 +40,11 @@ public class BuildingManager : MonoBehaviour
         objectForBuild = null;
     }
 
+    public void RotateObject()
+    {
+        objectForBuild.transform.Rotate(0, 45, 0);
+    }
+
     public void DeleteObject()
     {
         Destroy(objectForBuild);
