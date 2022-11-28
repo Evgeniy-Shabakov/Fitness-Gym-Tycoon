@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour
             mainCamera.transform.position += direction;
         } 
         
-        Zoom(Input.GetAxis("Mouse ScrollWheel"));
+        Zoom(Input.GetAxis("Mouse ScrollWheel") * 5f);
 
         //transform.position = ClampCamera(transform.position);
     }
