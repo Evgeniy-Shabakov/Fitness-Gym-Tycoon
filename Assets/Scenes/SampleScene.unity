@@ -1789,9 +1789,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabObjForBuild: {fileID: 8240424115050596779, guid: b839401019a85c9499b51864c807633d, type: 3}
-  layerMask:
+  objectForBuild: {fileID: 0}
+  layerMaskForBuilddAllowed:
     serializedVersion: 2
     m_Bits: 8
+  materialForPreview: {fileID: 2100000, guid: bac66fc0dd4843b4c8e3d5d9ccd12b61, type: 2}
+  materialForCollision: {fileID: 2100000, guid: dd163119516a8854cbf949c567f94a9e, type: 2}
 --- !u!4 &1080834364
 Transform:
   m_ObjectHideFlags: 0

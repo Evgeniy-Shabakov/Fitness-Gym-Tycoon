@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PreBuildingCollision : MonoBehaviour
 {
-    [SerializeField] private Material red;
-    [SerializeField] private Material blue;
-
     private bool placeForBuildIsClear;
 
     private GameObject parent;
@@ -16,11 +13,10 @@ public class PreBuildingCollision : MonoBehaviour
     {
         parent = transform.parent.gameObject;
         mr = parent.GetComponent<MeshRenderer>();
-        Debug.Log(mr.gameObject.name);
         
         placeForBuildIsClear = true;
         defaultMaterial = mr.material;
-        mr.material = blue;
+        mr.material = BuildingManager.Instanse.materialForPreview;
     }
 
     private void OnDestroy()
@@ -33,13 +29,13 @@ public class PreBuildingCollision : MonoBehaviour
         if (other.name == "Plane") return;
 
         placeForBuildIsClear = false;
-        mr.material = red;
+        mr.material = BuildingManager.Instanse.materialForCollision;
     }
 
     private void OnTriggerExit(Collider other)
     {
         placeForBuildIsClear = true;
-        mr.material = blue;
+        mr.material = BuildingManager.Instanse.materialForPreview;
     }
 
     public bool PlaceForBuildIsClear()

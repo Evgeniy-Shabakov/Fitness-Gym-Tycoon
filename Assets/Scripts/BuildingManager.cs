@@ -3,10 +3,20 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    [SerializeField] private GameObject prefabObjForBuild;
-    [SerializeField] private LayerMask layerMask;
+    public static BuildingManager Instanse;
     
-    private GameObject objectForBuild;
+    [SerializeField] private GameObject prefabObjForBuild;
+    
+    [HideInInspector] public GameObject objectForBuild;
+    
+    public LayerMask layerMaskForBuilddAllowed;
+    public Material materialForPreview;
+    public Material materialForCollision;
+
+    private void Awake()
+    {
+        Instanse = this;
+    }
 
     public void CreateObjectForBuild()
     {
@@ -16,7 +26,7 @@ public class BuildingManager : MonoBehaviour
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward*100);
         RaycastHit hit; 
-        Physics.Raycast(ray, out hit, 100f, layerMask);
+        Physics.Raycast(ray, out hit, 100f, layerMaskForBuilddAllowed);
         
         targetPosition = hit.point;
         targetPosition.y = 0f;
