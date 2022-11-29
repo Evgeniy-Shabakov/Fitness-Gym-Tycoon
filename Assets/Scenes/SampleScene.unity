@@ -1789,6 +1789,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabObjForBuild: {fileID: 8240424115050596779, guid: b839401019a85c9499b51864c807633d, type: 3}
+  prefabChildForBuild: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
   objectForBuild: {fileID: 0}
   layerMaskForBuilddAllowed:
     serializedVersion: 2

@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instanse;
     
     [SerializeField] private GameObject prefabObjForBuild;
+    [SerializeField] private GameObject prefabChildForBuild;
     
     [HideInInspector] public GameObject objectForBuild;
     
@@ -47,6 +49,9 @@ public class BuildingManager : MonoBehaviour
         
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
+        Debug.Log(prefabChildForBuild.name);
+        objectForBuild.transform.Find(prefabChildForBuild.name).gameObject.AddComponent<ObjectSettings>();
+        
         objectForBuild = null;
     }
 

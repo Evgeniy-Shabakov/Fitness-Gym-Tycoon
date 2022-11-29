@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8199137148365870955}
   - component: {fileID: 8340822720987709940}
   - component: {fileID: 3027145971612633206}
-  - component: {fileID: -3881430149658812728}
   m_Layer: 0
   m_Name: PrefabChildForBuilding
   m_TagString: Untagged
@@ -129,8 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382f084cac43e464bb5d49595793c03a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  red: {fileID: 2100000, guid: dd163119516a8854cbf949c567f94a9e, type: 2}
-  blue: {fileID: 2100000, guid: bac66fc0dd4843b4c8e3d5d9ccd12b61, type: 2}
 --- !u!114 &3027145971612633206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,20 +138,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f677b3aebde39444aa4cb79f285735a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
---- !u!114 &-3881430149658812728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8199137148365870960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 679d71396498fb046af4aa8a923b28b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
