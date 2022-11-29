@@ -1788,7 +1788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc3c7228303d664f9ecc6f7959aa492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabObjForBuild: {fileID: 4347581347759813557, guid: 9499672cda1468e43a7f715ce51fb552, type: 3}
+  prefabObjForBuild: {fileID: 8240424115050596779, guid: b839401019a85c9499b51864c807633d, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 8

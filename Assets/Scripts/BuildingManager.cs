@@ -21,9 +21,8 @@ public class BuildingManager : MonoBehaviour
         targetPosition = hit.point;
         targetPosition.y = 0f;
         
-        objectForBuild = Instantiate(prefabObjForBuild, targetPosition, Quaternion.identity);
+        objectForBuild = Instantiate(prefabObjForBuild, targetPosition, prefabObjForBuild.transform.rotation);
         
-        //objectForBuild.GetComponent<BoxCollider>().isTrigger = true;
         objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = true;
         objectForBuild.transform.SetParent(Camera.main.transform);
     }
@@ -31,7 +30,6 @@ public class BuildingManager : MonoBehaviour
     public void SetObject()
     {
         if (objectForBuild == null) return;
-        //if (objectForBuild.GetComponent<PreBuildingCollision>().PlaceForBuildIsClear() == false) return;
         if (objectForBuild.GetComponentInChildren<PreBuildingCollision>().PlaceForBuildIsClear() == false) return;
             
         objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = false;
