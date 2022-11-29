@@ -13,6 +13,14 @@ public class PreBuildingMoving : MonoBehaviour
 
     private Vector3 touch;
     
+    private GameObject parent;
+
+    private void Start()
+    {
+        parent = transform.parent.gameObject;
+    }
+    
+
     private void OnMouseDrag()
     {
         movingClickAllowed = false;
@@ -22,7 +30,7 @@ public class PreBuildingMoving : MonoBehaviour
         RaycastHit hit; 
         Physics.Raycast(ray, out hit, 100f, layerMask);
 
-        gameObject.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
+        parent.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
     }
 
     private void OnMouseUp()
@@ -73,7 +81,7 @@ public class PreBuildingMoving : MonoBehaviour
             RaycastHit hit; 
             Physics.Raycast(ray, out hit, 100f, layerMask);
 
-            gameObject.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
+            parent.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
         }
     }
 }

@@ -23,25 +23,29 @@ public class BuildingManager : MonoBehaviour
         
         objectForBuild = Instantiate(prefabObjForBuild, targetPosition, Quaternion.identity);
         
-        objectForBuild.GetComponent<BoxCollider>().isTrigger = true;
+        //objectForBuild.GetComponent<BoxCollider>().isTrigger = true;
+        objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = true;
         objectForBuild.transform.SetParent(Camera.main.transform);
     }
 
     public void SetObject()
     {
         if (objectForBuild == null) return;
-        if (objectForBuild.GetComponent<PreBuildingCollision>().PlaceForBuilIsClear() == false) return;
+        //if (objectForBuild.GetComponent<PreBuildingCollision>().PlaceForBuildIsClear() == false) return;
+        if (objectForBuild.GetComponentInChildren<PreBuildingCollision>().PlaceForBuildIsClear() == false) return;
             
-        objectForBuild.GetComponent<BoxCollider>().isTrigger = false;
+        objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = false;
         objectForBuild.transform.SetParent(null);
         
-        Destroy(objectForBuild.GetComponent<PreBuildingCollision>());
-        Destroy(objectForBuild.GetComponent<PreBuildingMoving>());
+        Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
+        Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
         objectForBuild = null;
     }
 
     public void RotateObject()
     {
+        if (objectForBuild == null) return;
+        
         objectForBuild.transform.Rotate(0, 45, 0);
     }
 

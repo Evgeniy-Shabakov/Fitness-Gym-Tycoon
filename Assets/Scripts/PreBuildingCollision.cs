@@ -7,14 +7,17 @@ public class PreBuildingCollision : MonoBehaviour
     [SerializeField] private Material blue;
 
     private bool placeForBuildIsClear;
-    
+
+    private GameObject parent;
     private Material defaultMaterial;
     private MeshRenderer mr;
 
     private void Start()
     {
-        mr = GetComponent<MeshRenderer>();
-
+        parent = transform.parent.gameObject;
+        mr = parent.GetComponent<MeshRenderer>();
+        Debug.Log(mr.gameObject.name);
+        
         placeForBuildIsClear = true;
         defaultMaterial = mr.material;
         mr.material = blue;
@@ -39,7 +42,7 @@ public class PreBuildingCollision : MonoBehaviour
         mr.material = blue;
     }
 
-    public bool PlaceForBuilIsClear()
+    public bool PlaceForBuildIsClear()
     {
         return placeForBuildIsClear;
     }
