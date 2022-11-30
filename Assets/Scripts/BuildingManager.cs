@@ -49,7 +49,7 @@ public class BuildingManager : MonoBehaviour
         
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
-        Debug.Log(prefabChildForBuild.name);
+        
         objectForBuild.transform.Find(prefabChildForBuild.name).gameObject.AddComponent<ObjectSettings>();
         
         objectForBuild = null;
