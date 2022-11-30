@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class ObjectSettings : MonoBehaviour
 {
@@ -8,13 +9,8 @@ public class ObjectSettings : MonoBehaviour
 
    private void OnMouseDown()
    {
-      if(EventSystem.current.IsPointerOverGameObject ()) return;
-      
-      if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
-      {
-         if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
-      }
-      
+      if (IsPointerOverUIObject()) return;
+
       cameraPositionMouseDown = Camera.main.transform.position;
    }
 
@@ -31,5 +27,13 @@ public class ObjectSettings : MonoBehaviour
       transform.parent.transform.SetParent(Camera.main.transform);
       
       Destroy(gameObject.GetComponent<ObjectSettings>());
+   }
+   
+   private bool IsPointerOverUIObject() {
+      PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+      eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+      List<RaycastResult> results = new List<RaycastResult>();
+      EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+      return results.Count > 0;
    }
 }
