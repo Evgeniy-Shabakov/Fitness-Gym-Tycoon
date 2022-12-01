@@ -1,12 +1,12 @@
-using System;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using System.Collections.Generic;
+
 
 public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instanse;
     
-    [SerializeField] private GameObject prefabObjForBuild;
+    [SerializeField] private List<GameObject> prefabsObjectsForBuild;
     [SerializeField] private GameObject prefabChildForBuild;
     
     [HideInInspector] public GameObject objectForBuild;
@@ -33,7 +33,7 @@ public class BuildingManager : MonoBehaviour
         targetPosition = hit.point;
         targetPosition.y = 0f;
         
-        objectForBuild = Instantiate(prefabObjForBuild, targetPosition, prefabObjForBuild.transform.rotation);
+        objectForBuild = Instantiate(prefabsObjectsForBuild[0], targetPosition, prefabsObjectsForBuild[0].transform.rotation);
         
         objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = true;
         objectForBuild.transform.SetParent(Camera.main.transform);
