@@ -1,11 +1,12 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instanse;
 
-    private int maney;
+    private int money;
+    public static UnityEvent MoneyChanged = new UnityEvent();
     
     private void Awake()
     {
@@ -14,16 +15,24 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        maney = 10000;
+        money = 10000;
+        MoneyChanged.Invoke();
     }
 
     public void AddMoney(int amount)
     {
-        maney += amount;
+        money += amount;
+        MoneyChanged.Invoke();
     }
 
     public void SpendMoney(int amount)
     {
-        maney -= amount;
+        money -= amount;
+        MoneyChanged.Invoke();
+    }
+
+    public int GetMoney()
+    {
+        return money;
     }
 }
