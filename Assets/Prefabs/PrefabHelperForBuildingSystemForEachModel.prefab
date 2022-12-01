@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3027145971612633206}
   - component: {fileID: -3634090915286663565}
   m_Layer: 0
-  m_Name: PrefabChildForBuilding
+  m_Name: PrefabHelperForBuildingSystemForEachModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

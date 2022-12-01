@@ -7,7 +7,7 @@ public class BuildingManager : MonoBehaviour
     public static BuildingManager Instanse;
     
     [SerializeField] private List<GameObject> prefabsObjectsForBuild;
-    [SerializeField] private GameObject prefabChildForBuild;
+    [SerializeField] private GameObject prefabHelperBuildingSystem;
     
     [HideInInspector] public GameObject objectForBuild;
     
@@ -50,12 +50,12 @@ public class BuildingManager : MonoBehaviour
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
         
-        objectForBuild.transform.Find(prefabChildForBuild.name).gameObject.AddComponent<ObjectSettings>();
+        objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject.AddComponent<ObjectSettings>();
 
-        if (objectForBuild.transform.Find(prefabChildForBuild.name).gameObject.GetComponent<ObjectData>().IsNew)
+        if (objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject.GetComponent<ObjectData>().IsNew)
         {
             PlayerData.Instanse.SpendMoney(100);
-            objectForBuild.transform.Find(prefabChildForBuild.name).gameObject.GetComponent<ObjectData>().IsNew = false;
+            objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject.GetComponent<ObjectData>().IsNew = false;
         }
         
         objectForBuild = null;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ObjectData : MonoBehaviour
 {
-    public bool IsNew;
+    [HideInInspector] public bool IsNew;
 
     private void Start()
     {
