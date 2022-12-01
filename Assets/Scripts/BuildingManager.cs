@@ -9,6 +9,9 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private List<GameObject> prefabsObjectsForBuild;
     [SerializeField] private GameObject prefabHelperBuildingSystem;
     
+    [SerializeField] private GameObject panelModels;
+    [SerializeField] private GameObject prefabBtForPanelModels;
+    
     [HideInInspector] public GameObject objectForBuild;
     
     public LayerMask layerMaskForBuilddAllowed;
@@ -18,9 +21,19 @@ public class BuildingManager : MonoBehaviour
     private void Awake()
     {
         Instanse = this;
+        
+        for (int i = 0; i < prefabsObjectsForBuild.Count; i++)
+        {
+            Instantiate(prefabBtForPanelModels, panelModels.transform);
+        }
     }
 
-    public void CreateObjectForBuild()
+    public void AcrivatePanelModels()
+    {
+        panelModels.SetActive(true);
+    }
+    
+    public void CreateObjectForBuild(int indexOfListModels)
     {
         if (objectForBuild != null) Destroy(objectForBuild);
         
@@ -33,10 +46,12 @@ public class BuildingManager : MonoBehaviour
         targetPosition = hit.point;
         targetPosition.y = 0f;
         
-        objectForBuild = Instantiate(prefabsObjectsForBuild[0], targetPosition, prefabsObjectsForBuild[0].transform.rotation);
+        objectForBuild = Instantiate(prefabsObjectsForBuild[indexOfListModels], targetPosition, prefabsObjectsForBuild[indexOfListModels].transform.rotation);
         
         objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = true;
         objectForBuild.transform.SetParent(Camera.main.transform);
+        
+        panelModels.SetActive(false);
     }
 
     public void SetObject()

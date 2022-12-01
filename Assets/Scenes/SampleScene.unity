@@ -1206,7 +1206,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1080834363}
         m_TargetAssemblyTypeName: BuildingManager, Assembly-CSharp
-        m_MethodName: CreateObjectForBuild
+        m_MethodName: AcrivatePanelModels
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2015,8 +2015,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsObjectsForBuild:
+  - {fileID: 5300719671309677289, guid: 03ca75e399f361442b652e6f3517d6ac, type: 3}
+  - {fileID: 2234009454482266267, guid: 6e291fc23ffe5c1478b193c56b2bb184, type: 3}
   - {fileID: 8240424115050596779, guid: b839401019a85c9499b51864c807633d, type: 3}
   prefabHelperBuildingSystem: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+  panelModels: {fileID: 1599559954}
+  prefabBtForPanelModels: {fileID: 1081418330986784576, guid: 3cda52c8967366d4eaff82e910735f13, type: 3}
   objectForBuild: {fileID: 0}
   layerMaskForBuilddAllowed:
     serializedVersion: 2
@@ -2241,6 +2245,7 @@ GameObject:
   - component: {fileID: 1599559955}
   - component: {fileID: 1599559957}
   - component: {fileID: 1599559956}
+  - component: {fileID: 1599559958}
   m_Layer: 5
   m_Name: PanelForModels
   m_TagString: Untagged
@@ -2306,6 +2311,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599559954}
   m_CullTransparentMesh: 1
+--- !u!114 &1599559958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599559954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 200, y: 200}
+  m_Spacing: {x: 10, y: 10}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1887646372
 GameObject:
   m_ObjectHideFlags: 0
