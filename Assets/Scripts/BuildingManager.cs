@@ -51,6 +51,12 @@ public class BuildingManager : MonoBehaviour
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
         
         objectForBuild.transform.Find(prefabChildForBuild.name).gameObject.AddComponent<ObjectSettings>();
+
+        if (objectForBuild.transform.Find(prefabChildForBuild.name).gameObject.GetComponent<ObjectData>().IsNew)
+        {
+            PlayerData.Instanse.SpendMoney(100);
+            objectForBuild.transform.Find(prefabChildForBuild.name).gameObject.GetComponent<ObjectData>().IsNew = false;
+        }
         
         objectForBuild = null;
     }
