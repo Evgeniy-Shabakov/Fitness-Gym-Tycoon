@@ -26,7 +26,7 @@ public class PreBuildingCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "Plane") return;
+        if (other.tag == "Floor") return;
 
         placeForBuildIsClear = false;
         mr.material = BuildingManager.Instanse.materialForCollision;
