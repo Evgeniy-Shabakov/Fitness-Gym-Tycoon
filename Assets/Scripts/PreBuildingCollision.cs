@@ -15,17 +15,17 @@ public class PreBuildingCollision : MonoBehaviour
         mr = parent.GetComponent<MeshRenderer>();
         
         defaultMaterial = mr.material;
-        mr.material = BuildingManager.Instanse.materialForPreview;
+        mr.material = BuildingManager.Instance.materialForPreview;
 
         if (ObjectAboveFloor())
         {
             placeForBuildIsClear = true;
-            mr.material = BuildingManager.Instanse.materialForPreview;
+            mr.material = BuildingManager.Instance.materialForPreview;
         }
         else
         {
             placeForBuildIsClear = false;
-            mr.material = BuildingManager.Instanse.materialForCollision;
+            mr.material = BuildingManager.Instance.materialForCollision;
         }
     }
 
@@ -39,23 +39,23 @@ public class PreBuildingCollision : MonoBehaviour
         if (other.tag == "Floor") return;
 
         placeForBuildIsClear = false;
-        mr.material = BuildingManager.Instanse.materialForCollision;
+        mr.material = BuildingManager.Instance.materialForCollision;
     }
 
     private void OnTriggerExit(Collider other)
     {
         placeForBuildIsClear = true;
-        mr.material = BuildingManager.Instanse.materialForPreview;
+        mr.material = BuildingManager.Instance.materialForPreview;
         
         if (ObjectAboveFloor())
         {
             placeForBuildIsClear = true;
-            mr.material = BuildingManager.Instanse.materialForPreview;
+            mr.material = BuildingManager.Instance.materialForPreview;
         }
         else
         {
             placeForBuildIsClear = false;
-            mr.material = BuildingManager.Instanse.materialForCollision;
+            mr.material = BuildingManager.Instance.materialForCollision;
         }
     }
 
@@ -68,7 +68,7 @@ public class PreBuildingCollision : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, -Vector3.up);
         
-        if (Physics.Raycast(ray, 10f, BuildingManager.Instanse.layerMaskForFloor)) return true;
+        if (Physics.Raycast(ray, 10f, BuildingManager.Instance.layerMaskForFloor)) return true;
         else return false;
     }
 }

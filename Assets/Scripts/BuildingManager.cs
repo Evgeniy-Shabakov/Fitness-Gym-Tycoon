@@ -1,17 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-
 public class BuildingManager : MonoBehaviour
 {
-    public static BuildingManager Instanse;
+    public static BuildingManager Instance;
     
-    [SerializeField] private List<ObjectForBuilding> objectsForBuilding;
+    public List<ObjectForBuilding> objectsForBuilding;
     [SerializeField] private GameObject prefabHelperBuildingSystem;
-    
-    [SerializeField] private GameObject scrollViewForShop;
-    [SerializeField] private GameObject contentScrollViewForShop;
-    [SerializeField] private GameObject prefabBtForPanelModels;
     
     [HideInInspector] public GameObject objectForBuild;
     
@@ -22,19 +17,9 @@ public class BuildingManager : MonoBehaviour
 
     private void Awake()
     {
-        Instanse = this;
-        
-        for (int i = 0; i < objectsForBuilding.Count; i++)
-        {
-            Instantiate(prefabBtForPanelModels, contentScrollViewForShop.transform);
-        }
+        Instance = this;
     }
 
-    public void AcrivatePanelModels()
-    {
-        scrollViewForShop.SetActive(true);
-    }
-    
     public void CreateObjectForBuild(int indexOfListModels)
     {
         if (objectForBuild != null) Destroy(objectForBuild);
@@ -53,7 +38,7 @@ public class BuildingManager : MonoBehaviour
         objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = true;
         objectForBuild.transform.SetParent(Camera.main.transform);
         
-        scrollViewForShop.SetActive(false);
+        UIManager.Instance.ClosePanelShopMachines();
     }
 
     public void SetObject()
