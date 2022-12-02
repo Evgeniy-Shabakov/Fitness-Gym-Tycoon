@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
+  m_Name: Treadmill
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4347581347759813557, guid: 9499672cda1468e43a7f715ce51fb552, type: 3}
+  sprite: {fileID: 21300000, guid: 74588764967bff741a713c57938eea85, type: 3}
+  price: 2000
+  description: Cardio - increases endurance
+  damageInPersent: 0.1

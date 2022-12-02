@@ -1594,7 +1594,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -2332,7 +2332,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -2751,7 +2751,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsObjectsForBuild:
-  - {fileID: 5300719671309677289, guid: 03ca75e399f361442b652e6f3517d6ac, type: 3}
+  - {fileID: 4347581347759813557, guid: 9499672cda1468e43a7f715ce51fb552, type: 3}
   - {fileID: 2234009454482266267, guid: 6e291fc23ffe5c1478b193c56b2bb184, type: 3}
   - {fileID: 8240424115050596779, guid: b839401019a85c9499b51864c807633d, type: 3}
   prefabHelperBuildingSystem: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
