@@ -26,7 +26,7 @@ public class PreBuildingMoving : MonoBehaviour
         
         Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
         RaycastHit hit; 
-        Physics.Raycast(ray, out hit, 100f, BuildingManager.Instanse.layerMaskForBuilddAllowed);
+        Physics.Raycast(ray, out hit, 100f, BuildingManager.Instanse.layerMaskForPlane);
 
         parent.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
     }
@@ -77,7 +77,7 @@ public class PreBuildingMoving : MonoBehaviour
             
             Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
             RaycastHit hit; 
-            Physics.Raycast(ray, out hit, 100f, BuildingManager.Instanse.layerMaskForBuilddAllowed);
+            Physics.Raycast(ray, out hit, 100f, BuildingManager.Instanse.layerMaskForPlane);
 
             parent.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
         }

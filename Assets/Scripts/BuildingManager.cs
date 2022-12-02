@@ -14,7 +14,8 @@ public class BuildingManager : MonoBehaviour
     
     [HideInInspector] public GameObject objectForBuild;
     
-    public LayerMask layerMaskForBuilddAllowed;
+    public LayerMask layerMaskForPlane;
+    public LayerMask layerMaskForFloor;
     public Material materialForPreview;
     public Material materialForCollision;
 
@@ -41,7 +42,7 @@ public class BuildingManager : MonoBehaviour
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward*100);
         RaycastHit hit; 
-        Physics.Raycast(ray, out hit, 100f, layerMaskForBuilddAllowed);
+        Physics.Raycast(ray, out hit, 100f, layerMaskForPlane);
         
         targetPosition = hit.point;
         targetPosition.y = 0f;
