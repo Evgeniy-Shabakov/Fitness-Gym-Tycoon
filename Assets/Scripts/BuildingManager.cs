@@ -6,10 +6,11 @@ public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instanse;
     
-    [SerializeField] private List<GameObject> prefabsObjectsForBuild;
+    [SerializeField] private List<ObjectForBuilding> objectsForBuilding;
     [SerializeField] private GameObject prefabHelperBuildingSystem;
     
-    [SerializeField] private GameObject panelModels;
+    [SerializeField] private GameObject scrollViewForShop;
+    [SerializeField] private GameObject contentScrollViewForShop;
     [SerializeField] private GameObject prefabBtForPanelModels;
     
     [HideInInspector] public GameObject objectForBuild;
@@ -23,15 +24,15 @@ public class BuildingManager : MonoBehaviour
     {
         Instanse = this;
         
-        for (int i = 0; i < prefabsObjectsForBuild.Count; i++)
+        for (int i = 0; i < objectsForBuilding.Count; i++)
         {
-            Instantiate(prefabBtForPanelModels, panelModels.transform);
+            Instantiate(prefabBtForPanelModels, contentScrollViewForShop.transform);
         }
     }
 
     public void AcrivatePanelModels()
     {
-        panelModels.SetActive(true);
+        scrollViewForShop.SetActive(true);
     }
     
     public void CreateObjectForBuild(int indexOfListModels)
@@ -47,12 +48,12 @@ public class BuildingManager : MonoBehaviour
         targetPosition = hit.point;
         targetPosition.y = 0f;
         
-        objectForBuild = Instantiate(prefabsObjectsForBuild[indexOfListModels], targetPosition, prefabsObjectsForBuild[indexOfListModels].transform.rotation);
+        objectForBuild = Instantiate(objectsForBuilding[indexOfListModels].prefab, targetPosition, objectsForBuilding[indexOfListModels].prefab.transform.rotation);
         
         objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = true;
         objectForBuild.transform.SetParent(Camera.main.transform);
         
-        panelModels.SetActive(false);
+        scrollViewForShop.SetActive(false);
     }
 
     public void SetObject()

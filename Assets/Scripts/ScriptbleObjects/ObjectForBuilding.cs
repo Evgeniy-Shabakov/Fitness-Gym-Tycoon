@@ -3,9 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ObjectForBuilding", menuName = "New ObjectForBuilding")]
 public class ObjectForBuilding : ScriptableObject
 {
-    [SerializeField] private GameObject prefab;
-    [SerializeField] private Sprite sprite;
-    [SerializeField] private int price;
-    [SerializeField] private string description;
-    [SerializeField] private float damageInPersent;
+    public GameObject prefab;
+    public Sprite sprite;
+    public int price;
+    public string description;
+    public float damageInPersent;
 }
