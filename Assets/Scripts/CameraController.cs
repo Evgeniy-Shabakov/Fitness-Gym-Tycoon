@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (UIManager.Instance.IsPointerOverUIObject()) return;
+        
         if (Input.GetMouseButtonDown(0))
         {
             touch = mainCamera.ScreenToWorldPoint(Input.mousePosition);

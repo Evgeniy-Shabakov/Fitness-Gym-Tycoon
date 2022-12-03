@@ -7,8 +7,6 @@ public class PreBuildingMoving : MonoBehaviour
     private bool cameraPositionIsChanged;
     private Vector3 cameraPositionMouseDown;
 
-    private bool movingClickAllowed;
-
     private Vector3 touch;
     
     private GameObject parent;
@@ -21,7 +19,6 @@ public class PreBuildingMoving : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        movingClickAllowed = false;
         Camera.main.gameObject.GetComponent<CameraController>().enabled = false;
         
         Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
@@ -38,40 +35,12 @@ public class PreBuildingMoving : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(EventSystem.current.IsPointerOverGameObject ())
-            {
-                movingClickAllowed = false;
-            }
-
-            else
-            {
-                movingClickAllowed = true;
-                cameraPositionMouseDown = Camera.main.transform.position;
-            }
-        }
+        if (UIManager.Instance.IsPointerOverUIObject()) return;
+        if (Input.touchCount >= 2) return;
         
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-            {
-                movingClickAllowed = false;
-            }
+        if (Input.GetMouseButtonDown(0)) cameraPositionMouseDown = Camera.main.transform.position;
 
-            else
-            {
-                movingClickAllowed = true;
-                cameraPositionMouseDown = Camera.main.transform.position;
-            }
-        }
-
-        if (Input.touchCount >= 2)
-        {
-            movingClickAllowed = false;
-        }
-
-        if (Input.GetMouseButtonUp(0) && movingClickAllowed)
+        if (Input.GetMouseButtonUp(0))
         {
             if (Camera.main.transform.position != cameraPositionMouseDown) return;
             
