@@ -41,7 +41,6 @@ public class WallChangeHeight : MonoBehaviour
 
     IEnumerator CheсkWallPisition()
     {
-        Debug.Log("sdfsd");
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
         
