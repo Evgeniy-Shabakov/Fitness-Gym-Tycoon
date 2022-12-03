@@ -1,25 +1,47 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class WallChangeHeight : MonoBehaviour
 {
-    private Transform tr;
     private MeshRenderer mr;
     
     private LayerMask layerMaskWalls;
     
     private void Start()
     {
-        tr = GetComponent<Transform>();
         mr = GetComponent<MeshRenderer>();
         
         layerMaskWalls =  LayerMask.GetMask("Walls");
-        
-        CheсkWallPisition();
     }
 
-    private void CheсkWallPisition()
+    private void OnBecameVisible()
     {
+        StartCoroutine("CheсkWallPisition");
+    }
+
+    private void OnBecameInvisible()
+    {
+        StopCoroutine("CheсkWallPisition");
+    }
+
+    private void OnMouseEnter()
+    {
+        if (UIManager.Instance.IsPointerOverUIObject()) return;
+        
+        mr.enabled = false;
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        mr.enabled = true;
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    IEnumerator CheсkWallPisition()
+    {
+        Debug.Log("sdfsd");
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
         
@@ -28,15 +50,17 @@ public class WallChangeHeight : MonoBehaviour
             if (hit.transform.gameObject == gameObject)
             {
                 mr.enabled = false;
-                tr.GetChild(0).gameObject.SetActive(true);
+                transform.GetChild(0).gameObject.SetActive(true);
             }
         }
         else
         {
             mr.enabled = true;
-            tr.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
+
+        yield return 0.5f;
         
-        Invoke("CheсkWallPisition", 0.5f);
+        StartCoroutine("CheсkWallPisition");
     }
 }
