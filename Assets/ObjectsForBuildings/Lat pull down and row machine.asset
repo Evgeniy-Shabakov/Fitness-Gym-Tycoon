@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
-  m_Name: Rowing machine
+  m_Name: Lat pull down and row machine
   m_EditorClassIdentifier: 
-  prefab: {fileID: 833558782425002089, guid: 35dbb7a23418e734b922f3559b6d375c, type: 3}
-  sprite: {fileID: 21300000, guid: 8a063e38b94e1d34d842b7798264f028, type: 3}
-  price: 1500
-  description: Increases strength and endurance
+  prefab: {fileID: 2234009454482266267, guid: 6e291fc23ffe5c1478b193c56b2bb184, type: 3}
+  sprite: {fileID: 21300000, guid: b23db5dedb91b344e858597d86703817, type: 3}
+  price: 1800
+  description: For the latissimus dorsi
   damageInPersent: 0.1

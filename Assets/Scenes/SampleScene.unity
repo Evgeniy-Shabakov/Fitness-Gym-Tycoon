@@ -1118,7 +1118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: 040b0e4d147341b4780f162c4ecef39c, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7288816506164657790, guid: 040b0e4d147341b4780f162c4ecef39c, type: 3}
       propertyPath: m_LocalScale.x
@@ -2938,6 +2938,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 29b57b7be4ec60a47ab0e34eb20bb48b, type: 2}
   - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
   - {fileID: 11400000, guid: ea1ef0d22e8fd594a8ba9c750352436b, type: 2}
+  - {fileID: 11400000, guid: cd5cef6258ba32749bd01def72895592, type: 2}
+  - {fileID: 11400000, guid: 4dfbe73aa166da44fb4156a8d833a9bb, type: 2}
+  - {fileID: 11400000, guid: d6a419dd434538241963792f4dc3fb65, type: 2}
   prefabHelperBuildingSystem: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
   objectForBuild: {fileID: 0}
   layerMaskForPlane:
@@ -3699,8 +3702,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2102653262}
   - {fileID: 2134059354}
+  - {fileID: 2102653262}
   - {fileID: 1695546178}
   - {fileID: 129274663}
   - {fileID: 1741891400}
@@ -4446,7 +4449,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1382164264}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &2134059355
 MeshCollider:

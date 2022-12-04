@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
-  m_Name: Rowing machine
+  m_Name: Smith machine
   m_EditorClassIdentifier: 
-  prefab: {fileID: 833558782425002089, guid: 35dbb7a23418e734b922f3559b6d375c, type: 3}
-  sprite: {fileID: 21300000, guid: 8a063e38b94e1d34d842b7798264f028, type: 3}
-  price: 1500
-  description: Increases strength and endurance
+  prefab: {fileID: 1153611784423229753, guid: 6913cf9a659a7bf4089cee1c6296d9d6, type: 3}
+  sprite: {fileID: 21300000, guid: 7be6a1c3ef714ef43b8daf4e9b4746aa, type: 3}
+  price: 5000
+  description: Allows you to perform strength exercises safely
   damageInPersent: 0.1
