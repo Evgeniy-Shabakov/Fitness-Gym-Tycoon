@@ -27,8 +27,7 @@ public class WallChangeHeight : MonoBehaviour
 
     private void OnMouseExit()
     {
-        mr.enabled = true;
-        transform.GetChild(0).gameObject.SetActive(false);
+        CheсkWallPisition();
     }
 
     private void CheсkWallPisition()
