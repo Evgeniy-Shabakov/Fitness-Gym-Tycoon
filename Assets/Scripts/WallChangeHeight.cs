@@ -15,7 +15,7 @@ public class WallChangeHeight : MonoBehaviour
         CameraController.CameraChanged.AddListener(CheсkWallPosition);
     }
 
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
         if (UIManager.Instance.IsPointerOverUIObject()) return;
         
