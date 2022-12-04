@@ -1,8 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraController : MonoBehaviour
 {
+    public static UnityEvent CameraChanged = new UnityEvent();
+    
     [SerializeField] private Camera mainCamera;
     
     private Vector3 touch;
@@ -32,7 +35,7 @@ public class CameraController : MonoBehaviour
 
             float difference = currentDistTouch - distTouch;
             
-            Zoom(difference * 0.01f);
+            Zoom(difference * 0.03f);
         }
         
         else if (Input.GetMouseButton(0))
@@ -40,6 +43,8 @@ public class CameraController : MonoBehaviour
             Vector3 direction = touch - mainCamera.ScreenToWorldPoint(Input.mousePosition);
             direction.y = 0;
             mainCamera.transform.position += direction;
+            
+            CameraChanged.Invoke();
         } 
         
         Zoom(Input.GetAxis("Mouse ScrollWheel") * 5f);

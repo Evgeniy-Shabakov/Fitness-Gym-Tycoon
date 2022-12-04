@@ -13,16 +13,8 @@ public class WallChangeHeight : MonoBehaviour
         mr = GetComponent<MeshRenderer>();
         
         layerMaskWalls =  LayerMask.GetMask("Walls");
-    }
-
-    private void OnBecameVisible()
-    {
-        StartCoroutine("CheсkWallPisition");
-    }
-
-    private void OnBecameInvisible()
-    {
-        StopCoroutine("CheсkWallPisition");
+        
+        CameraController.CameraChanged.AddListener(CheсkWallPisition);
     }
 
     private void OnMouseEnter()
@@ -39,12 +31,14 @@ public class WallChangeHeight : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(false);
     }
 
-    IEnumerator CheсkWallPisition()
+    private void CheсkWallPisition()
     {
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward*100f, Color.yellow);
+        
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         RaycastHit hit;
         
-        if (Physics.Raycast(ray, out hit, 100f, layerMaskWalls))
+        if (Physics.SphereCast(ray, 10f, out hit, 100f, layerMaskWalls))
         {
             if (hit.transform.gameObject == gameObject)
             {
@@ -57,9 +51,5 @@ public class WallChangeHeight : MonoBehaviour
             mr.enabled = true;
             transform.GetChild(0).gameObject.SetActive(false);
         }
-
-        yield return 0.5f;
-        
-        StartCoroutine("CheсkWallPisition");
     }
 }
