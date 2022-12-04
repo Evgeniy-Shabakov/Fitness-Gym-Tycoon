@@ -4182,7 +4182,19 @@ PrefabInstance:
       value: WallWithChangingHeight
       objectReference: {fileID: 0}
     - target: {fileID: 5860634105631575907, guid: 55a80f2ffa3532946a5347cb83bce8a9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860634105631575907, guid: 55a80f2ffa3532946a5347cb83bce8a9, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5860634106614940737, guid: 55a80f2ffa3532946a5347cb83bce8a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5946691404240866577, guid: 55a80f2ffa3532946a5347cb83bce8a9, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
