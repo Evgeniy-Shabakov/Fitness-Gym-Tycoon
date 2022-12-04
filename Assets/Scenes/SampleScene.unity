@@ -2937,28 +2937,7 @@ MonoBehaviour:
   objectsForBuilding:
   - {fileID: 11400000, guid: 29b57b7be4ec60a47ab0e34eb20bb48b, type: 2}
   - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
-  - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
+  - {fileID: 11400000, guid: ea1ef0d22e8fd594a8ba9c750352436b, type: 2}
   prefabHelperBuildingSystem: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
   objectForBuild: {fileID: 0}
   layerMaskForPlane:
