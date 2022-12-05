@@ -31,7 +31,7 @@ public class BuildingManager : MonoBehaviour
         Physics.Raycast(ray, out hit, 100f, layerMaskForPlane);
         
         targetPosition = hit.point;
-        targetPosition.y = 0f;
+        targetPosition.y = objectsForBuilding[indexOfListModels].prefab.transform.position.y;
         
         objectForBuild = Instantiate(objectsForBuilding[indexOfListModels].prefab, targetPosition, objectsForBuilding[indexOfListModels].prefab.transform.rotation);
         

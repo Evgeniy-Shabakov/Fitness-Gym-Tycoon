@@ -2938,9 +2938,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 29b57b7be4ec60a47ab0e34eb20bb48b, type: 2}
   - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
   - {fileID: 11400000, guid: ea1ef0d22e8fd594a8ba9c750352436b, type: 2}
+  - {fileID: 11400000, guid: f6e9410d9737eb743b1dc9a984bff591, type: 2}
+  - {fileID: 11400000, guid: d6a419dd434538241963792f4dc3fb65, type: 2}
+  - {fileID: 11400000, guid: 370c895fa94c2f14e8b5719e09a817f4, type: 2}
   - {fileID: 11400000, guid: cd5cef6258ba32749bd01def72895592, type: 2}
   - {fileID: 11400000, guid: 4dfbe73aa166da44fb4156a8d833a9bb, type: 2}
-  - {fileID: 11400000, guid: d6a419dd434538241963792f4dc3fb65, type: 2}
+  - {fileID: 11400000, guid: abf06781506309b43a19f758348f7576, type: 2}
   prefabHelperBuildingSystem: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
   objectForBuild: {fileID: 0}
   layerMaskForPlane:

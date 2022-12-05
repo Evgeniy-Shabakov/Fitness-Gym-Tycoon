@@ -227,7 +227,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: b8610000
       m_LastClickedID: 25016
-      m_ExpandedIDs: 24fbffff76610000
+      m_ExpandedIDs: 022affffb248ffff846cffff886cffff24fbffff2461000076610000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 698
     height: 454
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -557,9 +557,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -9.570973, y: 5.048349, z: 30.728136}
+    m_Target: {x: -31.444342, y: -0.13189039, z: 38.37815}
     speed: 2
-    m_Value: {x: -9.570973, y: 5.048349, z: 30.728136}
+    m_Value: {x: -31.444342, y: -0.13189039, z: 38.37815}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -606,13 +606,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.29469126, y: -0.43433565, z: 0.1528579, w: 0.8373445}
+    m_Target: {x: 0.1330546, y: -0.3611327, z: 0.052143365, w: 0.92150223}
     speed: 2
-    m_Value: {x: 0.29469103, y: -0.4343353, z: 0.15285777, w: 0.8373438}
+    m_Value: {x: 0.13305421, y: -0.36113167, z: 0.052143216, w: 0.9214996}
   m_Size:
-    m_Target: 5.513796
+    m_Target: 1.3183426
     speed: 2
-    m_Value: 5.513796
+    m_Value: 1.3183426
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -744,23 +744,23 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a2630000
-    m_LastClickedID: 25506
-    m_ExpandedIDs: 00000000786300007a6300007c6300007e6300008063000082630000846300008663000088630000b4630000
+    m_SelectedIDs: 46660000
+    m_LastClickedID: 26182
+    m_ExpandedIDs: 000000001c6600001e66000020660000226600002c6600002e660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Prefabs
+      m_OriginalName: Prefabs
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 26216
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -774,7 +774,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000786300007a6300007c6300007e6300008063000082630000846300008663000088630000b4630000
+    m_ExpandedIDs: 000000001c6600001e66000020660000226600002466000026660000286600002a6600002c6600002e660000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -877,8 +877,8 @@ MonoBehaviour:
     y: 0
     width: 378
     height: 767
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}

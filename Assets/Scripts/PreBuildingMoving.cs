@@ -50,7 +50,7 @@ public class PreBuildingMoving : MonoBehaviour
             RaycastHit hit; 
             Physics.Raycast(ray, out hit, 100f, BuildingManager.Instance.layerMaskForPlane);
 
-            parent.transform.position = new Vector3(hit.point.x, 0f, hit.point.z);
+            parent.transform.position = new Vector3(hit.point.x, parent.transform.position.y, hit.point.z);
         }
 
         if (Input.GetMouseButton(0))
@@ -61,7 +61,7 @@ public class PreBuildingMoving : MonoBehaviour
             RaycastHit hit2; 
             Physics.Raycast(ray2, out hit2, 100f, BuildingManager.Instance.layerMaskForPlane);
 
-            parent.transform.position = new Vector3(hit2.point.x, 0f, hit2.point.z);
+            parent.transform.position = new Vector3(hit2.point.x, parent.transform.position.y, hit2.point.z);
         }
     }
 }
