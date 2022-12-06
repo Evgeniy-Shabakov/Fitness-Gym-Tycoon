@@ -34,6 +34,27 @@ public class SaveLoadManager : MonoBehaviour
         LevelDataSave levelDataSave = new LevelDataSave();
         levelDataSave.level = 1;
         levelDataSave.listObjectsDataSave = FormListObjectsDataSave();
+
+        AllDataSave allDataSave = new AllDataSave();
+        allDataSave.listLevelsDataSave.Add(levelDataSave);
+    }
+
+    public void Load()
+    {
+        AllDataSave allDataSave = new AllDataSave();
+        
+        LevelDataSave levelDataSave = allDataSave.listLevelsDataSave[0];
+
+        foreach (var objDataSave in levelDataSave.listObjectsDataSave)
+        {
+            BuildingManager.Instance.CreateObjectForBuild(objDataSave.indexInBuildingManagerList);
+            
+            BuildingManager.Instance.objectForBuild.transform.position = objDataSave.position;
+            BuildingManager.Instance.objectForBuild.transform.rotation = objDataSave.rotation;
+            BuildingManager.Instance.objectForBuild.GetComponentInChildren<ObjectData>().isNew = false;
+            
+            BuildingManager.Instance.SetObject();
+        }
     }
 
     private List<ObjectDataSave> FormListObjectsDataSave()
