@@ -15,7 +15,7 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        money = 10000;
+        money = 50000;
         MoneyChanged.Invoke();
     }
 

@@ -36,7 +36,6 @@ public class PreBuildingCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.name);
         if (other.tag == "Floor") return;
 
         placeForBuildIsClear = false;

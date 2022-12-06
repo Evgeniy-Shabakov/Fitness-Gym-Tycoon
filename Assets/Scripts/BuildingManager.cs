@@ -7,8 +7,10 @@ public class BuildingManager : MonoBehaviour
     
     public List<ObjectForBuilding> objectsForBuilding;
     [SerializeField] private GameObject prefabHelperBuildingSystem;
+    [SerializeField] private GameObject parentForAllDynamicObjects;
     
     [HideInInspector] public GameObject objectForBuild;
+    private GameObject childHelperObjectForBuild;
     
     public LayerMask layerMaskForPlane;
     public LayerMask layerMaskForFloor;
@@ -37,6 +39,8 @@ public class BuildingManager : MonoBehaviour
         
         objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = true;
         objectForBuild.transform.SetParent(Camera.main.transform);
+
+        objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
         
         UIManager.Instance.ClosePanelShopMachines();
     }
@@ -44,22 +48,28 @@ public class BuildingManager : MonoBehaviour
     public void SetObject()
     {
         if (objectForBuild == null) return;
-        if (objectForBuild.GetComponentInChildren<PreBuildingCollision>().PlaceForBuildIsClear() == false) return;
-            
-        objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = false;
-        objectForBuild.transform.SetParent(null);
+
+        childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
         
+        if (childHelperObjectForBuild.GetComponent<PreBuildingCollision>().PlaceForBuildIsClear() == false) return;
+        
+        objectForBuild.transform.SetParent(parentForAllDynamicObjects.transform);
+        
+        childHelperObjectForBuild.GetComponent<BoxCollider>().isTrigger = false;
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
-        
-        objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject.AddComponent<ObjectSettings>();
+        childHelperObjectForBuild.AddComponent<ObjectSettings>();
 
-        if (objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject.GetComponent<ObjectData>().IsNew)
-        {
-            PlayerData.Instanse.SpendMoney(100);
-            objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject.GetComponent<ObjectData>().IsNew = false;
-        }
+        ObjectData currentObjectData = childHelperObjectForBuild.GetComponent<ObjectData>();
         
+        if (currentObjectData.isNew)
+        {
+            int price = objectsForBuilding[currentObjectData.indexInBuildingManagerList].price;
+            
+            PlayerData.Instanse.SpendMoney(price);
+            childHelperObjectForBuild.GetComponent<ObjectData>().isNew = false;
+        }
+
         objectForBuild = null;
     }
 

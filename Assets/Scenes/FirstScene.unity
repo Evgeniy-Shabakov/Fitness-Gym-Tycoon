@@ -1364,6 +1364,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526214550}
   m_CullTransparentMesh: 1
+--- !u!1 &536789960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 536789961}
+  m_Layer: 0
+  m_Name: DynamicObjectsForSaveLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &536789961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536789960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &558041765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3339,6 +3370,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ca048c78a36b6584486c0cb8d4f2a6da, type: 2}
   - {fileID: 11400000, guid: 9b0c82b71f541a545938ad3bdf8c0748, type: 2}
   prefabHelperBuildingSystem: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+  parentForAllDynamicObjects: {fileID: 536789960}
   objectForBuild: {fileID: 0}
   layerMaskForPlane:
     serializedVersion: 2

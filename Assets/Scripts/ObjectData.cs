@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class ObjectData : MonoBehaviour
 {
-    [HideInInspector] public bool IsNew;
+    [HideInInspector] public bool isNew;
+    public int indexInBuildingManagerList;
 
     private void Start()
     {
-        IsNew = true;
+        isNew = true;
     }
 }
