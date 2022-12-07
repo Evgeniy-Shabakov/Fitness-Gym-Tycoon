@@ -25,7 +25,7 @@ public class SaveLoadManager : MonoBehaviour
 
     private void Start()
     {
-        BuildingManager.ObjectInstalled.AddListener(Save);
+        BuildingManager.ObjectInstalledOrDeleted.AddListener(Save);
         
         Load();
     }

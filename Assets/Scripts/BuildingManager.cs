@@ -6,7 +6,7 @@ public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instance;
     
-    public static UnityEvent ObjectInstalled = new UnityEvent();
+    public static UnityEvent ObjectInstalledOrDeleted = new UnityEvent();
     
     public List<ObjectForBuilding> objectsForBuilding;
     [SerializeField] private GameObject prefabHelperBuildingSystem;
@@ -43,6 +43,7 @@ public class BuildingManager : MonoBehaviour
         objectForBuild.GetComponentInChildren<BoxCollider>().isTrigger = true;
         objectForBuild.transform.SetParent(Camera.main.transform);
 
+        objectForBuild.GetComponentInChildren<ObjectData>().isNew = true;
         objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
         
         UIManager.Instance.ClosePanelShopMachines();
@@ -74,7 +75,7 @@ public class BuildingManager : MonoBehaviour
         }
 
         objectForBuild = null;
-        ObjectInstalled.Invoke();
+        ObjectInstalledOrDeleted.Invoke();
     }
 
     public void CreateAndSetObjectForLoad(int indexOfListModels, Vector3 pos, Quaternion rotation)
@@ -106,5 +107,7 @@ public class BuildingManager : MonoBehaviour
     public void DeleteObject()
     {
         Destroy(objectForBuild);
+        
+        ObjectInstalledOrDeleted.Invoke();
     }
 }
