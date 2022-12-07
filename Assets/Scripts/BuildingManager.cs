@@ -1,9 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instance;
+    
+    public static UnityEvent ObjectInstalled = new UnityEvent();
     
     public List<ObjectForBuilding> objectsForBuilding;
     [SerializeField] private GameObject prefabHelperBuildingSystem;
@@ -70,6 +73,26 @@ public class BuildingManager : MonoBehaviour
             childHelperObjectForBuild.GetComponent<ObjectData>().isNew = false;
         }
 
+        objectForBuild = null;
+        ObjectInstalled.Invoke();
+    }
+
+    public void CreateAndSetObjectForLoad(int indexOfListModels, Vector3 pos, Quaternion rotation)
+    {
+        objectForBuild = Instantiate(objectsForBuilding[indexOfListModels].prefab, pos, rotation);
+        
+        objectForBuild.transform.SetParent(parentForAllDynamicObjects.transform);
+        
+        objectForBuild.GetComponentInChildren<ObjectData>().isNew = false;
+        objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
+        
+        childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
+        
+        childHelperObjectForBuild.GetComponent<BoxCollider>().isTrigger = false;
+        Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
+        Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
+        childHelperObjectForBuild.AddComponent<ObjectSettings>();
+        
         objectForBuild = null;
     }
 

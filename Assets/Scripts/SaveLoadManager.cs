@@ -18,26 +18,16 @@ public class SaveLoadManager : MonoBehaviour
     {
         #if UNITY_ANDROID && !UNITY_EDITOR
             savePath = Path.Combine(Application.persistentDataPath, saveFileName);
-        #endif
+        #else
             savePath = Path.Combine(Application.dataPath, saveFileName);
+        #endif
     }
 
     private void Start()
     {
+        BuildingManager.ObjectInstalled.AddListener(Save);
+        
         Load();
-    }
-
-    private void OnApplicationQuit()
-    {
-        Save();
-    }
-
-    private void OnApplicationPause(bool pauseStatus)
-    {
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            Save();
-        }
     }
 
     [Serializable]
@@ -88,15 +78,8 @@ public class SaveLoadManager : MonoBehaviour
 
         foreach (var objDataSave in levelDataSave.listObjectsDataSave)
         {
-            BuildingManager.Instance.CreateObjectForBuild(objDataSave.indexInBuildingManagerList);
-            
-            BuildingManager.Instance.objectForBuild.transform.position = objDataSave.position;
-            BuildingManager.Instance.objectForBuild.transform.rotation = objDataSave.rotation;
-            BuildingManager.Instance.objectForBuild.GetComponentInChildren<ObjectData>().isNew = false;
-            BuildingManager.Instance.objectForBuild.GetComponentInChildren<PreBuildingCollision>()
-                .SetPlaceForBuildIsClear(true);
-            
-            BuildingManager.Instance.SetObject();
+            BuildingManager.Instance.CreateAndSetObjectForLoad(objDataSave.indexInBuildingManagerList, 
+                objDataSave.position, objDataSave.rotation);
         }
     }
 
