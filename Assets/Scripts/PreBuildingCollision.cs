@@ -31,13 +31,13 @@ public class PreBuildingCollision : MonoBehaviour
 
     private void OnDestroy()
     {
-        mr.material = defaultMaterial;
+        if (defaultMaterial != null) mr.material = defaultMaterial;
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Floor") return;
-
+        
         placeForBuildIsClear = false;
         mr.material = BuildingManager.Instance.materialForCollision;
     }
@@ -62,6 +62,11 @@ public class PreBuildingCollision : MonoBehaviour
     public bool PlaceForBuildIsClear()
     {
         return placeForBuildIsClear;
+    }
+
+    public void SetPlaceForBuildIsClear(bool p)
+    {
+        placeForBuildIsClear = p;
     }
 
     private bool ObjectAboveFloor()
