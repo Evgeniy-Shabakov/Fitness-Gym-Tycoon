@@ -20,8 +20,10 @@ public class HumanControls : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
             RaycastHit hit;
-            if (Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out hit, 100f, BuildingManager.Instance.layerMaskForPlane))
+            
+            if (Physics.Raycast(ray, out hit, 100f, BuildingManager.Instance.layerMaskForPlane))
             {
                 navMeshAgent.SetDestination(hit.point);
             }
