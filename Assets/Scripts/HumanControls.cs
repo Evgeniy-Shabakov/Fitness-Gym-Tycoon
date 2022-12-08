@@ -61,20 +61,11 @@ public class HumanControls : MonoBehaviour
         }
         
         navMeshAgent.SetDestination(Vector3.zero);
+        Invoke("DestroyHuman", 15f);
     }
-    
-    // Update is called once per frame
-    /*void Update()
+
+    private void DestroyHuman()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
-            RaycastHit hit;
-            
-            if (Physics.Raycast(ray, out hit, 100f, BuildingManager.Instance.layerMaskForPlane))
-            {
-                navMeshAgent.SetDestination(hit.point);
-            }
-        }
-    }*/
+        Destroy(gameObject);
+    }
 }
