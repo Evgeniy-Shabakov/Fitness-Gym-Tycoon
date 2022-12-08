@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8340822720987709940}
   - component: {fileID: 3027145971612633206}
   - component: {fileID: -3634090915286663565}
+  - component: {fileID: 965629656184933318}
   m_Layer: 8
   m_Name: PrefabHelperForBuildingSystemForEachModel
   m_TagString: Untagged
@@ -153,4 +154,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8861e68756f02db4aa8720beeea366de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsNew: 0
+  isNew: 0
+  indexInBuildingManagerList: 0
+--- !u!208 &965629656184933318
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199137148365870960}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

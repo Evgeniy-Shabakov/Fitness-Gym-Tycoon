@@ -224,10 +224,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 116}
       m_SelectedIDs: e8f0ffff
       m_LastClickedID: -3864
-      m_ExpandedIDs: 24fbffffe2610000f6610000
+      m_ExpandedIDs: 0022ffff24fbffffd8600000ae610000e2610000f6610000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -431,7 +431,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Navmesh Display
@@ -453,7 +453,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Obstacle Display
@@ -557,9 +557,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -28.357315, y: 2.017221, z: 24.188223}
+    m_Target: {x: -17.365646, y: 0.73393345, z: 42.861378}
     speed: 2
-    m_Value: {x: -28.357315, y: 2.017221, z: 24.188223}
+    m_Value: {x: -17.365646, y: 0.73393345, z: 42.861378}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -606,13 +606,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.283545, y: -0.09331198, z: 0.027733574, w: 0.9540124}
+    m_Target: {x: 0.2533038, y: -0.29589313, z: 0.08169909, w: 0.91740113}
     speed: 2
-    m_Value: {x: 0.28354305, y: -0.09331135, z: 0.027733386, w: 0.9540059}
+    m_Value: {x: 0.2533019, y: -0.2958909, z: 0.08169848, w: 0.9173942}
   m_Size:
-    m_Target: 8.467316
+    m_Target: 2.4732916
     speed: 2
-    m_Value: 8.467316
+    m_Value: 2.4732916
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -731,22 +731,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Z_VNB - Office Set/Prefabs/Building
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 75
   m_LastFolders:
-  - Assets/Z_VNB - Office Set/Prefabs/Building
+  - Assets/Prefabs
   m_LastFoldersGridSize: 75
   m_LastProjectPath: D:\Unity\Projects\Fitness Gym Tycoon\Fitness Gym Tycoon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 124}
-    m_SelectedIDs: f8870000
-    m_LastClickedID: 34808
-    m_ExpandedIDs: 000000009468000096680000986800009a680000be680000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: ac680000
+    m_LastClickedID: 26796
+    m_ExpandedIDs: 000000009468000096680000986800009a680000ba680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: e8f0ffff
     m_LastClickedInstanceID: -3864
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000da6a0000fc620000085d0000665e000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -920,7 +920,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 216
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
