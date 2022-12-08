@@ -259,6 +259,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9086835300527378385}
     m_Modifications:
+    - target: {fileID: 965629656184933318, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+      propertyPath: m_Extents.x
+      value: 0.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 965629656184933318, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+      propertyPath: m_Extents.z
+      value: 0.31
+      objectReference: {fileID: 0}
     - target: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Name
       value: PrefabHelperForBuildingSystemForEachModel

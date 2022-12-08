@@ -39,7 +39,7 @@ public class PreBuildingCollision : MonoBehaviour
         if (other.tag == "Floor") return;
         
         placeForBuildIsClear = false;
-        mr.material = BuildingManager.Instance.materialForCollision;
+        if (mr != null) mr.material = BuildingManager.Instance.materialForCollision;
     }
 
     private void OnTriggerExit(Collider other)

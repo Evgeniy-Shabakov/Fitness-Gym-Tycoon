@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class HumanControls : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class HumanControls : MonoBehaviour
     
     private int countTargets;
     private int[] targetsIndexes;
+    private int index;
     
     void Start()
     {
@@ -24,46 +27,59 @@ public class HumanControls : MonoBehaviour
         countTargets = 10;
         targetsIndexes = new int[countTargets];
         
-        Invoke("MoveHuman", 2f);
-    }
-
-    private void MoveHuman()
-    {
         targetsIndexes[0] = 0;
         
         for (int i = 1; i < countTargets; i++)
         {
             targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
         }
-
-        StartCoroutine("DelayMovingHuman");
+        
+        Invoke("MoveHuman", 2f);
     }
 
-    IEnumerator DelayMovingHuman()
+    private void MoveHuman()
     {
-        for (int i = 0; i < countTargets; i++)
+        Vector3 targetPosition = transform.position;
+        
+        foreach(Transform child in parentAllDynamicObjects.transform)
         {
-            Vector3 targetPosition = transform.position;
-        
-            foreach(Transform child in parentAllDynamicObjects.transform)
+            if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
             {
-                if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsIndexes[i])
-                {
-                    if (i == 0) targetPosition = child.position - Vector3.forward;
-                    else targetPosition = child.position;
-                    break;
-                }
+                targetPosition = child.position;
+                break;
             }
-        
-            navMeshAgent.SetDestination(targetPosition);
-            
-            yield return new WaitForSeconds(15f);
         }
         
-        navMeshAgent.SetDestination(Vector3.zero);
-        Invoke("DestroyHuman", 15f);
+        navMeshAgent.SetDestination(targetPosition);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (index >= countTargets) return;
+        
+        if (collision.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
+        {
+            navMeshAgent.ResetPath();
+            StartCoroutine(DoActionInObject());
+        }
+    }
+
+    IEnumerator DoActionInObject()
+    {
+        yield return new WaitForSeconds(0f);
+        
+        index++;
+        if (index < countTargets)
+        {
+            MoveHuman();
+        }
+        else
+        {
+            navMeshAgent.SetDestination(Vector3.zero);
+            Invoke("DestroyHuman", 15f);
+        }
+    }
+    
     private void DestroyHuman()
     {
         Destroy(gameObject);
