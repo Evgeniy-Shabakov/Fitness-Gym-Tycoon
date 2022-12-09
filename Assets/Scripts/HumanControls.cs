@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 public class HumanControls : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
-
     private GameObject parentAllDynamicObjects;
     
     private int countTargets;
@@ -21,14 +20,12 @@ public class HumanControls : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        
         parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
 
         countTargets = 10;
         targetsIndexes = new int[countTargets];
 
         SetTargetsIndexes();
-
         MoveHuman();
     }
 
