@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 
 public class HumanControls : MonoBehaviour
 {
-    private Camera mainCamera;
     private NavMeshAgent navMeshAgent;
 
     private GameObject parentAllDynamicObjects;
@@ -16,10 +15,11 @@ public class HumanControls : MonoBehaviour
     private int countTargets;
     private int[] targetsIndexes;
     private int index;
+
+    private GameObject currentCollision;
     
     void Start()
     {
-        mainCamera = Camera.main;
         navMeshAgent = GetComponent<NavMeshAgent>();
         
         parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
@@ -56,13 +56,29 @@ public class HumanControls : MonoBehaviour
         if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
         {
             navMeshAgent.ResetPath();
+            currentCollision = other.gameObject;
             StartCoroutine(DoActionInObject());
         }
     }
 
     IEnumerator DoActionInObject()
     {
-        yield return new WaitForSeconds(0f);
+        Vector3 positionBeforeAction = transform.position;
+
+        if (targetsIndexes[index] != 0 && targetsIndexes[index] != 6)
+        {
+            navMeshAgent.enabled = false;
+            transform.position = currentCollision.transform.position;
+        }
+        
+        
+        yield return new WaitForSeconds(1f);
+
+        if (targetsIndexes[index] != 0 && targetsIndexes[index] != 6)
+        {
+            transform.position = positionBeforeAction;
+            navMeshAgent.enabled = true;
+        }
         
         index++;
         if (index < countTargets)
