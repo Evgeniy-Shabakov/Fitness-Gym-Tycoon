@@ -225,9 +225,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: c6e4ffff
-      m_LastClickedID: -6970
-      m_ExpandedIDs: d2e4fffff0710000
+      m_SelectedIDs: 7a620000
+      m_LastClickedID: 0
+      m_ExpandedIDs: acd4feff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -557,9 +557,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.45031285, y: 1.7358258, z: 0.56055266}
+    m_Target: {x: -1.1751535, y: 0.1607641, z: -0.2466104}
     speed: 2
-    m_Value: {x: -0.45031285, y: 1.7358258, z: 0.56055266}
+    m_Value: {x: -1.1751535, y: 0.1607641, z: -0.2466104}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -606,17 +606,17 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+    m_Target: {x: 0.2747868, y: -0.014421455, z: 0.0041232095, w: 0.961392}
     speed: 2
-    m_Value: {x: 0.7071069, y: 0, z: 0, w: 0.7071069}
+    m_Value: {x: 0.27478582, y: -0.014421403, z: 0.0041231946, w: 0.9613885}
   m_Size:
-    m_Target: 1.9770906
+    m_Target: 1.2265924
     speed: 2
-    m_Value: 1.9770906
+    m_Value: 1.2265924
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
@@ -673,7 +673,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -682,14 +682,14 @@ MonoBehaviour:
     y: 454
     width: 1222
     height: 313
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -731,21 +731,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Z_VNB - Gym Set/Prefabs/Machines
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 75
   m_LastFolders:
-  - Assets/Z_VNB - Gym Set/Prefabs/Machines
+  - Assets/Prefabs
   m_LastFoldersGridSize: 75
   m_LastProjectPath: D:\Unity\Projects\Fitness Gym Tycoon\Fitness Gym Tycoon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: 14690000
-    m_LastClickedID: 26900
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: fe680000
+    m_LastClickedID: 26878
     m_ExpandedIDs: 00000000d0680000d2680000d4680000d6680000d8680000da680000dc680000de680000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -799,8 +799,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c6e4ffff
-    m_LastClickedInstanceID: -6970
+    m_SelectedInstanceIDs: 7a620000
+    m_LastClickedInstanceID: 25210
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000da6a0000fc620000085d0000665e000000000000
     m_RenameOverlay:

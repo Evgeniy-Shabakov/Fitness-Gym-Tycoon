@@ -15,8 +15,12 @@ public class HumanControls : MonoBehaviour
     private int[] targetsIndexes;
     private int index;
 
-    private GameObject currentCollisionGameObject;
-    
+    private int numberOfAttempts;
+
+    private GameObject currentGameObjectForAction;
+
+    private bool humanDoAction;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -24,6 +28,9 @@ public class HumanControls : MonoBehaviour
 
         countTargets = 10;
         targetsIndexes = new int[countTargets];
+        numberOfAttempts = 0;
+
+        humanDoAction = false;
 
         SetTargetsIndexes();
         MoveHuman();
@@ -31,21 +38,29 @@ public class HumanControls : MonoBehaviour
 
     private void MoveHuman()
     {
-        foreach(Transform child in parentAllDynamicObjects.transform)
+        if (humanDoAction) return;
+        
+        GameObject target = SearchNeededAndFreeObject();
+        
+        if (target != null)
         {
-            if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
-            {
-                if (child.GetComponentInChildren<ObjectData>().objectIsFree)
-                {
-                    navMeshAgent.SetDestination(child.position);
-                    return;
-                }
-            }
+            numberOfAttempts = 0;
+            
+            navMeshAgent.SetDestination(target.transform.position);
+            return;
         }
 
-        if (index < countTargets - 1)
+        if (numberOfAttempts < 3)
         {
-            index++;
+            numberOfAttempts++;
+            Invoke("MoveHuman", 0.5f);
+            return;
+        }
+        
+        index++;
+        if (index < countTargets)
+        {
+            numberOfAttempts = 0;
             MoveHuman();
         }
         
@@ -60,36 +75,47 @@ public class HumanControls : MonoBehaviour
     {
         if (index >= countTargets) return;
         if (other.gameObject.GetComponent<ObjectData>() == null) return;
-            
-        if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
-        {
-            navMeshAgent.ResetPath();
+        if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsIndexes[index]) return;    
+        
+        navMeshAgent.ResetPath();
 
-            if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false)
-            {
-                MoveHuman();
-            }
-            else
-            {
-                currentCollisionGameObject = other.gameObject;
-                StartCoroutine(DoActionInObject());
-            }
-            
+        if (other.gameObject.GetComponent<ObjectData>().objectIsFree)
+        {
+            currentGameObjectForAction = other.gameObject;
+            StartCoroutine(DoActionInObject());
         }
+        else
+        {
+            numberOfAttempts = 0;
+            MoveHuman();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (index >= countTargets) return;
+        if (humanDoAction) return;
+        if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsIndexes[index]) return;
+        if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false) return;
+        
+        currentGameObjectForAction = other.gameObject;
+        StartCoroutine(DoActionInObject());
     }
 
     IEnumerator DoActionInObject()
     {
+        humanDoAction = true;
+        
         Vector3 positionBeforeAction = transform.position;
         float wait = 1f;
         
         if (targetsIndexes[index] != 0 && targetsIndexes[index] != 6)
         {
             navMeshAgent.enabled = false;
-            transform.position = currentCollisionGameObject.transform.position;
+            transform.position = currentGameObjectForAction.transform.position;
 
-            currentCollisionGameObject.GetComponent<ObjectData>().objectIsFree = false;
-            wait = 3f;
+            currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = false;
+            wait = Random.Range(3f, 5f);
         }
         
         yield return new WaitForSeconds(wait);
@@ -99,12 +125,15 @@ public class HumanControls : MonoBehaviour
             transform.position = positionBeforeAction;
             navMeshAgent.enabled = true;
             
-            currentCollisionGameObject.GetComponent<ObjectData>().objectIsFree = true;
+            currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = true;
         }
+        
+        humanDoAction = false;
         
         index++;
         if (index < countTargets)
         {
+            numberOfAttempts = 0;
             MoveHuman();
         }
         else
@@ -114,6 +143,22 @@ public class HumanControls : MonoBehaviour
         }
     }
 
+    private GameObject SearchNeededAndFreeObject()
+    {
+        foreach(Transform child in parentAllDynamicObjects.transform)
+        {
+            if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
+            {
+                if (child.GetComponentInChildren<ObjectData>().objectIsFree)
+                {
+                    return child.gameObject;
+                }
+            }
+        }
+
+        return null;
+    }
+    
     private void SetTargetsIndexes()
     {
         targetsIndexes[0] = 0;
