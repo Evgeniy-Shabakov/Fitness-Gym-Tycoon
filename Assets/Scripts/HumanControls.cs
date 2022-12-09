@@ -26,20 +26,10 @@ public class HumanControls : MonoBehaviour
 
         countTargets = 10;
         targetsIndexes = new int[countTargets];
-        
-        targetsIndexes[0] = 0;
-        
-        for (int i = 1; i < countTargets; i++)
-        {
-            targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
-            
-            while(targetsIndexes[i] == targetsIndexes[i-1])
-            {
-                targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
-            }
-        }
-        
-        Invoke("MoveHuman", 2f);
+
+        SetTargetsIndexes();
+
+        MoveHuman();
     }
 
     private void MoveHuman()
@@ -83,6 +73,21 @@ public class HumanControls : MonoBehaviour
         {
             navMeshAgent.SetDestination(Vector3.zero);
             Invoke("DestroyHuman", 15f);
+        }
+    }
+
+    private void SetTargetsIndexes()
+    {
+        targetsIndexes[0] = 0;
+        
+        for (int i = 1; i < countTargets; i++)
+        {
+            targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
+            
+            while(targetsIndexes[i] == targetsIndexes[i-1])
+            {
+                targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
+            }
         }
     }
     
