@@ -16,7 +16,7 @@ public class HumanControls : MonoBehaviour
     private int[] targetsIndexes;
     private int index;
 
-    private GameObject currentCollision;
+    private GameObject currentCollisionGameObject;
     
     void Start()
     {
@@ -34,18 +34,29 @@ public class HumanControls : MonoBehaviour
 
     private void MoveHuman()
     {
-        Vector3 targetPosition = transform.position;
-        
         foreach(Transform child in parentAllDynamicObjects.transform)
         {
             if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
             {
-                targetPosition = child.position;
-                break;
+                if (child.GetComponentInChildren<ObjectData>().objectIsFree)
+                {
+                    navMeshAgent.SetDestination(child.position);
+                    return;
+                }
             }
         }
+
+        if (index < countTargets - 1)
+        {
+            index++;
+            MoveHuman();
+        }
         
-        navMeshAgent.SetDestination(targetPosition);
+        else
+        {
+            navMeshAgent.SetDestination(Vector3.zero);
+            Invoke("DestroyHuman", 15f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,28 +67,42 @@ public class HumanControls : MonoBehaviour
         if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
         {
             navMeshAgent.ResetPath();
-            currentCollision = other.gameObject;
-            StartCoroutine(DoActionInObject());
+
+            if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false)
+            {
+                MoveHuman();
+            }
+            else
+            {
+                currentCollisionGameObject = other.gameObject;
+                StartCoroutine(DoActionInObject());
+            }
+            
         }
     }
 
     IEnumerator DoActionInObject()
     {
         Vector3 positionBeforeAction = transform.position;
-
+        float wait = 1f;
+        
         if (targetsIndexes[index] != 0 && targetsIndexes[index] != 6)
         {
             navMeshAgent.enabled = false;
-            transform.position = currentCollision.transform.position;
+            transform.position = currentCollisionGameObject.transform.position;
+
+            currentCollisionGameObject.GetComponent<ObjectData>().objectIsFree = false;
+            wait = 3f;
         }
         
+        yield return new WaitForSeconds(wait);
         
-        yield return new WaitForSeconds(1f);
-
         if (targetsIndexes[index] != 0 && targetsIndexes[index] != 6)
         {
             transform.position = positionBeforeAction;
             navMeshAgent.enabled = true;
+            
+            currentCollisionGameObject.GetComponent<ObjectData>().objectIsFree = true;
         }
         
         index++;
@@ -95,8 +120,9 @@ public class HumanControls : MonoBehaviour
     private void SetTargetsIndexes()
     {
         targetsIndexes[0] = 0;
+        targetsIndexes[1] = 1;
         
-        for (int i = 1; i < countTargets; i++)
+        for (int i = 2; i < countTargets; i++)
         {
             targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
             
