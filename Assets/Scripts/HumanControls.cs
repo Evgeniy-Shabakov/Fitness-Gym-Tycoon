@@ -61,8 +61,8 @@ public class HumanControls : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (index >= countTargets) return;
-        
-        Debug.Log("Collision " + other.transform.parent.name);
+        if (other.gameObject.GetComponent<ObjectData>() == null) return;
+            
         if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
         {
             navMeshAgent.ResetPath();
@@ -73,7 +73,7 @@ public class HumanControls : MonoBehaviour
     IEnumerator DoActionInObject()
     {
         yield return new WaitForSeconds(0f);
-        Debug.Log("Do Action " + targetsIndexes[index]);
+        
         index++;
         if (index < countTargets)
         {
@@ -84,8 +84,6 @@ public class HumanControls : MonoBehaviour
             navMeshAgent.SetDestination(Vector3.zero);
             Invoke("DestroyHuman", 15f);
         }
-
-        Debug.Log("Next target " + targetsIndexes[index]);
     }
     
     private void DestroyHuman()
