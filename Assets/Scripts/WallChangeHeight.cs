@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class WallChangeHeight : MonoBehaviour
 {
+    private Camera mainCamera;
+    
     private MeshRenderer mr;
     
     private LayerMask layerMaskWalls;
     
     private void Start()
     {
+        mainCamera = Camera.main;
+        
         mr = GetComponent<MeshRenderer>();
         
         layerMaskWalls =  LayerMask.GetMask("Walls");
@@ -30,7 +34,7 @@ public class WallChangeHeight : MonoBehaviour
 
     private void CheсkWallPosition()
     {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
         RaycastHit[] hit;
         hit = Physics.SphereCastAll(ray, 7f, 100f, layerMaskWalls);
         

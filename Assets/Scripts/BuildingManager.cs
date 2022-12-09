@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Events;
@@ -20,9 +21,16 @@ public class BuildingManager : MonoBehaviour
     public Material materialForPreview;
     public Material materialForCollision;
 
+    private Camera mainCamera;
+    
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
     }
 
     public void CreateObjectForBuild(int indexOfListModels)
@@ -31,7 +39,7 @@ public class BuildingManager : MonoBehaviour
         
         Vector3 targetPosition;
 
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward*100);
+        Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward*100);
         RaycastHit hit; 
         Physics.Raycast(ray, out hit, 100f, layerMaskForPlane);
         
@@ -40,7 +48,7 @@ public class BuildingManager : MonoBehaviour
         
         objectForBuild = Instantiate(objectsForBuilding[indexOfListModels].prefab, targetPosition, objectsForBuilding[indexOfListModels].prefab.transform.rotation);
         
-        objectForBuild.transform.SetParent(Camera.main.transform);
+        objectForBuild.transform.SetParent(mainCamera.transform);
 
         objectForBuild.GetComponentInChildren<ObjectData>().isNew = true;
         objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;

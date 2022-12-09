@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PreBuildingMoving : MonoBehaviour
 {
+    private Camera mainCamera;
+    
     private bool cameraPositionIsChanged;
     private Vector3 cameraPositionMouseDown;
 
@@ -15,6 +17,8 @@ public class PreBuildingMoving : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = Camera.main;
+        
         parent = transform.parent.gameObject;
         layerMaskObjects =  LayerMask.GetMask("Objects");
         objectIsСaptured = false;
@@ -27,26 +31,26 @@ public class PreBuildingMoving : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            cameraPositionMouseDown = Camera.main.transform.position;
+            cameraPositionMouseDown = mainCamera.transform.position;
             
-            Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
+            Ray ray = new Ray(mainCamera.ScreenToWorldPoint(Input.mousePosition), mainCamera.transform.forward);
             RaycastHit hit;
             
             if (Physics.Raycast(ray, out hit, 100f, layerMaskObjects) == false) return;
             if (hit.transform.gameObject != gameObject) return;
             
-            Camera.main.gameObject.GetComponent<CameraController>().enabled = false;
+            mainCamera.gameObject.GetComponent<CameraController>().enabled = false;
             objectIsСaptured = true;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            Camera.main.gameObject.GetComponent<CameraController>().enabled = true;
+            mainCamera.gameObject.GetComponent<CameraController>().enabled = true;
             objectIsСaptured = false;
             
-            if (Camera.main.transform.position != cameraPositionMouseDown) return;
+            if (mainCamera.transform.position != cameraPositionMouseDown) return;
             
-            Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
+            Ray ray = new Ray(mainCamera.ScreenToWorldPoint(Input.mousePosition), mainCamera.transform.forward);
             RaycastHit hit; 
             Physics.Raycast(ray, out hit, 100f, BuildingManager.Instance.layerMaskForPlane);
 
@@ -57,7 +61,7 @@ public class PreBuildingMoving : MonoBehaviour
         {
             if (objectIsСaptured == false) return;
             
-            Ray ray2 = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), Camera.main.transform.forward);
+            Ray ray2 = new Ray(mainCamera.ScreenToWorldPoint(Input.mousePosition), mainCamera.transform.forward);
             RaycastHit hit2; 
             Physics.Raycast(ray2, out hit2, 100f, BuildingManager.Instance.layerMaskForPlane);
 
