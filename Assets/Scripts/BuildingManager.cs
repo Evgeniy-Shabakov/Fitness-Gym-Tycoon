@@ -59,7 +59,7 @@ public class BuildingManager : MonoBehaviour
         
         objectForBuild.transform.SetParent(parentForAllDynamicObjects.transform);
         
-        childHelperObjectForBuild.GetComponent<BoxCollider>().isTrigger = false;
+        childHelperObjectForBuild.GetComponent<BoxCollider>().isTrigger = true;
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
         childHelperObjectForBuild.AddComponent<ObjectSettings>();
@@ -89,7 +89,7 @@ public class BuildingManager : MonoBehaviour
         
         childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
         
-        childHelperObjectForBuild.GetComponent<BoxCollider>().isTrigger = false;
+        childHelperObjectForBuild.GetComponent<BoxCollider>().isTrigger = true;
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
         childHelperObjectForBuild.AddComponent<ObjectSettings>();

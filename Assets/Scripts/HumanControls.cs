@@ -32,6 +32,11 @@ public class HumanControls : MonoBehaviour
         for (int i = 1; i < countTargets; i++)
         {
             targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
+            
+            while(targetsIndexes[i] == targetsIndexes[i-1])
+            {
+                targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
+            }
         }
         
         Invoke("MoveHuman", 2f);
@@ -53,11 +58,12 @@ public class HumanControls : MonoBehaviour
         navMeshAgent.SetDestination(targetPosition);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         if (index >= countTargets) return;
         
-        if (collision.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
+        Debug.Log("Collision " + other.transform.parent.name);
+        if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
         {
             navMeshAgent.ResetPath();
             StartCoroutine(DoActionInObject());
@@ -67,7 +73,7 @@ public class HumanControls : MonoBehaviour
     IEnumerator DoActionInObject()
     {
         yield return new WaitForSeconds(0f);
-        
+        Debug.Log("Do Action " + targetsIndexes[index]);
         index++;
         if (index < countTargets)
         {
@@ -78,6 +84,8 @@ public class HumanControls : MonoBehaviour
             navMeshAgent.SetDestination(Vector3.zero);
             Invoke("DestroyHuman", 15f);
         }
+
+        Debug.Log("Next target " + targetsIndexes[index]);
     }
     
     private void DestroyHuman()
