@@ -112,7 +112,13 @@ public class HumanControls : MonoBehaviour
         if (targetsIndexes[index] != 0 && targetsIndexes[index] != 6)
         {
             navMeshAgent.enabled = false;
-            transform.position = currentGameObjectForAction.transform.position;
+
+            if (targetsIndexes[index] == 1)
+            {
+                transform.position = currentGameObjectForAction.transform.parent.Find("PivotForHuman").position;
+                transform.rotation = currentGameObjectForAction.transform.parent.Find("PivotForHuman").rotation;
+            }
+            else transform.position = currentGameObjectForAction.transform.position;
 
             currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = false;
             wait = Random.Range(3f, 5f);
