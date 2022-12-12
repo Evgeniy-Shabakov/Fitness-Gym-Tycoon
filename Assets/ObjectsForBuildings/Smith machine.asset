@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1153611784423229753, guid: 6913cf9a659a7bf4089cee1c6296d9d6, type: 3}
   sprite: {fileID: 21300000, guid: 84091bb8ff5f47d449347bd02f78d130, type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: e2b3222a291a70948a03beb1649a738d, type: 2}
   price: 5000
   description: Allows you to perform strength exercises safely
   damageInPersent: 0.1

@@ -7,23 +7,26 @@ public class AnimationSwitcherHumanClient : MonoBehaviour
 {
     private Animator animator;
     private NavMeshAgent navMeshAgent;
-    
-    // Start is called before the first frame update
+    private HumanControls humanControls;
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
+        humanControls = GetComponent<HumanControls>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (navMeshAgent.enabled == false)
+        if (navMeshAgent.enabled == false && humanControls.currentGameObjectForAction != null)
         {
+            int i = humanControls.currentGameObjectForAction.GetComponent<ObjectData>().indexInBuildingManagerList;
+            animator.runtimeAnimatorController =
+                BuildingManager.Instance.objectsForBuilding[i].animatorOverrideController;
+            
             animator.SetBool("DoExercise", true);
             return;
         }
-        
         animator.SetBool("DoExercise", false);
         
         if (navMeshAgent.velocity.magnitude > 0) animator.SetBool("IsWalk", true);

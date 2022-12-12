@@ -17,7 +17,7 @@ public class HumanControls : MonoBehaviour
 
     private int numberOfAttempts;
 
-    private GameObject currentGameObjectForAction;
+    [HideInInspector] public GameObject currentGameObjectForAction;
 
     private bool humanDoAction;
 
@@ -46,7 +46,7 @@ public class HumanControls : MonoBehaviour
         {
             numberOfAttempts = 0;
             
-            navMeshAgent.SetDestination(target.transform.position);
+            if (navMeshAgent.enabled) navMeshAgent.SetDestination(target.transform.position);
             return;
         }
 
@@ -77,7 +77,7 @@ public class HumanControls : MonoBehaviour
         if (other.gameObject.GetComponent<ObjectData>() == null) return;
         if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsIndexes[index]) return;    
         
-        navMeshAgent.ResetPath();
+        if (navMeshAgent.enabled) navMeshAgent.ResetPath();
 
         if (other.gameObject.GetComponent<ObjectData>().objectIsFree)
         {
@@ -109,17 +109,13 @@ public class HumanControls : MonoBehaviour
         Vector3 positionBeforeAction = transform.position;
         float wait = 1f;
         
-        if (targetsIndexes[index] != 0 && targetsIndexes[index] != 6)
+        if (targetsIndexes[index] != 0)
         {
             navMeshAgent.enabled = false;
 
-            if (targetsIndexes[index] == 1)
-            {
-                transform.position = currentGameObjectForAction.transform.parent.Find("PivotForHuman").position;
-                transform.rotation = currentGameObjectForAction.transform.parent.Find("PivotForHuman").rotation;
-            }
-            else transform.position = currentGameObjectForAction.transform.position;
-
+            transform.position = currentGameObjectForAction.transform.parent.Find("PivotForHuman").position;
+            transform.rotation = currentGameObjectForAction.transform.parent.Find("PivotForHuman").rotation;
+            
             currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = false;
             wait = Random.Range(3f, 5f);
         }

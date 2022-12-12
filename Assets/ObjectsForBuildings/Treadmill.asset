@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4347581347759813557, guid: 9499672cda1468e43a7f715ce51fb552, type: 3}
   sprite: {fileID: 21300000, guid: 74588764967bff741a713c57938eea85, type: 3}
+  animatorOverrideController: {fileID: 22100000, guid: 44e6ac9372b4b884e857beff28fd056e, type: 2}
   price: 2000
   description: Cardio - increases endurance
   damageInPersent: 0.1
