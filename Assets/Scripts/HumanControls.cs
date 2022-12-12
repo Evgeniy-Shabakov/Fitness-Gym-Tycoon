@@ -66,7 +66,7 @@ public class HumanControls : MonoBehaviour
         
         else
         {
-            navMeshAgent.SetDestination(Vector3.zero);
+            if (navMeshAgent.enabled) navMeshAgent.SetDestination(Vector3.zero);
             Invoke("DestroyHuman", 15f);
         }
     }
@@ -93,7 +93,7 @@ public class HumanControls : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (index >= countTargets) return;
+        if (index > countTargets) return;
         if (humanDoAction) return;
         if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsIndexes[index]) return;
         if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false) return;
