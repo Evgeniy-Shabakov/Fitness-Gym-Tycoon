@@ -14,21 +14,24 @@ public class HumanControls : MonoBehaviour
     
     private int countTargets;
     private int[] targetsIndexes;
-    private int index;
+    public int index;
 
     private int numberOfAttempts;
 
     [HideInInspector] public GameObject currentGameObjectForAction;
 
-    public UnityEvent humanDoActionStart = new UnityEvent();
-    public UnityEvent humanDoActionStop = new UnityEvent();
+    [HideInInspector] public UnityEvent humanDoActionStart = new UnityEvent();
+    [HideInInspector] public UnityEvent humanDoActionStop = new UnityEvent();
+    [HideInInspector] public UnityEvent NeededAndFreeObjectNoFinded = new UnityEvent();
+    [HideInInspector] public UnityEvent NeededAndFreeObjectFinded = new UnityEvent();
+    
     private bool humanDoAction;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
-
+        
         countTargets = 10;
         targetsIndexes = new int[countTargets];
         numberOfAttempts = 0;
@@ -158,14 +161,16 @@ public class HumanControls : MonoBehaviour
             {
                 if (child.GetComponentInChildren<ObjectData>().objectIsFree)
                 {
+                    NeededAndFreeObjectFinded.Invoke();
                     return child.gameObject;
                 }
             }
         }
-
+        
+        NeededAndFreeObjectNoFinded.Invoke();
         return null;
     }
-    
+
     private void SetTargetsIndexes()
     {
         targetsIndexes[0] = 0;
