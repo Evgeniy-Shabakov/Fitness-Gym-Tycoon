@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4963374460226605771, guid: a302c88585f36654abea1f7a343fa05a, type: 3}
   sprite: {fileID: 21300000, guid: 3cb0227924f7911448c07533d5fca6bb, type: 3}
-  animatorOverrideController: {fileID: 22100000, guid: e2b3222a291a70948a03beb1649a738d, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 043c51d4a379992439112af0df34a220, type: 2}
+  needBarbellInHands: 1
   price: 2000
   description: 'For weightlifting '
   damageInPersent: 0.05
