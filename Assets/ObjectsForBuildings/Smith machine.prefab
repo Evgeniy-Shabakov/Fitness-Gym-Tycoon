@@ -402,6 +402,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 74341908874022958, guid: a08e9e791cf160240b82abc7077c7e4f, type: 3}
   m_PrefabInstance: {fileID: 2011838062583856447}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &6033046197550930044 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5211460275586262339, guid: a08e9e791cf160240b82abc7077c7e4f, type: 3}
+  m_PrefabInstance: {fileID: 2011838062583856447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7472774913558349487 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8962125041998445456, guid: a08e9e791cf160240b82abc7077c7e4f, type: 3}
+  m_PrefabInstance: {fileID: 2011838062583856447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8403982971145520765 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8019659637964159810, guid: a08e9e791cf160240b82abc7077c7e4f, type: 3}
+  m_PrefabInstance: {fileID: 2011838062583856447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2251452512012351479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1071,6 +1086,30 @@ PrefabInstance:
       propertyPath: m_Extents.z
       value: 0.805
       objectReference: {fileID: 0}
+    - target: {fileID: 4725721902540602062, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+      propertyPath: mrList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725721902540602062, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+      propertyPath: mrList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8403982971145520765}
+    - target: {fileID: 4725721902540602062, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+      propertyPath: mrList.Array.data[1]
+      value: 
+      objectReference: {fileID: 6033046197550930044}
+    - target: {fileID: 4725721902540602062, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+      propertyPath: mrList.Array.data[2]
+      value: 
+      objectReference: {fileID: 7472774913558349487}
+    - target: {fileID: 8085572196265877393, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+      propertyPath: mrList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085572196265877393, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
+      propertyPath: mrList.Array.data[0]
+      value: 
+      objectReference: {fileID: 8403982971145520765}
     - target: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Name
       value: PrefabHelperForBuildingSystemForEachModel
