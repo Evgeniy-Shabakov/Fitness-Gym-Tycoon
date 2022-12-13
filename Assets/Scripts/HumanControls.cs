@@ -34,11 +34,12 @@ public class HumanControls : MonoBehaviour
         
         countTargets = 10;
         targetsIndexes = new int[countTargets];
+        SetTargetsIndexes();
+        index = 0;
+        
         numberOfAttempts = 0;
-
         humanDoAction = false;
 
-        SetTargetsIndexes();
         MoveHuman();
     }
 
@@ -174,9 +175,8 @@ public class HumanControls : MonoBehaviour
     private void SetTargetsIndexes()
     {
         targetsIndexes[0] = 0;
-        targetsIndexes[1] = 1;
         
-        for (int i = 2; i < countTargets; i++)
+        for (int i = 1; i < countTargets; i++)
         {
             targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
             
