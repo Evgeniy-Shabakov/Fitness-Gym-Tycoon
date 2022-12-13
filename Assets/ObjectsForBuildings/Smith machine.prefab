@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6054146701540169551}
   - component: {fileID: 6192594426059265626}
   m_Layer: 0
-  m_Name: Sm Machine (full)
+  m_Name: Smith machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

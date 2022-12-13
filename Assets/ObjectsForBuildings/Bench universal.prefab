@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1661964464383392180}
   - component: {fileID: 403136541025357377}
   m_Layer: 0
-  m_Name: Inc Bench 2
+  m_Name: Bench universal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

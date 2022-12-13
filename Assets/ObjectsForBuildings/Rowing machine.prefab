@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2884791637549923047}
   - component: {fileID: 4577352177445585649}
   m_Layer: 0
-  m_Name: Stationary Rowing Machine
+  m_Name: Rowing machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

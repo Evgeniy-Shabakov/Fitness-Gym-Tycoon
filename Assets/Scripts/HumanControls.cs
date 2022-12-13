@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using UnityEngine.Events;
 
 public class HumanControls : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class HumanControls : MonoBehaviour
 
     [HideInInspector] public GameObject currentGameObjectForAction;
 
+    public UnityEvent humanDoActionStart = new UnityEvent();
+    public UnityEvent humanDoActionStop = new UnityEvent();
     private bool humanDoAction;
 
     void Start()
@@ -104,6 +107,7 @@ public class HumanControls : MonoBehaviour
 
     IEnumerator DoActionInObject()
     {
+        humanDoActionStart.Invoke();
         humanDoAction = true;
         
         Vector3 positionBeforeAction = transform.position;
@@ -122,7 +126,7 @@ public class HumanControls : MonoBehaviour
         
         yield return new WaitForSeconds(wait);
         
-        if (targetsIndexes[index] != 0 && targetsIndexes[index] != 6)
+        if (targetsIndexes[index] != 0)
         {
             transform.position = positionBeforeAction;
             navMeshAgent.enabled = true;
@@ -131,6 +135,7 @@ public class HumanControls : MonoBehaviour
         }
         
         humanDoAction = false;
+        humanDoActionStop.Invoke();
         
         index++;
         if (index < countTargets)

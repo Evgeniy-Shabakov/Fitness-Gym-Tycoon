@@ -14,21 +14,27 @@ public class AnimationSwitcherHumanClient : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         humanControls = GetComponent<HumanControls>();
+        
+        humanControls.humanDoActionStart.AddListener(AnimationDoActionStart);
+        humanControls.humanDoActionStop.AddListener(AnimationDoActionStop);
     }
 
+    void AnimationDoActionStart()
+    {
+        int i = humanControls.currentGameObjectForAction.GetComponent<ObjectData>().indexInBuildingManagerList;
+        animator.runtimeAnimatorController =
+            BuildingManager.Instance.objectsForBuilding[i].animatorOverrideController;
+        
+        animator.SetBool("DoAction", true);
+    }
+    
+    void AnimationDoActionStop()
+    {
+        animator.SetBool("DoAction", false);
+    }
+    
     void Update()
     {
-        if (navMeshAgent.enabled == false && humanControls.currentGameObjectForAction != null)
-        {
-            int i = humanControls.currentGameObjectForAction.GetComponent<ObjectData>().indexInBuildingManagerList;
-            animator.runtimeAnimatorController =
-                BuildingManager.Instance.objectsForBuilding[i].animatorOverrideController;
-            
-            animator.SetBool("DoExercise", true);
-            return;
-        }
-        animator.SetBool("DoExercise", false);
-        
         if (navMeshAgent.velocity.magnitude > 0) animator.SetBool("IsWalk", true);
         else animator.SetBool("IsWalk", false);
     }
