@@ -33,12 +33,18 @@ public class AnimationSwitcherHumanClient : MonoBehaviour
         {
             barbellInHands = FindNestedChild(transform, "Barbell 1").gameObject; 
             barbellInHands.SetActive(true);
+            
+            humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().HideElements();
         }
     }
     
     void AnimationDoActionStop()
     {
-        if (barbellInHands != null) barbellInHands.SetActive(false);
+        if (barbellInHands != null)
+        {
+            barbellInHands.SetActive(false);
+            humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().ShowElements();
+        }
         barbellInHands = null;
         animator.SetBool("DoAction", false);
     }
