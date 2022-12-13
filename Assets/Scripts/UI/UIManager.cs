@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject scrollViewForShop;
     [SerializeField] private GameObject contentScrollViewForShop;
     [SerializeField] private GameObject prefabBtForPanelModels;
+    [SerializeField] private GameObject panelHumanClient;
+    [SerializeField] private GameObject buttonExitPanelHumanClient;
     
     private void Awake()
     {
@@ -53,5 +55,11 @@ public class UIManager : MonoBehaviour
     private void ChengedTextForMoney()
     {
         textForMoney.text = "" + PlayerData.Instanse.GetMoney();
+    }
+
+    public void ClosePanelHumanClient()
+    {
+        panelHumanClient.SetActive(false);
+        buttonExitPanelHumanClient.SetActive(false);
     }
 }
