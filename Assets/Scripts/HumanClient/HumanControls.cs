@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -12,8 +9,8 @@ public class HumanControls : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private GameObject parentAllDynamicObjects;
     
-    private int countTargets;
-    private int[] targetsIndexes;
+    public int countTargets;
+    public int[] targetsIndexes;
     public int index;
 
     private int numberOfAttempts;

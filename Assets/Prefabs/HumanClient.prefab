@@ -88,6 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71531ee40422f0f4fba755bcfae3ec29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countTargets: 0
+  targetsIndexes: 
   index: 0
   currentGameObjectForAction: {fileID: 0}
   humanDoActionStart:
@@ -153,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e911a1d6a7ee8d47bba61e1206f5761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabImageTargetPanelHumanClient: {fileID: 6406756766901774882, guid: b5fe9b8ba0566924c8f26d5604a8f007, type: 3}
 --- !u!1 &3264908348021678863
 GameObject:
   m_ObjectHideFlags: 0

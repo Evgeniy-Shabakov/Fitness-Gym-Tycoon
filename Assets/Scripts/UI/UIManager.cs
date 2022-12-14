@@ -14,7 +14,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject contentScrollViewForShop;
     [SerializeField] private GameObject prefabBtForPanelModels;
     [SerializeField] private GameObject panelHumanClient;
-    [SerializeField] private GameObject buttonExitPanelHumanClient;
+    [SerializeField] private GameObject panelHumanClientGridLayoutGroup;
+    
     
     private void Awake()
     {
@@ -59,7 +60,11 @@ public class UIManager : MonoBehaviour
 
     public void ClosePanelHumanClient()
     {
+        foreach(Transform child in panelHumanClientGridLayoutGroup.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        
         panelHumanClient.SetActive(false);
-        buttonExitPanelHumanClient.SetActive(false);
     }
 }
