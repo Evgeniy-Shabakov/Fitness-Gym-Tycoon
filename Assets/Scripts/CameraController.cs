@@ -4,14 +4,23 @@ using UnityEngine.Events;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Instance;
+    
     public static UnityEvent CameraChanged = new UnityEvent();
     
     [SerializeField] private Camera mainCamera;
     
     private Vector3 touch;
 
-    private float minZoom = 1;
-    private float maxZoom = 80;
+    private float minZoom = 2;
+    private float maxZoom = 30;
+
+    public GameObject objectForFollow;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Update()
     {
@@ -20,6 +29,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             touch = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            objectForFollow = null;
         }
 
         if (Input.touchCount == 2)
@@ -49,6 +59,16 @@ public class CameraController : MonoBehaviour
         
         Zoom(Input.GetAxis("Mouse ScrollWheel") * 5f);
 
+        if (objectForFollow != null)
+        {
+            Vector3 v;
+            v.x = objectForFollow.transform.position.x + 36;
+            v.y = transform.position.y;
+            v.z = objectForFollow.transform.position.z - 36;
+            
+            transform.position = v;
+        }
+        
         //transform.position = ClampCamera(transform.position);
     }
 
