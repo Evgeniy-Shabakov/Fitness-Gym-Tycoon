@@ -10,8 +10,10 @@ public class HumanControls : MonoBehaviour
     private GameObject parentAllDynamicObjects;
     
     public int countTargets;
-    public int[] targetsIndexes;
-    public int index;
+    public int[] targetsArray;
+    public int indexInTargetsArray;
+
+    public bool[] targetsStatus;
 
     private int numberOfAttempts;
 
@@ -21,6 +23,7 @@ public class HumanControls : MonoBehaviour
     [HideInInspector] public UnityEvent humanDoActionStop = new UnityEvent();
     [HideInInspector] public UnityEvent NeededAndFreeObjectNoFinded = new UnityEvent();
     [HideInInspector] public UnityEvent NeededAndFreeObjectFinded = new UnityEvent();
+    [HideInInspector] public UnityEvent IndexInTargetsArrayChanged = new UnityEvent();
     
     private bool humanDoAction;
 
@@ -30,10 +33,12 @@ public class HumanControls : MonoBehaviour
         parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
         
         countTargets = 10;
-        targetsIndexes = new int[countTargets];
-        SetTargetsIndexes();
-        index = 0;
-        
+        targetsArray = new int[countTargets];
+        SetTargetsArray();
+        indexInTargetsArray = 0;
+
+        targetsStatus = new bool[countTargets];
+
         numberOfAttempts = 0;
         humanDoAction = false;
 
@@ -61,8 +66,8 @@ public class HumanControls : MonoBehaviour
             return;
         }
         
-        index++;
-        if (index < countTargets)
+        NextIndexInTargetsArray();
+        if (indexInTargetsArray < countTargets)
         {
             numberOfAttempts = 0;
             MoveHuman();
@@ -77,9 +82,9 @@ public class HumanControls : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (index >= countTargets) return;
+        if (indexInTargetsArray >= countTargets) return;
         if (other.gameObject.GetComponent<ObjectData>() == null) return;
-        if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsIndexes[index]) return;    
+        if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsArray[indexInTargetsArray]) return;    
         
         if (navMeshAgent.enabled) navMeshAgent.ResetPath();
 
@@ -97,9 +102,9 @@ public class HumanControls : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (index >= countTargets) return;
+        if (indexInTargetsArray >= countTargets) return;
         if (humanDoAction) return;
-        if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsIndexes[index]) return;
+        if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsArray[indexInTargetsArray]) return;
         if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false) return;
         
         currentGameObjectForAction = other.gameObject;
@@ -114,7 +119,7 @@ public class HumanControls : MonoBehaviour
         Vector3 positionBeforeAction = transform.position;
         float wait = 1f;
         
-        if (targetsIndexes[index] != 0)
+        if (targetsArray[indexInTargetsArray] != 0)
         {
             navMeshAgent.enabled = false;
 
@@ -127,7 +132,7 @@ public class HumanControls : MonoBehaviour
         
         yield return new WaitForSeconds(wait);
         
-        if (targetsIndexes[index] != 0)
+        if (targetsArray[indexInTargetsArray] != 0)
         {
             transform.position = positionBeforeAction;
             navMeshAgent.enabled = true;
@@ -137,9 +142,11 @@ public class HumanControls : MonoBehaviour
         
         humanDoAction = false;
         humanDoActionStop.Invoke();
+
+        targetsStatus[indexInTargetsArray] = true;
         
-        index++;
-        if (index < countTargets)
+        NextIndexInTargetsArray();
+        if (indexInTargetsArray < countTargets)
         {
             numberOfAttempts = 0;
             MoveHuman();
@@ -155,7 +162,7 @@ public class HumanControls : MonoBehaviour
     {
         foreach(Transform child in parentAllDynamicObjects.transform)
         {
-            if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsIndexes[index])
+            if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsArray[indexInTargetsArray])
             {
                 if (child.GetComponentInChildren<ObjectData>().objectIsFree)
                 {
@@ -169,17 +176,23 @@ public class HumanControls : MonoBehaviour
         return null;
     }
 
-    private void SetTargetsIndexes()
+    private void NextIndexInTargetsArray()
     {
-        targetsIndexes[0] = 0;
+        indexInTargetsArray++;
+        IndexInTargetsArrayChanged.Invoke();
+    }
+    
+    private void SetTargetsArray()
+    {
+        targetsArray[0] = 0;
         
         for (int i = 1; i < countTargets; i++)
         {
-            targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
+            targetsArray[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
             
-            while(targetsIndexes[i] == targetsIndexes[i-1])
+            while(targetsArray[i] == targetsArray[i-1])
             {
-                targetsIndexes[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
+                targetsArray[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
             }
         }
     }

@@ -18,7 +18,7 @@ public class HumanReactionControl : MonoBehaviour
     
     private void SetHumanReactionSprite()
     {
-        imageHumanReaction.sprite = BuildingManager.Instance.objectsForBuilding[humanControls.targetsIndexes[humanControls.index]].sprite;
+        imageHumanReaction.sprite = BuildingManager.Instance.objectsForBuilding[humanControls.targetsArray[humanControls.indexInTargetsArray]].sprite;
     }
 
     private void ClearHumanReactionSprite()

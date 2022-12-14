@@ -29,7 +29,6 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             touch = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            objectForFollow = null;
         }
 
         if (Input.touchCount == 2)
@@ -55,6 +54,8 @@ public class CameraController : MonoBehaviour
             mainCamera.transform.position += direction;
             
             CameraChanged.Invoke();
+            
+            objectForFollow = null;
         } 
         
         Zoom(Input.GetAxis("Mouse ScrollWheel") * 5f);

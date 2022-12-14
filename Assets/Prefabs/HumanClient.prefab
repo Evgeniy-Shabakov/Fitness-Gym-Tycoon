@@ -91,6 +91,7 @@ MonoBehaviour:
   countTargets: 0
   targetsIndexes: 
   index: 0
+  targetsStatus: 
   currentGameObjectForAction: {fileID: 0}
   humanDoActionStart:
     m_PersistentCalls:
@@ -156,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabImageTargetPanelHumanClient: {fileID: 6406756766901774882, guid: b5fe9b8ba0566924c8f26d5604a8f007, type: 3}
+  spriteStatusTrue: {fileID: 21300000, guid: 4a231ba0e81e63849a8f985c228e8acd, type: 3}
+  spriteStatusFalse: {fileID: 21300000, guid: 5679a74364f6b4440ab7e7aed55cd95e, type: 3}
 --- !u!1 &3264908348021678863
 GameObject:
   m_ObjectHideFlags: 0
