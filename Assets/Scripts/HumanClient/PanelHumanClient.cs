@@ -38,7 +38,7 @@ public class PanelHumanClient : MonoBehaviour
             GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelGridLoyautGroup.transform);
             
             int j = humanControls.targetsIndexes[i];
-            image.GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[j].sprite;
+            image.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[j].sprite;
         }
     }
 }
