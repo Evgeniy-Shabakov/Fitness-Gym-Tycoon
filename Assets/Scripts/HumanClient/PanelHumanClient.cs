@@ -31,6 +31,8 @@ public class PanelHumanClient : MonoBehaviour
 
     public void OnMouseUpAsButton()
     {
+        if (UIManager.Instance.IsPointerOverUIObject()) return;
+        
         CameraController.Instance.objectForFollow = gameObject;
         UIManager.Instance.currentGameObjectForPanelHumanClient = gameObject;
         
