@@ -24,6 +24,16 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        if (objectForFollow != null)
+        {
+            Vector3 v;
+            v.x = objectForFollow.transform.position.x + 36;
+            v.y = transform.position.y;
+            v.z = objectForFollow.transform.position.z - 36;
+            
+            transform.position = v;
+        }
+        
         if (UIManager.Instance.IsPointerOverUIObject()) return;
         
         if (Input.GetMouseButtonDown(0))
@@ -55,21 +65,11 @@ public class CameraController : MonoBehaviour
             
             CameraChanged.Invoke();
             
-            objectForFollow = null;
+            if (direction.magnitude > 0.3f) objectForFollow = null;
         } 
         
         Zoom(Input.GetAxis("Mouse ScrollWheel") * 5f);
 
-        if (objectForFollow != null)
-        {
-            Vector3 v;
-            v.x = objectForFollow.transform.position.x + 36;
-            v.y = transform.position.y;
-            v.z = objectForFollow.transform.position.z - 36;
-            
-            transform.position = v;
-        }
-        
         //transform.position = ClampCamera(transform.position);
     }
 

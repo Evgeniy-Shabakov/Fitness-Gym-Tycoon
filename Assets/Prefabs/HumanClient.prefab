@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countTargets: 0
-  targetsIndexes: 
-  index: 0
+  targetsArray: 
+  indexInTargetsArray: 0
   targetsStatus: 
   currentGameObjectForAction: {fileID: 0}
   humanDoActionStart:
@@ -103,6 +103,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NeededAndFreeObjectFinded:
+    m_PersistentCalls:
+      m_Calls: []
+  IndexInTargetsArrayChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6386662222892323909

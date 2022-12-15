@@ -13,7 +13,7 @@ public class PanelHumanClient : MonoBehaviour
     
     private GameObject canvas;
     private GameObject panelHumanClient;
-    private GameObject panelHumanClientGridLoyautGroup;
+    private GameObject panelHumanClientTargets;
     
     private HumanControls humanControls;
 
@@ -39,11 +39,11 @@ public class PanelHumanClient : MonoBehaviour
         
         panelHumanClient.SetActive(true);
 
-        panelHumanClientGridLoyautGroup = panelHumanClient.transform.GetChild(2).gameObject;
+        panelHumanClientTargets = panelHumanClient.transform.GetChild(2).gameObject;
 
         for (int i = 0; i < humanControls.countTargets; i++)
         {
-            GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelHumanClientGridLoyautGroup.transform);
+            GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelHumanClientTargets.transform);
             
             int j = humanControls.targetsArray[i];
             image.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[j].sprite;
@@ -68,7 +68,7 @@ public class PanelHumanClient : MonoBehaviour
         if (gameObject != currentGameObjectForPanel) return;
 
         int previousIndex = humanControls.indexInTargetsArray - 1;
-        Image imageForStatus = panelHumanClientGridLoyautGroup.transform.GetChild(previousIndex).transform.GetChild(1).GetComponent<Image>();
+        Image imageForStatus = panelHumanClientTargets.transform.GetChild(previousIndex).transform.GetChild(1).GetComponent<Image>();
         
         if (humanControls.targetsStatus[previousIndex])
         {
