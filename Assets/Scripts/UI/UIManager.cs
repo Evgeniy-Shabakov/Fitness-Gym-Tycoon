@@ -15,7 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject prefabBtForPanelModels;
     [SerializeField] private GameObject panelHumanClient;
     [SerializeField] private GameObject panelHumanClientGridLayoutGroup;
-    
+
+    [HideInInspector] public GameObject currentGameObjectForPanelHumanClient;
     
     private void Awake()
     {
@@ -66,5 +67,10 @@ public class UIManager : MonoBehaviour
         }
         
         panelHumanClient.SetActive(false);
+    }
+
+    public void BtEyePressed()
+    {
+        CameraController.Instance.objectForFollow = currentGameObjectForPanelHumanClient;
     }
 }

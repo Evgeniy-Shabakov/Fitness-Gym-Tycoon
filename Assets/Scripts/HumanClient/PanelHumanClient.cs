@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class PanelHumanClient : MonoBehaviour
 {
-    private static GameObject currentGameObjectForPanel;
-    
     private Camera mainCamera;
     
     private GameObject canvas;
@@ -25,6 +23,7 @@ public class PanelHumanClient : MonoBehaviour
     {
         canvas = GameObject.Find("Canvas");
         panelHumanClient = canvas.transform.Find("PanelHumanClient").gameObject;
+        panelHumanClientTargets = panelHumanClient.transform.Find("PanelHumanClientTargets").gameObject;
         
         humanControls = GetComponent<HumanControls>();
         humanControls.IndexInTargetsArrayChanged.AddListener(SetNewStatus);
@@ -33,13 +32,11 @@ public class PanelHumanClient : MonoBehaviour
     private void OnMouseUpAsButton()
     {
         CameraController.Instance.objectForFollow = gameObject;
-        currentGameObjectForPanel = gameObject;
+        UIManager.Instance.currentGameObjectForPanelHumanClient = gameObject;
         
         if (panelHumanClient.activeSelf) UIManager.Instance.ClosePanelHumanClient();
         
         panelHumanClient.SetActive(true);
-
-        panelHumanClientTargets = panelHumanClient.transform.GetChild(2).gameObject;
 
         for (int i = 0; i < humanControls.countTargets; i++)
         {
@@ -65,7 +62,7 @@ public class PanelHumanClient : MonoBehaviour
 
     private void SetNewStatus()
     {
-        if (gameObject != currentGameObjectForPanel) return;
+        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
 
         int previousIndex = humanControls.indexInTargetsArray - 1;
         Image imageForStatus = panelHumanClientTargets.transform.GetChild(previousIndex).transform.GetChild(1).GetComponent<Image>();
