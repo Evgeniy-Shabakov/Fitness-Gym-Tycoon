@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject panelHumanClient;
     [SerializeField] private GameObject panelHumanClientGridLayoutGroup;
 
+    [SerializeField] private GameObject clientSpawner;
     [HideInInspector] public GameObject currentGameObjectForPanelHumanClient;
     
     private void Awake()
@@ -72,5 +73,27 @@ public class UIManager : MonoBehaviour
     public void BtEyePressed()
     {
         CameraController.Instance.objectForFollow = currentGameObjectForPanelHumanClient;
+    }
+
+    public void BtNextClientPressed()
+    {
+        int i = currentGameObjectForPanelHumanClient.transform.GetSiblingIndex();
+
+        if (i < clientSpawner.transform.childCount - 1) i++;
+        else i = 0;
+        
+        currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
+        currentGameObjectForPanelHumanClient.GetComponent<PanelHumanClient>().OnMouseUpAsButton();
+    }
+    
+    public void BtPreviousClientPressed()
+    {
+        int i = currentGameObjectForPanelHumanClient.transform.GetSiblingIndex();
+
+        if (i == 0) i = clientSpawner.transform.childCount - 1;
+        else i--;
+        
+        currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
+        currentGameObjectForPanelHumanClient.GetComponent<PanelHumanClient>().OnMouseUpAsButton();
     }
 }

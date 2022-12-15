@@ -29,7 +29,7 @@ public class PanelHumanClient : MonoBehaviour
         humanControls.IndexInTargetsArrayChanged.AddListener(SetNewStatus);
     }
 
-    private void OnMouseUpAsButton()
+    public void OnMouseUpAsButton()
     {
         CameraController.Instance.objectForFollow = gameObject;
         UIManager.Instance.currentGameObjectForPanelHumanClient = gameObject;

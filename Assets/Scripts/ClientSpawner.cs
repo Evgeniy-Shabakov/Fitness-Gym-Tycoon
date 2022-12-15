@@ -17,7 +17,7 @@ public class ClientSpawner : MonoBehaviour
 
     private void CreateClient()
     {
-        currentHumanClient = Instantiate(prefabHumanClient, Vector3.zero, Quaternion.identity);
+        currentHumanClient = Instantiate(prefabHumanClient, transform);
         Instantiate(prefabsHumansModels[Random.Range(0,2)], currentHumanClient.transform);
         
         Invoke("CreateClient", 4f);
