@@ -5764,7 +5764,7 @@ MonoBehaviour:
   percentScreenWidth: 100
   percentScreenHeight: 18
   countColumn: 5
-  countRow: 3
+  countRow: 2
 --- !u!1 &1619611076
 GameObject:
   m_ObjectHideFlags: 0

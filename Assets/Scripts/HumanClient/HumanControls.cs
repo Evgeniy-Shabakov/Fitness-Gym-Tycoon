@@ -32,7 +32,7 @@ public class HumanControls : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
         
-        countTargets = 16;
+        countTargets = 10;
         targetsArray = new int[countTargets];
         SetTargetsArray();
         indexInTargetsArray = 0;
