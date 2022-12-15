@@ -2979,6 +2979,7 @@ MonoBehaviour:
   prefabBtForPanelModels: {fileID: 1081418330986784576, guid: 3cda52c8967366d4eaff82e910735f13, type: 3}
   panelHumanClient: {fileID: 1704918786}
   panelHumanClientGridLayoutGroup: {fileID: 1613961873}
+  clientSpawner: {fileID: 1334723696}
   currentGameObjectForPanelHumanClient: {fileID: 0}
 --- !u!1 &883516766
 GameObject:
