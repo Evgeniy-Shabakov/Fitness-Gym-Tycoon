@@ -41,7 +41,7 @@ public class HumanControls : MonoBehaviour
         SetTargetsArray();
         indexInTargetsArray = 0;
 
-        mood = Random.Range(0, 101);
+        mood = Random.Range(5, 101);
         
         targetsStatus = new bool[countTargets];
 
@@ -53,6 +53,8 @@ public class HumanControls : MonoBehaviour
 
     public void OnMouseUpAsButton()
     {
+        if (UIManager.Instance.IsPointerOverUIObject()) return;
+        
         UIManager.Instance.OpenAndFillPanelHumanClient(gameObject);
     }
     
