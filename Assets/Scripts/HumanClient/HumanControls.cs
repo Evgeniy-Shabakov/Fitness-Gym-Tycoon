@@ -224,8 +224,8 @@ public class HumanControls : MonoBehaviour
     private void UpdateDataInPanelHumanClient()
     {
         if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
-
-        UIManager.Instance.OpenAndFillPanelHumanClient(gameObject);
+        
+        UIManager.Instance.UpdateDataPanelHumanClient();
     }
     
     private void SetTargetsArray()
@@ -246,12 +246,8 @@ public class HumanControls : MonoBehaviour
     private void DestroyHuman()
     {
         Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
         
+        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
         UIManager.Instance.ClosePanelHumanClient();
     }
 }

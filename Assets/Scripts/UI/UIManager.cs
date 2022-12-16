@@ -28,7 +28,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color colorHappy;
     [SerializeField] private Color colorMiddle;
     [SerializeField] private Color colorSad;
+    
     [SerializeField] private GameObject clientSpawner;
+    
     [HideInInspector] public GameObject currentGameObjectForPanelHumanClient;
     
     private void Awake()
@@ -85,24 +87,35 @@ public class UIManager : MonoBehaviour
 
     public void OpenAndFillPanelHumanClient(GameObject currentClient)
     {
-        HumanControls humanControls = currentClient.GetComponent<HumanControls>();
-        
-        CameraController.Instance.objectForFollow = currentClient;
-        currentGameObjectForPanelHumanClient = currentClient;
-        
         if (panelHumanClient.activeSelf) ClosePanelHumanClient();
-        
         panelHumanClient.SetActive(true);
-
+        
+        currentGameObjectForPanelHumanClient = currentClient;
+        CameraController.Instance.objectForFollow = currentGameObjectForPanelHumanClient;
+        
+        HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
+        
         for (int i = 0; i < humanControls.countTargets; i++)
         {
             GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelHumanClientTargets.transform);
             
             int j = humanControls.targetsArray[i];
             image.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[j].sprite;
+        }
 
+        Invoke("UpdateDataPanelHumanClient", Time.deltaTime);
+    }
+
+    public void UpdateDataPanelHumanClient()
+    {
+        HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
+            
+        for (int i = 0; i < humanControls.countTargets; i++)
+        {   
+            GameObject image = panelHumanClientTargets.transform.GetChild(i).gameObject;
+            
             if (i < humanControls.indexInTargetsArray)
-            {
+            {   
                 if (humanControls.targetsStatus[i] == true)
                 {
                     image.transform.GetChild(1).GetComponent<Image>().sprite = spriteStatusTrue;
@@ -114,7 +127,7 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-
+        
         sliderMood.value = humanControls.GetMood();
         
         if (sliderMood.value <= HumanControls.moodSad)
