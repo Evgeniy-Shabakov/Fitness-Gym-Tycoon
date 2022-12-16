@@ -15,6 +15,8 @@ public class HumanControls : MonoBehaviour
 
     public bool[] targetsStatus;
 
+    private int mood;
+
     private int numberOfAttempts;
 
     [HideInInspector] public GameObject currentGameObjectForAction;
@@ -23,7 +25,6 @@ public class HumanControls : MonoBehaviour
     [HideInInspector] public UnityEvent humanDoActionStop = new UnityEvent();
     [HideInInspector] public UnityEvent NeededAndFreeObjectNoFinded = new UnityEvent();
     [HideInInspector] public UnityEvent NeededAndFreeObjectFinded = new UnityEvent();
-    [HideInInspector] public UnityEvent IndexInTargetsArrayChanged = new UnityEvent();
     
     private bool humanDoAction;
 
@@ -37,6 +38,8 @@ public class HumanControls : MonoBehaviour
         SetTargetsArray();
         indexInTargetsArray = 0;
 
+        mood = Random.Range(25, 101);
+        
         targetsStatus = new bool[countTargets];
 
         numberOfAttempts = 0;
@@ -45,6 +48,11 @@ public class HumanControls : MonoBehaviour
         MoveHuman();
     }
 
+    public void OnMouseUpAsButton()
+    {
+        UIManager.Instance.OpenAndFillPanelHumanClient(gameObject);
+    }
+    
     private void MoveHuman()
     {
         if (humanDoAction) return;
@@ -176,10 +184,27 @@ public class HumanControls : MonoBehaviour
         return null;
     }
 
+    public void AddMood(int countMood)
+    {
+        mood += countMood;
+    }
+
+    private int GetMood()
+    {
+        return mood;
+    }
+    
     private void NextIndexInTargetsArray()
     {
         indexInTargetsArray++;
-        IndexInTargetsArrayChanged.Invoke();
+        SetNewStatusInTargetsArray();
+    }
+    
+    private void SetNewStatusInTargetsArray()
+    {
+        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
+
+        UIManager.Instance.UpdateStatusTargetsPanelHumanClient(gameObject);
     }
     
     private void SetTargetsArray()

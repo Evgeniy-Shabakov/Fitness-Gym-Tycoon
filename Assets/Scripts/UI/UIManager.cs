@@ -13,10 +13,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject scrollViewForShop;
     [SerializeField] private GameObject contentScrollViewForShop;
     [SerializeField] private GameObject prefabBtForPanelModels;
+    
     [SerializeField] private GameObject panelHumanClient;
-    [SerializeField] private GameObject panelHumanClientGridLayoutGroup;
-
+    [SerializeField] private GameObject panelHumanClientTargets;
     [SerializeField] private GameObject clientSpawner;
+    [SerializeField] private GameObject sloderMood;
+    [SerializeField] private GameObject prefabImageTargetPanelHumanClient;
+    [SerializeField] private Sprite spriteStatusTrue;
+    [SerializeField] private Sprite spriteStatusFalse;
     [HideInInspector] public GameObject currentGameObjectForPanelHumanClient;
     
     private void Awake()
@@ -62,12 +66,63 @@ public class UIManager : MonoBehaviour
 
     public void ClosePanelHumanClient()
     {
-        foreach(Transform child in panelHumanClientGridLayoutGroup.transform)
+        foreach(Transform child in panelHumanClientTargets.transform)
         {
             Destroy(child.gameObject);
         }
         
         panelHumanClient.SetActive(false);
+    }
+
+    public void OpenAndFillPanelHumanClient(GameObject currentClient)
+    {
+        HumanControls humanControls = currentClient.GetComponent<HumanControls>();
+        
+        CameraController.Instance.objectForFollow = currentClient;
+        currentGameObjectForPanelHumanClient = currentClient;
+        
+        if (panelHumanClient.activeSelf) ClosePanelHumanClient();
+        
+        panelHumanClient.SetActive(true);
+
+        for (int i = 0; i < humanControls.countTargets; i++)
+        {
+            GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelHumanClientTargets.transform);
+            
+            int j = humanControls.targetsArray[i];
+            image.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[j].sprite;
+
+            if (i < humanControls.indexInTargetsArray)
+            {
+                if (humanControls.targetsStatus[i] == true)
+                {
+                    image.transform.GetChild(1).GetComponent<Image>().sprite = spriteStatusTrue;
+                }
+
+                else
+                {
+                    image.transform.GetChild(1).GetComponent<Image>().sprite = spriteStatusFalse;
+                }
+            }
+        }
+    }
+
+    public void UpdateStatusTargetsPanelHumanClient(GameObject currentClient)
+    {
+        HumanControls humanControls = currentClient.GetComponent<HumanControls>();
+        
+        int previousIndex = humanControls.indexInTargetsArray - 1;
+        Image imageForStatus = panelHumanClientTargets.transform.GetChild(previousIndex).transform.GetChild(1).GetComponent<Image>();
+        
+        if (humanControls.targetsStatus[previousIndex])
+        {
+            imageForStatus.sprite = spriteStatusTrue;
+        }
+
+        else
+        {
+            imageForStatus.sprite = spriteStatusFalse;
+        }
     }
 
     public void BtEyePressed()
@@ -83,7 +138,7 @@ public class UIManager : MonoBehaviour
         else i = 0;
         
         currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
-        currentGameObjectForPanelHumanClient.GetComponent<PanelHumanClient>().OnMouseUpAsButton();
+        OpenAndFillPanelHumanClient(currentGameObjectForPanelHumanClient);
     }
     
     public void BtPreviousClientPressed()
@@ -94,6 +149,6 @@ public class UIManager : MonoBehaviour
         else i--;
         
         currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
-        currentGameObjectForPanelHumanClient.GetComponent<PanelHumanClient>().OnMouseUpAsButton();
+        OpenAndFillPanelHumanClient(currentGameObjectForPanelHumanClient);
     }
 }
