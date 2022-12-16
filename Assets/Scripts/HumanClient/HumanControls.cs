@@ -8,7 +8,12 @@ public class HumanControls : MonoBehaviour
 {
     public static int moodSad = 25;
     public static int moodHappy = 75;
-    
+
+    private static int moodRangeMin = 35;
+    private static int moodRangeMax = 100;
+    private static int countMoodAdd = 10;
+    private static int countMoodTakeAway = 15;
+
     private NavMeshAgent navMeshAgent;
     private GameObject parentAllDynamicObjects;
     
@@ -41,7 +46,7 @@ public class HumanControls : MonoBehaviour
         SetTargetsArray();
         indexInTargetsArray = 0;
 
-        mood = Random.Range(5, 101);
+        mood = Random.Range(moodRangeMin, moodRangeMax + 1);
         
         targetsStatus = new bool[countTargets];
 
@@ -79,6 +84,7 @@ public class HumanControls : MonoBehaviour
             return;
         }
         
+        TakeAwayMood(countMoodTakeAway);
         NextIndexInTargetsArray();
         if (indexInTargetsArray < countTargets)
         {
@@ -151,6 +157,8 @@ public class HumanControls : MonoBehaviour
             navMeshAgent.enabled = true;
             
             currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = true;
+            
+            AddMood(countMoodAdd);
         }
         
         humanDoAction = false;
@@ -189,9 +197,16 @@ public class HumanControls : MonoBehaviour
         return null;
     }
 
-    public void AddMood(int countMood)
+    private void AddMood(int countMood)
     {
         mood += countMood;
+        if (mood > 100) mood = 100;
+    }
+
+    private void TakeAwayMood(int countMood)
+    {
+        mood -= countMood;
+        if (mood < 5) mood = 5;
     }
 
     public int GetMood()
@@ -202,10 +217,10 @@ public class HumanControls : MonoBehaviour
     private void NextIndexInTargetsArray()
     {
         indexInTargetsArray++;
-        SetNewStatusInTargetsArray();
+        UpdateDataInPanelHumanClient();
     }
     
-    private void SetNewStatusInTargetsArray()
+    private void UpdateDataInPanelHumanClient()
     {
         if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
 
