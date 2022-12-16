@@ -3131,7 +3131,7 @@ MonoBehaviour:
   prefabBtForPanelModels: {fileID: 1081418330986784576, guid: 3cda52c8967366d4eaff82e910735f13, type: 3}
   panelHumanClient: {fileID: 1704918786}
   panelHumanClientTargets: {fileID: 1613961873}
-  clientSpawner: {fileID: 1334723696}
+  imageSmile: {fileID: 1909956549}
   sliderMood: {fileID: 1248051216}
   fillSliderMood: {fileID: 833441963}
   prefabImageTargetPanelHumanClient: {fileID: 6406756766901774882, guid: b5fe9b8ba0566924c8f26d5604a8f007, type: 3}
@@ -3140,9 +3140,10 @@ MonoBehaviour:
   spriteSmileHappy: {fileID: 21300000, guid: 520ef3a6961f5134ebe1a113b6846dfd, type: 3}
   spriteSmileMiddle: {fileID: 21300000, guid: b7eaa05b006644244be25b4a6aefc433, type: 3}
   spriteSmileSad: {fileID: 21300000, guid: a9495043b9c30424e83304057b23e0ac, type: 3}
-  colorHappy: {r: 0.9843138, g: 0.9803922, b: 0.2627451, a: 0}
-  colorMiddle: {r: 1, g: 0.49803925, b: 0.15294118, a: 0}
-  colorSad: {r: 0.92549026, g: 0.10980393, b: 0.14117648, a: 0}
+  colorHappy: {r: 0.9843138, g: 0.9803922, b: 0.2627451, a: 1}
+  colorMiddle: {r: 1, g: 0.49803925, b: 0.15294118, a: 1}
+  colorSad: {r: 0.92549026, g: 0.10980393, b: 0.14117648, a: 1}
+  clientSpawner: {fileID: 1334723696}
   currentGameObjectForPanelHumanClient: {fileID: 0}
 --- !u!1 &883516766
 GameObject:

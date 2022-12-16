@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 public class HumanControls : MonoBehaviour
 {
+    public static int moodSad = 25;
+    public static int moodHappy = 75;
+    
     private NavMeshAgent navMeshAgent;
     private GameObject parentAllDynamicObjects;
     
@@ -38,7 +41,7 @@ public class HumanControls : MonoBehaviour
         SetTargetsArray();
         indexInTargetsArray = 0;
 
-        mood = Random.Range(25, 101);
+        mood = Random.Range(0, 101);
         
         targetsStatus = new bool[countTargets];
 

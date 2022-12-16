@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     
     [SerializeField] private GameObject panelHumanClient;
     [SerializeField] private GameObject panelHumanClientTargets;
-    [SerializeField] private GameObject clientSpawner;
+    [SerializeField] private Image imageSmile;
     [SerializeField] private Slider sliderMood;
     [SerializeField] private Image fillSliderMood;
     [SerializeField] private GameObject prefabImageTargetPanelHumanClient;
@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color colorHappy;
     [SerializeField] private Color colorMiddle;
     [SerializeField] private Color colorSad;
+    [SerializeField] private GameObject clientSpawner;
     [HideInInspector] public GameObject currentGameObjectForPanelHumanClient;
     
     private void Awake()
@@ -114,6 +115,22 @@ public class UIManager : MonoBehaviour
         }
 
         sliderMood.value = humanControls.GetMood();
+        
+        if (sliderMood.value <= HumanControls.moodSad)
+        {
+            imageSmile.sprite = spriteSmileSad;
+            fillSliderMood.color = colorSad;
+        }
+        else if (sliderMood.value > HumanControls.moodSad && sliderMood.value < HumanControls.moodHappy)
+        {
+            imageSmile.sprite = spriteSmileMiddle;
+            fillSliderMood.color = colorMiddle;
+        }
+        else
+        {
+            imageSmile.sprite = spriteSmileHappy;
+            fillSliderMood.color = colorHappy;
+        }
     }
 
     public void BtEyePressed()
