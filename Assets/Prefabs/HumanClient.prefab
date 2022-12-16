@@ -143,6 +143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageHumanReaction: {fileID: 9160126591491825108}
   spriteTransparent: {fileID: 21300000, guid: a2903aea258ba30438209c6257f44a17, type: 3}
+  spriteSmileHappy: {fileID: 21300000, guid: 520ef3a6961f5134ebe1a113b6846dfd, type: 3}
+  spriteSmileMiddle: {fileID: 21300000, guid: b7eaa05b006644244be25b4a6aefc433, type: 3}
+  spriteSmileSad: {fileID: 21300000, guid: a9495043b9c30424e83304057b23e0ac, type: 3}
+  spriteCrystal: {fileID: 21300000, guid: 5bc978cbc67207243a4c65557165b971, type: 3}
 --- !u!1 &3264908348021678863
 GameObject:
   m_ObjectHideFlags: 0

@@ -82,6 +82,7 @@ public class UIManager : MonoBehaviour
         }
         
         panelHumanClient.SetActive(false);
+        currentGameObjectForPanelHumanClient.GetComponent<HumanReactionControl>().ClearHumanReactionSprite();
         currentGameObjectForPanelHumanClient = null;
     }
 
@@ -92,6 +93,7 @@ public class UIManager : MonoBehaviour
         
         currentGameObjectForPanelHumanClient = currentClient;
         CameraController.Instance.objectForFollow = currentGameObjectForPanelHumanClient;
+        currentGameObjectForPanelHumanClient.GetComponent<HumanReactionControl>().SetCrystalAboveHuman();
         
         HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
         

@@ -97,6 +97,7 @@ public class HumanControls : MonoBehaviour
         {
             if (navMeshAgent.enabled) navMeshAgent.SetDestination(Vector3.zero);
             Invoke("DestroyHuman", 15f);
+            GetComponent<HumanReactionControl>().SetSmileAboveHuman();
         }
     }
 
@@ -177,6 +178,7 @@ public class HumanControls : MonoBehaviour
         {
             navMeshAgent.SetDestination(Vector3.zero);
             Invoke("DestroyHuman", 15f);
+            GetComponent<HumanReactionControl>().SetSmileAboveHuman();
         }
     }
 
