@@ -80,6 +80,7 @@ public class UIManager : MonoBehaviour
         }
         
         panelHumanClient.SetActive(false);
+        currentGameObjectForPanelHumanClient = null;
     }
 
     public void OpenAndFillPanelHumanClient(GameObject currentClient)

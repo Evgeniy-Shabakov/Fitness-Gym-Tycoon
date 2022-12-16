@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -245,5 +246,12 @@ public class HumanControls : MonoBehaviour
     private void DestroyHuman()
     {
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
+        
+        UIManager.Instance.ClosePanelHumanClient();
     }
 }
