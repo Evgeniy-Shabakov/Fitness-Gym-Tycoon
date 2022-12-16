@@ -189,7 +189,7 @@ public class HumanControls : MonoBehaviour
         mood += countMood;
     }
 
-    private int GetMood()
+    public int GetMood()
     {
         return mood;
     }
@@ -204,7 +204,7 @@ public class HumanControls : MonoBehaviour
     {
         if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
 
-        UIManager.Instance.UpdateStatusTargetsPanelHumanClient(gameObject);
+        UIManager.Instance.OpenAndFillPanelHumanClient(gameObject);
     }
     
     private void SetTargetsArray()

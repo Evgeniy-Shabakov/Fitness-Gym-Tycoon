@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6386662222892323909}
   - component: {fileID: 5750097580126495950}
   - component: {fileID: 6396451140616378185}
-  - component: {fileID: -2399779258635048527}
   m_Layer: 0
   m_Name: HumanClient
   m_TagString: Untagged
@@ -105,9 +104,6 @@ MonoBehaviour:
   NeededAndFreeObjectFinded:
     m_PersistentCalls:
       m_Calls: []
-  IndexInTargetsArrayChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &6386662222892323909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,21 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageHumanReaction: {fileID: 9160126591491825108}
   spriteTransparent: {fileID: 21300000, guid: a2903aea258ba30438209c6257f44a17, type: 3}
---- !u!114 &-2399779258635048527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722272628031528814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e911a1d6a7ee8d47bba61e1206f5761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabImageTargetPanelHumanClient: {fileID: 6406756766901774882, guid: b5fe9b8ba0566924c8f26d5604a8f007, type: 3}
-  spriteStatusTrue: {fileID: 21300000, guid: 4a231ba0e81e63849a8f985c228e8acd, type: 3}
-  spriteStatusFalse: {fileID: 21300000, guid: 5679a74364f6b4440ab7e7aed55cd95e, type: 3}
 --- !u!1 &3264908348021678863
 GameObject:
   m_ObjectHideFlags: 0

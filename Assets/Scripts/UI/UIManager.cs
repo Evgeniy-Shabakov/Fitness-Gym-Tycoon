@@ -17,10 +17,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject panelHumanClient;
     [SerializeField] private GameObject panelHumanClientTargets;
     [SerializeField] private GameObject clientSpawner;
-    [SerializeField] private GameObject sloderMood;
+    [SerializeField] private Slider sliderMood;
+    [SerializeField] private Image fillSliderMood;
     [SerializeField] private GameObject prefabImageTargetPanelHumanClient;
     [SerializeField] private Sprite spriteStatusTrue;
     [SerializeField] private Sprite spriteStatusFalse;
+    [SerializeField] private Sprite spriteSmileHappy;
+    [SerializeField] private Sprite spriteSmileMiddle;
+    [SerializeField] private Sprite spriteSmileSad;
+    [SerializeField] private Color colorHappy;
+    [SerializeField] private Color colorMiddle;
+    [SerializeField] private Color colorSad;
     [HideInInspector] public GameObject currentGameObjectForPanelHumanClient;
     
     private void Awake()
@@ -105,24 +112,8 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
-    }
 
-    public void UpdateStatusTargetsPanelHumanClient(GameObject currentClient)
-    {
-        HumanControls humanControls = currentClient.GetComponent<HumanControls>();
-        
-        int previousIndex = humanControls.indexInTargetsArray - 1;
-        Image imageForStatus = panelHumanClientTargets.transform.GetChild(previousIndex).transform.GetChild(1).GetComponent<Image>();
-        
-        if (humanControls.targetsStatus[previousIndex])
-        {
-            imageForStatus.sprite = spriteStatusTrue;
-        }
-
-        else
-        {
-            imageForStatus.sprite = spriteStatusFalse;
-        }
+        sliderMood.value = humanControls.GetMood();
     }
 
     public void BtEyePressed()
