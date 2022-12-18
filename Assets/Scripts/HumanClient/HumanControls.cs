@@ -98,10 +98,7 @@ public class HumanControls : MonoBehaviour
         
         else
         {
-            if (navMeshAgent.enabled) navMeshAgent.SetDestination(Vector3.zero);
-            Invoke("DestroyHuman", 15f);
-            GetComponent<HumanReactionControl>().SetSmileAboveHuman();
-            trainingIsFinished = true;
+            SendHumanHome();
         }
     }
 
@@ -140,8 +137,10 @@ public class HumanControls : MonoBehaviour
     {
         humanDoActionStart.Invoke();
         humanDoAction = true;
+        humanReactionControl.ClearHumanReactionSprite();
         
         Vector3 positionBeforeAction = transform.position;
+        Quaternion rotationBeforeAction = transform.rotation;
         float wait = 1f;
         
         if (targetsArray[indexInTargetsArray] != 0)
@@ -159,6 +158,7 @@ public class HumanControls : MonoBehaviour
         
         if (targetsArray[indexInTargetsArray] != 0)
         {
+            transform.rotation = rotationBeforeAction;
             transform.position = positionBeforeAction;
             navMeshAgent.enabled = true;
             
@@ -180,10 +180,7 @@ public class HumanControls : MonoBehaviour
         }
         else
         {
-            navMeshAgent.SetDestination(Vector3.zero);
-            Invoke("DestroyHuman", 15f);
-            GetComponent<HumanReactionControl>().SetSmileAboveHuman();
-            trainingIsFinished = true;
+            SendHumanHome();
         }
     }
 
@@ -227,16 +224,11 @@ public class HumanControls : MonoBehaviour
     private void NextIndexInTargetsArray()
     {
         indexInTargetsArray++;
-        UpdateDataInPanelHumanClient();
-    }
-    
-    private void UpdateDataInPanelHumanClient()
-    {
-        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
         
+        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
         UIManager.Instance.UpdateDataPanelHumanClient();
     }
-    
+
     private void SetTargetsArray()
     {
         targetsArray[0] = 0;
@@ -250,6 +242,14 @@ public class HumanControls : MonoBehaviour
                 targetsArray[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
             }
         }
+    }
+
+    private void SendHumanHome()
+    {
+        if (navMeshAgent.enabled) navMeshAgent.SetDestination(Vector3.zero);
+        Invoke("DestroyHuman", 15f);
+        humanReactionControl.SetSmileAboveHuman();
+        trainingIsFinished = true;
     }
     
     private void DestroyHuman()
