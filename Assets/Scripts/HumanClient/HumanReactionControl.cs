@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +15,6 @@ public class HumanReactionControl : MonoBehaviour
     void Start()
     {
         humanControls = GetComponent<HumanControls>();
-        humanControls.NeededAndFreeObjectNoFinded.AddListener(SetNoFindObjectSprite);
-        humanControls.NeededAndFreeObjectFinded.AddListener(ClearHumanReactionSprite);
     }
     
     private void SetNoFindObjectSprite()

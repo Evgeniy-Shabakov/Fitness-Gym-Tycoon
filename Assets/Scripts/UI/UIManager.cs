@@ -131,6 +131,7 @@ public class UIManager : MonoBehaviour
         }
         
         sliderMood.value = humanControls.GetMood();
+        Debug.Log(humanControls.GetMood());
         
         if (sliderMood.value <= HumanControls.moodSad)
         {

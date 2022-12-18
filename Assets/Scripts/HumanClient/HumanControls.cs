@@ -32,8 +32,6 @@ public class HumanControls : MonoBehaviour
 
     [HideInInspector] public UnityEvent humanDoActionStart = new UnityEvent();
     [HideInInspector] public UnityEvent humanDoActionStop = new UnityEvent();
-    [HideInInspector] public UnityEvent NeededAndFreeObjectNoFinded = new UnityEvent();
-    [HideInInspector] public UnityEvent NeededAndFreeObjectFinded = new UnityEvent();
     
     private bool humanDoAction;
 
@@ -190,13 +188,11 @@ public class HumanControls : MonoBehaviour
             {
                 if (child.GetComponentInChildren<ObjectData>().objectIsFree)
                 {
-                    NeededAndFreeObjectFinded.Invoke();
                     return child.gameObject;
                 }
             }
         }
         
-        NeededAndFreeObjectNoFinded.Invoke();
         return null;
     }
 
