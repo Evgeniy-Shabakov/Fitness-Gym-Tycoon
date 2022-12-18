@@ -17,14 +17,18 @@ public class HumanReactionControl : MonoBehaviour
         humanControls = GetComponent<HumanControls>();
     }
     
-    private void SetNoFindObjectSprite()
+    public void SetNoFindObjectSprite()
     {
         imageHumanReaction.sprite = BuildingManager.Instance.objectsForBuilding[humanControls.targetsArray[humanControls.indexInTargetsArray]].sprite;
     }
 
     public void ClearHumanReactionSprite()
     {
-        imageHumanReaction.sprite = spriteTransparent;
+        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient)
+        {
+            imageHumanReaction.sprite = spriteTransparent;
+        }
+        else SetCrystalAboveHuman();
     }
 
     public void SetCrystalAboveHuman()
@@ -34,6 +38,8 @@ public class HumanReactionControl : MonoBehaviour
 
     public void SetSmileAboveHuman()
     {
+        if (gameObject == UIManager.Instance.currentGameObjectForPanelHumanClient) return;
+            
         int mood = humanControls.GetMood();
         
         if (mood <= 25) imageHumanReaction.sprite = spriteSmileSad;

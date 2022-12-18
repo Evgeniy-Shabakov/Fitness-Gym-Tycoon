@@ -16,6 +16,7 @@ public class HumanControls : MonoBehaviour
     private static int countMoodTakeAway = 15;
 
     private NavMeshAgent navMeshAgent;
+    private HumanReactionControl humanReactionControl;
     private GameObject parentAllDynamicObjects;
     
     public int countTargets;
@@ -40,6 +41,7 @@ public class HumanControls : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        humanReactionControl = GetComponent<HumanReactionControl>();
         parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
         
         countTargets = 10;
@@ -187,17 +189,21 @@ public class HumanControls : MonoBehaviour
 
     private GameObject SearchNeededAndFreeObject()
     {
+        if (indexInTargetsArray >= countTargets) return null;
+        
         foreach(Transform child in parentAllDynamicObjects.transform)
         {
             if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsArray[indexInTargetsArray])
             {
                 if (child.GetComponentInChildren<ObjectData>().objectIsFree)
                 {
+                    humanReactionControl.ClearHumanReactionSprite();
                     return child.gameObject;
                 }
             }
         }
-        
+
+        humanReactionControl.SetNoFindObjectSprite();
         return null;
     }
 

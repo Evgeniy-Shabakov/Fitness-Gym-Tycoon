@@ -76,18 +76,20 @@ public class UIManager : MonoBehaviour
 
     public void ClosePanelHumanClient()
     {
+        GameObject humanClosedPanel = currentGameObjectForPanelHumanClient;
+        currentGameObjectForPanelHumanClient = null;
+        
         foreach(Transform child in panelHumanClientTargets.transform)
         {
             Destroy(child.gameObject);
         }
         
         panelHumanClient.SetActive(false);
-        currentGameObjectForPanelHumanClient.GetComponent<HumanReactionControl>().ClearHumanReactionSprite();
-        if (currentGameObjectForPanelHumanClient.GetComponent<HumanControls>().trainingIsFinished)
+        humanClosedPanel.GetComponent<HumanReactionControl>().ClearHumanReactionSprite();
+        if (humanClosedPanel.GetComponent<HumanControls>().trainingIsFinished)
         {
-            currentGameObjectForPanelHumanClient.GetComponent<HumanReactionControl>().SetSmileAboveHuman();
+            humanClosedPanel.GetComponent<HumanReactionControl>().SetSmileAboveHuman();
         }
-        currentGameObjectForPanelHumanClient = null;
     }
 
     public void OpenAndFillPanelHumanClient(GameObject currentClient)
