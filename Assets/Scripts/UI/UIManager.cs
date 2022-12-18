@@ -83,6 +83,10 @@ public class UIManager : MonoBehaviour
         
         panelHumanClient.SetActive(false);
         currentGameObjectForPanelHumanClient.GetComponent<HumanReactionControl>().ClearHumanReactionSprite();
+        if (currentGameObjectForPanelHumanClient.GetComponent<HumanControls>().trainingIsFinished)
+        {
+            currentGameObjectForPanelHumanClient.GetComponent<HumanReactionControl>().SetSmileAboveHuman();
+        }
         currentGameObjectForPanelHumanClient = null;
     }
 
@@ -131,7 +135,6 @@ public class UIManager : MonoBehaviour
         }
         
         sliderMood.value = humanControls.GetMood();
-        Debug.Log(humanControls.GetMood());
         
         if (sliderMood.value <= HumanControls.moodSad)
         {
@@ -161,7 +164,8 @@ public class UIManager : MonoBehaviour
 
         if (i < clientSpawner.transform.childCount - 1) i++;
         else i = 0;
-        
+
+        ClosePanelHumanClient();
         currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
         OpenAndFillPanelHumanClient(currentGameObjectForPanelHumanClient);
     }
@@ -173,6 +177,7 @@ public class UIManager : MonoBehaviour
         if (i == 0) i = clientSpawner.transform.childCount - 1;
         else i--;
         
+        ClosePanelHumanClient();
         currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
         OpenAndFillPanelHumanClient(currentGameObjectForPanelHumanClient);
     }

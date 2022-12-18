@@ -24,6 +24,8 @@ public class HumanControls : MonoBehaviour
 
     public bool[] targetsStatus;
 
+    public bool trainingIsFinished;
+
     private int mood;
 
     private int numberOfAttempts;
@@ -45,6 +47,7 @@ public class HumanControls : MonoBehaviour
         SetTargetsArray();
         indexInTargetsArray = 0;
 
+        trainingIsFinished = false;
         mood = Random.Range(moodRangeMin, moodRangeMax + 1);
         
         targetsStatus = new bool[countTargets];
@@ -96,6 +99,7 @@ public class HumanControls : MonoBehaviour
             if (navMeshAgent.enabled) navMeshAgent.SetDestination(Vector3.zero);
             Invoke("DestroyHuman", 15f);
             GetComponent<HumanReactionControl>().SetSmileAboveHuman();
+            trainingIsFinished = true;
         }
     }
 
@@ -177,6 +181,7 @@ public class HumanControls : MonoBehaviour
             navMeshAgent.SetDestination(Vector3.zero);
             Invoke("DestroyHuman", 15f);
             GetComponent<HumanReactionControl>().SetSmileAboveHuman();
+            trainingIsFinished = true;
         }
     }
 
