@@ -28,10 +28,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Color colorHappy;
     [SerializeField] private Color colorMiddle;
     [SerializeField] private Color colorSad;
-    
     [SerializeField] private GameObject clientSpawner;
-    
     [HideInInspector] public GameObject currentGameObjectForPanelHumanClient;
+
+    [SerializeField] private GameObject panelBuildObject;
+    [SerializeField] private Image spriteBuildObject;
     
     private void Awake()
     {
@@ -59,15 +60,6 @@ public class UIManager : MonoBehaviour
     {
         scrollViewForShop.SetActive(false);
     }
-    
-    public bool IsPointerOverUIObject() {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
-    }
-    
     
     private void ChengedTextForMoney()
     {
@@ -182,5 +174,27 @@ public class UIManager : MonoBehaviour
         ClosePanelHumanClient();
         currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
         OpenAndFillPanelHumanClient(currentGameObjectForPanelHumanClient);
+    }
+    
+    public bool IsPointerOverUIObject() {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
+
+    public void ClosePanelBuildObject()
+    {
+        BuildingManager.Instance.DeleteObject();
+        panelBuildObject.SetActive(false);
+    }
+    
+    public void OpenPanelBuildObject(int objectsIndex)
+    {
+        ClosePanelShopMachines();
+        panelBuildObject.SetActive(true);
+
+        spriteBuildObject.sprite = BuildingManager.Instance.objectsForBuilding[objectsIndex].sprite;
     }
 }
