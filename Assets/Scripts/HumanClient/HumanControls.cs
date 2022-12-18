@@ -7,14 +7,6 @@ using UnityEngine.Events;
 
 public class HumanControls : MonoBehaviour
 {
-    public static int moodSad = 25;
-    public static int moodHappy = 75;
-
-    private static int moodRangeMin = 35;
-    private static int moodRangeMax = 100;
-    private static int countMoodAdd = 10;
-    private static int countMoodTakeAway = 15;
-
     private NavMeshAgent navMeshAgent;
     private HumanReactionControl humanReactionControl;
     private GameObject parentAllDynamicObjects;
@@ -50,7 +42,7 @@ public class HumanControls : MonoBehaviour
         indexInTargetsArray = 0;
 
         trainingIsFinished = false;
-        mood = Random.Range(moodRangeMin, moodRangeMax + 1);
+        mood = Random.Range(LevelManager.moodRangeMin, LevelManager.moodRangeMax + 1);
         
         targetsStatus = new bool[countTargets];
 
@@ -88,7 +80,7 @@ public class HumanControls : MonoBehaviour
             return;
         }
         
-        TakeAwayMood(countMoodTakeAway);
+        TakeAwayMood(LevelManager.countMoodTakeAway);
         NextIndexInTargetsArray();
         if (indexInTargetsArray < countTargets)
         {
@@ -164,7 +156,7 @@ public class HumanControls : MonoBehaviour
             
             currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = true;
             
-            AddMood(countMoodAdd);
+            AddMood(LevelManager.countMoodAdd);
         }
         
         humanDoAction = false;

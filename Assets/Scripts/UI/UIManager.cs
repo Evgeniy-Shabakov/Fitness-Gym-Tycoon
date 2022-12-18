@@ -138,12 +138,12 @@ public class UIManager : MonoBehaviour
         
         sliderMood.value = humanControls.GetMood();
         
-        if (sliderMood.value <= HumanControls.moodSad)
+        if (sliderMood.value <= LevelManager.moodSad)
         {
             imageSmile.sprite = spriteSmileSad;
             fillSliderMood.color = colorSad;
         }
-        else if (sliderMood.value > HumanControls.moodSad && sliderMood.value < HumanControls.moodHappy)
+        else if (sliderMood.value > LevelManager.moodSad && sliderMood.value < LevelManager.moodHappy)
         {
             imageSmile.sprite = spriteSmileMiddle;
             fillSliderMood.color = colorMiddle;
