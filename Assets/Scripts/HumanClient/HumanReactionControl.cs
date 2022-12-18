@@ -38,12 +38,18 @@ public class HumanReactionControl : MonoBehaviour
 
     public void SetSmileAboveHuman()
     {
-        if (gameObject == UIManager.Instance.currentGameObjectForPanelHumanClient) return;
-            
-        int mood = humanControls.GetMood();
+        if (gameObject == UIManager.Instance.currentGameObjectForPanelHumanClient)
+        {
+            ClearHumanReactionSprite();
+        }
+
+        else
+        {
+            int mood = humanControls.GetMood();
         
-        if (mood <= 25) imageHumanReaction.sprite = spriteSmileSad;
-        else if (mood > 25 && mood < 75) imageHumanReaction.sprite = spriteSmileMiddle;
-        else imageHumanReaction.sprite = spriteSmileHappy;
+            if (mood <= 25) imageHumanReaction.sprite = spriteSmileSad;
+            else if (mood > 25 && mood < 75) imageHumanReaction.sprite = spriteSmileMiddle;
+            else imageHumanReaction.sprite = spriteSmileHappy;
+        }
     }
 }
