@@ -8,6 +8,9 @@ public class ObjectData : MonoBehaviour
     
     [HideInInspector] public bool objectIsFree;
 
+    [HideInInspector] public Vector3 positionBeforeMove;
+    [HideInInspector] public Quaternion rotationBeforeMove;
+
     private void Start()
     {
         objectIsFree = true;
