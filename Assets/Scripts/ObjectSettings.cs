@@ -33,14 +33,19 @@ public class ObjectSettings : MonoBehaviour
          
          if (BuildingManager.Instance.objectForBuild != null) return;
          if (cameraPositionMouseDown != mainCamera.transform.position) return;
-      
-         gameObject.AddComponent<PreBuildingCollision>();
-         gameObject.AddComponent<PreBuildingMoving>();
 
-         BuildingManager.Instance.objectForBuild = transform.parent.gameObject;
-         transform.parent.transform.SetParent(mainCamera.transform);
-      
-         Destroy(gameObject.GetComponent<ObjectSettings>());
+         UIManager.Instance.OpenPanelBuildObject(transform.parent.gameObject);
       }
+   }
+
+   public void ActivateMoveObject()
+   {  
+      gameObject.AddComponent<PreBuildingCollision>();
+      gameObject.AddComponent<PreBuildingMoving>();
+
+      BuildingManager.Instance.objectForBuild = transform.parent.gameObject;
+      transform.parent.transform.SetParent(mainCamera.transform);
+      
+      Destroy(gameObject.GetComponent<ObjectSettings>());
    }
 }
