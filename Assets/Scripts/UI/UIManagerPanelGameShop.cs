@@ -22,7 +22,7 @@ public class UIManagerPanelGameShop : MonoBehaviour
         {
             GameObject bt = Instantiate(prefabBtGameShop, contentScrollViewGameShop.transform);
             bt.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[i].sprite;
-            bt.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = BuildingManager.Instance.objectsForBuilding[i].price + "";
+            bt.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = BuildingManager.Instance.objectsForBuilding[i].price + "";
         }
     }
     
