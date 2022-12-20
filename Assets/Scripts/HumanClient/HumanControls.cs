@@ -56,7 +56,7 @@ public class HumanControls : MonoBehaviour
     {
         if (UIManager.Instance.IsPointerOverUIObject()) return;
         
-        UIManager.Instance.OpenAndFillPanelHumanClient(gameObject);
+        UIManagerPanelHumanClient.Instance.OpenAndFill(gameObject);
     }
     
     private void MoveHuman()
@@ -217,8 +217,8 @@ public class HumanControls : MonoBehaviour
     {
         indexInTargetsArray++;
         
-        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
-        UIManager.Instance.UpdateDataPanelHumanClient();
+        if (gameObject != UIManagerPanelHumanClient.Instance.currentGameObjectForPanelHumanClient) return;
+        UIManagerPanelHumanClient.Instance.UpdateData();
     }
 
     private void SetTargetsArray()
@@ -248,7 +248,7 @@ public class HumanControls : MonoBehaviour
     {
         Destroy(gameObject);
         
-        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient) return;
-        UIManager.Instance.ClosePanelHumanClient();
+        if (gameObject != UIManagerPanelHumanClient.Instance.currentGameObjectForPanelHumanClient) return;
+        UIManagerPanelHumanClient.Instance.Close();
     }
 }

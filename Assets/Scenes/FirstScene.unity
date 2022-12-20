@@ -3334,6 +3334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859158127}
   - component: {fileID: 859158128}
+  - component: {fileID: 859158129}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -3372,6 +3373,27 @@ MonoBehaviour:
   scrollViewForShop: {fileID: 839916400}
   contentScrollViewForShop: {fileID: 1609004485}
   prefabBtForPanelModels: {fileID: 1081418330986784576, guid: 3cda52c8967366d4eaff82e910735f13, type: 3}
+  panelBuildObject: {fileID: 1979757687}
+  spriteBuildObject: {fileID: 354801233}
+  textPriceBuildObject: {fileID: 1206757901}
+  textDescriptionBuildObject: {fileID: 1173257002}
+  btRotate: {fileID: 242343108}
+  btSet: {fileID: 95129424}
+  btActivateMove: {fileID: 1650731831}
+  btSell: {fileID: 453568161}
+  currentGameObjectForBuildPanel: {fileID: 0}
+--- !u!114 &859158129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859158126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04f2fe6be13b8d4185c1ab845f853e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   panelHumanClient: {fileID: 1704918786}
   panelHumanClientTargets: {fileID: 1613961873}
   imageSmile: {fileID: 1909956549}
@@ -3383,20 +3405,11 @@ MonoBehaviour:
   spriteSmileHappy: {fileID: 21300000, guid: 520ef3a6961f5134ebe1a113b6846dfd, type: 3}
   spriteSmileMiddle: {fileID: 21300000, guid: b7eaa05b006644244be25b4a6aefc433, type: 3}
   spriteSmileSad: {fileID: 21300000, guid: a9495043b9c30424e83304057b23e0ac, type: 3}
-  colorHappy: {r: 0.9843138, g: 0.9803922, b: 0.2627451, a: 1}
+  colorHappy: {r: 0.9843138, g: 0.9803922, b: 0.25882354, a: 1}
   colorMiddle: {r: 1, g: 0.49803925, b: 0.15294118, a: 1}
   colorSad: {r: 0.92549026, g: 0.10980393, b: 0.14117648, a: 1}
   clientSpawner: {fileID: 1334723696}
   currentGameObjectForPanelHumanClient: {fileID: 0}
-  panelBuildObject: {fileID: 1979757687}
-  spriteBuildObject: {fileID: 354801233}
-  textPriceBuildObject: {fileID: 1206757901}
-  textDescriptionBuildObject: {fileID: 1173257002}
-  btRotate: {fileID: 242343108}
-  btSet: {fileID: 95129424}
-  btActivateMove: {fileID: 1650731831}
-  btSell: {fileID: 453568161}
-  currentGameObjectForBuildPanel: {fileID: 0}
 --- !u!1001 &918219241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4038,7 +4051,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1704918787}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.87, y: 0.85}
   m_AnchorMax: {x: 0.95, y: 0.95}
@@ -4089,8 +4102,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158128}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 859158129}
+        m_TargetAssemblyTypeName: UIManagerPanelHumanClient, Assembly-CSharp
         m_MethodName: BtEyePressed
         m_Mode: 1
         m_Arguments:
@@ -4883,7 +4896,7 @@ RectTransform:
   - {fileID: 406837715}
   - {fileID: 1981697236}
   m_Father: {fileID: 1704918787}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17, y: 0.85}
   m_AnchorMax: {x: 0.83, y: 0.95}
@@ -5744,7 +5757,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1704918787}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.88, y: 1.05}
   m_AnchorMax: {x: 1, y: 1.22}
@@ -5795,9 +5808,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158128}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ClosePanelHumanClient
+      - m_Target: {fileID: 859158129}
+        m_TargetAssemblyTypeName: UIManagerPanelHumanClient, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6655,10 +6668,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1484443529}
   - {fileID: 1909956548}
   - {fileID: 1248051215}
   - {fileID: 1168082945}
-  - {fileID: 1484443529}
   - {fileID: 1613961874}
   - {fileID: 1736675350}
   - {fileID: 2016514104}
@@ -6797,8 +6810,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158128}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 859158129}
+        m_TargetAssemblyTypeName: UIManagerPanelHumanClient, Assembly-CSharp
         m_MethodName: BtPreviousClientPressed
         m_Mode: 1
         m_Arguments:
@@ -7241,7 +7254,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1704918787}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.045, y: 0.83}
   m_AnchorMax: {x: 0.14, y: 0.97}
@@ -7755,8 +7768,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158128}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 859158129}
+        m_TargetAssemblyTypeName: UIManagerPanelHumanClient, Assembly-CSharp
         m_MethodName: BtNextClientPressed
         m_Mode: 1
         m_Arguments:

@@ -14,23 +14,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject contentScrollViewForShop;
     [SerializeField] private GameObject prefabBtForPanelModels;
     
-    [SerializeField] private GameObject panelHumanClient;
-    [SerializeField] private GameObject panelHumanClientTargets;
-    [SerializeField] private Image imageSmile;
-    [SerializeField] private Slider sliderMood;
-    [SerializeField] private Image fillSliderMood;
-    [SerializeField] private GameObject prefabImageTargetPanelHumanClient;
-    [SerializeField] private Sprite spriteStatusTrue;
-    [SerializeField] private Sprite spriteStatusFalse;
-    [SerializeField] private Sprite spriteSmileHappy;
-    [SerializeField] private Sprite spriteSmileMiddle;
-    [SerializeField] private Sprite spriteSmileSad;
-    [SerializeField] private Color colorHappy;
-    [SerializeField] private Color colorMiddle;
-    [SerializeField] private Color colorSad;
-    [SerializeField] private GameObject clientSpawner;
-    [HideInInspector] public GameObject currentGameObjectForPanelHumanClient;
-
     [SerializeField] private GameObject panelBuildObject;
     [SerializeField] private Image spriteBuildObject;
     [SerializeField] private TextMeshProUGUI textPriceBuildObject;
@@ -74,118 +57,6 @@ public class UIManager : MonoBehaviour
         textForMoney.text = "" + PlayerData.Instanse.GetMoney();
     }
 
-    public void ClosePanelHumanClient()
-    {
-        GameObject humanClosedPanel = currentGameObjectForPanelHumanClient;
-        currentGameObjectForPanelHumanClient = null;
-        
-        foreach(Transform child in panelHumanClientTargets.transform)
-        {
-            Destroy(child.gameObject);
-        }
-        
-        panelHumanClient.SetActive(false);
-        humanClosedPanel.GetComponent<HumanReactionControl>().ClearHumanReactionSprite();
-        if (humanClosedPanel.GetComponent<HumanControls>().trainingIsFinished)
-        {
-            humanClosedPanel.GetComponent<HumanReactionControl>().SetSmileAboveHuman();
-        }
-    }
-
-    public void OpenAndFillPanelHumanClient(GameObject currentClient)
-    {
-        CloseAllPanels();
-        
-        if (panelHumanClient.activeSelf) ClosePanelHumanClient();
-        panelHumanClient.SetActive(true);
-        
-        currentGameObjectForPanelHumanClient = currentClient;
-        CameraController.Instance.objectForFollow = currentGameObjectForPanelHumanClient;
-        currentGameObjectForPanelHumanClient.GetComponent<HumanReactionControl>().SetCrystalAboveHuman();
-        
-        HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
-        
-        for (int i = 0; i < humanControls.countTargets; i++)
-        {
-            GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelHumanClientTargets.transform);
-            
-            int j = humanControls.targetsArray[i];
-            image.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[j].sprite;
-        }
-
-        Invoke("UpdateDataPanelHumanClient", Time.deltaTime);
-    }
-
-    public void UpdateDataPanelHumanClient()
-    {
-        HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
-            
-        for (int i = 0; i < humanControls.countTargets; i++)
-        {   
-            GameObject image = panelHumanClientTargets.transform.GetChild(i).gameObject;
-            
-            if (i < humanControls.indexInTargetsArray)
-            {   
-                if (humanControls.targetsStatus[i] == true)
-                {
-                    image.transform.GetChild(1).GetComponent<Image>().sprite = spriteStatusTrue;
-                }
-
-                else
-                {
-                    image.transform.GetChild(1).GetComponent<Image>().sprite = spriteStatusFalse;
-                }
-            }
-        }
-        
-        sliderMood.value = humanControls.GetMood();
-        
-        if (sliderMood.value <= LevelManager.moodSad)
-        {
-            imageSmile.sprite = spriteSmileSad;
-            fillSliderMood.color = colorSad;
-        }
-        else if (sliderMood.value > LevelManager.moodSad && sliderMood.value < LevelManager.moodHappy)
-        {
-            imageSmile.sprite = spriteSmileMiddle;
-            fillSliderMood.color = colorMiddle;
-        }
-        else
-        {
-            imageSmile.sprite = spriteSmileHappy;
-            fillSliderMood.color = colorHappy;
-        }
-    }
-
-    public void BtEyePressed()
-    {
-        CameraController.Instance.objectForFollow = currentGameObjectForPanelHumanClient;
-    }
-
-    public void BtNextClientPressed()
-    {
-        int i = currentGameObjectForPanelHumanClient.transform.GetSiblingIndex();
-
-        if (i < clientSpawner.transform.childCount - 1) i++;
-        else i = 0;
-
-        ClosePanelHumanClient();
-        currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
-        OpenAndFillPanelHumanClient(currentGameObjectForPanelHumanClient);
-    }
-    
-    public void BtPreviousClientPressed()
-    {
-        int i = currentGameObjectForPanelHumanClient.transform.GetSiblingIndex();
-
-        if (i == 0) i = clientSpawner.transform.childCount - 1;
-        else i--;
-        
-        ClosePanelHumanClient();
-        currentGameObjectForPanelHumanClient = clientSpawner.transform.GetChild(i).gameObject;
-        OpenAndFillPanelHumanClient(currentGameObjectForPanelHumanClient);
-    }
-    
     public bool IsPointerOverUIObject() {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -275,10 +146,20 @@ public class UIManager : MonoBehaviour
         objectData.rotationBeforeMove = currentGameObjectForBuildPanel.transform.rotation;
     }
 
-    private void CloseAllPanels()
+    public void CloseAllPanels()
     {
-        if (panelBuildObject.activeSelf) ClosePanelBuildObject();
-        if (panelHumanClient.activeSelf) ClosePanelHumanClient();
-        if (scrollViewForShop.activeSelf)ClosePanelShopMachines();
+        if (panelBuildObject.activeSelf)
+        {
+            ClosePanelBuildObject();
+        }
+        if (UIManagerPanelHumanClient.Instance.panelHumanClient.activeSelf)
+        {
+            UIManagerPanelHumanClient.Instance.Close();
+        }
+
+        if (scrollViewForShop.activeSelf)
+        {
+            ClosePanelShopMachines();
+        }
     }
 }

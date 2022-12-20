@@ -225,9 +225,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: cc120000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 24fbffff
+      m_SelectedIDs: 90610000
+      m_LastClickedID: 24976
+      m_ExpandedIDs: 5243ffff24fbffff1a610000606100000662000094620000de620000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -796,21 +796,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/BuildingSystem
+    - Assets/Sprits
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 82
   m_LastFolders:
-  - Assets/Scripts/BuildingSystem
+  - Assets/Sprits
   m_LastFoldersGridSize: 82
   m_LastProjectPath: D:\Unity\Projects\Fitness Gym Tycoon\Fitness Gym Tycoon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 36}
-    m_SelectedIDs: 0c6d0000
-    m_LastClickedID: 27916
+    m_SelectedIDs: 146d0000
+    m_LastClickedID: 27924
     m_ExpandedIDs: 00000000d66c0000d86c0000da6c0000dc6c0000de6c0000e06c0000e26c0000e46c0000e66c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -864,9 +864,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: cc120000
-    m_LastClickedInstanceID: 4812
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 90610000
+    m_LastClickedInstanceID: 24976
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000da6a0000fc620000085d0000665e0000000000005a820000808200004aa50000ea74000086870000948d0000326b0000467e0000988c00009e8c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

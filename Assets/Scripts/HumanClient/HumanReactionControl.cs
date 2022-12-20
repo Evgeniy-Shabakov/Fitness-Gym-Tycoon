@@ -24,7 +24,7 @@ public class HumanReactionControl : MonoBehaviour
 
     public void ClearHumanReactionSprite()
     {
-        if (gameObject != UIManager.Instance.currentGameObjectForPanelHumanClient)
+        if (gameObject != UIManagerPanelHumanClient.Instance.currentGameObjectForPanelHumanClient)
         {
             imageHumanReaction.sprite = spriteTransparent;
         }
@@ -38,7 +38,7 @@ public class HumanReactionControl : MonoBehaviour
 
     public void SetSmileAboveHuman()
     {
-        if (gameObject == UIManager.Instance.currentGameObjectForPanelHumanClient)
+        if (gameObject == UIManagerPanelHumanClient.Instance.currentGameObjectForPanelHumanClient)
         {
             ClearHumanReactionSprite();
         }
