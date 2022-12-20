@@ -547,9 +547,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158128}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: BtSetObjectPressed
+      - m_Target: {fileID: 859158130}
+        m_TargetAssemblyTypeName: UIManagerPanelObject, Assembly-CSharp
+        m_MethodName: BtSetPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1582,9 +1582,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158128}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: BtSellObject
+      - m_Target: {fileID: 859158130}
+        m_TargetAssemblyTypeName: UIManagerPanelObject, Assembly-CSharp
+        m_MethodName: BtSellPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3335,6 +3335,7 @@ GameObject:
   - component: {fileID: 859158127}
   - component: {fileID: 859158128}
   - component: {fileID: 859158129}
+  - component: {fileID: 859158130}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -3373,15 +3374,6 @@ MonoBehaviour:
   scrollViewForShop: {fileID: 839916400}
   contentScrollViewForShop: {fileID: 1609004485}
   prefabBtForPanelModels: {fileID: 1081418330986784576, guid: 3cda52c8967366d4eaff82e910735f13, type: 3}
-  panelBuildObject: {fileID: 1979757687}
-  spriteBuildObject: {fileID: 354801233}
-  textPriceBuildObject: {fileID: 1206757901}
-  textDescriptionBuildObject: {fileID: 1173257002}
-  btRotate: {fileID: 242343108}
-  btSet: {fileID: 95129424}
-  btActivateMove: {fileID: 1650731831}
-  btSell: {fileID: 453568161}
-  currentGameObjectForBuildPanel: {fileID: 0}
 --- !u!114 &859158129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3410,6 +3402,26 @@ MonoBehaviour:
   colorSad: {r: 0.92549026, g: 0.10980393, b: 0.14117648, a: 1}
   clientSpawner: {fileID: 1334723696}
   currentGameObjectForPanelHumanClient: {fileID: 0}
+--- !u!114 &859158130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859158126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e8c927f23f2c9439f074ab7096ad9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelObject: {fileID: 1979757687}
+  spriteObject: {fileID: 354801233}
+  textPriceObject: {fileID: 1206757901}
+  textDescriptionObject: {fileID: 1173257002}
+  btRotate: {fileID: 242343108}
+  btSet: {fileID: 95129424}
+  btActivateMove: {fileID: 1650731831}
+  btSell: {fileID: 453568161}
 --- !u!1001 &918219241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3901,9 +3913,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158128}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: ClosePanelBuildObject
+      - m_Target: {fileID: 859158130}
+        m_TargetAssemblyTypeName: UIManagerPanelObject, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6450,9 +6462,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158128}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: BtActivateMoveObject
+      - m_Target: {fileID: 859158130}
+        m_TargetAssemblyTypeName: UIManagerPanelObject, Assembly-CSharp
+        m_MethodName: BtActivateMove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7521,7 +7533,7 @@ GameObject:
   - component: {fileID: 1979757690}
   - component: {fileID: 1979757689}
   m_Layer: 5
-  m_Name: PanelBuildObject
+  m_Name: PanelObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

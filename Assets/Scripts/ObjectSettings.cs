@@ -34,7 +34,7 @@ public class ObjectSettings : MonoBehaviour
          if (BuildingManager.Instance.objectForBuild != null) return;
          if (cameraPositionMouseDown != mainCamera.transform.position) return;
 
-         UIManager.Instance.OpenPanelBuildObject(transform.parent.gameObject);
+         UIManagerPanelObject.Instance.Open(transform.parent.gameObject);
       }
    }
 
