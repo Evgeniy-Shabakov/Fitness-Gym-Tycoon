@@ -53,7 +53,7 @@ public class BuildingManager : MonoBehaviour
         objectForBuild.GetComponentInChildren<ObjectData>().isNew = true;
         objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
         
-        UIManager.Instance.ClosePanelShopMachines();
+        UIManagerPanelGameShop.Instance.Close();
     }
 
     public void SetObject()

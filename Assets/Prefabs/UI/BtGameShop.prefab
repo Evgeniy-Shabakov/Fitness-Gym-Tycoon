@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 9100693199483820371}
   - component: {fileID: 1754015100249964688}
   m_Layer: 5
-  m_Name: ButtonForBuyModel
+  m_Name: BtGameShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
