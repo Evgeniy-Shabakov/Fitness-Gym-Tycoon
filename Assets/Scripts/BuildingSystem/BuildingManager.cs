@@ -52,14 +52,13 @@ public class BuildingManager : MonoBehaviour
 
         objectForBuild.GetComponentInChildren<ObjectData>().isNew = true;
         objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
+        objectForBuild.GetComponentInChildren<ObjectData>().price = objectsForBuilding[indexOfListModels].price;
         
         UIManagerPanelGameShop.Instance.Close();
     }
 
     public void SetObject()
     {
-        if (objectForBuild == null) return;
-
         childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
         
         if (childHelperObjectForBuild.GetComponent<PreBuildingCollision>().PlaceForBuildIsClear() == false) return;
@@ -69,16 +68,6 @@ public class BuildingManager : MonoBehaviour
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
         childHelperObjectForBuild.AddComponent<ObjectSettings>();
-
-        ObjectData currentObjectData = childHelperObjectForBuild.GetComponent<ObjectData>();
-        
-        if (currentObjectData.isNew)
-        {
-            int price = objectsForBuilding[currentObjectData.indexInBuildingManagerList].price;
-            
-            PlayerData.Instanse.SpendMoney(price);
-            childHelperObjectForBuild.GetComponent<ObjectData>().isNew = false;
-        }
 
         objectForBuild = null;
         ObjectInstalledOrDeleted.Invoke();
@@ -92,6 +81,7 @@ public class BuildingManager : MonoBehaviour
         
         objectForBuild.GetComponentInChildren<ObjectData>().isNew = false;
         objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
+        objectForBuild.GetComponentInChildren<ObjectData>().price = objectsForBuilding[indexOfListModels].price;
         
         childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
         

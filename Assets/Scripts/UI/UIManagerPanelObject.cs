@@ -17,7 +17,7 @@ public class UIManagerPanelObject : MonoBehaviour
     [SerializeField] private GameObject btActivateMove;
     [SerializeField] private GameObject btSell;
     
-    private GameObject currentGameObjectForBuildPanel;
+    private GameObject currentGameObjectForPanel;
     
     private void Awake()
     {
@@ -26,19 +26,19 @@ public class UIManagerPanelObject : MonoBehaviour
     
     public void Close()
     {
-        if (currentGameObjectForBuildPanel.GetComponentInChildren<ObjectData>().isNew == false 
+        if (currentGameObjectForPanel.GetComponentInChildren<ObjectData>().isNew == false 
             && BuildingManager.Instance.objectForBuild != null)
         {
-            ObjectData objectData = currentGameObjectForBuildPanel.GetComponentInChildren<ObjectData>();
+            ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
 
-            currentGameObjectForBuildPanel.transform.position = objectData.positionBeforeMove;
-            currentGameObjectForBuildPanel.transform.rotation = objectData.rotationBeforeMove;
+            currentGameObjectForPanel.transform.position = objectData.positionBeforeMove;
+            currentGameObjectForPanel.transform.rotation = objectData.rotationBeforeMove;
             
-            currentGameObjectForBuildPanel.GetComponentInChildren<PreBuildingCollision>().SetPlaceForBuildIsClear(true);
+            currentGameObjectForPanel.GetComponentInChildren<PreBuildingCollision>().SetPlaceForBuildIsClear(true);
             BuildingManager.Instance.SetObject();
         }
         
-        currentGameObjectForBuildPanel = null;
+        currentGameObjectForPanel = null;
         
         BuildingManager.Instance.DeleteObject();
         panelObject.SetActive(false);
@@ -48,7 +48,7 @@ public class UIManagerPanelObject : MonoBehaviour
     {
         UIManagerMain.Instance.CloseAllPanels();
         
-        currentGameObjectForBuildPanel = current;
+        currentGameObjectForPanel = current;
             
         panelObject.SetActive(true);
 
@@ -71,12 +71,33 @@ public class UIManagerPanelObject : MonoBehaviour
         }
             
         spriteObject.sprite = BuildingManager.Instance.objectsForBuilding[i].sprite;
-        textPriceObject.text = BuildingManager.Instance.objectsForBuilding[i].price + "";
+        textPriceObject.text = objectData.price + "";
         textDescriptionObject.text = BuildingManager.Instance.objectsForBuilding[i].description;
     }
 
     public void BtSetPressed()
     {
+        ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
+        
+        if (objectData.isNew)
+        {
+            int price = BuildingManager.Instance.objectsForBuilding[objectData.indexInBuildingManagerList].price;
+
+            if (PlayerData.Instanse.GetMoney() < price)
+            {
+                return;
+            }
+            
+            BuildingManager.Instance.SetObject();
+            if (BuildingManager.Instance.objectForBuild == null)
+            {
+                PlayerData.Instanse.SpendMoney(price);
+                objectData.isNew = false;
+                panelObject.SetActive(false);
+            }
+            return;
+        }
+        
         BuildingManager.Instance.SetObject();
         if (BuildingManager.Instance.objectForBuild == null)
         {
@@ -86,7 +107,10 @@ public class UIManagerPanelObject : MonoBehaviour
 
     public void BtSellPressed()
     {
-        Destroy(currentGameObjectForBuildPanel);
+        ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
+        PlayerData.Instanse.AddMoney(objectData.price);
+        
+        Destroy(currentGameObjectForPanel);
         Close();
     }
 
@@ -97,11 +121,11 @@ public class UIManagerPanelObject : MonoBehaviour
         btActivateMove.SetActive(false);
         btSell.SetActive(false);
         
-        currentGameObjectForBuildPanel.GetComponentInChildren<ObjectSettings>().ActivateMoveObject();
+        currentGameObjectForPanel.GetComponentInChildren<ObjectSettings>().ActivateMoveObject();
         
-        ObjectData objectData = currentGameObjectForBuildPanel.GetComponentInChildren<ObjectData>();
+        ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
         
-        objectData.positionBeforeMove = currentGameObjectForBuildPanel.transform.position;
-        objectData.rotationBeforeMove = currentGameObjectForBuildPanel.transform.rotation;
+        objectData.positionBeforeMove = currentGameObjectForPanel.transform.position;
+        objectData.rotationBeforeMove = currentGameObjectForPanel.transform.rotation;
     }
 }
