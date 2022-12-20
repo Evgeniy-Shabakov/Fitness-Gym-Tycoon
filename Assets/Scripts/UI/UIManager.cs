@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenPanelShopMachines()
     {
+        CloseAllPanels();
         scrollViewForShop.SetActive(true);
     }
 
@@ -93,6 +94,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenAndFillPanelHumanClient(GameObject currentClient)
     {
+        CloseAllPanels();
+        
         if (panelHumanClient.activeSelf) ClosePanelHumanClient();
         panelHumanClient.SetActive(true);
         
@@ -213,9 +216,10 @@ public class UIManager : MonoBehaviour
     
     public void OpenPanelBuildObject(GameObject current)
     {
+        CloseAllPanels();
+        
         currentGameObjectForBuildPanel = current;
             
-        ClosePanelShopMachines();
         panelBuildObject.SetActive(true);
 
         ObjectData objectData = current.GetComponentInChildren<ObjectData>();
@@ -269,5 +273,12 @@ public class UIManager : MonoBehaviour
         
         objectData.positionBeforeMove = currentGameObjectForBuildPanel.transform.position;
         objectData.rotationBeforeMove = currentGameObjectForBuildPanel.transform.rotation;
+    }
+
+    private void CloseAllPanels()
+    {
+        if (panelBuildObject.activeSelf) ClosePanelBuildObject();
+        if (panelHumanClient.activeSelf) ClosePanelHumanClient();
+        if (scrollViewForShop.activeSelf)ClosePanelShopMachines();
     }
 }
