@@ -65,6 +65,11 @@ public class PreBuildingCollision : MonoBehaviour
         return placeForBuildIsClear;
     }
 
+    public void SetPlaceForBuildIsClear(bool value)
+    {
+        placeForBuildIsClear = value;
+    }
+    
     private bool ObjectAboveFloor()
     {
         Ray ray = new Ray(transform.position, -Vector3.up);

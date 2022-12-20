@@ -194,13 +194,14 @@ public class UIManager : MonoBehaviour
     public void ClosePanelBuildObject()
     {
         if (currentGameObjectForBuildPanel.GetComponentInChildren<ObjectData>().isNew == false 
-            && BuildingManager.Instance.objectForBuild !=null)
+            && BuildingManager.Instance.objectForBuild != null)
         {
             ObjectData objectData = currentGameObjectForBuildPanel.GetComponentInChildren<ObjectData>();
 
             currentGameObjectForBuildPanel.transform.position = objectData.positionBeforeMove;
             currentGameObjectForBuildPanel.transform.rotation = objectData.rotationBeforeMove;
             
+            currentGameObjectForBuildPanel.GetComponentInChildren<PreBuildingCollision>().SetPlaceForBuildIsClear(true);
             BuildingManager.Instance.SetObject();
         }
         
@@ -243,7 +244,10 @@ public class UIManager : MonoBehaviour
     public void BtSetObjectPressed()
     {
         BuildingManager.Instance.SetObject();
-        panelBuildObject.SetActive(false);
+        if (BuildingManager.Instance.objectForBuild == null)
+        {
+            panelBuildObject.SetActive(false);
+        }
     }
 
     public void BtSellObject()
