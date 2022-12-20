@@ -21,7 +21,7 @@ public class WallChangeHeight : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (UIManager.Instance.IsPointerOverUIObject()) return;
+        if (UIManagerMain.Instance.IsPointerOverUIObject()) return;
         
         mr.enabled = false;
         transform.GetChild(0).gameObject.SetActive(true);

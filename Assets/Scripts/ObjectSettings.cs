@@ -16,7 +16,7 @@ public class ObjectSettings : MonoBehaviour
    
    void Update()
    {
-      if (UIManager.Instance.IsPointerOverUIObject()) return;
+      if (UIManagerMain.Instance.IsPointerOverUIObject()) return;
       if (Input.touchCount >= 2) return;
         
       if (Input.GetMouseButtonDown(0)) cameraPositionMouseDown = mainCamera.transform.position;

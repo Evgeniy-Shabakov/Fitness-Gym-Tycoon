@@ -46,7 +46,7 @@ public class UIManagerPanelObject : MonoBehaviour
     
     public void Open(GameObject current)
     {
-        UIManager.Instance.CloseAllPanels();
+        UIManagerMain.Instance.CloseAllPanels();
         
         currentGameObjectForBuildPanel = current;
             

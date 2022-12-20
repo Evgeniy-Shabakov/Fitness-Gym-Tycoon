@@ -54,7 +54,7 @@ public class HumanControls : MonoBehaviour
 
     public void OnMouseUpAsButton()
     {
-        if (UIManager.Instance.IsPointerOverUIObject()) return;
+        if (UIManagerMain.Instance.IsPointerOverUIObject()) return;
         
         UIManagerPanelHumanClient.Instance.OpenAndFill(gameObject);
     }

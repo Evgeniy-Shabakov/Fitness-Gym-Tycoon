@@ -3,9 +3,9 @@ using TMPro;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class UIManager : MonoBehaviour
+public class UIManagerMain : MonoBehaviour
 {
-    public static UIManager Instance;
+    public static UIManagerMain Instance;
     
     [SerializeField] private TextMeshProUGUI textForMoney;
     

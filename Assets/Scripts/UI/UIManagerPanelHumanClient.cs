@@ -51,7 +51,7 @@ public class UIManagerPanelHumanClient : MonoBehaviour
 
     public void OpenAndFill(GameObject currentClient)
     {
-        UIManager.Instance.CloseAllPanels();
+        UIManagerMain.Instance.CloseAllPanels();
         
         panelHumanClient.SetActive(true);
         

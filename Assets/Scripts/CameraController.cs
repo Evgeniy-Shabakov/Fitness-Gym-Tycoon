@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
             transform.position = v;
         }
         
-        if (UIManager.Instance.IsPointerOverUIObject()) return;
+        if (UIManagerMain.Instance.IsPointerOverUIObject()) return;
         
         if (Input.GetMouseButtonDown(0))
         {

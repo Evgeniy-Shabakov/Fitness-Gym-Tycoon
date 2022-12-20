@@ -28,7 +28,7 @@ public class UIManagerPanelGameShop : MonoBehaviour
     
     public void Open()
     {
-        UIManager.Instance.CloseAllPanels();
+        UIManagerMain.Instance.CloseAllPanels();
         panelGameShop.SetActive(true);
     }
 
