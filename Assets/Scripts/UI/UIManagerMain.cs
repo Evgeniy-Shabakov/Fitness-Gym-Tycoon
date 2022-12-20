@@ -14,14 +14,9 @@ public class UIManagerMain : MonoBehaviour
         Instance = this;
     }
     
-    private void Start()
+    public void SetTextMoney(int money)
     {
-        PlayerData.MoneyChanged.AddListener(ChengedTextForMoney);
-    }
-
-    private void ChengedTextForMoney()
-    {
-        textForMoney.text = "" + PlayerData.Instanse.GetMoney();
+        textForMoney.text = "" + money;
     }
 
     public void CloseAllPanels()

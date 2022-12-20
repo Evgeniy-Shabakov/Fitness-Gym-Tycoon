@@ -6,7 +6,6 @@ public class PlayerData : MonoBehaviour
     public static PlayerData Instanse;
 
     private int money;
-    public static UnityEvent MoneyChanged = new UnityEvent();
     
     private void Awake()
     {
@@ -16,19 +15,19 @@ public class PlayerData : MonoBehaviour
     private void Start()
     {
         money = 50000;
-        MoneyChanged.Invoke();
+        UIManagerMain.Instance.SetTextMoney(money);
     }
 
     public void AddMoney(int amount)
     {
         money += amount;
-        MoneyChanged.Invoke();
+        UIManagerMain.Instance.SetTextMoney(money);
     }
 
     public void SpendMoney(int amount)
     {
         money -= amount;
-        MoneyChanged.Invoke();
+        UIManagerMain.Instance.SetTextMoney(money);
     }
 
     public int GetMoney()
