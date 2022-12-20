@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public static int moneyStartLevel = 50000;
+    
     public static int moodSad = 25;
     public static int moodHappy = 75;
 

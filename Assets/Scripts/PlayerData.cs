@@ -14,7 +14,7 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        money = 50000;
+        money = LevelManager.moneyStartLevel;
         UIManagerMain.Instance.SetTextMoney(money);
     }
 
