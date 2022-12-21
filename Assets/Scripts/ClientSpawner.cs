@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 public class ClientSpawner : MonoBehaviour
@@ -12,7 +10,7 @@ public class ClientSpawner : MonoBehaviour
 
     void Start()
     {
-        Invoke("CreateClient", 2f);
+        Invoke(nameof(CreateClient), 2f);
     }
 
     private void CreateClient()
@@ -20,6 +18,6 @@ public class ClientSpawner : MonoBehaviour
         currentHumanClient = Instantiate(prefabHumanClient, transform);
         Instantiate(prefabsHumansModels[Random.Range(0,2)], currentHumanClient.transform);
         
-        Invoke("CreateClient", 4f);
+        Invoke(nameof(CreateClient), LevelManager.Instance.GetTimeSpawnClient());
     }
 }

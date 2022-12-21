@@ -65,8 +65,8 @@ public class SaveLoadManager : MonoBehaviour
         AllDataSave allDataSave = new AllDataSave();
         
         allDataSave.money = PlayerData.Instanse.GetMoney();
-        allDataSave.rating = LevelManager.GetRating();
-        allDataSave.pricePerVisit = LevelManager.GetPricePerVisit();
+        allDataSave.rating = LevelManager.Instance.GetRating();
+        allDataSave.pricePerVisit = LevelManager.Instance.GetPricePerVisit();
         allDataSave.listLevelsDataSave.Add(levelDataSave);
         
         File.WriteAllText(savePath, JsonUtility.ToJson(allDataSave, true));
@@ -80,8 +80,8 @@ public class SaveLoadManager : MonoBehaviour
         allDataSave = JsonUtility.FromJson<AllDataSave>(File.ReadAllText(savePath));
         
         PlayerData.Instanse.LoadMoney(allDataSave.money);
-        LevelManager.LoadRating(allDataSave.rating);
-        LevelManager.LoadPricePerVisit(allDataSave.pricePerVisit);
+        LevelManager.Instance.LoadRating(allDataSave.rating);
+        LevelManager.Instance.LoadPricePerVisit(allDataSave.pricePerVisit);
         
         LevelDataSave levelDataSave = allDataSave.listLevelsDataSave[0];
 

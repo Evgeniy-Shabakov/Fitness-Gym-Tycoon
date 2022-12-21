@@ -148,9 +148,9 @@ public class HumanControls : MonoBehaviour
         
         if (targetsArray[indexInTargetsArray] == 0)
         {
-            PlayerData.Instanse.AddMoney(LevelManager.GetPricePerVisit());
+            PlayerData.Instanse.AddMoney(LevelManager.Instance.GetPricePerVisit());
             humanReactionControl.SetMoneyAboveHuman();
-            humanReactionControl.SetTextAboveHuman("+" + LevelManager.GetPricePerVisit());
+            humanReactionControl.SetTextAboveHuman("+" + LevelManager.Instance.GetPricePerVisit());
         }
         
         yield return new WaitForSeconds(wait);
@@ -254,8 +254,8 @@ public class HumanControls : MonoBehaviour
         Invoke("DestroyHuman", 15f);
         humanReactionControl.SetSmileAboveHuman();
         
-        if (mood <= LevelManager.moodSad) LevelManager.TakeAwayRating(1);
-        else if (mood > LevelManager.moodHappy) LevelManager.AddRating(1);
+        if (mood <= LevelManager.moodSad) LevelManager.Instance.TakeAwayRating(1);
+        else if (mood > LevelManager.moodHappy) LevelManager.Instance.AddRating(1);
         
         trainingIsFinished = true;
     }

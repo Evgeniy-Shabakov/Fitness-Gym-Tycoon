@@ -27,13 +27,13 @@ public class UIManagerPanelPricePolicy : MonoBehaviour
     {
         panel.SetActive(true);
 
-        textPricePerVisit.text = LevelManager.GetPricePerVisit() + "";
-        sliderPricePerVisit.value = LevelManager.GetPricePerVisit();
+        textPricePerVisit.text = LevelManager.Instance.GetPricePerVisit() + "";
+        sliderPricePerVisit.value = LevelManager.Instance.GetPricePerVisit();
     }
 
     public void SetPricePerVisit()
     {
-        LevelManager.SetPricePerVisitFromSlider(sliderPricePerVisit);
-        textPricePerVisit.text = LevelManager.GetPricePerVisit() + "";
+        LevelManager.Instance.SetPricePerVisitFromSlider(sliderPricePerVisit);
+        textPricePerVisit.text = LevelManager.Instance.GetPricePerVisit() + "";
     }
 }
