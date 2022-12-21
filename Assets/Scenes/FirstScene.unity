@@ -4001,6 +4001,7 @@ GameObject:
   - component: {fileID: 859158129}
   - component: {fileID: 859158130}
   - component: {fileID: 859158131}
+  - component: {fileID: 859158132}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -4104,6 +4105,21 @@ MonoBehaviour:
   panelGameShop: {fileID: 839916400}
   contentScrollViewGameShop: {fileID: 1609004485}
   prefabBtGameShop: {fileID: 1081418330986784576, guid: 3cda52c8967366d4eaff82e910735f13, type: 3}
+--- !u!114 &859158132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859158126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab142c7742219544ab509d35053867e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1418979729}
+  sliderPricePerVisit: {fileID: 1015233001}
+  textPricePerVisit: {fileID: 1084005167}
 --- !u!1001 &918219241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4534,7 +4550,19 @@ MonoBehaviour:
   m_Value: 43.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859158132}
+        m_TargetAssemblyTypeName: UIManagerPanelPricePolicy, Assembly-CSharp
+        m_MethodName: SetPricePerVisit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1022977825
 GameObject:
   m_ObjectHideFlags: 0
@@ -6796,8 +6824,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 859158131}
-        m_TargetAssemblyTypeName: UIManagerPanelGameShop, Assembly-CSharp
+      - m_Target: {fileID: 859158132}
+        m_TargetAssemblyTypeName: UIManagerPanelPricePolicy, Assembly-CSharp
         m_MethodName: Open
         m_Mode: 1
         m_Arguments:
@@ -7299,7 +7327,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 571790379}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859158132}
+        m_TargetAssemblyTypeName: UIManagerPanelPricePolicy, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1530902073
 MonoBehaviour:
   m_ObjectHideFlags: 0

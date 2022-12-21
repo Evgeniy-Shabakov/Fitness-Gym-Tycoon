@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     private static int pricePerVisitOnStart = 20;
     
     private static int rating;
-    private static int pricePerVisit;
+    public static int pricePerVisit;
     
     private void Start()
     {
@@ -62,11 +62,6 @@ public class LevelManager : MonoBehaviour
         UIManagerMain.Instance.SetRating(rating);
     }
 
-    public static int GetPricePerVisit()
-    {
-        return pricePerVisit;
-    }
-    
     public static void LoadPricePerVisit(int value)
     {
         pricePerVisit = value;

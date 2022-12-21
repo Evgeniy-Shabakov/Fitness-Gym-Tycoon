@@ -60,6 +60,11 @@ public class UIManagerMain : MonoBehaviour
         {
             UIManagerPanelGameShop.Instance.Close();
         }
+        
+        if (UIManagerPanelPricePolicy.Instance.panel.activeSelf)
+        {
+            UIManagerPanelPricePolicy.Instance.Close();
+        }
     }
     
     public bool IsPointerOverUIObject() {
