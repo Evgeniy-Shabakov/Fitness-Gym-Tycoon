@@ -248,8 +248,8 @@ public class HumanControls : MonoBehaviour
         Invoke("DestroyHuman", 15f);
         humanReactionControl.SetSmileAboveHuman();
         
-        if (mood <= LevelManager.moodSad) PlayerData.Instanse.TakeAwayRating(1);
-        else if (mood > LevelManager.moodHappy) PlayerData.Instanse.AddRating(1);
+        if (mood <= LevelManager.moodSad) LevelManager.TakeAwayRating(1);
+        else if (mood > LevelManager.moodHappy) LevelManager.AddRating(1);
         
         trainingIsFinished = true;
     }
