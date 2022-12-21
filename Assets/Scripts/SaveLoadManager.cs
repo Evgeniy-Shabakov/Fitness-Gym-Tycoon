@@ -49,6 +49,7 @@ public class SaveLoadManager : MonoBehaviour
     private class AllDataSave
     {
         public int money;
+        public int rating;
         public List<LevelDataSave> listLevelsDataSave = new List<LevelDataSave>();
     }
 
@@ -61,7 +62,9 @@ public class SaveLoadManager : MonoBehaviour
         levelDataSave.listObjectsDataSave = FormListObjectsDataSave();
         
         AllDataSave allDataSave = new AllDataSave();
+        
         allDataSave.money = PlayerData.Instanse.GetMoney();
+        allDataSave.rating = PlayerData.Instanse.GetRating();
         allDataSave.listLevelsDataSave.Add(levelDataSave);
         
         File.WriteAllText(savePath, JsonUtility.ToJson(allDataSave, true));
@@ -75,6 +78,7 @@ public class SaveLoadManager : MonoBehaviour
         allDataSave = JsonUtility.FromJson<AllDataSave>(File.ReadAllText(savePath));
         
         PlayerData.Instanse.LoadMoney(allDataSave.money);
+        PlayerData.Instanse.LoadRating(allDataSave.rating);
         
         LevelDataSave levelDataSave = allDataSave.listLevelsDataSave[0];
 

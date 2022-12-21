@@ -3,6 +3,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static int moneyStartGame = 50000;
+    public static int raitingLevelStart = 50;
     
     public static int moodSad = 25;
     public static int moodHappy = 75;

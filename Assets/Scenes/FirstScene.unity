@@ -3746,6 +3746,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textForMoney: {fileID: 695165460}
+  sliderRating: {fileID: 521878777}
+  fillSliderRating: {fileID: 1542155429}
+  colorHappy: {r: 0.9843138, g: 0.9803922, b: 0.25882354, a: 1}
+  colorMiddle: {r: 1, g: 0.49803925, b: 0.15294118, a: 1}
+  colorSad: {r: 0.92549026, g: 0.10980393, b: 0.14117648, a: 1}
 --- !u!114 &859158129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4168,7 +4173,7 @@ GameObject:
   - component: {fileID: 1057698610}
   - component: {fileID: 1057698609}
   m_Layer: 5
-  m_Name: PanelRaiting
+  m_Name: PanelRating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6135,7 +6140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9803922, g: 0.97647065, b: 0.25882354, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

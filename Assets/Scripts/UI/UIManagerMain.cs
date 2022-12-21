@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class UIManagerMain : MonoBehaviour
@@ -8,6 +9,12 @@ public class UIManagerMain : MonoBehaviour
     public static UIManagerMain Instance;
     
     [SerializeField] private TextMeshProUGUI textForMoney;
+    
+    [SerializeField] private Slider sliderRating;
+    [SerializeField] private Image fillSliderRating;
+    [SerializeField] private Color colorHappy;
+    [SerializeField] private Color colorMiddle;
+    [SerializeField] private Color colorSad;
     
     private void Awake()
     {
@@ -17,6 +24,24 @@ public class UIManagerMain : MonoBehaviour
     public void SetTextMoney(int money)
     {
         textForMoney.text = "" + money;
+    }
+
+    public void SetRating(int rating)
+    {
+        sliderRating.value = rating;
+        
+        if (sliderRating.value <= LevelManager.moodSad)
+        {
+            fillSliderRating.color = colorSad;
+        }
+        else if (sliderRating.value > LevelManager.moodSad && sliderRating.value < LevelManager.moodHappy)
+        {
+            fillSliderRating.color = colorMiddle;
+        }
+        else
+        {
+            fillSliderRating.color = colorHappy;
+        }
     }
 
     public void CloseAllPanels()

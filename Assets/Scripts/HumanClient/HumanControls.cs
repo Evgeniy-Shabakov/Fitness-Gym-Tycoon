@@ -247,6 +247,10 @@ public class HumanControls : MonoBehaviour
         if (navMeshAgent.enabled) navMeshAgent.SetDestination(Vector3.zero);
         Invoke("DestroyHuman", 15f);
         humanReactionControl.SetSmileAboveHuman();
+        
+        if (mood <= LevelManager.moodSad) PlayerData.Instanse.TakeAwayRating(1);
+        else if (mood > LevelManager.moodHappy) PlayerData.Instanse.AddRating(1);
+        
         trainingIsFinished = true;
     }
     

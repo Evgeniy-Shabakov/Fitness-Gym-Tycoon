@@ -6,6 +6,7 @@ public class PlayerData : MonoBehaviour
     public static PlayerData Instanse;
 
     private int money;
+    private int rating;
     
     private void Awake()
     {
@@ -18,6 +19,9 @@ public class PlayerData : MonoBehaviour
         {
             money = LevelManager.moneyStartGame;
             UIManagerMain.Instance.SetTextMoney(money);
+
+            rating = LevelManager.raitingLevelStart;
+            UIManagerMain.Instance.SetRating(rating);
         }
     }
 
@@ -46,5 +50,34 @@ public class PlayerData : MonoBehaviour
     {
         money = value;
         UIManagerMain.Instance.SetTextMoney(money);
+    }
+
+    public void AddRating(int n)
+    {
+        rating += n;
+        if (rating > 100) rating = 100;
+        
+        UIManagerMain.Instance.SetRating(rating);
+        SaveLoadManager.Instance.Save();
+    }
+
+    public void TakeAwayRating(int n)
+    {
+        rating -= n;
+        if (rating < 5) rating = 5;
+        
+        UIManagerMain.Instance.SetRating(rating);
+        SaveLoadManager.Instance.Save();
+    }
+
+    public int GetRating()
+    {
+        return rating;
+    }
+
+    public void LoadRating(int value)
+    {
+        rating = value;
+        UIManagerMain.Instance.SetRating(rating);
     }
 }
