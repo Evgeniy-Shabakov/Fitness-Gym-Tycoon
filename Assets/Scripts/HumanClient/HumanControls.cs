@@ -146,13 +146,14 @@ public class HumanControls : MonoBehaviour
             wait = Random.Range(LevelManager.minTimeExercise, LevelManager.maxTimeExercise);
         }
         
-        yield return new WaitForSeconds(wait);
-
         if (targetsArray[indexInTargetsArray] == 0)
         {
             PlayerData.Instanse.AddMoney(20);
+            humanReactionControl.SetMoneyAboveHuman();
         }
         
+        yield return new WaitForSeconds(wait);
+
         if (targetsArray[indexInTargetsArray] != 0)
         {
             transform.rotation = rotationBeforeAction;

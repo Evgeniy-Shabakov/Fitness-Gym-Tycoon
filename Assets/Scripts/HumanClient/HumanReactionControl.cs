@@ -9,6 +9,7 @@ public class HumanReactionControl : MonoBehaviour
     [SerializeField] private Sprite spriteSmileMiddle;
     [SerializeField] private Sprite spriteSmileSad;
     [SerializeField] private Sprite spriteCrystal;
+    [SerializeField] private Sprite spriteMoney;
     
     private HumanControls humanControls;
     
@@ -52,4 +53,10 @@ public class HumanReactionControl : MonoBehaviour
             else imageHumanReaction.sprite = spriteSmileHappy;
         }
     }
+
+    public void SetMoneyAboveHuman()
+    {
+        imageHumanReaction.sprite = spriteMoney;
+    }
+    
 }

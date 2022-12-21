@@ -91,17 +91,12 @@ MonoBehaviour:
   targetsArray: 
   indexInTargetsArray: 0
   targetsStatus: 
+  trainingIsFinished: 0
   currentGameObjectForAction: {fileID: 0}
   humanDoActionStart:
     m_PersistentCalls:
       m_Calls: []
   humanDoActionStop:
-    m_PersistentCalls:
-      m_Calls: []
-  NeededAndFreeObjectNoFinded:
-    m_PersistentCalls:
-      m_Calls: []
-  NeededAndFreeObjectFinded:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6386662222892323909
@@ -147,6 +142,7 @@ MonoBehaviour:
   spriteSmileMiddle: {fileID: 21300000, guid: b7eaa05b006644244be25b4a6aefc433, type: 3}
   spriteSmileSad: {fileID: 21300000, guid: a9495043b9c30424e83304057b23e0ac, type: 3}
   spriteCrystal: {fileID: 21300000, guid: 5bc978cbc67207243a4c65557165b971, type: 3}
+  spriteMoney: {fileID: 21300000, guid: bc6927113b5b16f40af06409988c3ec2, type: 3}
 --- !u!1 &3264908348021678863
 GameObject:
   m_ObjectHideFlags: 0
