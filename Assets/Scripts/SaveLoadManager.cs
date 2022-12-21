@@ -1,12 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using System.IO;
 
 public class SaveLoadManager : MonoBehaviour
 {
+    public static SaveLoadManager Instance;
+    
     [SerializeField] private GameObject ParentAllDynamicObjects;
 
     private string savePath;
@@ -16,6 +16,8 @@ public class SaveLoadManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+        
         #if UNITY_ANDROID && !UNITY_EDITOR
             savePath = Path.Combine(Application.persistentDataPath, saveFileName);
         #else
@@ -25,8 +27,6 @@ public class SaveLoadManager : MonoBehaviour
 
     private void Start()
     {
-        BuildingManager.ObjectInstalledOrDeleted.AddListener(Save);
-        
         Load();
     }
 

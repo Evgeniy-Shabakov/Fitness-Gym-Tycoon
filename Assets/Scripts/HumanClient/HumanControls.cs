@@ -143,10 +143,15 @@ public class HumanControls : MonoBehaviour
             transform.rotation = currentGameObjectForAction.transform.parent.Find("PivotForHuman").rotation;
             
             currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = false;
-            wait = Random.Range(3f, 5f);
+            wait = Random.Range(LevelManager.minTimeExercise, LevelManager.maxTimeExercise);
         }
         
         yield return new WaitForSeconds(wait);
+
+        if (targetsArray[indexInTargetsArray] == 0)
+        {
+            PlayerData.Instanse.AddMoney(20);
+        }
         
         if (targetsArray[indexInTargetsArray] != 0)
         {

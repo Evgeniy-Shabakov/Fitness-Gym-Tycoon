@@ -7,8 +7,6 @@ public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instance;
     
-    public static UnityEvent ObjectInstalledOrDeleted = new UnityEvent();
-    
     public List<ObjectForBuilding> objectsForBuilding;
     [SerializeField] private GameObject prefabHelperBuildingSystem;
     [SerializeField] private GameObject parentForAllDynamicObjects;
@@ -70,7 +68,7 @@ public class BuildingManager : MonoBehaviour
         childHelperObjectForBuild.AddComponent<ObjectSettings>();
 
         objectForBuild = null;
-        ObjectInstalledOrDeleted.Invoke();
+        SaveLoadManager.Instance.Save();
     }
 
     public void CreateAndSetObjectForLoad(int indexOfListModels, Vector3 pos, Quaternion rotation)
@@ -103,6 +101,6 @@ public class BuildingManager : MonoBehaviour
     {
         Destroy(objectForBuild);
         
-        ObjectInstalledOrDeleted.Invoke();
+        SaveLoadManager.Instance.Save();
     }
 }

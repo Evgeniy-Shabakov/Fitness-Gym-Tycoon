@@ -11,4 +11,7 @@ public class LevelManager : MonoBehaviour
     public static int moodRangeMax = 100;
     public static int countMoodAdd = 10;
     public static int countMoodTakeAway = 15;
+
+    public static float minTimeExercise = 4;
+    public static float maxTimeExercise = 7;
 }
