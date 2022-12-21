@@ -148,9 +148,9 @@ public class HumanControls : MonoBehaviour
         
         if (targetsArray[indexInTargetsArray] == 0)
         {
-            PlayerData.Instanse.AddMoney(LevelManager.pricePerVisit);
+            PlayerData.Instanse.AddMoney(LevelManager.GetPricePerVisit());
             humanReactionControl.SetMoneyAboveHuman();
-            humanReactionControl.SetTextAboveHuman("+" + LevelManager.pricePerVisit);
+            humanReactionControl.SetTextAboveHuman("+" + LevelManager.GetPricePerVisit());
         }
         
         yield return new WaitForSeconds(wait);

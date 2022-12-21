@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class LevelManager : MonoBehaviour
     private static int pricePerVisitOnStart = 20;
     
     private static int rating;
-    public static int pricePerVisit;
+    private static int pricePerVisit;
     
     private void Start()
     {
@@ -62,6 +63,16 @@ public class LevelManager : MonoBehaviour
         UIManagerMain.Instance.SetRating(rating);
     }
 
+    public static int GetPricePerVisit()
+    {
+        return pricePerVisit;
+    }
+
+    public static void SetPricePerVisitFromSlider(Slider sl)
+    {
+        pricePerVisit = (int)sl.value;
+    }
+    
     public static void LoadPricePerVisit(int value)
     {
         pricePerVisit = value;
