@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HumanReactionControl : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class HumanReactionControl : MonoBehaviour
     [SerializeField] private Sprite spriteSmileSad;
     [SerializeField] private Sprite spriteCrystal;
     [SerializeField] private Sprite spriteMoney;
-    
+
+    [SerializeField] private TextMeshProUGUI textPay;
+
     private HumanControls humanControls;
     
     void Start()
@@ -57,6 +60,11 @@ public class HumanReactionControl : MonoBehaviour
     public void SetMoneyAboveHuman()
     {
         imageHumanReaction.sprite = spriteMoney;
+    }
+
+    public void SetTextAboveHuman(string s)
+    {
+        textPay.text = s;
     }
     
 }

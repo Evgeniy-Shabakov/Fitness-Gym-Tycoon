@@ -20,6 +20,7 @@ public class UIManagerPanelPricePolicy : MonoBehaviour
     public void Close()
     {
         panel.SetActive(false);
+        SaveLoadManager.Instance.Save();
     }
 
     public void Open()

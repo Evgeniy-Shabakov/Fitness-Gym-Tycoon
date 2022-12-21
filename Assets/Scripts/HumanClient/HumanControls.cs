@@ -150,6 +150,7 @@ public class HumanControls : MonoBehaviour
         {
             PlayerData.Instanse.AddMoney(LevelManager.pricePerVisit);
             humanReactionControl.SetMoneyAboveHuman();
+            humanReactionControl.SetTextAboveHuman("+" + LevelManager.pricePerVisit);
         }
         
         yield return new WaitForSeconds(wait);
@@ -163,6 +164,11 @@ public class HumanControls : MonoBehaviour
             currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = true;
             
             AddMood(LevelManager.countMoodAdd);
+        }
+        
+        if (targetsArray[indexInTargetsArray] == 0)
+        {
+            humanReactionControl.SetTextAboveHuman("");
         }
         
         humanDoAction = false;
