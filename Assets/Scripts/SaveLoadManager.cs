@@ -9,7 +9,7 @@ public class SaveLoadManager : MonoBehaviour
     
     [SerializeField] private GameObject ParentAllDynamicObjects;
 
-    private string savePath;
+    [HideInInspector] public string savePath;
     private string saveFileName = "data.json";
     
     private List<GameObject> listGameObjectsForSave = new List<GameObject>();
@@ -48,6 +48,7 @@ public class SaveLoadManager : MonoBehaviour
     [Serializable]
     private class AllDataSave
     {
+        public int money;
         public List<LevelDataSave> listLevelsDataSave = new List<LevelDataSave>();
     }
 
@@ -60,6 +61,7 @@ public class SaveLoadManager : MonoBehaviour
         levelDataSave.listObjectsDataSave = FormListObjectsDataSave();
         
         AllDataSave allDataSave = new AllDataSave();
+        allDataSave.money = PlayerData.Instanse.GetMoney();
         allDataSave.listLevelsDataSave.Add(levelDataSave);
         
         File.WriteAllText(savePath, JsonUtility.ToJson(allDataSave, true));
@@ -70,9 +72,9 @@ public class SaveLoadManager : MonoBehaviour
         if (File.Exists(savePath) == false) return;
         
         AllDataSave allDataSave = new AllDataSave();
-
-        allDataSave =
-            JsonUtility.FromJson<AllDataSave>(File.ReadAllText(savePath));
+        allDataSave = JsonUtility.FromJson<AllDataSave>(File.ReadAllText(savePath));
+        
+        PlayerData.Instanse.LoadMoney(allDataSave.money);
         
         LevelDataSave levelDataSave = allDataSave.listLevelsDataSave[0];
 
