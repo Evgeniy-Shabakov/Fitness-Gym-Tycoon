@@ -5,8 +5,6 @@ public class LevelManager : MonoBehaviour
 {
     public static int moneyStartGame = 50000;
     
-    private static int raitingOnStart = 50;
-    
     public static int moodSad = 25;
     public static int moodHappy = 75;
 
@@ -18,7 +16,11 @@ public class LevelManager : MonoBehaviour
     public static float minTimeExercise = 4;
     public static float maxTimeExercise = 7;
     
+    private static int raitingOnStart = 50;
+    private static int pricePerVisitOnStart = 20;
+    
     private static int rating;
+    private static int pricePerVisit;
     
     private void Start()
     {
@@ -26,6 +28,8 @@ public class LevelManager : MonoBehaviour
         {
             rating = raitingOnStart;
             UIManagerMain.Instance.SetRating(rating);
+
+            pricePerVisit = pricePerVisitOnStart;
         }
     }
     
@@ -56,5 +60,15 @@ public class LevelManager : MonoBehaviour
     {
         rating = value;
         UIManagerMain.Instance.SetRating(rating);
+    }
+
+    public static int GetPricePerVisit()
+    {
+        return pricePerVisit;
+    }
+    
+    public static void LoadPricePerVisit(int value)
+    {
+        pricePerVisit = value;
     }
 }

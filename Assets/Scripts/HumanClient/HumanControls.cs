@@ -148,7 +148,7 @@ public class HumanControls : MonoBehaviour
         
         if (targetsArray[indexInTargetsArray] == 0)
         {
-            PlayerData.Instanse.AddMoney(20);
+            PlayerData.Instanse.AddMoney(LevelManager.GetPricePerVisit());
             humanReactionControl.SetMoneyAboveHuman();
         }
         

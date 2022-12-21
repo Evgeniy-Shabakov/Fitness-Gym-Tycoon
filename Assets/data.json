@@ -1,6 +1,7 @@
 {
     "money": 1100,
     "rating": 5,
+    "pricePerVisit": 0,
     "listLevelsDataSave": [
         {
             "level": 1,
