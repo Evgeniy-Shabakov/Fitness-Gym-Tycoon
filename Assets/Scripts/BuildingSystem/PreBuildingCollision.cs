@@ -38,7 +38,8 @@ public class PreBuildingCollision : MonoBehaviour
     {
         if (other.tag == "Floor") return;
         if (other.tag == "HumanClient") return;
-        
+        if (other.tag == "Plane") return;
+        Debug.Log(other.name);
         placeForBuildIsClear = false;
         if (mr != null) mr.material = BuildingManager.Instance.materialForCollision;
     }

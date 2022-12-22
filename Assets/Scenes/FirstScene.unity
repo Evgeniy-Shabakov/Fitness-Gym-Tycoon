@@ -5046,6 +5046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsForBuilding:
   - {fileID: 11400000, guid: 91080318ef5eeba47a6778920245859e, type: 2}
+  - {fileID: 11400000, guid: bda8bdead4b976642ae8bac8a76beb39, type: 2}
   - {fileID: 11400000, guid: 29b57b7be4ec60a47ab0e34eb20bb48b, type: 2}
   - {fileID: 11400000, guid: 5b08c59a8874b4c409edccbffe50be32, type: 2}
   - {fileID: 11400000, guid: ea1ef0d22e8fd594a8ba9c750352436b, type: 2}
@@ -6407,7 +6408,7 @@ GameObject:
   - component: {fileID: 1354479180}
   m_Layer: 3
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
