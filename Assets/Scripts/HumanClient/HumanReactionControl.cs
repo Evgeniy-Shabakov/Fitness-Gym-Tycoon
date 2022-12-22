@@ -23,7 +23,8 @@ public class HumanReactionControl : MonoBehaviour
     
     public void SetNoFindObjectSprite()
     {
-        imageHumanReaction.sprite = BuildingManager.Instance.objectsForBuilding[humanControls.targetsArray[humanControls.indexInTargetsArray]].sprite;
+        imageHumanReaction.sprite = 
+            BuildingManager.Instance.objectsForBuilding[humanControls.targetsArray[humanControls.indexInTargetsArray]].sprite;
     }
 
     public void ClearHumanReactionSprite()

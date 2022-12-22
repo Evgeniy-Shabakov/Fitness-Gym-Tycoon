@@ -100,7 +100,5 @@ public class BuildingManager : MonoBehaviour
     public void DeleteObject()
     {
         Destroy(objectForBuild);
-        
-        SaveLoadManager.Instance.Save();
     }
 }

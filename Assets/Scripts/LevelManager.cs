@@ -42,7 +42,9 @@ public class LevelManager : MonoBehaviour
             UIManagerMain.Instance.SetRating(rating);
 
             pricePerVisit = pricePerVisitOnStart;
+            
             countLockers = countLockersOnStart;
+            UIManagerMain.Instance.SetTextLockers(countLockers);
         }
         
         Invoke(nameof(SetTimeSpawnClient), 1f);
@@ -119,11 +121,14 @@ public class LevelManager : MonoBehaviour
     public void AddCountLockers(int n)
     {
         countLockers += n;
+        UIManagerMain.Instance.SetTextLockers(countLockers);
     }
 
     public void TakeAwayCountLockers(int n)
     {
         countLockers -= n;
+        if (countLockers < 0) countLockers = 0;
+        UIManagerMain.Instance.SetTextLockers(countLockers);
     }
 
     public int GetCountLockers()
@@ -134,5 +139,6 @@ public class LevelManager : MonoBehaviour
     public void LoadCountLockers(int value)
     {
         countLockers = value;
+        UIManagerMain.Instance.SetTextLockers(countLockers);
     }
 }

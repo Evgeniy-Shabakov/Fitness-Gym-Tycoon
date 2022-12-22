@@ -93,6 +93,12 @@ public class UIManagerPanelObject : MonoBehaviour
             {
                 PlayerData.Instanse.SpendMoney(price);
                 objectData.isNew = false;
+
+                if (objectData.indexInBuildingManagerList == 1)
+                {
+                    LevelManager.Instance.AddCountLockers(5);
+                }
+                
                 panelObject.SetActive(false);
             }
             return;
@@ -109,6 +115,11 @@ public class UIManagerPanelObject : MonoBehaviour
     {
         ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
         PlayerData.Instanse.AddMoney(objectData.price);
+        
+        if (objectData.indexInBuildingManagerList == 1)
+        {
+            LevelManager.Instance.TakeAwayCountLockers(5);
+        }
         
         Destroy(currentGameObjectForPanel);
         Close();
