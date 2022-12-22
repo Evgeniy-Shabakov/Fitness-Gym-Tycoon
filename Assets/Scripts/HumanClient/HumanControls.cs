@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -36,7 +35,7 @@ public class HumanControls : MonoBehaviour
         humanReactionControl = GetComponent<HumanReactionControl>();
         parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
         
-        countTargets = 10;
+        countTargets = 15;
         targetsArray = new int[countTargets];
         SetTargetsArray();
         indexInTargetsArray = 0;
@@ -135,7 +134,7 @@ public class HumanControls : MonoBehaviour
         Quaternion rotationBeforeAction = transform.rotation;
         float wait = 1f;
         
-        if (targetsArray[indexInTargetsArray] != 0)
+        if (targetsArray[indexInTargetsArray] != 0 && targetsArray[indexInTargetsArray] != 1)
         {
             navMeshAgent.enabled = false;
 
@@ -155,7 +154,7 @@ public class HumanControls : MonoBehaviour
         
         yield return new WaitForSeconds(wait);
 
-        if (targetsArray[indexInTargetsArray] != 0)
+        if (targetsArray[indexInTargetsArray] != 0 && targetsArray[indexInTargetsArray] != 1)
         {
             transform.rotation = rotationBeforeAction;
             transform.position = positionBeforeAction;
@@ -236,16 +235,19 @@ public class HumanControls : MonoBehaviour
     private void SetTargetsArray()
     {
         targetsArray[0] = 0;
+        targetsArray[1] = 1;
         
-        for (int i = 1; i < countTargets; i++)
+        for (int i = 2; i < countTargets - 1; i++)
         {
-            targetsArray[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
+            targetsArray[i] = Random.Range(2, BuildingManager.Instance.objectsForBuilding.Count);
             
             while(targetsArray[i] == targetsArray[i-1])
             {
-                targetsArray[i] = Random.Range(1, BuildingManager.Instance.objectsForBuilding.Count);
+                targetsArray[i] = Random.Range(2, BuildingManager.Instance.objectsForBuilding.Count);
             }
         }
+
+        targetsArray[countTargets - 1] = 1;
     }
 
     private void SendHumanHome()
