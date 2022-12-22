@@ -42,6 +42,10 @@ public class SaveLoadManager : MonoBehaviour
     private class LevelDataSave
     {
         public int level;
+        public int rating;
+        public int pricePerVisit;
+        public int countLockers;
+        
         public List<ObjectDataSave> listObjectsDataSave = new List<ObjectDataSave>();
     }
     
@@ -49,8 +53,6 @@ public class SaveLoadManager : MonoBehaviour
     private class AllDataSave
     {
         public int money;
-        public int rating;
-        public int pricePerVisit;
         public List<LevelDataSave> listLevelsDataSave = new List<LevelDataSave>();
     }
 
@@ -59,14 +61,16 @@ public class SaveLoadManager : MonoBehaviour
         FillListGameObjectsForSave();
 
         LevelDataSave levelDataSave = new LevelDataSave();
+        
         levelDataSave.level = 1;
+        levelDataSave.rating = LevelManager.Instance.GetRating();
+        levelDataSave.pricePerVisit = LevelManager.Instance.GetPricePerVisit();
+        levelDataSave.countLockers = LevelManager.Instance.GetCountLockers();
         levelDataSave.listObjectsDataSave = FormListObjectsDataSave();
         
         AllDataSave allDataSave = new AllDataSave();
         
         allDataSave.money = PlayerData.Instanse.GetMoney();
-        allDataSave.rating = LevelManager.Instance.GetRating();
-        allDataSave.pricePerVisit = LevelManager.Instance.GetPricePerVisit();
         allDataSave.listLevelsDataSave.Add(levelDataSave);
         
         File.WriteAllText(savePath, JsonUtility.ToJson(allDataSave, true));
@@ -80,11 +84,13 @@ public class SaveLoadManager : MonoBehaviour
         allDataSave = JsonUtility.FromJson<AllDataSave>(File.ReadAllText(savePath));
         
         PlayerData.Instanse.LoadMoney(allDataSave.money);
-        LevelManager.Instance.LoadRating(allDataSave.rating);
-        LevelManager.Instance.LoadPricePerVisit(allDataSave.pricePerVisit);
         
         LevelDataSave levelDataSave = allDataSave.listLevelsDataSave[0];
-
+        
+        LevelManager.Instance.LoadRating(levelDataSave.rating);
+        LevelManager.Instance.LoadPricePerVisit(levelDataSave.pricePerVisit);
+        LevelManager.Instance.LoadCountLockers(levelDataSave.countLockers);
+        
         foreach (var objDataSave in levelDataSave.listObjectsDataSave)
         {
             BuildingManager.Instance.CreateAndSetObjectForLoad(objDataSave.indexInBuildingManagerList, 

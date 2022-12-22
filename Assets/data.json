@@ -1,10 +1,11 @@
 {
-    "money": 27232,
-    "rating": 22,
-    "pricePerVisit": 20,
+    "money": 27802,
     "listLevelsDataSave": [
         {
             "level": 1,
+            "rating": 5,
+            "pricePerVisit": 20,
+            "countLockers": 0,
             "listObjectsDataSave": [
                 {
                     "position": {

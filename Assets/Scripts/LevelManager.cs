@@ -22,10 +22,12 @@ public class LevelManager : MonoBehaviour
     private const int ratingOnStart = 50;
     private const int pricePerVisitOnStart = 20;
     private const float timeSpawnClientBase = 4;
+    private const int countLockersOnStart = 0;
     
     private int rating;
     private int pricePerVisit;
     private float timeSpawnClient;
+    private int countLockers;
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class LevelManager : MonoBehaviour
             UIManagerMain.Instance.SetRating(rating);
 
             pricePerVisit = pricePerVisitOnStart;
+            countLockers = countLockersOnStart;
         }
         
         Invoke(nameof(SetTimeSpawnClient), 1f);
@@ -111,5 +114,25 @@ public class LevelManager : MonoBehaviour
     public float GetTimeSpawnClient()
     {
         return timeSpawnClient;
+    }
+
+    public void AddCountLockers(int n)
+    {
+        countLockers += n;
+    }
+
+    public void TakeAwayCountLockers(int n)
+    {
+        countLockers -= n;
+    }
+
+    public int GetCountLockers()
+    {
+        return countLockers;
+    }
+
+    public void LoadCountLockers(int value)
+    {
+        countLockers = value;
     }
 }
