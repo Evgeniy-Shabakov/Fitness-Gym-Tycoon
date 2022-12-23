@@ -133,41 +133,47 @@ public class HumanControls : MonoBehaviour
         Vector3 positionBeforeAction = transform.position;
         Quaternion rotationBeforeAction = transform.rotation;
         float wait = 1f;
-        
-        if (targetsArray[indexInTargetsArray] != 0 && targetsArray[indexInTargetsArray] != 1)
-        {
-            navMeshAgent.enabled = false;
 
-            transform.position = currentGameObjectForAction.transform.parent.Find("PivotForHuman").position;
-            transform.rotation = currentGameObjectForAction.transform.parent.Find("PivotForHuman").rotation;
-            
-            currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
-            wait = Random.Range(LevelManager.minTimeExercise, LevelManager.maxTimeExercise);
-        }
-        
-        if (targetsArray[indexInTargetsArray] == 0)
+        switch (targetsArray[indexInTargetsArray])
         {
-            PlayerData.Instanse.AddMoney(LevelManager.Instance.GetPricePerVisit());
-            humanReactionControl.SetMoneyAboveHuman();
-            humanReactionControl.SetTextAboveHuman("+" + LevelManager.Instance.GetPricePerVisit());
+            case 0:
+                PlayerData.Instanse.AddMoney(LevelManager.Instance.GetPricePerVisit());
+                humanReactionControl.SetMoneyAboveHuman();
+                humanReactionControl.SetTextAboveHuman("+" + LevelManager.Instance.GetPricePerVisit());
+                break;
+            case 1:
+                break;
+            default:
+                navMeshAgent.enabled = false;
+
+                transform.position = currentGameObjectForAction.transform.parent.Find("PivotForHuman").position;
+                transform.rotation = currentGameObjectForAction.transform.parent.Find("PivotForHuman").rotation;
+            
+                currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
+                wait = Random.Range(LevelManager.minTimeExercise, LevelManager.maxTimeExercise);
+                
+                break;
         }
-        
+
         yield return new WaitForSeconds(wait);
 
-        if (targetsArray[indexInTargetsArray] != 0 && targetsArray[indexInTargetsArray] != 1)
+        switch (targetsArray[indexInTargetsArray])
         {
-            transform.rotation = rotationBeforeAction;
-            transform.position = positionBeforeAction;
-            navMeshAgent.enabled = true;
+            case 0:
+                humanReactionControl.SetTextAboveHuman("");
+                break;
+            case 1:
+                break;
+            default:
+                transform.rotation = rotationBeforeAction;
+                transform.position = positionBeforeAction;
+                navMeshAgent.enabled = true;
             
-            currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
+                currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
             
-            AddMood(LevelManager.countMoodAdd);
-        }
-        
-        if (targetsArray[indexInTargetsArray] == 0)
-        {
-            humanReactionControl.SetTextAboveHuman("");
+                AddMood(LevelManager.countMoodAdd);
+                
+                break;
         }
         
         humanDoAction = false;

@@ -13,7 +13,7 @@ public class ObjectData : MonoBehaviour
     [HideInInspector] public Vector3 positionBeforeMove;
     [HideInInspector] public Quaternion rotationBeforeMove;
 
-    private List<GameObject> _listClients = new List<GameObject>();
+    private readonly List<GameObject> _listClients = new List<GameObject>();
     
     private void Start()
     {
