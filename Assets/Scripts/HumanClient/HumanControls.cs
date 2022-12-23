@@ -141,7 +141,7 @@ public class HumanControls : MonoBehaviour
             transform.position = currentGameObjectForAction.transform.parent.Find("PivotForHuman").position;
             transform.rotation = currentGameObjectForAction.transform.parent.Find("PivotForHuman").rotation;
             
-            currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = false;
+            currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
             wait = Random.Range(LevelManager.minTimeExercise, LevelManager.maxTimeExercise);
         }
         
@@ -160,7 +160,7 @@ public class HumanControls : MonoBehaviour
             transform.position = positionBeforeAction;
             navMeshAgent.enabled = true;
             
-            currentGameObjectForAction.GetComponent<ObjectData>().objectIsFree = true;
+            currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
             
             AddMood(LevelManager.countMoodAdd);
         }

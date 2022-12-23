@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectData : MonoBehaviour
@@ -12,8 +13,30 @@ public class ObjectData : MonoBehaviour
     [HideInInspector] public Vector3 positionBeforeMove;
     [HideInInspector] public Quaternion rotationBeforeMove;
 
+    private List<GameObject> _listClients = new List<GameObject>();
+    
     private void Start()
     {
         objectIsFree = true;
+    }
+
+    public void AddClient(GameObject client)
+    {
+        _listClients.Add(client);
+
+        if (_listClients.Count >= BuildingManager.Instance.objectsForBuilding[indexInBuildingManagerList].maxCountClients)
+        {
+            objectIsFree = false;
+        }
+    }
+
+    public void RemoveClient(GameObject client)
+    {
+        _listClients.Remove(client);
+
+        if (_listClients.Count < BuildingManager.Instance.objectsForBuilding[indexInBuildingManagerList].maxCountClients)
+        {
+            objectIsFree = true;
+        }
     }
 }

@@ -10,4 +10,5 @@ public class ObjectForBuilding : ScriptableObject
     public int price;
     public string description;
     public float damageInPersent;
+    public int maxCountClients;
 }
