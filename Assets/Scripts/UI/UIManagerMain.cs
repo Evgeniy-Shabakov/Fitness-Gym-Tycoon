@@ -10,6 +10,7 @@ public class UIManagerMain : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI textForMoney;
     [SerializeField] private TextMeshProUGUI textLockers;
+    [SerializeField] private TextMeshProUGUI textCountMen;
     
     [SerializeField] private Slider sliderRating;
     [SerializeField] private Image fillSliderRating;
@@ -30,6 +31,11 @@ public class UIManagerMain : MonoBehaviour
     public void SetTextLockers(int lockers)
     {
         textLockers.text = "" + lockers;
+    }
+
+    public void SetTextCountMen(int men)
+    {
+        textCountMen.text = "" + men;
     }
     
     public void SetRating(int rating)

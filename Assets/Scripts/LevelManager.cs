@@ -29,6 +29,8 @@ public class LevelManager : MonoBehaviour
     private float timeSpawnClient;
     private int countLockers;
 
+    private int _countMen;
+
     private void Awake()
     {
         Instance = this;
@@ -48,6 +50,8 @@ public class LevelManager : MonoBehaviour
         }
         
         Invoke(nameof(SetTimeSpawnClient), 1f);
+
+        _countMen = 0;
     }
 
     private void SetTimeSpawnClient()
@@ -140,5 +144,17 @@ public class LevelManager : MonoBehaviour
     {
         countLockers = value;
         UIManagerMain.Instance.SetTextLockers(countLockers);
+    }
+
+    public void AddCountMen()
+    {
+        _countMen++;
+        UIManagerMain.Instance.SetTextCountMen(_countMen);
+    }
+
+    public void TakeAwayCountMen()
+    {
+        _countMen--;
+        UIManagerMain.Instance.SetTextCountMen(_countMen);
     }
 }

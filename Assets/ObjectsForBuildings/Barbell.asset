@@ -19,3 +19,4 @@ MonoBehaviour:
   price: 2000
   description: 'For weightlifting '
   damageInPersent: 0.05
+  maxCountClients: 1

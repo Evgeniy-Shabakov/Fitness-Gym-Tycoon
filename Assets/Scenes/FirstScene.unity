@@ -4507,6 +4507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textForMoney: {fileID: 695165460}
   textLockers: {fileID: 511807122}
+  textCountMen: {fileID: 520696264}
   sliderRating: {fileID: 521878777}
   fillSliderRating: {fileID: 1542155429}
   colorHappy: {r: 0.9843138, g: 0.9803922, b: 0.25882354, a: 1}

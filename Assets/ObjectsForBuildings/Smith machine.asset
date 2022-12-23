@@ -19,3 +19,4 @@ MonoBehaviour:
   price: 5000
   description: Allows you to perform strength exercises safely
   damageInPersent: 0.1
+  maxCountClients: 1

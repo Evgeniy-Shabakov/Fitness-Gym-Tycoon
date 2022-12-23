@@ -15,6 +15,8 @@ MonoBehaviour:
   prefab: {fileID: 2234009454482266267, guid: 6e291fc23ffe5c1478b193c56b2bb184, type: 3}
   sprite: {fileID: 21300000, guid: b23db5dedb91b344e858597d86703817, type: 3}
   animatorOverrideController: {fileID: 22100000, guid: 30865313dc3d0c840b1f0e21d1f8ba77, type: 2}
+  needBarbellInHands: 0
   price: 1800
   description: For the latissimus dorsi
   damageInPersent: 0.1
+  maxCountClients: 1

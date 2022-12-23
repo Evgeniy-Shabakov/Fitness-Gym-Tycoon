@@ -28,6 +28,7 @@ public class HumanControls : MonoBehaviour
     [HideInInspector] public UnityEvent humanDoActionStop = new UnityEvent();
     
     private bool humanDoAction;
+    private GameObject _locker;
 
     void Start()
     {
@@ -62,6 +63,13 @@ public class HumanControls : MonoBehaviour
     {
         if (humanDoAction) return;
         
+        if (indexInTargetsArray == countTargets - 1)
+        {
+            if (navMeshAgent.enabled) navMeshAgent.SetDestination(_locker.transform.position);
+            humanReactionControl.ClearHumanReactionSprite();
+            return;
+        }
+        
         GameObject target = SearchNeededAndFreeObject();
         
         if (target != null)
@@ -79,14 +87,28 @@ public class HumanControls : MonoBehaviour
             return;
         }
         
+        if (indexInTargetsArray == 1)
+        {
+            PlayerData.Instanse.SpendMoney(LevelManager.Instance.GetPricePerVisit());
+            humanReactionControl.SetMoneyAboveHuman();
+            humanReactionControl.SetTextAboveHuman("-" + LevelManager.Instance.GetPricePerVisit());
+            
+            TakeAwayMood(100);
+            Invoke(nameof(SendHumanHome), 1f);
+            if (gameObject != UIManagerPanelHumanClient.Instance.currentGameObjectForPanelHumanClient) return;
+            UIManagerPanelHumanClient.Instance.UpdateData();
+            return;
+        }
+        
         TakeAwayMood(LevelManager.countMoodTakeAway);
         NextIndexInTargetsArray();
+        
         if (indexInTargetsArray < countTargets)
         {
             numberOfAttempts = 0;
             MoveHuman();
         }
-        
+
         else
         {
             SendHumanHome();
@@ -106,6 +128,13 @@ public class HumanControls : MonoBehaviour
             currentGameObjectForAction = other.gameObject;
             StartCoroutine(DoActionInObject());
         }
+        
+        else if (indexInTargetsArray == countTargets - 1 && other.gameObject == _locker)
+        {
+            currentGameObjectForAction = other.gameObject;
+            StartCoroutine(DoActionInObject());
+        }
+        
         else
         {
             numberOfAttempts = 0;
@@ -142,6 +171,12 @@ public class HumanControls : MonoBehaviour
                 humanReactionControl.SetTextAboveHuman("+" + LevelManager.Instance.GetPricePerVisit());
                 break;
             case 1:
+                if (indexInTargetsArray == 1)
+                {
+                    _locker = currentGameObjectForAction;
+                    currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
+                    LevelManager.Instance.AddCountMen();
+                }
                 break;
             default:
                 navMeshAgent.enabled = false;
@@ -163,6 +198,11 @@ public class HumanControls : MonoBehaviour
                 humanReactionControl.SetTextAboveHuman("");
                 break;
             case 1:
+                if (indexInTargetsArray == countTargets - 1)
+                {
+                    currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
+                    LevelManager.Instance.TakeAwayCountMen();
+                }
                 break;
             default:
                 transform.rotation = rotationBeforeAction;
@@ -261,6 +301,7 @@ public class HumanControls : MonoBehaviour
         if (navMeshAgent.enabled) navMeshAgent.SetDestination(Vector3.zero);
         Invoke("DestroyHuman", 15f);
         humanReactionControl.SetSmileAboveHuman();
+        humanReactionControl.SetTextAboveHuman("");
         
         if (mood <= LevelManager.moodSad) LevelManager.Instance.TakeAwayRating(1);
         else if (mood > LevelManager.moodHappy) LevelManager.Instance.AddRating(1);

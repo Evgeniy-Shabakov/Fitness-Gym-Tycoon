@@ -19,3 +19,4 @@ MonoBehaviour:
   price: 500
   description: Without a locker, customers will not be able to change clothes
   damageInPersent: 0
+  maxCountClients: 5

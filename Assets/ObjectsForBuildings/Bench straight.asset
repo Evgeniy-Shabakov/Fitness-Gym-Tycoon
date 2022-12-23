@@ -15,6 +15,8 @@ MonoBehaviour:
   prefab: {fileID: 4787509698599125659, guid: 55cafca33114a4642b45d4dfe69b50e6, type: 3}
   sprite: {fileID: 21300000, guid: 9642dbc8a8c16684cbf3b3a3c65ab088, type: 3}
   animatorOverrideController: {fileID: 22100000, guid: e2b3222a291a70948a03beb1649a738d, type: 2}
+  needBarbellInHands: 0
   price: 500
   description: To work with dumbbells
   damageInPersent: 0.1
+  maxCountClients: 1
