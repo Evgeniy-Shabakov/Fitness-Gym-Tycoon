@@ -3,35 +3,41 @@ using UnityEngine;
 
 public class PreBuildingCollision : MonoBehaviour
 {
-    private bool placeForBuildIsClear;
+    private bool _installationAllowed;
 
-    private GameObject parent;
-    private Material defaultMaterial;
-    private MeshRenderer mr;
+    private GameObject _parent;
+    private Material _defaultMaterial;
+    private MeshRenderer _mr;
+
+    private ObjectData _objectData;
+    private LayerMask _allowedLayer;
     
     private void Start()
     {
-        parent = transform.parent.gameObject;
-        mr = parent.GetComponent<MeshRenderer>();
+        _parent = transform.parent.gameObject;
+        _mr = _parent.GetComponent<MeshRenderer>();
         
-        defaultMaterial = mr.material;
-        mr.material = BuildingManager.Instance.materialForPreview;
+        _defaultMaterial = _mr.material;
+        _mr.material = BuildingManager.Instance.materialForPreview;
 
-        if (ObjectAboveFloor())
+        _objectData = GetComponent<ObjectData>();
+        _allowedLayer = BuildingManager.Instance.objectsForBuilding[_objectData.indexInBuildingManagerList].layerFloor;
+
+        if (ObjectAboveAllowedLayer())
         {
-            placeForBuildIsClear = true;
-            mr.material = BuildingManager.Instance.materialForPreview;
+            _installationAllowed = true;
+            _mr.material = BuildingManager.Instance.materialForPreview;
         }
         else
         {
-            placeForBuildIsClear = false;
-            mr.material = BuildingManager.Instance.materialForCollision;
+            _installationAllowed = false;
+            _mr.material = BuildingManager.Instance.materialForCollision;
         }
     }
 
     private void OnDestroy()
     {
-        if (defaultMaterial != null) mr.material = defaultMaterial;
+        if (_defaultMaterial != null) _mr.material = _defaultMaterial;
     }
 
     private void OnTriggerStay(Collider other)
@@ -40,42 +46,42 @@ public class PreBuildingCollision : MonoBehaviour
         if (other.tag == "HumanClient") return;
         if (other.tag == "Plane") return;
         
-        placeForBuildIsClear = false;
-        if (mr != null) mr.material = BuildingManager.Instance.materialForCollision;
+        _installationAllowed = false;
+        if (_mr != null) _mr.material = BuildingManager.Instance.materialForCollision;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        placeForBuildIsClear = true;
-        mr.material = BuildingManager.Instance.materialForPreview;
+        _installationAllowed = true;
+        _mr.material = BuildingManager.Instance.materialForPreview;
         
-        if (ObjectAboveFloor())
+        if (ObjectAboveAllowedLayer())
         {
-            placeForBuildIsClear = true;
-            mr.material = BuildingManager.Instance.materialForPreview;
+            _installationAllowed = true;
+            _mr.material = BuildingManager.Instance.materialForPreview;
         }
         else
         {
-            placeForBuildIsClear = false;
-            mr.material = BuildingManager.Instance.materialForCollision;
+            _installationAllowed = false;
+            _mr.material = BuildingManager.Instance.materialForCollision;
         }
     }
 
-    public bool PlaceForBuildIsClear()
+    public bool GetInstallationAllowed()
     {
-        return placeForBuildIsClear;
+        return _installationAllowed;
     }
 
-    public void SetPlaceForBuildIsClear(bool value)
+    public void SetInstallationAllowed(bool value)
     {
-        placeForBuildIsClear = value;
+        _installationAllowed = value;
     }
     
-    private bool ObjectAboveFloor()
+    private bool ObjectAboveAllowedLayer()
     {
         Ray ray = new Ray(transform.position, -Vector3.up);
         
-        if (Physics.Raycast(ray, 10f, BuildingManager.Instance.layerMaskForFloor)) return true;
+        if (Physics.Raycast(ray, 10f, _allowedLayer)) return true;
         else return false;
     }
 }

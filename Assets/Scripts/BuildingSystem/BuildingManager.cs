@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.Events;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -12,14 +10,13 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] private GameObject parentForAllDynamicObjects;
     
     [HideInInspector] public GameObject objectForBuild;
-    private GameObject childHelperObjectForBuild;
+    private GameObject _childHelperObjectForBuild;
     
     public LayerMask layerMaskForPlane;
-    public LayerMask layerMaskForFloor;
     public Material materialForPreview;
     public Material materialForCollision;
 
-    private Camera mainCamera;
+    private Camera _mainCamera;
     
     private void Awake()
     {
@@ -28,7 +25,7 @@ public class BuildingManager : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = Camera.main;
+        _mainCamera = Camera.main;
     }
 
     public void CreateObjectForBuild(int indexOfListModels)
@@ -37,7 +34,7 @@ public class BuildingManager : MonoBehaviour
         
         Vector3 targetPosition;
 
-        Ray ray = new Ray(mainCamera.transform.position, mainCamera.transform.forward*100);
+        Ray ray = new Ray(_mainCamera.transform.position, _mainCamera.transform.forward*100);
         RaycastHit hit; 
         Physics.Raycast(ray, out hit, 100f, layerMaskForPlane);
         
@@ -46,7 +43,7 @@ public class BuildingManager : MonoBehaviour
         
         objectForBuild = Instantiate(objectsForBuilding[indexOfListModels].prefab, targetPosition, objectsForBuilding[indexOfListModels].prefab.transform.rotation);
         
-        objectForBuild.transform.SetParent(mainCamera.transform);
+        objectForBuild.transform.SetParent(_mainCamera.transform);
 
         objectForBuild.GetComponentInChildren<ObjectData>().isNew = true;
         objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
@@ -57,15 +54,15 @@ public class BuildingManager : MonoBehaviour
 
     public void SetObject()
     {
-        childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
+        _childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
         
-        if (childHelperObjectForBuild.GetComponent<PreBuildingCollision>().PlaceForBuildIsClear() == false) return;
+        if (_childHelperObjectForBuild.GetComponent<PreBuildingCollision>().GetInstallationAllowed() == false) return;
         
         objectForBuild.transform.SetParent(parentForAllDynamicObjects.transform);
         
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
-        childHelperObjectForBuild.AddComponent<ObjectSettings>();
+        _childHelperObjectForBuild.AddComponent<ObjectSettings>();
 
         objectForBuild = null;
         SaveLoadManager.Instance.Save();
@@ -81,11 +78,11 @@ public class BuildingManager : MonoBehaviour
         objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
         objectForBuild.GetComponentInChildren<ObjectData>().price = objectsForBuilding[indexOfListModels].price;
         
-        childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
+        _childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
         
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
-        childHelperObjectForBuild.AddComponent<ObjectSettings>();
+        _childHelperObjectForBuild.AddComponent<ObjectSettings>();
         
         objectForBuild = null;
     }

@@ -34,7 +34,7 @@ public class UIManagerPanelObject : MonoBehaviour
             currentGameObjectForPanel.transform.position = objectData.positionBeforeMove;
             currentGameObjectForPanel.transform.rotation = objectData.rotationBeforeMove;
             
-            currentGameObjectForPanel.GetComponentInChildren<PreBuildingCollision>().SetPlaceForBuildIsClear(true);
+            currentGameObjectForPanel.GetComponentInChildren<PreBuildingCollision>().SetInstallationAllowed(true);
             BuildingManager.Instance.SetObject();
         }
         
