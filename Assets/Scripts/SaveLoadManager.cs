@@ -80,7 +80,12 @@ public class SaveLoadManager : MonoBehaviour
     {
         if (File.Exists(savePath) == false)
         {
-            PlayerData.SetMoney(LevelManager.moneyStartGame);
+            PlayerData.SetMoney(LevelManager.MoneyStartGame);
+            
+            LevelManager.Instance.SetRating(LevelManager.RatingOnStart);
+            LevelManager.Instance.SetPricePerVisit(LevelManager.PricePerVisitOnStart);
+            LevelManager.Instance.SetCountLockers(LevelManager.CountLockersOnStart);
+            
             return;
         }
         
@@ -91,9 +96,9 @@ public class SaveLoadManager : MonoBehaviour
         
         LevelDataSave levelDataSave = allDataSave.listLevelsDataSave[0];
         
-        LevelManager.Instance.LoadRating(levelDataSave.rating);
-        LevelManager.Instance.LoadPricePerVisit(levelDataSave.pricePerVisit);
-        LevelManager.Instance.LoadCountLockers(levelDataSave.countLockers);
+        LevelManager.Instance.SetRating(levelDataSave.rating);
+        LevelManager.Instance.SetPricePerVisit(levelDataSave.pricePerVisit);
+        LevelManager.Instance.SetCountLockers(levelDataSave.countLockers);
         
         foreach (var objDataSave in levelDataSave.listObjectsDataSave)
         {

@@ -96,12 +96,12 @@ public class UIManagerPanelHumanClient : MonoBehaviour
         
         sliderMood.value = humanControls.GetMood();
         
-        if (sliderMood.value <= LevelManager.moodSad)
+        if (sliderMood.value <= LevelManager.MoodSad)
         {
             imageSmile.sprite = spriteSmileSad;
             fillSliderMood.color = colorSad;
         }
-        else if (sliderMood.value > LevelManager.moodSad && sliderMood.value < LevelManager.moodHappy)
+        else if (sliderMood.value > LevelManager.MoodSad && sliderMood.value < LevelManager.MoodHappy)
         {
             imageSmile.sprite = spriteSmileMiddle;
             fillSliderMood.color = colorMiddle;

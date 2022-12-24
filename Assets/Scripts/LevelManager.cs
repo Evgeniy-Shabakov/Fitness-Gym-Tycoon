@@ -1,33 +1,32 @@
-using System;
 using UnityEngine;
-using System.IO;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     
-    public const int moneyStartGame = 50000;
+    public const int MoneyStartGame = 50000;
     
-    public const int moodSad = 25;
-    public const int moodHappy = 75;
-    public const int moodRangeMin = 35;
-    public const int moodRangeMax = 100;
-    public const int countMoodAdd = 10;
-    public const int countMoodTakeAway = 15;
+    public const int MoodSad = 25;
+    public const int MoodHappy = 75;
+    public const int MoodRangeMin = 35;
+    public const int MoodRangeMax = 100;
+    public const int CountMoodAdd = 10;
+    public const int CountMoodTakeAway = 15;
 
-    public const float minTimeExercise = 4;
-    public const float maxTimeExercise = 7;
+    public const float MinTimeExercise = 4;
+    public const float MaxTimeExercise = 7;
     
-    private const int ratingOnStart = 50;
-    private const int pricePerVisitOnStart = 20;
-    private const float timeSpawnClientBase = 4;
-    private const int countLockersOnStart = 0;
+    public const int RatingOnStart = 50;
+    public const int PricePerVisitOnStart = 20;
+    public const int CountLockersOnStart = 0;
     
-    private int rating;
-    private int pricePerVisit;
-    private float timeSpawnClient;
-    private int countLockers;
+    private const float TimeSpawnClientBase = 4;
+    
+    private int _rating;
+    private int _pricePerVisit;
+    private float _timeSpawnClient;
+    private int _countLockers;
 
     private int _countMen;
 
@@ -38,17 +37,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        if (File.Exists(SaveLoadManager.Instance.savePath) == false)
-        {
-            rating = ratingOnStart;
-            UIManagerMain.Instance.SetRating(rating);
-
-            pricePerVisit = pricePerVisitOnStart;
-            
-            countLockers = countLockersOnStart;
-            UIManagerMain.Instance.SetTextLockers(countLockers);
-        }
-        
         Invoke(nameof(SetTimeSpawnClient), 1f);
 
         _countMen = 0;
@@ -57,23 +45,23 @@ public class LevelManager : MonoBehaviour
     private void SetTimeSpawnClient()
     {
         float k1;
-        if (rating <= moodSad) k1 = 2;
-        else if (rating > moodSad && rating < moodHappy) k1 = 1;
+        if (_rating <= MoodSad) k1 = 2;
+        else if (_rating > MoodSad && _rating < MoodHappy) k1 = 1;
         else k1 = 0.5f;
 
         float k2;
-        if (pricePerVisit <= pricePerVisitOnStart) k2 = 0.5f;
-        else k2 = (pricePerVisit - pricePerVisitOnStart) / 100f + 1f;
+        if (_pricePerVisit <= PricePerVisitOnStart) k2 = 0.5f;
+        else k2 = (_pricePerVisit - PricePerVisitOnStart) / 100f + 1f;
         
-        timeSpawnClient = timeSpawnClientBase * k1 * k2;
+        _timeSpawnClient = TimeSpawnClientBase * k1 * k2;
     }
     
     public void AddRating(int n)
     {
-        rating += n;
-        if (rating > 100) rating = 100;
+        _rating += n;
+        if (_rating > 100) _rating = 100;
         
-        UIManagerMain.Instance.SetRating(rating);
+        UIManagerMain.Instance.SetRating(_rating);
         SaveLoadManager.Instance.Save();
 
         SetTimeSpawnClient();
@@ -81,10 +69,10 @@ public class LevelManager : MonoBehaviour
 
     public void TakeAwayRating(int n)
     {
-        rating -= n;
-        if (rating < 5) rating = 5;
+        _rating -= n;
+        if (_rating < 5) _rating = 5;
         
-        UIManagerMain.Instance.SetRating(rating);
+        UIManagerMain.Instance.SetRating(_rating);
         SaveLoadManager.Instance.Save();
         
         SetTimeSpawnClient();
@@ -92,58 +80,58 @@ public class LevelManager : MonoBehaviour
 
     public int GetRating()
     {
-        return rating;
+        return _rating;
     }
 
-    public void LoadRating(int value)
+    public void SetRating(int value)
     {
-        rating = value;
-        UIManagerMain.Instance.SetRating(rating);
+        _rating = value;
+        UIManagerMain.Instance.SetRating(_rating);
     }
 
     public int GetPricePerVisit()
     {
-        return pricePerVisit;
+        return _pricePerVisit;
     }
 
     public void SetPricePerVisitFromSlider(Slider sl)
     {
-        pricePerVisit = (int)sl.value;
+        _pricePerVisit = (int)sl.value;
         SetTimeSpawnClient();
     }
     
-    public void LoadPricePerVisit(int value)
+    public void SetPricePerVisit(int value)
     {
-        pricePerVisit = value;
+        _pricePerVisit = value;
     }
 
     public float GetTimeSpawnClient()
     {
-        return timeSpawnClient;
+        return _timeSpawnClient;
     }
 
     public void AddCountLockers(int n)
     {
-        countLockers += n;
-        UIManagerMain.Instance.SetTextLockers(countLockers);
+        _countLockers += n;
+        UIManagerMain.Instance.SetTextLockers(_countLockers);
     }
 
     public void TakeAwayCountLockers(int n)
     {
-        countLockers -= n;
-        if (countLockers < 0) countLockers = 0;
-        UIManagerMain.Instance.SetTextLockers(countLockers);
+        _countLockers -= n;
+        if (_countLockers < 0) _countLockers = 0;
+        UIManagerMain.Instance.SetTextLockers(_countLockers);
     }
 
     public int GetCountLockers()
     {
-        return countLockers;
+        return _countLockers;
     }
 
-    public void LoadCountLockers(int value)
+    public void SetCountLockers(int value)
     {
-        countLockers = value;
-        UIManagerMain.Instance.SetTextLockers(countLockers);
+        _countLockers = value;
+        UIManagerMain.Instance.SetTextLockers(_countLockers);
     }
 
     public void AddCountMen()

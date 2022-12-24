@@ -42,7 +42,7 @@ public class HumanControls : MonoBehaviour
         indexInTargetsArray = 0;
 
         trainingIsFinished = false;
-        mood = Random.Range(LevelManager.moodRangeMin, LevelManager.moodRangeMax + 1);
+        mood = Random.Range(LevelManager.MoodRangeMin, LevelManager.MoodRangeMax + 1);
         
         targetsStatus = new bool[countTargets];
 
@@ -100,7 +100,7 @@ public class HumanControls : MonoBehaviour
             return;
         }
         
-        TakeAwayMood(LevelManager.countMoodTakeAway);
+        TakeAwayMood(LevelManager.CountMoodTakeAway);
         NextIndexInTargetsArray();
         
         if (indexInTargetsArray < countTargets)
@@ -185,7 +185,7 @@ public class HumanControls : MonoBehaviour
                 transform.rotation = currentGameObjectForAction.transform.parent.Find("PivotForHuman").rotation;
             
                 currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
-                wait = Random.Range(LevelManager.minTimeExercise, LevelManager.maxTimeExercise);
+                wait = Random.Range(LevelManager.MinTimeExercise, LevelManager.MaxTimeExercise);
                 
                 break;
         }
@@ -211,7 +211,7 @@ public class HumanControls : MonoBehaviour
             
                 currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
             
-                AddMood(LevelManager.countMoodAdd);
+                AddMood(LevelManager.CountMoodAdd);
                 
                 break;
         }
@@ -303,8 +303,8 @@ public class HumanControls : MonoBehaviour
         humanReactionControl.SetSmileAboveHuman();
         humanReactionControl.SetTextAboveHuman("");
         
-        if (mood <= LevelManager.moodSad) LevelManager.Instance.TakeAwayRating(1);
-        else if (mood > LevelManager.moodHappy) LevelManager.Instance.AddRating(1);
+        if (mood <= LevelManager.MoodSad) LevelManager.Instance.TakeAwayRating(1);
+        else if (mood > LevelManager.MoodHappy) LevelManager.Instance.AddRating(1);
         
         trainingIsFinished = true;
     }

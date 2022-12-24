@@ -52,8 +52,8 @@ public class HumanReactionControl : MonoBehaviour
         {
             int mood = humanControls.GetMood();
         
-            if (mood <= LevelManager.moodSad) imageHumanReaction.sprite = spriteSmileSad;
-            else if (mood > LevelManager.moodSad && mood < LevelManager.moodHappy) imageHumanReaction.sprite = spriteSmileMiddle;
+            if (mood <= LevelManager.MoodSad) imageHumanReaction.sprite = spriteSmileSad;
+            else if (mood > LevelManager.MoodSad && mood < LevelManager.MoodHappy) imageHumanReaction.sprite = spriteSmileMiddle;
             else imageHumanReaction.sprite = spriteSmileHappy;
         }
     }

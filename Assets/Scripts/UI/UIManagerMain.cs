@@ -42,11 +42,11 @@ public class UIManagerMain : MonoBehaviour
     {
         sliderRating.value = rating;
         
-        if (sliderRating.value <= LevelManager.moodSad)
+        if (sliderRating.value <= LevelManager.MoodSad)
         {
             fillSliderRating.color = colorSad;
         }
-        else if (sliderRating.value > LevelManager.moodSad && sliderRating.value < LevelManager.moodHappy)
+        else if (sliderRating.value > LevelManager.MoodSad && sliderRating.value < LevelManager.MoodHappy)
         {
             fillSliderRating.color = colorMiddle;
         }
