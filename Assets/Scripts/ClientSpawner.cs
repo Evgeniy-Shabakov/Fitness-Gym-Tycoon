@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using HumanClient;
 using UnityEngine;
 
 public class ClientSpawner : MonoBehaviour
@@ -6,7 +7,7 @@ public class ClientSpawner : MonoBehaviour
     [SerializeField] private GameObject prefabHumanClient;
     [SerializeField] private List<GameObject> prefabsHumansModels;
 
-    private GameObject currentHumanClient;
+    private GameObject _currentHumanClient;
 
     void Start()
     {
@@ -15,8 +16,18 @@ public class ClientSpawner : MonoBehaviour
 
     private void CreateClient()
     {
-        currentHumanClient = Instantiate(prefabHumanClient, transform);
-        Instantiate(prefabsHumansModels[Random.Range(0,2)], currentHumanClient.transform);
+        _currentHumanClient = Instantiate(prefabHumanClient, transform);
+        
+        GameObject humanModel = Instantiate(prefabsHumansModels[Random.Range(0,2)], _currentHumanClient.transform);
+        
+        if (humanModel.CompareTag("Male"))
+        {
+            _currentHumanClient.GetComponent<HumanClientData>().SetGender(HumanClientData.Gender.Male);
+        }
+        else
+        {
+            _currentHumanClient.GetComponent<HumanClientData>().SetGender(HumanClientData.Gender.Female);
+        }
         
         Invoke(nameof(CreateClient), LevelManager.Instance.GetTimeSpawnClient());
     }
