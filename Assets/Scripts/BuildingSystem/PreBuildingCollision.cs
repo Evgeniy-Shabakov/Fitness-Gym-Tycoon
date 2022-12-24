@@ -1,9 +1,10 @@
-using System;
 using UnityEngine;
 
 public class PreBuildingCollision : MonoBehaviour
 {
     private bool _installationAllowed;
+
+    private bool _isCollision;
 
     private GameObject _parent;
     private Material _defaultMaterial;
@@ -22,8 +23,11 @@ public class PreBuildingCollision : MonoBehaviour
 
         _objectData = GetComponent<ObjectData>();
         _allowedLayer = BuildingManager.Instance.objectsForBuilding[_objectData.indexInBuildingManagerList].layerFloor;
+    }
 
-        if (ObjectAboveAllowedLayer())
+    private void Update()
+    {
+        if (_isCollision == false && ObjectAboveAllowedLayer())
         {
             _installationAllowed = true;
             _mr.material = BuildingManager.Instance.materialForPreview;
@@ -33,11 +37,6 @@ public class PreBuildingCollision : MonoBehaviour
             _installationAllowed = false;
             _mr.material = BuildingManager.Instance.materialForCollision;
         }
-    }
-
-    private void OnDestroy()
-    {
-        if (_defaultMaterial != null) _mr.material = _defaultMaterial;
     }
 
     private void OnTriggerStay(Collider other)
@@ -45,28 +44,20 @@ public class PreBuildingCollision : MonoBehaviour
         if (other.tag == "Floor") return;
         if (other.tag == "HumanClient") return;
         if (other.tag == "Plane") return;
-        
-        _installationAllowed = false;
-        if (_mr != null) _mr.material = BuildingManager.Instance.materialForCollision;
+
+        _isCollision = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        _installationAllowed = true;
-        _mr.material = BuildingManager.Instance.materialForPreview;
-        
-        if (ObjectAboveAllowedLayer())
-        {
-            _installationAllowed = true;
-            _mr.material = BuildingManager.Instance.materialForPreview;
-        }
-        else
-        {
-            _installationAllowed = false;
-            _mr.material = BuildingManager.Instance.materialForCollision;
-        }
+        _isCollision = false;
     }
 
+    private void OnDestroy()
+    {
+        if (_defaultMaterial != null) _mr.material = _defaultMaterial;
+    }
+    
     public bool GetInstallationAllowed()
     {
         return _installationAllowed;
