@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6219544330484885824, guid: 7338b7b69c16ddd4fa93bc18029f077b, type: 3}
   sprite: {fileID: 21300000, guid: 982b14c5964f99b4e86cb0932c756916, type: 3}
+  layerFloor:
+    serializedVersion: 2
+    m_Bits: 1024
   animatorOverrideController: {fileID: 22100000, guid: 6385b56217501764983aa5640e9bada6, type: 2}
   needBarbellInHands: 0
   price: 1000

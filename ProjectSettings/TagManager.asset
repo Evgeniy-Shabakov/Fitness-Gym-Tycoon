@@ -17,11 +17,11 @@ TagManager:
   - Floor
   - Walls
   - Objects
-  - 
-  - 
-  - 
-  - 
-  - 
+  - FloorGym
+  - FloorReception
+  - FloorMenLockerRoom
+  - FloorWomenLockerRoom
+  - FloorLockerRoom
   - 
   - 
   - 
