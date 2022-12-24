@@ -70,7 +70,7 @@ public class SaveLoadManager : MonoBehaviour
         
         AllDataSave allDataSave = new AllDataSave();
         
-        allDataSave.money = PlayerData.Instanse.GetMoney();
+        allDataSave.money = PlayerData.GetMoney();
         allDataSave.listLevelsDataSave.Add(levelDataSave);
         
         File.WriteAllText(savePath, JsonUtility.ToJson(allDataSave, true));
@@ -78,12 +78,16 @@ public class SaveLoadManager : MonoBehaviour
 
     public void Load()
     {
-        if (File.Exists(savePath) == false) return;
+        if (File.Exists(savePath) == false)
+        {
+            PlayerData.SetMoney(LevelManager.moneyStartGame);
+            return;
+        }
         
         AllDataSave allDataSave = new AllDataSave();
         allDataSave = JsonUtility.FromJson<AllDataSave>(File.ReadAllText(savePath));
         
-        PlayerData.Instanse.LoadMoney(allDataSave.money);
+        PlayerData.SetMoney(allDataSave.money);
         
         LevelDataSave levelDataSave = allDataSave.listLevelsDataSave[0];
         

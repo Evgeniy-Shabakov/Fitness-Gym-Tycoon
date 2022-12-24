@@ -1,50 +1,31 @@
-using UnityEngine;
-using System.IO;
-
-public class PlayerData : MonoBehaviour
+public static class PlayerData
 {
-    public static PlayerData Instanse;
+    private static int _money;
 
-    private int money;
+    public static int GetMoney()
+    {
+        return _money;
+    }
     
-    private void Awake()
+    public static void SetMoney(int value)
     {
-        Instanse = this;
+        _money = value;
+        UIManagerMain.Instance.SetTextMoney(_money);
     }
-
-    private void Start()
+    
+    public static void AddMoney(int amount)
     {
-        if (File.Exists(SaveLoadManager.Instance.savePath) == false)
-        {
-            money = LevelManager.moneyStartGame;
-            UIManagerMain.Instance.SetTextMoney(money);
-        }
-    }
-
-    public void AddMoney(int amount)
-    {
-        money += amount;
+        _money += amount;
         
-        UIManagerMain.Instance.SetTextMoney(money);
+        UIManagerMain.Instance.SetTextMoney(_money);
         SaveLoadManager.Instance.Save();
     }
 
-    public void SpendMoney(int amount)
+    public static void SpendMoney(int amount)
     {
-        money -= amount;
+        _money -= amount;
         
-        UIManagerMain.Instance.SetTextMoney(money);
+        UIManagerMain.Instance.SetTextMoney(_money);
         SaveLoadManager.Instance.Save();
-    }
-
-    public int GetMoney()
-    {
-        return money;
-    }
-
-    public void LoadMoney(int value)
-    {
-        money = value;
-        UIManagerMain.Instance.SetTextMoney(money);
     }
 }

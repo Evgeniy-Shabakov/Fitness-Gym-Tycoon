@@ -83,7 +83,7 @@ public class UIManagerPanelObject : MonoBehaviour
         {
             int price = BuildingManager.Instance.objectsForBuilding[objectData.indexInBuildingManagerList].price;
 
-            if (PlayerData.Instanse.GetMoney() < price)
+            if (PlayerData.GetMoney() < price)
             {
                 return;
             }
@@ -91,7 +91,7 @@ public class UIManagerPanelObject : MonoBehaviour
             BuildingManager.Instance.SetObject();
             if (BuildingManager.Instance.objectForBuild == null)
             {
-                PlayerData.Instanse.SpendMoney(price);
+                PlayerData.SpendMoney(price);
                 objectData.isNew = false;
 
                 if (objectData.indexInBuildingManagerList == 1)
@@ -114,7 +114,7 @@ public class UIManagerPanelObject : MonoBehaviour
     public void BtSellPressed()
     {
         ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
-        PlayerData.Instanse.AddMoney(objectData.price);
+        PlayerData.AddMoney(objectData.price);
         
         if (objectData.indexInBuildingManagerList == 1)
         {

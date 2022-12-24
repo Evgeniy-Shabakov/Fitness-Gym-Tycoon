@@ -89,7 +89,7 @@ public class HumanControls : MonoBehaviour
         
         if (indexInTargetsArray == 1)
         {
-            PlayerData.Instanse.SpendMoney(LevelManager.Instance.GetPricePerVisit());
+            PlayerData.SpendMoney(LevelManager.Instance.GetPricePerVisit());
             humanReactionControl.SetMoneyAboveHuman();
             humanReactionControl.SetTextAboveHuman("-" + LevelManager.Instance.GetPricePerVisit());
             
@@ -166,7 +166,7 @@ public class HumanControls : MonoBehaviour
         switch (targetsArray[indexInTargetsArray])
         {
             case 0:
-                PlayerData.Instanse.AddMoney(LevelManager.Instance.GetPricePerVisit());
+                PlayerData.AddMoney(LevelManager.Instance.GetPricePerVisit());
                 humanReactionControl.SetMoneyAboveHuman();
                 humanReactionControl.SetTextAboveHuman("+" + LevelManager.Instance.GetPricePerVisit());
                 break;
