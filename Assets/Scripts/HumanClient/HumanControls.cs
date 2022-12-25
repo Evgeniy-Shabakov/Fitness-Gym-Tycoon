@@ -10,6 +10,7 @@ namespace HumanClient
     {
         private NavMeshAgent _navMeshAgent;
         private HumanReactionControl _humanReactionControl;
+        private HumanClientData _humanClientData;
         private GameObject _parentAllDynamicObjects;
     
         public int countTargets;
@@ -36,6 +37,8 @@ namespace HumanClient
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _humanReactionControl = GetComponent<HumanReactionControl>();
+            _humanClientData = GetComponent<HumanClientData>();
+            
             _parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
         
             countTargets = 15;
@@ -155,7 +158,7 @@ namespace HumanClient
             StartCoroutine(DoActionInObject());
         }
 
-        IEnumerator DoActionInObject()
+        private IEnumerator DoActionInObject()
         {
             humanDoActionStart.Invoke();
             _humanDoAction = true;
@@ -245,14 +248,43 @@ namespace HumanClient
                 {
                     if (child.GetComponentInChildren<ObjectData>().objectIsFree)
                     {
-                        _humanReactionControl.ClearHumanReactionSprite();
-                        return child.gameObject;
+                        if (indexInTargetsArray == 1)
+                        {
+                            Debug.Log(GetLayerUnderObject(child.gameObject).value);
+                            
+                            if (_humanClientData.GetGender() == HumanClientData.Gender.Male &&
+                                GetLayerUnderObject(child.gameObject) == LayerMask.GetMask("FloorMenLockerRoom"))
+                            {
+                                _humanReactionControl.ClearHumanReactionSprite();
+                                return child.gameObject;
+                            }
+                            
+                            if (_humanClientData.GetGender() == HumanClientData.Gender.Female &&
+                                GetLayerUnderObject(child.gameObject) == LayerMask.GetMask("FloorWomenLockerRoom"))
+                            {
+                                _humanReactionControl.ClearHumanReactionSprite();
+                                return child.gameObject;
+                            }
+                        }
+                        else
+                        {
+                            _humanReactionControl.ClearHumanReactionSprite();
+                            return child.gameObject;
+                        }
                     }
                 }
             }
 
             _humanReactionControl.SetNoFindObjectSprite();
             return null;
+        }
+        
+        private LayerMask GetLayerUnderObject(GameObject current)
+        {
+            var ray = new Ray(current.transform.position + new Vector3(0, 5, 0), -Vector3.up);
+            Physics.Raycast(ray, out var hitInfo, 10f, LayerMask.GetMask("FloorMenLockerRoom"));
+
+            return hitInfo.transform.gameObject.layer;
         }
 
         private void AddMood(int countMood)

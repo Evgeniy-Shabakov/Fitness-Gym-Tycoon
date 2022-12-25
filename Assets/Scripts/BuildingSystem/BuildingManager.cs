@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using BuildingSystem;
 
 public class BuildingManager : MonoBehaviour
 {
@@ -63,7 +64,7 @@ public class BuildingManager : MonoBehaviour
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingCollision>());
         Destroy(objectForBuild.GetComponentInChildren<PreBuildingMoving>());
         _childHelperObjectForBuild.AddComponent<ObjectSettings>();
-
+        
         objectForBuild = null;
         SaveLoadManager.Instance.Save();
     }
