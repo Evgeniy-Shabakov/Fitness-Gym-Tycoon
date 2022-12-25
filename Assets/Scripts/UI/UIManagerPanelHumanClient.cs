@@ -63,7 +63,7 @@ public class UIManagerPanelHumanClient : MonoBehaviour
         
         HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
         
-        for (int i = 0; i < humanControls.countTargets; i++)
+        for (int i = 0; i < LevelManager.NumberTargetsHumanClient; i++)
         {
             GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelHumanClientTargets.transform);
             
@@ -78,7 +78,7 @@ public class UIManagerPanelHumanClient : MonoBehaviour
     {
         HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
             
-        for (int i = 0; i < humanControls.countTargets; i++)
+        for (int i = 0; i < LevelManager.NumberTargetsHumanClient; i++)
         {   
             GameObject image = panelHumanClientTargets.transform.GetChild(i).gameObject;
             

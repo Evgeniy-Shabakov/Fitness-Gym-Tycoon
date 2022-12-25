@@ -1,9 +1,9 @@
 {
-    "money": 11389,
+    "money": 15749,
     "listLevelsDataSave": [
         {
             "level": 1,
-            "rating": 5,
+            "rating": 15,
             "pricePerVisit": 20,
             "listObjectsDataSave": [
                 {
@@ -339,6 +339,20 @@
                         "y": 1.0,
                         "z": 0.0,
                         "w": 0.0
+                    },
+                    "indexInBuildingManagerList": 1
+                },
+                {
+                    "position": {
+                        "x": -12.38351058959961,
+                        "y": 0.0000095367431640625,
+                        "z": 23.686046600341798
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": -1.4901159772762186e-7,
+                        "z": -7.4505797087454088e-9,
+                        "w": -1.0
                     },
                     "indexInBuildingManagerList": 1
                 }

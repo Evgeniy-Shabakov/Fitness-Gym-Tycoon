@@ -22,11 +22,11 @@ public class ClientSpawner : MonoBehaviour
         
         if (humanModel.CompareTag("Male"))
         {
-            _currentHumanClient.GetComponent<HumanClientData>().SetGender(HumanClientData.Gender.Male);
+            _currentHumanClient.GetComponent<HumanClientData>().SetGender(Gender.Male);
         }
         else
         {
-            _currentHumanClient.GetComponent<HumanClientData>().SetGender(HumanClientData.Gender.Female);
+            _currentHumanClient.GetComponent<HumanClientData>().SetGender(Gender.Female);
         }
         
         Invoke(nameof(CreateClient), LevelManager.Instance.GetTimeSpawnClient());

@@ -15,12 +15,5 @@ namespace HumanClient
         {
             _gender = value;
         }
-        
-
-        public enum Gender
-        {
-            Male,
-            Female
-        };
     }
 }

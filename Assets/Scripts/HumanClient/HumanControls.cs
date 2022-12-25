@@ -14,7 +14,6 @@ namespace HumanClient
         private HumanClientData _humanClientData;
         private GameObject _parentAllDynamicObjects;
     
-        public int countTargets;
         public int[] targetsArray;
         public int indexInTargetsArray;
 
@@ -41,17 +40,15 @@ namespace HumanClient
             _humanClientData = GetComponent<HumanClientData>();
             
             _parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
-        
-            countTargets = 15;
-            targetsArray = new int[countTargets];
-            SetTargetsArray();
-            indexInTargetsArray = 0;
 
+            targetsArray = new int[LevelManager.NumberTargetsHumanClient];
+            targetsStatus = new bool[LevelManager.NumberTargetsHumanClient];
+            
+            SetTargetsArray();
+            
             trainingIsFinished = false;
             _mood = Random.Range(LevelManager.MoodRangeMin, LevelManager.MoodRangeMax + 1);
         
-            targetsStatus = new bool[countTargets];
-
             _numberOfAttempts = 0;
             _humanDoAction = false;
 
@@ -69,7 +66,7 @@ namespace HumanClient
         {
             if (_humanDoAction) return;
         
-            if (indexInTargetsArray == countTargets - 1)
+            if (indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1)
             {
                 if (_navMeshAgent.enabled) _navMeshAgent.SetDestination(_locker.transform.position);
                 _humanReactionControl.ClearHumanReactionSprite();
@@ -109,7 +106,7 @@ namespace HumanClient
             TakeAwayMood(LevelManager.CountMoodTakeAway);
             NextIndexInTargetsArray();
         
-            if (indexInTargetsArray < countTargets)
+            if (indexInTargetsArray < LevelManager.NumberTargetsHumanClient)
             {
                 _numberOfAttempts = 0;
                 MoveHuman();
@@ -123,7 +120,7 @@ namespace HumanClient
 
         private void OnTriggerEnter(Collider other)
         {
-            if (indexInTargetsArray >= countTargets) return;
+            if (indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
             if (other.gameObject.GetComponent<ObjectData>() == null) return;
             if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsArray[indexInTargetsArray]) return;    
         
@@ -135,7 +132,7 @@ namespace HumanClient
                 StartCoroutine(DoActionInObject());
             }
         
-            else if (indexInTargetsArray == countTargets - 1 && other.gameObject == _locker)
+            else if (indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1 && other.gameObject == _locker)
             {
                 currentGameObjectForAction = other.gameObject;
                 StartCoroutine(DoActionInObject());
@@ -150,7 +147,7 @@ namespace HumanClient
 
         private void OnTriggerStay(Collider other)
         {
-            if (indexInTargetsArray >= countTargets) return;
+            if (indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
             if (_humanDoAction) return;
             if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsArray[indexInTargetsArray]) return;
             if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false) return;
@@ -182,11 +179,11 @@ namespace HumanClient
                         _locker = currentGameObjectForAction;
                         currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
                         
-                        if(_humanClientData.GetGender() == HumanClientData.Gender.Male)
+                        if(_humanClientData.GetGender() == Gender.Male)
                         {
                             LevelManager.Instance.AddNumberMen();
                         }
-                        if(_humanClientData.GetGender() == HumanClientData.Gender.Female)
+                        if(_humanClientData.GetGender() == Gender.Female)
                         {
                             LevelManager.Instance.AddNumberWomen();
                         }
@@ -212,15 +209,15 @@ namespace HumanClient
                     _humanReactionControl.SetTextAboveHuman("");
                     break;
                 case 1:
-                    if (indexInTargetsArray == countTargets - 1)
+                    if (indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1)
                     {
                         currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
                         
-                        if(_humanClientData.GetGender() == HumanClientData.Gender.Male)
+                        if(_humanClientData.GetGender() == Gender.Male)
                         {
                             LevelManager.Instance.TakeAwayNumberMen();
                         }
-                        if(_humanClientData.GetGender() == HumanClientData.Gender.Female)
+                        if(_humanClientData.GetGender() == Gender.Female)
                         {
                             LevelManager.Instance.TakeAwayNumberWomen();
                         }
@@ -244,7 +241,7 @@ namespace HumanClient
             targetsStatus[indexInTargetsArray] = true;
         
             NextIndexInTargetsArray();
-            if (indexInTargetsArray < countTargets)
+            if (indexInTargetsArray < LevelManager.NumberTargetsHumanClient)
             {
                 _numberOfAttempts = 0;
                 MoveHuman();
@@ -257,7 +254,7 @@ namespace HumanClient
 
         private GameObject SearchNeededAndFreeObject()
         {
-            if (indexInTargetsArray >= countTargets) return null;
+            if (indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return null;
         
             foreach(Transform child in _parentAllDynamicObjects.transform)
             {
@@ -267,14 +264,14 @@ namespace HumanClient
                     {
                         if (indexInTargetsArray == 1)
                         {
-                            if (_humanClientData.GetGender() == HumanClientData.Gender.Male &&
+                            if (_humanClientData.GetGender() == Gender.Male &&
                                 LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorMenLockerRoom"))
                             {
                                 _humanReactionControl.ClearHumanReactionSprite();
                                 return child.gameObject;
                             }
                             
-                            if (_humanClientData.GetGender() == HumanClientData.Gender.Female &&
+                            if (_humanClientData.GetGender() == Gender.Female &&
                                 LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorWomenLockerRoom"))
                             {
                                 _humanReactionControl.ClearHumanReactionSprite();
@@ -324,7 +321,7 @@ namespace HumanClient
             targetsArray[0] = 0;
             targetsArray[1] = 1;
         
-            for (int i = 2; i < countTargets - 1; i++)
+            for (int i = 2; i < LevelManager.NumberTargetsHumanClient - 1; i++)
             {
                 targetsArray[i] = Random.Range(2, BuildingManager.Instance.objectsForBuilding.Count);
             
@@ -334,7 +331,7 @@ namespace HumanClient
                 }
             }
 
-            targetsArray[countTargets - 1] = 1;
+            targetsArray[LevelManager.NumberTargetsHumanClient - 1] = 1;
         }
 
         private void SendHumanHome()

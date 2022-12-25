@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     
     public const int MoneyStartGame = 50000;
     
+    public const int NumberTargetsHumanClient = 15;
+    
     public const int MoodSad = 25;
     public const int MoodHappy = 75;
     public const int MoodRangeMin = 35;
@@ -23,7 +25,6 @@ public class LevelManager : MonoBehaviour
     
     public const int RatingOnStart = 50;
     public const int PricePerVisitOnStart = 20;
-    public const int CountLockersOnStart = 0;
     
     private const float TimeSpawnClientBase = 4;
     
