@@ -1,20 +1,35 @@
+using System;
 using UI;
 using UnityEngine;
 
 public class DateSimulation : MonoBehaviour
 {
+    public static DateSimulation Instance;
+    
     private const float WaitOneDay = 1f;
     
     private int _day;
     private int _month;
     private int _year;
-    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         Invoke(nameof(StartDateSimulation), WaitOneDay);
     }
 
+    public void SetDate(int day, int month, int year)
+    {
+        _day = day;
+        _month = month;
+        _year = year;
+        
+        UIManagerMain.Instance.SetTextDateSimulation(_day, _month, _year);
+    }
     private void StartDateSimulation()
     {
         _day++;
@@ -34,5 +49,20 @@ public class DateSimulation : MonoBehaviour
         UIManagerMain.Instance.SetTextDateSimulation(_day, _month, _year);
         
         Invoke(nameof(StartDateSimulation), WaitOneDay);
+    }
+
+    public int GetDay()
+    {
+        return _day;
+    }
+    
+    public int GetMonth()
+    {
+        return _month;
+    }
+    
+    public int GetYear()
+    {
+        return _year;
     }
 }

@@ -52,6 +52,10 @@ public class SaveLoadManager : MonoBehaviour
     private class AllDataSave
     {
         public int money;
+        public int day;
+        public int month;
+        public int year;
+        
         public List<LevelDataSave> listLevelsDataSave = new List<LevelDataSave>();
     }
 
@@ -69,6 +73,11 @@ public class SaveLoadManager : MonoBehaviour
         AllDataSave allDataSave = new AllDataSave();
         
         allDataSave.money = PlayerData.GetMoney();
+        
+        allDataSave.day = DateSimulation.Instance.GetDay();
+        allDataSave.month = DateSimulation.Instance.GetMonth();
+        allDataSave.year = DateSimulation.Instance.GetYear();
+        
         allDataSave.listLevelsDataSave.Add(levelDataSave);
         
         File.WriteAllText(savePath, JsonUtility.ToJson(allDataSave, true));
@@ -90,6 +99,7 @@ public class SaveLoadManager : MonoBehaviour
         allDataSave = JsonUtility.FromJson<AllDataSave>(File.ReadAllText(savePath));
         
         PlayerData.SetMoney(allDataSave.money);
+        DateSimulation.Instance.SetDate(allDataSave.day, allDataSave.month, allDataSave.year);
         
         LevelDataSave levelDataSave = allDataSave.listLevelsDataSave[0];
         

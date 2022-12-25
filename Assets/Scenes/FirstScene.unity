@@ -5062,6 +5062,9 @@ MonoBehaviour:
   textNumberMen: {fileID: 520696264}
   textWomenLockers: {fileID: 789409457}
   textNumberWomen: {fileID: 558065742}
+  textDay: {fileID: 354659627}
+  textMonth: {fileID: 1257115833}
+  textYear: {fileID: 1057489078}
   sliderRating: {fileID: 521878777}
   fillSliderRating: {fileID: 1542155429}
   colorHappy: {r: 0.9843138, g: 0.9803922, b: 0.25882354, a: 1}
