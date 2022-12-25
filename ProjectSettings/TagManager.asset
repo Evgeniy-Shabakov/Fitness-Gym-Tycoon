@@ -7,6 +7,8 @@ TagManager:
   - Floor
   - HumanClient
   - Plane
+  - Male
+  - Female
   layers:
   - Default
   - TransparentFX

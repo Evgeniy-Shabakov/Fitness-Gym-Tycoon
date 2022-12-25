@@ -250,17 +250,15 @@ namespace HumanClient
                     {
                         if (indexInTargetsArray == 1)
                         {
-                            Debug.Log(GetLayerUnderObject(child.gameObject).value);
-                            
                             if (_humanClientData.GetGender() == HumanClientData.Gender.Male &&
-                                GetLayerUnderObject(child.gameObject) == LayerMask.GetMask("FloorMenLockerRoom"))
+                                GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorMenLockerRoom"))
                             {
                                 _humanReactionControl.ClearHumanReactionSprite();
                                 return child.gameObject;
                             }
                             
                             if (_humanClientData.GetGender() == HumanClientData.Gender.Female &&
-                                GetLayerUnderObject(child.gameObject) == LayerMask.GetMask("FloorWomenLockerRoom"))
+                                GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorWomenLockerRoom"))
                             {
                                 _humanReactionControl.ClearHumanReactionSprite();
                                 return child.gameObject;
@@ -282,7 +280,9 @@ namespace HumanClient
         private LayerMask GetLayerUnderObject(GameObject current)
         {
             var ray = new Ray(current.transform.position + new Vector3(0, 5, 0), -Vector3.up);
-            Physics.Raycast(ray, out var hitInfo, 10f, LayerMask.GetMask("FloorMenLockerRoom"));
+            LayerMask layer = LayerMask.GetMask("FloorMenLockerRoom", "FloorWomenLockerRoom");
+            
+            Physics.Raycast(ray, out var hitInfo, 10f, layer);
 
             return hitInfo.transform.gameObject.layer;
         }
