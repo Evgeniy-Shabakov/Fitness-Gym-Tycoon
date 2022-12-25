@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
+  m_Name: Shower
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2208735421509717212, guid: 209f28cba34d6664299a10ba52ae45cd, type: 3}
+  sprite: {fileID: 21300000, guid: c70db8b745f880b40972c47a9e225271, type: 3}
+  layerFloor:
+    serializedVersion: 2
+    m_Bits: 6144
+  animatorOverrideController: {fileID: 22100000, guid: 6385b56217501764983aa5640e9bada6, type: 2}
+  needBarbellInHands: 0
+  price: 500
+  description: ' Hygiene is very important'
+  damageInPersent: 0.1
+  maxCountClients: 1
