@@ -15,17 +15,19 @@ public class HumanReactionControl : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textPay;
 
-    private HumanControls humanControls;
+    private HumanClientData _humanClientData;
+    private HumanControls _humanControls;
     
     void Start()
     {
-        humanControls = GetComponent<HumanControls>();
+        _humanClientData = GetComponent<HumanClientData>();
+        _humanControls = GetComponent<HumanControls>();
     }
     
     public void SetNoFindObjectSprite()
     {
         imageHumanReaction.sprite = 
-            BuildingManager.Instance.objectsForBuilding[humanControls.targetsArray[humanControls.indexInTargetsArray]].sprite;
+            BuildingManager.Instance.objectsForBuilding[_humanClientData.targetsArray[_humanClientData.indexInTargetsArray]].sprite;
     }
 
     public void ClearHumanReactionSprite()
@@ -51,7 +53,7 @@ public class HumanReactionControl : MonoBehaviour
 
         else
         {
-            int mood = humanControls.GetMood();
+            int mood = _humanControls.GetMood();
         
             if (mood <= LevelManager.MoodSad) imageHumanReaction.sprite = spriteSmileSad;
             else if (mood > LevelManager.MoodSad && mood < LevelManager.MoodHappy) imageHumanReaction.sprite = spriteSmileMiddle;

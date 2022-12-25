@@ -61,13 +61,13 @@ public class UIManagerPanelHumanClient : MonoBehaviour
         CameraController.Instance.objectForFollow = currentGameObjectForPanelHumanClient;
         currentGameObjectForPanelHumanClient.GetComponent<HumanReactionControl>().SetCrystalAboveHuman();
         
-        HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
+        var humanClientData = currentGameObjectForPanelHumanClient.GetComponent<HumanClientData>();
         
         for (int i = 0; i < LevelManager.NumberTargetsHumanClient; i++)
         {
             GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelHumanClientTargets.transform);
             
-            int j = humanControls.targetsArray[i];
+            int j = humanClientData.targetsArray[i];
             image.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[j].sprite;
         }
 
@@ -77,12 +77,13 @@ public class UIManagerPanelHumanClient : MonoBehaviour
     public void UpdateData()
     {
         HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
+        var humanClientData = currentGameObjectForPanelHumanClient.GetComponent<HumanClientData>();
             
         for (int i = 0; i < LevelManager.NumberTargetsHumanClient; i++)
         {   
             GameObject image = panelHumanClientTargets.transform.GetChild(i).gameObject;
             
-            if (i < humanControls.indexInTargetsArray)
+            if (i < humanClientData.indexInTargetsArray)
             {   
                 if (humanControls.targetsStatus[i] == true)
                 {

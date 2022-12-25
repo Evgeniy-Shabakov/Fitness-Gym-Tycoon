@@ -14,9 +14,6 @@ namespace HumanClient
         private HumanClientData _humanClientData;
         private GameObject _parentAllDynamicObjects;
     
-        public int[] targetsArray;
-        public int indexInTargetsArray;
-
         public bool[] targetsStatus;
 
         public bool trainingIsFinished;
@@ -41,10 +38,7 @@ namespace HumanClient
             
             _parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
 
-            targetsArray = new int[LevelManager.NumberTargetsHumanClient];
             targetsStatus = new bool[LevelManager.NumberTargetsHumanClient];
-            
-            SetTargetsArray();
             
             trainingIsFinished = false;
             _mood = Random.Range(LevelManager.MoodRangeMin, LevelManager.MoodRangeMax + 1);
@@ -66,7 +60,7 @@ namespace HumanClient
         {
             if (_humanDoAction) return;
         
-            if (indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1)
+            if (_humanClientData.indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1)
             {
                 if (_navMeshAgent.enabled) _navMeshAgent.SetDestination(_locker.transform.position);
                 _humanReactionControl.ClearHumanReactionSprite();
@@ -90,7 +84,7 @@ namespace HumanClient
                 return;
             }
         
-            if (indexInTargetsArray == 1)
+            if (_humanClientData.indexInTargetsArray == 1)
             {
                 PlayerData.SpendMoney(LevelManager.Instance.GetPricePerVisit());
                 _humanReactionControl.SetMoneyAboveHuman();
@@ -106,7 +100,7 @@ namespace HumanClient
             TakeAwayMood(LevelManager.CountMoodTakeAway);
             NextIndexInTargetsArray();
         
-            if (indexInTargetsArray < LevelManager.NumberTargetsHumanClient)
+            if (_humanClientData.indexInTargetsArray < LevelManager.NumberTargetsHumanClient)
             {
                 _numberOfAttempts = 0;
                 MoveHuman();
@@ -120,9 +114,9 @@ namespace HumanClient
 
         private void OnTriggerEnter(Collider other)
         {
-            if (indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
+            if (_humanClientData.indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
             if (other.gameObject.GetComponent<ObjectData>() == null) return;
-            if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsArray[indexInTargetsArray]) return;    
+            if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != _humanClientData.targetsArray[_humanClientData.indexInTargetsArray]) return;    
         
             if (_navMeshAgent.enabled) _navMeshAgent.ResetPath();
 
@@ -132,7 +126,7 @@ namespace HumanClient
                 StartCoroutine(DoActionInObject());
             }
         
-            else if (indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1 && other.gameObject == _locker)
+            else if (_humanClientData.indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1 && other.gameObject == _locker)
             {
                 currentGameObjectForAction = other.gameObject;
                 StartCoroutine(DoActionInObject());
@@ -147,9 +141,9 @@ namespace HumanClient
 
         private void OnTriggerStay(Collider other)
         {
-            if (indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
+            if (_humanClientData.indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
             if (_humanDoAction) return;
-            if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != targetsArray[indexInTargetsArray]) return;
+            if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != _humanClientData.targetsArray[_humanClientData.indexInTargetsArray]) return;
             if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false) return;
         
             currentGameObjectForAction = other.gameObject;
@@ -166,7 +160,7 @@ namespace HumanClient
             Quaternion rotationBeforeAction = transform.rotation;
             float wait = 1f;
 
-            switch (targetsArray[indexInTargetsArray])
+            switch (_humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
             {
                 case 0:
                     PlayerData.AddMoney(LevelManager.Instance.GetPricePerVisit());
@@ -174,7 +168,7 @@ namespace HumanClient
                     _humanReactionControl.SetTextAboveHuman("+" + LevelManager.Instance.GetPricePerVisit());
                     break;
                 case 1:
-                    if (indexInTargetsArray == 1)
+                    if (_humanClientData.indexInTargetsArray == 1)
                     {
                         _locker = currentGameObjectForAction;
                         currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
@@ -203,13 +197,13 @@ namespace HumanClient
 
             yield return new WaitForSeconds(wait);
 
-            switch (targetsArray[indexInTargetsArray])
+            switch (_humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
             {
                 case 0:
                     _humanReactionControl.SetTextAboveHuman("");
                     break;
                 case 1:
-                    if (indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1)
+                    if (_humanClientData.indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1)
                     {
                         currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
                         
@@ -238,10 +232,10 @@ namespace HumanClient
             _humanDoAction = false;
             humanDoActionStop.Invoke();
 
-            targetsStatus[indexInTargetsArray] = true;
+            targetsStatus[_humanClientData.indexInTargetsArray] = true;
         
             NextIndexInTargetsArray();
-            if (indexInTargetsArray < LevelManager.NumberTargetsHumanClient)
+            if (_humanClientData.indexInTargetsArray < LevelManager.NumberTargetsHumanClient)
             {
                 _numberOfAttempts = 0;
                 MoveHuman();
@@ -254,15 +248,15 @@ namespace HumanClient
 
         private GameObject SearchNeededAndFreeObject()
         {
-            if (indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return null;
+            if (_humanClientData.indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return null;
         
             foreach(Transform child in _parentAllDynamicObjects.transform)
             {
-                if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == targetsArray[indexInTargetsArray])
+                if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == _humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
                 {
                     if (child.GetComponentInChildren<ObjectData>().objectIsFree)
                     {
-                        if (indexInTargetsArray == 1)
+                        if (_humanClientData.indexInTargetsArray == 1)
                         {
                             if (_humanClientData.GetGender() == Gender.Male &&
                                 LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorMenLockerRoom"))
@@ -310,28 +304,10 @@ namespace HumanClient
     
         private void NextIndexInTargetsArray()
         {
-            indexInTargetsArray++;
+            _humanClientData.indexInTargetsArray++;
         
             if (gameObject != UIManagerPanelHumanClient.Instance.currentGameObjectForPanelHumanClient) return;
             UIManagerPanelHumanClient.Instance.UpdateData();
-        }
-
-        private void SetTargetsArray()
-        {
-            targetsArray[0] = 0;
-            targetsArray[1] = 1;
-        
-            for (int i = 2; i < LevelManager.NumberTargetsHumanClient - 1; i++)
-            {
-                targetsArray[i] = Random.Range(2, BuildingManager.Instance.objectsForBuilding.Count);
-            
-                while(targetsArray[i] == targetsArray[i-1])
-                {
-                    targetsArray[i] = Random.Range(2, BuildingManager.Instance.objectsForBuilding.Count);
-                }
-            }
-
-            targetsArray[LevelManager.NumberTargetsHumanClient - 1] = 1;
         }
 
         private void SendHumanHome()
