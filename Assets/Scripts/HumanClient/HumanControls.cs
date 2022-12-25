@@ -181,7 +181,15 @@ namespace HumanClient
                     {
                         _locker = currentGameObjectForAction;
                         currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
-                        LevelManager.Instance.AddNumberMen();
+                        
+                        if(_humanClientData.GetGender() == HumanClientData.Gender.Male)
+                        {
+                            LevelManager.Instance.AddNumberMen();
+                        }
+                        if(_humanClientData.GetGender() == HumanClientData.Gender.Female)
+                        {
+                            LevelManager.Instance.AddNumberWomen();
+                        }
                     }
                     break;
                 default:
@@ -207,7 +215,15 @@ namespace HumanClient
                     if (indexInTargetsArray == countTargets - 1)
                     {
                         currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
-                        LevelManager.Instance.TakeAwayNumberMen();
+                        
+                        if(_humanClientData.GetGender() == HumanClientData.Gender.Male)
+                        {
+                            LevelManager.Instance.TakeAwayNumberMen();
+                        }
+                        if(_humanClientData.GetGender() == HumanClientData.Gender.Female)
+                        {
+                            LevelManager.Instance.TakeAwayNumberWomen();
+                        }
                     }
                     break;
                 default:

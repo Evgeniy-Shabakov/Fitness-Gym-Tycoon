@@ -29,10 +29,11 @@ public class LevelManager : MonoBehaviour
     
     private int _rating;
     private int _pricePerVisit;
+    
     private float _timeSpawnClient;
+    
     private int _numberMenLockers;
     private int _numberWomenLockers;
-
     private int _numberMen;
     private int _numberWomen;
 
@@ -152,5 +153,17 @@ public class LevelManager : MonoBehaviour
     {
         _numberMen--;
         UIManagerMain.Instance.SetTextNumberMen(_numberMen);
+    }
+    
+    public void AddNumberWomen()
+    {
+        _numberWomen++;
+        UIManagerMain.Instance.SetTextNumberWomen(_numberWomen);
+    }
+
+    public void TakeAwayNumberWomen()
+    {
+        _numberWomen--;
+        UIManagerMain.Instance.SetTextNumberWomen(_numberWomen);
     }
 }
