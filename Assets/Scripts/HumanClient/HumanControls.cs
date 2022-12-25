@@ -14,12 +14,6 @@ namespace HumanClient
         private HumanClientData _humanClientData;
         private GameObject _parentAllDynamicObjects;
     
-        public bool[] targetsStatus;
-
-        public bool trainingIsFinished;
-
-        private int _mood;
-
         private int _numberOfAttempts;
 
         [HideInInspector] public GameObject currentGameObjectForAction;
@@ -38,11 +32,6 @@ namespace HumanClient
             
             _parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
 
-            targetsStatus = new bool[LevelManager.NumberTargetsHumanClient];
-            
-            trainingIsFinished = false;
-            _mood = Random.Range(LevelManager.MoodRangeMin, LevelManager.MoodRangeMax + 1);
-        
             _numberOfAttempts = 0;
             _humanDoAction = false;
 
@@ -90,14 +79,14 @@ namespace HumanClient
                 _humanReactionControl.SetMoneyAboveHuman();
                 _humanReactionControl.SetTextAboveHuman("-" + LevelManager.Instance.GetPricePerVisit());
             
-                TakeAwayMood(100);
+                _humanClientData.TakeAwayMood(100);
                 Invoke(nameof(SendHumanHome), 1f);
                 if (gameObject != UIManagerPanelHumanClient.Instance.currentGameObjectForPanelHumanClient) return;
                 UIManagerPanelHumanClient.Instance.UpdateData();
                 return;
             }
         
-            TakeAwayMood(LevelManager.CountMoodTakeAway);
+            _humanClientData.TakeAwayMood(LevelManager.CountMoodTakeAway);
             NextIndexInTargetsArray();
         
             if (_humanClientData.indexInTargetsArray < LevelManager.NumberTargetsHumanClient)
@@ -224,7 +213,7 @@ namespace HumanClient
             
                     currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
             
-                    AddMood(LevelManager.CountMoodAdd);
+                    _humanClientData.AddMood(LevelManager.CountMoodAdd);
                 
                     break;
             }
@@ -232,7 +221,7 @@ namespace HumanClient
             _humanDoAction = false;
             humanDoActionStop.Invoke();
 
-            targetsStatus[_humanClientData.indexInTargetsArray] = true;
+            _humanClientData.targetsStatus[_humanClientData.indexInTargetsArray] = true;
         
             NextIndexInTargetsArray();
             if (_humanClientData.indexInTargetsArray < LevelManager.NumberTargetsHumanClient)
@@ -285,23 +274,6 @@ namespace HumanClient
             return null;
         }
         
-        private void AddMood(int countMood)
-        {
-            _mood += countMood;
-            if (_mood > 100) _mood = 100;
-        }
-
-        private void TakeAwayMood(int countMood)
-        {
-            _mood -= countMood;
-            if (_mood < 5) _mood = 5;
-        }
-
-        public int GetMood()
-        {
-            return _mood;
-        }
-    
         private void NextIndexInTargetsArray()
         {
             _humanClientData.indexInTargetsArray++;
@@ -317,10 +289,10 @@ namespace HumanClient
             _humanReactionControl.SetSmileAboveHuman();
             _humanReactionControl.SetTextAboveHuman("");
         
-            if (_mood <= LevelManager.MoodSad) LevelManager.Instance.TakeAwayRating(1);
-            else if (_mood > LevelManager.MoodHappy) LevelManager.Instance.AddRating(1);
+            if (_humanClientData.GetMood() <= LevelManager.MoodSad) LevelManager.Instance.TakeAwayRating(1);
+            else if (_humanClientData.GetMood() > LevelManager.MoodHappy) LevelManager.Instance.AddRating(1);
         
-            trainingIsFinished = true;
+            _humanClientData.trainingIsFinished = true;
         }
     
         private void DestroyHuman()

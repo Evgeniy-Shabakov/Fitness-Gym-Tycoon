@@ -45,7 +45,7 @@ public class UIManagerPanelHumanClient : MonoBehaviour
         
         panelHumanClient.SetActive(false);
         humanClosedPanel.GetComponent<HumanReactionControl>().ClearHumanReactionSprite();
-        if (humanClosedPanel.GetComponent<HumanControls>().trainingIsFinished)
+        if (humanClosedPanel.GetComponent<HumanClientData>().trainingIsFinished)
         {
             humanClosedPanel.GetComponent<HumanReactionControl>().SetSmileAboveHuman();
         }
@@ -76,7 +76,6 @@ public class UIManagerPanelHumanClient : MonoBehaviour
 
     public void UpdateData()
     {
-        HumanControls humanControls = currentGameObjectForPanelHumanClient.GetComponent<HumanControls>();
         var humanClientData = currentGameObjectForPanelHumanClient.GetComponent<HumanClientData>();
             
         for (int i = 0; i < LevelManager.NumberTargetsHumanClient; i++)
@@ -85,7 +84,7 @@ public class UIManagerPanelHumanClient : MonoBehaviour
             
             if (i < humanClientData.indexInTargetsArray)
             {   
-                if (humanControls.targetsStatus[i] == true)
+                if (humanClientData.targetsStatus[i] == true)
                 {
                     image.transform.GetChild(1).GetComponent<Image>().sprite = spriteStatusTrue;
                 }
@@ -97,7 +96,7 @@ public class UIManagerPanelHumanClient : MonoBehaviour
             }
         }
         
-        sliderMood.value = humanControls.GetMood();
+        sliderMood.value = humanClientData.GetMood();
         
         if (sliderMood.value <= LevelManager.MoodSad)
         {

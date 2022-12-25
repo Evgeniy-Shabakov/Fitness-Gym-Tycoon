@@ -7,12 +7,21 @@ namespace HumanClient
     {
         private Gender _gender;
         
+        private int _mood;
+        
         public int[] targetsArray;
+        public bool[] targetsStatus;
+        
         public int indexInTargetsArray;
+        public bool trainingIsFinished;
 
         private void Start()
         {
+            _mood = Random.Range(LevelManager.MoodRangeMin, LevelManager.MoodRangeMax + 1);
             targetsArray = new int[LevelManager.NumberTargetsHumanClient];
+            targetsStatus = new bool[LevelManager.NumberTargetsHumanClient];
+            trainingIsFinished = false;
+            
             SetTargetsArray();
         }
 
@@ -43,6 +52,23 @@ namespace HumanClient
 
             targetsArray[LevelManager.NumberTargetsHumanClient - 2] = 2;
             targetsArray[LevelManager.NumberTargetsHumanClient - 1] = 1;
+        }
+        
+        public void AddMood(int countMood)
+        {
+            _mood += countMood;
+            if (_mood > 100) _mood = 100;
+        }
+
+        public void TakeAwayMood(int countMood)
+        {
+            _mood -= countMood;
+            if (_mood < 5) _mood = 5;
+        }
+
+        public int GetMood()
+        {
+            return _mood;
         }
     }
 }
