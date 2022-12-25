@@ -16,6 +16,10 @@ namespace UI
         [SerializeField] private TextMeshProUGUI textNumberMen;
         [SerializeField] private TextMeshProUGUI textWomenLockers;
         [SerializeField] private TextMeshProUGUI textNumberWomen;
+        
+        [SerializeField] private TextMeshProUGUI textDay;
+        [SerializeField] private TextMeshProUGUI textMonth;
+        [SerializeField] private TextMeshProUGUI textYear;
     
         [SerializeField] private Slider sliderRating;
         [SerializeField] private Image fillSliderRating;
@@ -52,7 +56,14 @@ namespace UI
         {
             textNumberWomen.text = "" + women;
         }
-    
+
+        public void SetTextDateSimulation(int day, int month, int year)
+        {
+            textDay.text = day + " d";
+            textMonth.text = month + " m";
+            textYear.text = year + " y";
+        }
+
         public void SetRating(int rating)
         {
             sliderRating.value = rating;
