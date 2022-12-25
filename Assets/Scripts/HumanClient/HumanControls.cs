@@ -1,4 +1,5 @@
 using System.Collections;
+using UI;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -180,7 +181,7 @@ namespace HumanClient
                     {
                         _locker = currentGameObjectForAction;
                         currentGameObjectForAction.GetComponent<ObjectData>().AddClient(gameObject);
-                        LevelManager.Instance.AddCountMen();
+                        LevelManager.Instance.AddNumberMen();
                     }
                     break;
                 default:
@@ -206,7 +207,7 @@ namespace HumanClient
                     if (indexInTargetsArray == countTargets - 1)
                     {
                         currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
-                        LevelManager.Instance.TakeAwayCountMen();
+                        LevelManager.Instance.TakeAwayNumberMen();
                     }
                     break;
                 default:
@@ -251,14 +252,14 @@ namespace HumanClient
                         if (indexInTargetsArray == 1)
                         {
                             if (_humanClientData.GetGender() == HumanClientData.Gender.Male &&
-                                GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorMenLockerRoom"))
+                                LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorMenLockerRoom"))
                             {
                                 _humanReactionControl.ClearHumanReactionSprite();
                                 return child.gameObject;
                             }
                             
                             if (_humanClientData.GetGender() == HumanClientData.Gender.Female &&
-                                GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorWomenLockerRoom"))
+                                LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorWomenLockerRoom"))
                             {
                                 _humanReactionControl.ClearHumanReactionSprite();
                                 return child.gameObject;
@@ -277,16 +278,6 @@ namespace HumanClient
             return null;
         }
         
-        private LayerMask GetLayerUnderObject(GameObject current)
-        {
-            var ray = new Ray(current.transform.position + new Vector3(0, 5, 0), -Vector3.up);
-            LayerMask layer = LayerMask.GetMask("FloorMenLockerRoom", "FloorWomenLockerRoom");
-            
-            Physics.Raycast(ray, out var hitInfo, 10f, layer);
-
-            return hitInfo.transform.gameObject.layer;
-        }
-
         private void AddMood(int countMood)
         {
             _mood += countMood;

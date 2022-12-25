@@ -1,9 +1,13 @@
+using System.Collections;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
+
+    [SerializeField] private GameObject parentAllDynamicObjects;
     
     public const int MoneyStartGame = 50000;
     
@@ -26,9 +30,11 @@ public class LevelManager : MonoBehaviour
     private int _rating;
     private int _pricePerVisit;
     private float _timeSpawnClient;
-    private int _countLockers;
+    private int _numberMenLockers;
+    private int _numberWomenLockers;
 
-    private int _countMen;
+    private int _numberMen;
+    private int _numberWomen;
 
     private void Awake()
     {
@@ -37,9 +43,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(CountNumberLockers(0.1f));
         Invoke(nameof(SetTimeSpawnClient), 1f);
-
-        _countMen = 0;
     }
 
     private void SetTimeSpawnClient()
@@ -110,39 +115,42 @@ public class LevelManager : MonoBehaviour
         return _timeSpawnClient;
     }
 
-    public void AddCountLockers(int n)
+    public IEnumerator CountNumberLockers(float wait)
     {
-        _countLockers += n;
-        UIManagerMain.Instance.SetTextLockers(_countLockers);
+        yield return new WaitForSeconds(wait);
+        
+        _numberMenLockers = 0;
+        _numberWomenLockers = 0;
+
+        foreach (Transform child in parentAllDynamicObjects.transform)
+        {
+            if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == 1)
+            {
+                if (LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorMenLockerRoom"))
+                {
+                    _numberMenLockers += 5;
+                }
+                
+                if (LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorWomenLockerRoom"))
+                {
+                    _numberWomenLockers += 5;
+                }
+            }
+        }
+        
+        UIManagerMain.Instance.SetTextMenLockers(_numberMenLockers);
+        UIManagerMain.Instance.SetTextWomenLockers(_numberWomenLockers);
+    }
+    
+    public void AddNumberMen()
+    {
+        _numberMen++;
+        UIManagerMain.Instance.SetTextNumberMen(_numberMen);
     }
 
-    public void TakeAwayCountLockers(int n)
+    public void TakeAwayNumberMen()
     {
-        _countLockers -= n;
-        if (_countLockers < 0) _countLockers = 0;
-        UIManagerMain.Instance.SetTextLockers(_countLockers);
-    }
-
-    public int GetCountLockers()
-    {
-        return _countLockers;
-    }
-
-    public void SetCountLockers(int value)
-    {
-        _countLockers = value;
-        UIManagerMain.Instance.SetTextLockers(_countLockers);
-    }
-
-    public void AddCountMen()
-    {
-        _countMen++;
-        UIManagerMain.Instance.SetTextCountMen(_countMen);
-    }
-
-    public void TakeAwayCountMen()
-    {
-        _countMen--;
-        UIManagerMain.Instance.SetTextCountMen(_countMen);
+        _numberMen--;
+        UIManagerMain.Instance.SetTextNumberMen(_numberMen);
     }
 }

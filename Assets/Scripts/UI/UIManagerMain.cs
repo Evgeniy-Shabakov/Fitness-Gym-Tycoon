@@ -1,89 +1,105 @@
-using UnityEngine;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
-public class UIManagerMain : MonoBehaviour
+namespace UI
 {
-    public static UIManagerMain Instance;
-    
-    [SerializeField] private TextMeshProUGUI textForMoney;
-    [SerializeField] private TextMeshProUGUI textLockers;
-    [SerializeField] private TextMeshProUGUI textCountMen;
-    
-    [SerializeField] private Slider sliderRating;
-    [SerializeField] private Image fillSliderRating;
-    [SerializeField] private Color colorHappy;
-    [SerializeField] private Color colorMiddle;
-    [SerializeField] private Color colorSad;
-    
-    private void Awake()
+    public class UIManagerMain : MonoBehaviour
     {
-        Instance = this;
-    }
+        public static UIManagerMain Instance;
     
-    public void SetTextMoney(int money)
-    {
-        textForMoney.text = "" + money;
-    }
-
-    public void SetTextLockers(int lockers)
-    {
-        textLockers.text = "" + lockers;
-    }
-
-    public void SetTextCountMen(int men)
-    {
-        textCountMen.text = "" + men;
-    }
-    
-    public void SetRating(int rating)
-    {
-        sliderRating.value = rating;
+        [SerializeField] private TextMeshProUGUI textForMoney;
         
-        if (sliderRating.value <= LevelManager.MoodSad)
+        [SerializeField] private TextMeshProUGUI textMenLockers;
+        [SerializeField] private TextMeshProUGUI textNumberMen;
+        [SerializeField] private TextMeshProUGUI textWomenLockers;
+        [SerializeField] private TextMeshProUGUI textNumberWomen;
+    
+        [SerializeField] private Slider sliderRating;
+        [SerializeField] private Image fillSliderRating;
+        [SerializeField] private Color colorHappy;
+        [SerializeField] private Color colorMiddle;
+        [SerializeField] private Color colorSad;
+    
+        private void Awake()
         {
-            fillSliderRating.color = colorSad;
+            Instance = this;
         }
-        else if (sliderRating.value > LevelManager.MoodSad && sliderRating.value < LevelManager.MoodHappy)
+    
+        public void SetTextMoney(int money)
         {
-            fillSliderRating.color = colorMiddle;
+            textForMoney.text = "" + money;
         }
-        else
-        {
-            fillSliderRating.color = colorHappy;
-        }
-    }
 
-    public void CloseAllPanels()
-    {
-        if (UIManagerPanelObject.Instance.panelObject.activeSelf)
+        public void SetTextMenLockers(int lockers)
         {
-            UIManagerPanelObject.Instance.Close();
+            textMenLockers.text = "" + lockers;
         }
         
-        if (UIManagerPanelHumanClient.Instance.panelHumanClient.activeSelf)
+        public void SetTextWomenLockers(int lockers)
         {
-            UIManagerPanelHumanClient.Instance.Close();
+            textWomenLockers.text = "" + lockers;
         }
 
-        if (UIManagerPanelGameShop.Instance.panelGameShop.activeSelf)
+        public void SetTextNumberMen(int men)
         {
-            UIManagerPanelGameShop.Instance.Close();
+            textNumberMen.text = "" + men;
         }
-        
-        if (UIManagerPanelPricePolicy.Instance.panel.activeSelf)
+
+        public void SetTextNumberWomen(int women)
         {
-            UIManagerPanelPricePolicy.Instance.Close();
+            textNumberWomen.text = "" + women;
         }
-    }
     
-    public bool IsPointerOverUIObject() {
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
+        public void SetRating(int rating)
+        {
+            sliderRating.value = rating;
+        
+            if (sliderRating.value <= LevelManager.MoodSad)
+            {
+                fillSliderRating.color = colorSad;
+            }
+            else if (sliderRating.value > LevelManager.MoodSad && sliderRating.value < LevelManager.MoodHappy)
+            {
+                fillSliderRating.color = colorMiddle;
+            }
+            else
+            {
+                fillSliderRating.color = colorHappy;
+            }
+        }
+
+        public void CloseAllPanels()
+        {
+            if (UIManagerPanelObject.Instance.panelObject.activeSelf)
+            {
+                UIManagerPanelObject.Instance.Close();
+            }
+        
+            if (UIManagerPanelHumanClient.Instance.panelHumanClient.activeSelf)
+            {
+                UIManagerPanelHumanClient.Instance.Close();
+            }
+
+            if (UIManagerPanelGameShop.Instance.panelGameShop.activeSelf)
+            {
+                UIManagerPanelGameShop.Instance.Close();
+            }
+        
+            if (UIManagerPanelPricePolicy.Instance.panel.activeSelf)
+            {
+                UIManagerPanelPricePolicy.Instance.Close();
+            }
+        }
+    
+        public bool IsPointerOverUIObject() {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+            return results.Count > 0;
+        }
     }
 }

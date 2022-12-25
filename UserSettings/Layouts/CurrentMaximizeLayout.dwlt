@@ -86,7 +86,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -224,10 +224,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
+      scrollPos: {x: 0, y: 20}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 24fbffffc4620000
+      m_ExpandedIDs: 24fbffff0061000074610000ce610000c4620000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 654
     height: 454
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -558,9 +558,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -27.57418, y: -0.2709999, z: 25.816706}
+    m_Target: {x: -25.828278, y: 0.03293228, z: 28.414967}
     speed: 2
-    m_Value: {x: -27.57418, y: -0.2709999, z: 25.816706}
+    m_Value: {x: -25.828278, y: 0.03293228, z: 28.414967}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -611,9 +611,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.34581918, y: -0.3944017, z: 0.16322741, w: 0.8355916}
   m_Size:
-    m_Target: 8.29538
+    m_Target: 9.466406
     speed: 2
-    m_Value: 8.29538
+    m_Value: 9.466406
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -747,8 +747,8 @@ MonoBehaviour:
     y: 454
     width: 1222
     height: 313
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 12}
@@ -796,21 +796,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 88
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: 88
   m_LastProjectPath: D:\Unity\Projects\Fitness Gym Tycoon\Fitness Gym Tycoon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: aa6e0000
-    m_LastClickedID: 28330
+    m_SelectedIDs: e0800000
+    m_LastClickedID: 32992
     m_ExpandedIDs: 00000000a66e0000a86e0000aa6e0000ac6e0000ae6e0000b06e0000b26e0000b46e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -864,8 +864,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: c4850000
+    m_LastClickedInstanceID: 34244
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000da6a0000fc620000085d0000665e0000000000005a820000808200004aa50000ea74000086870000948d0000326b0000467e0000988c00009e8c0000
     m_RenameOverlay:

@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 
 public class WallChangeHeight : MonoBehaviour

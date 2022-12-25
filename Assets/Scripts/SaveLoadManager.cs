@@ -44,7 +44,6 @@ public class SaveLoadManager : MonoBehaviour
         public int level;
         public int rating;
         public int pricePerVisit;
-        public int countLockers;
         
         public List<ObjectDataSave> listObjectsDataSave = new List<ObjectDataSave>();
     }
@@ -65,7 +64,6 @@ public class SaveLoadManager : MonoBehaviour
         levelDataSave.level = 1;
         levelDataSave.rating = LevelManager.Instance.GetRating();
         levelDataSave.pricePerVisit = LevelManager.Instance.GetPricePerVisit();
-        levelDataSave.countLockers = LevelManager.Instance.GetCountLockers();
         levelDataSave.listObjectsDataSave = FormListObjectsDataSave();
         
         AllDataSave allDataSave = new AllDataSave();
@@ -84,7 +82,6 @@ public class SaveLoadManager : MonoBehaviour
             
             LevelManager.Instance.SetRating(LevelManager.RatingOnStart);
             LevelManager.Instance.SetPricePerVisit(LevelManager.PricePerVisitOnStart);
-            LevelManager.Instance.SetCountLockers(LevelManager.CountLockersOnStart);
             
             return;
         }
@@ -98,7 +95,6 @@ public class SaveLoadManager : MonoBehaviour
         
         LevelManager.Instance.SetRating(levelDataSave.rating);
         LevelManager.Instance.SetPricePerVisit(levelDataSave.pricePerVisit);
-        LevelManager.Instance.SetCountLockers(levelDataSave.countLockers);
         
         foreach (var objDataSave in levelDataSave.listObjectsDataSave)
         {

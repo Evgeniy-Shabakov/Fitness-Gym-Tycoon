@@ -1,3 +1,5 @@
+using UI;
+
 public static class PlayerData
 {
     private static int _money;

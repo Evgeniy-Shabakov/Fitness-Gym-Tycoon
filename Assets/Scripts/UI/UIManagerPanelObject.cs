@@ -2,6 +2,7 @@ using BuildingSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UI;
 
 public class UIManagerPanelObject : MonoBehaviour
 {
@@ -94,10 +95,10 @@ public class UIManagerPanelObject : MonoBehaviour
             {
                 PlayerData.SpendMoney(price);
                 objectData.isNew = false;
-
+                
                 if (objectData.indexInBuildingManagerList == 1)
                 {
-                    LevelManager.Instance.AddCountLockers(5);
+                    StartCoroutine(LevelManager.Instance.CountNumberLockers(0f));
                 }
                 
                 panelObject.SetActive(false);
@@ -108,6 +109,12 @@ public class UIManagerPanelObject : MonoBehaviour
         BuildingManager.Instance.SetObject();
         if (BuildingManager.Instance.objectForBuild == null)
         {
+            
+            if (objectData.indexInBuildingManagerList == 1)
+            {
+                StartCoroutine(LevelManager.Instance.CountNumberLockers(0f));
+            }
+            
             panelObject.SetActive(false);
         }
     }
@@ -117,13 +124,13 @@ public class UIManagerPanelObject : MonoBehaviour
         ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
         PlayerData.AddMoney(objectData.price);
         
-        if (objectData.indexInBuildingManagerList == 1)
-        {
-            LevelManager.Instance.TakeAwayCountLockers(5);
-        }
-        
         Destroy(currentGameObjectForPanel);
         Close();
+        
+        if (objectData.indexInBuildingManagerList == 1)
+        {
+            StartCoroutine(LevelManager.Instance.CountNumberLockers(0.1f));
+        }
     }
 
     public void BtActivateMove()
