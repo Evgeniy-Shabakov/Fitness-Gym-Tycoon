@@ -87,6 +87,7 @@ public class UIManagerPanelObject : MonoBehaviour
 
             if (PlayerData.GetMoney() < price)
             {
+                UIManagerMain.Instance.AddNewMessage("not enough money");
                 return;
             }
             

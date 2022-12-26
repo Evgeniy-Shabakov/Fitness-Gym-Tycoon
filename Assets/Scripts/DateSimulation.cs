@@ -6,7 +6,7 @@ public class DateSimulation : MonoBehaviour
 {
     public static DateSimulation Instance;
     
-    private const float WaitOneDay = 1f;
+    private const float WaitOneDay = 2f;
     
     private int _day;
     private int _month;

@@ -1,12 +1,12 @@
 {
-    "money": 5120,
-    "day": 9,
-    "month": 4,
+    "money": -14240,
+    "day": 13,
+    "month": 6,
     "year": 0,
     "listLevelsDataSave": [
         {
             "level": 1,
-            "rating": 49,
+            "rating": 37,
             "pricePerVisit": 20,
             "listObjectsDataSave": [
                 {
