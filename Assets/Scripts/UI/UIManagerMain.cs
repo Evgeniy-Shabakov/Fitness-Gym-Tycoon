@@ -37,7 +37,7 @@ namespace UI
     
         public void SetTextMoney(int money)
         {
-            textForMoney.text = "" + money;
+            textForMoney.text = money.ToString("N0");
         }
 
         public void SetTextMenLockers(int lockers)
