@@ -18,7 +18,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI textNumberWomen;
         
         [SerializeField] private TextMeshProUGUI textMassage;
-        private List<string> messages = new List<string>();
+        private readonly List<string> _messages = new List<string>();
         
         [SerializeField] private TextMeshProUGUI textDay;
         [SerializeField] private TextMeshProUGUI textMonth;
@@ -69,21 +69,21 @@ namespace UI
 
         public void AddNewMessage(string s)
         {
-            messages.Add(s);
+            _messages.Add(s);
             Invoke(nameof(DeleteFirstMessage), 5f);
             SetTextMessages();
         }
 
         private void DeleteFirstMessage()
         {
-            messages.RemoveAt(0);
+            _messages.RemoveAt(0);
             SetTextMessages();
         }
 
         private void SetTextMessages()
         {
             var s = "";
-            foreach (var m in messages)
+            foreach (var m in _messages)
             {
                 s += m + "\n";
             }
@@ -137,6 +137,16 @@ namespace UI
             eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+            for (var index = 0; index < results.Count; index++)
+            {
+                var r = results[index];
+                if (r.gameObject.layer == LayerMask.NameToLayer("Ignore Raycast"))
+                {
+                    results.Remove(r);
+                }
+            }
+
             return results.Count > 0;
         }
     }

@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public const int MoneyStartGame = 50000;
     
     private const int RentMonthly = 10000;
-    private  const int TaxMonthly = 500;
+    private const int InterestOnProfit = 20;
     
     public const int NumberTargetsHumanClient = 15;
     
@@ -40,7 +40,11 @@ public class LevelManager : MonoBehaviour
     private int _numberWomenLockers;
     private int _numberMen;
     private int _numberWomen;
-
+    
+    private int _taxMonthly;
+    private int _moneyOnStartMonth;
+    private int _moneyOnEndMonth;
+    
     private void Awake()
     {
         Instance = this;
@@ -48,6 +52,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        _moneyOnEndMonth = PlayerData.GetMoney();
+        
         StartCoroutine(CountNumberLockers(0.1f));
         Invoke(nameof(SetTimeSpawnClient), 1f);
     }
@@ -175,8 +181,18 @@ public class LevelManager : MonoBehaviour
     {
         PlayerData.SpendMoney(RentMonthly);
         UIManagerMain.Instance.AddNewMessage("rent: -" + RentMonthly + "$");
+
+        CountTaxMonthly();
+        PlayerData.SpendMoney(_taxMonthly);
+        UIManagerMain.Instance.AddNewMessage("tax: -" + _taxMonthly + "$");
+    }
+
+    private void CountTaxMonthly()
+    {
+        _moneyOnStartMonth = _moneyOnEndMonth;
+        _moneyOnEndMonth = PlayerData.GetMoney();
         
-        PlayerData.SpendMoney(TaxMonthly);
-        UIManagerMain.Instance.AddNewMessage("tax: -" + TaxMonthly + "$");
+        _taxMonthly = (_moneyOnEndMonth - _moneyOnStartMonth) * InterestOnProfit/100;
+        if (_taxMonthly < 0) _taxMonthly = 0;
     }
 }
