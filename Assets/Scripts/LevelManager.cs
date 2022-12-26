@@ -27,12 +27,35 @@ public class LevelManager : MonoBehaviour
     public const float MaxTimeExercise = 7;
     
     public const int RatingOnStart = 50;
+    
     public const int PricePerVisitOnStart = 20;
+    public const int PricePerMonthOnStart = 100;
+    public const int PricePerSixMonthOnStart = 500;
+    public const int PricePerYearOnStart = 900;
+
+    public const int StepPricePerVisit = 1;
+    public const int StepPricePerMonth = 5;
+    public const int StepPricePerSixMonth = 10;
+    public const int StepPricePerYear = 50;
+
+    private const int MinPricePerVisit = 1;
+    private const int MaxPricePerVisit = 100;
+    private const int MinPricePerMonth = 20;
+    private const int MaxPricePerMonth = 300;
+    private const int MinPricePerSixMonth = 50;
+    private const int MaxPricePerSixMonth = 1000;
+    private const int MinPricePerYear = 100;
+    private const int MaxPricePerYear = 10000;
+    
     
     private const float TimeSpawnClientBase = 4;
     
     private int _rating;
+    
     private int _pricePerVisit;
+    private int _pricePerMonth;
+    private int _pricePerSixMonth;
+    private int _pricePerYear;
     
     private float _timeSpawnClient;
     
@@ -62,7 +85,7 @@ public class LevelManager : MonoBehaviour
     {
         float k1;
         if (_rating <= MoodSad) k1 = 2;
-        else if (_rating > MoodSad && _rating < MoodHappy) k1 = 1;
+        else if (_rating is > MoodSad and < MoodHappy) k1 = 1;
         else k1 = 0.5f;
 
         float k2;
@@ -110,15 +133,52 @@ public class LevelManager : MonoBehaviour
         return _pricePerVisit;
     }
 
-    public void SetPricePerVisitFromSlider(Slider sl)
-    {
-        _pricePerVisit = (int)sl.value;
-        SetTimeSpawnClient();
-    }
-    
     public void SetPricePerVisit(int value)
     {
         _pricePerVisit = value;
+        if (_pricePerVisit < MinPricePerVisit) _pricePerVisit = MinPricePerVisit;
+        if (_pricePerVisit > MaxPricePerVisit) _pricePerVisit = MaxPricePerVisit;
+
+        SetTimeSpawnClient();
+    }
+    
+    public int GetPricePerMonth()
+    {
+        return _pricePerMonth;
+    }
+
+    public void SetPricePerMonth(int value)
+    {
+        _pricePerMonth = value;
+        
+        if (_pricePerMonth < MinPricePerMonth) _pricePerMonth = MinPricePerMonth;
+        if (_pricePerMonth > MaxPricePerMonth) _pricePerMonth = MaxPricePerMonth;
+    }
+    
+    public int GetPricePerSixMonth()
+    {
+        return _pricePerSixMonth;
+    }
+
+    public void SetPricePerSixMonth(int value)
+    {
+        _pricePerSixMonth = value;
+        
+        if (_pricePerSixMonth < MinPricePerSixMonth) _pricePerSixMonth = MinPricePerSixMonth;
+        if (_pricePerSixMonth > MaxPricePerSixMonth) _pricePerSixMonth = MaxPricePerSixMonth;
+    }
+    
+    public int GetPricePerYear()
+    {
+        return _pricePerYear;
+    }
+
+    public void SetPricePerYear(int value)
+    {
+        _pricePerYear = value;
+        
+        if (_pricePerYear < MinPricePerYear) _pricePerYear = MinPricePerYear;
+        if (_pricePerYear > MaxPricePerYear) _pricePerYear = MaxPricePerYear;
     }
 
     public float GetTimeSpawnClient()

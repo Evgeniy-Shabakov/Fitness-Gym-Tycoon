@@ -1,19 +1,22 @@
 {
-    "money": -14240,
-    "day": 13,
-    "month": 6,
+    "money": -929,
+    "day": 10,
+    "month": 5,
     "year": 0,
     "listLevelsDataSave": [
         {
             "level": 1,
-            "rating": 37,
+            "rating": 5,
             "pricePerVisit": 20,
+            "pricePerMonth": 30,
+            "pricePerSixMonth": 50,
+            "pricePerYear": 200,
             "listObjectsDataSave": [
                 {
                     "position": {
-                        "x": -25.26102066040039,
-                        "y": 0.0000095367431640625,
-                        "z": 28.315759658813478
+                        "x": -25.435693740844728,
+                        "y": 0.000003814697265625,
+                        "z": 28.65070915222168
                     },
                     "rotation": {
                         "x": 0.0,
@@ -22,62 +25,6 @@
                         "w": 1.0
                     },
                     "indexInBuildingManagerList": 0
-                },
-                {
-                    "position": {
-                        "x": -37.574676513671878,
-                        "y": 0.000030517578125,
-                        "z": 32.22584915161133
-                    },
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 1.0,
-                        "z": 0.0,
-                        "w": 0.0
-                    },
-                    "indexInBuildingManagerList": 1
-                },
-                {
-                    "position": {
-                        "x": -18.12197494506836,
-                        "y": 0.000011444091796875,
-                        "z": 32.38142395019531
-                    },
-                    "rotation": {
-                        "x": 0.0,
-                        "y": 1.0,
-                        "z": 0.0,
-                        "w": 0.0
-                    },
-                    "indexInBuildingManagerList": 1
-                },
-                {
-                    "position": {
-                        "x": -38.04158401489258,
-                        "y": -0.0000019073486328125,
-                        "z": 36.19422149658203
-                    },
-                    "rotation": {
-                        "x": 4.470348002882929e-8,
-                        "y": -0.7071067690849304,
-                        "z": 0.0,
-                        "w": 0.7071068286895752
-                    },
-                    "indexInBuildingManagerList": 3
-                },
-                {
-                    "position": {
-                        "x": -38.04159927368164,
-                        "y": 0.0,
-                        "z": 38.68421936035156
-                    },
-                    "rotation": {
-                        "x": 4.470348002882929e-8,
-                        "y": -0.7071067690849304,
-                        "z": 0.0,
-                        "w": 0.7071068286895752
-                    },
-                    "indexInBuildingManagerList": 4
                 }
             ]
         }

@@ -44,6 +44,9 @@ public class SaveLoadManager : MonoBehaviour
         public int level;
         public int rating;
         public int pricePerVisit;
+        public int pricePerMonth;
+        public int pricePerSixMonth;
+        public int pricePerYear;
         
         public List<ObjectDataSave> listObjectsDataSave = new List<ObjectDataSave>();
     }
@@ -68,6 +71,9 @@ public class SaveLoadManager : MonoBehaviour
         levelDataSave.level = 1;
         levelDataSave.rating = LevelManager.Instance.GetRating();
         levelDataSave.pricePerVisit = LevelManager.Instance.GetPricePerVisit();
+        levelDataSave.pricePerMonth = LevelManager.Instance.GetPricePerMonth();
+        levelDataSave.pricePerSixMonth = LevelManager.Instance.GetPricePerSixMonth();
+        levelDataSave.pricePerYear = LevelManager.Instance.GetPricePerYear();
         levelDataSave.listObjectsDataSave = FormListObjectsDataSave();
         
         AllDataSave allDataSave = new AllDataSave();
@@ -91,6 +97,9 @@ public class SaveLoadManager : MonoBehaviour
             
             LevelManager.Instance.SetRating(LevelManager.RatingOnStart);
             LevelManager.Instance.SetPricePerVisit(LevelManager.PricePerVisitOnStart);
+            LevelManager.Instance.SetPricePerMonth(LevelManager.PricePerMonthOnStart);
+            LevelManager.Instance.SetPricePerSixMonth(LevelManager.PricePerSixMonthOnStart);
+            LevelManager.Instance.SetPricePerYear(LevelManager.PricePerYearOnStart);
             
             return;
         }
@@ -105,6 +114,9 @@ public class SaveLoadManager : MonoBehaviour
         
         LevelManager.Instance.SetRating(levelDataSave.rating);
         LevelManager.Instance.SetPricePerVisit(levelDataSave.pricePerVisit);
+        LevelManager.Instance.SetPricePerMonth(levelDataSave.pricePerMonth);
+        LevelManager.Instance.SetPricePerSixMonth(levelDataSave.pricePerSixMonth);
+        LevelManager.Instance.SetPricePerYear(levelDataSave.pricePerYear);
         
         foreach (var objDataSave in levelDataSave.listObjectsDataSave)
         {
