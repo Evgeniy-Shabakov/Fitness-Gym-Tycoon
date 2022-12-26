@@ -17,6 +17,9 @@ namespace UI
         [SerializeField] private TextMeshProUGUI textWomenLockers;
         [SerializeField] private TextMeshProUGUI textNumberWomen;
         
+        [SerializeField] private TextMeshProUGUI textMassage;
+        private List<string> messages = new List<string>();
+        
         [SerializeField] private TextMeshProUGUI textDay;
         [SerializeField] private TextMeshProUGUI textMonth;
         [SerializeField] private TextMeshProUGUI textYear;
@@ -62,6 +65,30 @@ namespace UI
             textDay.text = day + " d";
             textMonth.text = month + " m";
             textYear.text = year + " y";
+        }
+
+        public void AddNewMessage(string s)
+        {
+            messages.Add(s);
+            Invoke(nameof(DeleteFirstMessage), 5f);
+            SetTextMessages();
+        }
+
+        private void DeleteFirstMessage()
+        {
+            messages.RemoveAt(0);
+            SetTextMessages();
+        }
+
+        private void SetTextMessages()
+        {
+            var s = "";
+            foreach (var m in messages)
+            {
+                s += m + "\n";
+            }
+            
+            textMassage.text = s;
         }
 
         public void SetRating(int rating)

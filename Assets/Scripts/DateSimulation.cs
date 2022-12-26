@@ -38,6 +38,8 @@ public class DateSimulation : MonoBehaviour
         {
             _day = 0;
             _month++;
+            
+            LevelManager.Instance.DoOnStartNewMonth();
         }
 
         if (_month == 12)

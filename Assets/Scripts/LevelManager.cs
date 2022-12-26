@@ -11,6 +11,9 @@ public class LevelManager : MonoBehaviour
     
     public const int MoneyStartGame = 50000;
     
+    private const int RentMonthly = 10000;
+    private  const int TaxMonthly = 500;
+    
     public const int NumberTargetsHumanClient = 15;
     
     public const int MoodSad = 25;
@@ -166,5 +169,14 @@ public class LevelManager : MonoBehaviour
     {
         _numberWomen--;
         UIManagerMain.Instance.SetTextNumberWomen(_numberWomen);
+    }
+
+    public void DoOnStartNewMonth()
+    {
+        PlayerData.SpendMoney(RentMonthly);
+        UIManagerMain.Instance.AddNewMessage("rent: -" + RentMonthly + "$");
+        
+        PlayerData.SpendMoney(TaxMonthly);
+        UIManagerMain.Instance.AddNewMessage("tax: -" + TaxMonthly + "$");
     }
 }
