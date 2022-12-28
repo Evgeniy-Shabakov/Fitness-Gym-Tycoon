@@ -6,6 +6,7 @@ namespace HumanClient
     public class HumanClientData : MonoBehaviour
     {
         private Gender _gender;
+        private int _priceEntry;
         
         private int _mood;
         
@@ -69,6 +70,16 @@ namespace HumanClient
         public int GetMood()
         {
             return _mood;
+        }
+        
+        public int GetPriceEntry()
+        {
+            return _priceEntry;
+        }
+
+        public void SetPriceEntry(int value)
+        {
+            _priceEntry = value;
         }
     }
 }

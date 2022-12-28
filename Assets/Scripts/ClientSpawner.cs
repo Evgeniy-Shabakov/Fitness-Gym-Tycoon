@@ -7,8 +7,6 @@ public class ClientSpawner : MonoBehaviour
     [SerializeField] private GameObject prefabHumanClient;
     [SerializeField] private List<GameObject> prefabsHumansModels;
 
-    private GameObject _currentHumanClient;
-
     void Start()
     {
         Invoke(nameof(CreateClient), 2f);
@@ -16,17 +14,20 @@ public class ClientSpawner : MonoBehaviour
 
     private void CreateClient()
     {
-        _currentHumanClient = Instantiate(prefabHumanClient, transform);
+        var currentHumanClient = Instantiate(prefabHumanClient, transform);
+        var humanClientData = currentHumanClient.GetComponent<HumanClientData>();
         
-        GameObject humanModel = Instantiate(prefabsHumansModels[Random.Range(0,2)], _currentHumanClient.transform);
+        GameObject humanModel = Instantiate(prefabsHumansModels[Random.Range(0,2)], currentHumanClient.transform);
+        
+        humanClientData.SetPriceEntry(LevelManager.Instance.GetPricePerVisit());
         
         if (humanModel.CompareTag("Male"))
         {
-            _currentHumanClient.GetComponent<HumanClientData>().SetGender(Gender.Male);
+            humanClientData.SetGender(Gender.Male);
         }
         else
         {
-            _currentHumanClient.GetComponent<HumanClientData>().SetGender(Gender.Female);
+            humanClientData.SetGender(Gender.Female);
         }
         
         Invoke(nameof(CreateClient), LevelManager.Instance.GetTimeSpawnClient());

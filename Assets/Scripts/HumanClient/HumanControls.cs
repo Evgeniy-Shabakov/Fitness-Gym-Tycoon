@@ -75,9 +75,9 @@ namespace HumanClient
         
             if (_humanClientData.indexInTargetsArray == 1)
             {
-                PlayerData.SpendMoney(LevelManager.Instance.GetPricePerVisit());
+                PlayerData.SpendMoney(_humanClientData.GetPriceEntry());
                 _humanReactionControl.SetMoneyAboveHuman();
-                _humanReactionControl.SetTextAboveHuman("-" + LevelManager.Instance.GetPricePerVisit());
+                _humanReactionControl.SetTextAboveHuman("-" + _humanClientData.GetPriceEntry());
             
                 _humanClientData.TakeAwayMood(100);
                 Invoke(nameof(SendHumanHome), 1f);
@@ -152,9 +152,9 @@ namespace HumanClient
             switch (_humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
             {
                 case 0:
-                    PlayerData.AddMoney(LevelManager.Instance.GetPricePerVisit());
+                    PlayerData.AddMoney(_humanClientData.GetPriceEntry());
                     _humanReactionControl.SetMoneyAboveHuman();
-                    _humanReactionControl.SetTextAboveHuman("+" + LevelManager.Instance.GetPricePerVisit());
+                    _humanReactionControl.SetTextAboveHuman("+" + _humanClientData.GetPriceEntry());
                     break;
                 case 1:
                     if (_humanClientData.indexInTargetsArray == 1)
