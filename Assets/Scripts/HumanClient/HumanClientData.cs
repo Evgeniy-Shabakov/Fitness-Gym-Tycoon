@@ -74,6 +74,10 @@ namespace HumanClient
             return _mood;
         }
 
+        public SubscriptionType GetSubscriptionType()
+        {
+            return _subscriptionType;
+        }
         public void SetSubscriptionType(SubscriptionType type)
         {
             _subscriptionType = type;

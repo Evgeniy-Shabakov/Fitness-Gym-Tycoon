@@ -95,6 +95,7 @@ public class UIManagerPanelObject : MonoBehaviour
             if (BuildingManager.Instance.objectForBuild == null)
             {
                 PlayerData.SpendMoney(price);
+                LevelAccounting.Instance.AddTotalPurchaseEquipment(price);
                 objectData.isNew = false;
                 
                 if (objectData.indexInBuildingManagerList == 1)
@@ -124,6 +125,7 @@ public class UIManagerPanelObject : MonoBehaviour
     {
         ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
         PlayerData.AddMoney(objectData.price);
+        LevelAccounting.Instance.AddTotalSaleEquipment(objectData.price);
         
         Destroy(currentGameObjectForPanel);
         Close();

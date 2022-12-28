@@ -9,9 +9,9 @@ public class ClientSpawner : MonoBehaviour
 
     void Start()
     {
-        Invoke(nameof(CreateClientVisit), 6);
+        Invoke(nameof(CreateClientVisit), 15);
         Invoke(nameof(CreateClientMonth), 2);
-        Invoke(nameof(CreateClientSixMonth), 15);
+        Invoke(nameof(CreateClientSixMonth), 10);
         Invoke(nameof(CreateClientYear), 20);
     }
 

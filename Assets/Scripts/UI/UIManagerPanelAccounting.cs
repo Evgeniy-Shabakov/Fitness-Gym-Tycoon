@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 namespace UI
 {
@@ -7,6 +8,16 @@ namespace UI
         public static UIManagerPanelAccounting Instance;
 
         public GameObject panel;
+        
+        [SerializeField] private TextMeshProUGUI textTotalVisit;
+        [SerializeField] private TextMeshProUGUI textTotalMonth;
+        [SerializeField] private TextMeshProUGUI textTotalSixMonth;
+        [SerializeField] private TextMeshProUGUI textTotalYear;
+        [SerializeField] private TextMeshProUGUI textSaleEquipment;
+        [SerializeField] private TextMeshProUGUI textRent;
+        [SerializeField] private TextMeshProUGUI textPurchaseEquipment;
+        [SerializeField] private TextMeshProUGUI textTax;
+        [SerializeField] private TextMeshProUGUI textTotal;
         
         private void Awake()
         {

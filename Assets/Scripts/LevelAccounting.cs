@@ -1,3 +1,4 @@
+using HumanClient;
 using UnityEngine;
 
 public class LevelAccounting : MonoBehaviour
@@ -37,44 +38,23 @@ public class LevelAccounting : MonoBehaviour
         return _taxMonthly;
     }
 
-    public void AddTotalProfitVisit(int value)
+    public void ChangeTotalProfitPerSubscription(int value, SubscriptionType type)
     {
-        _totalProfitVisit += value;
-    }
-    
-    public void RemoveTotalProfitVisit(int value)
-    {
-        _totalProfitVisit -= value;
-    }
-
-    public void AddTotalProfitMonth(int value)
-    {
-        _totalProfitMonth += value;
-    }
-    
-    public void RemoveTotalProfitMonth(int value)
-    {
-        _totalProfitMonth -= value;
-    }
-    
-    public void AddTotalProfitSixMonth(int value)
-    {
-        _totalProfitSixMonth += value;
-    }
-    
-    public void RemoveTotalProfitSixMonth(int value)
-    {
-        _totalProfitSixMonth -= value;
-    }
-    
-    public void AddTotalProfitYear(int value)
-    {
-        _totalProfitYear += value;
-    }
-    
-    public void RemoveTotalProfitYear(int value)
-    {
-        _totalProfitYear -= value;
+        switch (type)
+        {
+            case SubscriptionType.Visit:
+                _totalProfitVisit += value;
+                break;
+            case SubscriptionType.Month:
+                _totalProfitMonth += value;
+                break;
+            case SubscriptionType.SixMonth:
+                _totalProfitSixMonth += value;
+                break;
+            case SubscriptionType.Year:
+                _totalProfitYear += value;
+                break;
+        }
     }
     
     public void AddTotalSaleEquipment(int value)

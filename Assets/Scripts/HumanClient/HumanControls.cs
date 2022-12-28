@@ -76,6 +76,7 @@ namespace HumanClient
             if (_humanClientData.indexInTargetsArray == 1)
             {
                 PlayerData.SpendMoney(_humanClientData.GetPriceEntry());
+                LevelAccounting.Instance.ChangeTotalProfitPerSubscription(-_humanClientData.GetPriceEntry(), _humanClientData.GetSubscriptionType());
                 _humanReactionControl.SetMoneyAboveHuman();
                 _humanReactionControl.SetTextAboveHuman("-" + _humanClientData.GetPriceEntry());
             
@@ -154,6 +155,7 @@ namespace HumanClient
                 case 0:
                     _humanClientData.SetPriceEntry();
                     PlayerData.AddMoney(_humanClientData.GetPriceEntry());
+                    LevelAccounting.Instance.ChangeTotalProfitPerSubscription(_humanClientData.GetPriceEntry(), _humanClientData.GetSubscriptionType());
                     _humanReactionControl.SetMoneyAboveHuman();
                     _humanReactionControl.SetTextAboveHuman("+" + _humanClientData.GetPriceEntry());
                     break;

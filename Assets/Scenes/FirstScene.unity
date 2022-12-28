@@ -8313,6 +8313,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1770660177}
+  textTotalVisit: {fileID: 646422533}
+  textTotalMonth: {fileID: 565177741}
+  textTotalSixMonth: {fileID: 41923159}
+  textTotalYear: {fileID: 1694770088}
+  textSaleEquipment: {fileID: 169264364}
+  textRent: {fileID: 498159234}
+  textPurchaseEquipment: {fileID: 736809263}
+  textTax: {fileID: 854754110}
+  textTotal: {fileID: 704538281}
 --- !u!1 &862447219
 GameObject:
   m_ObjectHideFlags: 0
