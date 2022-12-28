@@ -130,6 +130,11 @@ namespace UI
             {
                 UIManagerPanelPricePolicy.Instance.Close();
             }
+            
+            if (UIManagerPanelAccounting.Instance.panel.activeSelf)
+            {
+                UIManagerPanelAccounting.Instance.Close();
+            }
         }
     
         public bool IsPointerOverUIObject() {
