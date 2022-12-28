@@ -4,13 +4,13 @@ public class LevelAccounting : MonoBehaviour
 {
     public static LevelAccounting Instance;
     
-    private int _subscriptionsPerVisit;
-    private int _subscriptionsPerMonth;
-    private int _subscriptionsPerSixMonth;
-    private int _subscriptionsPerYear;
-    private int _saleEquipment;
+    private int _totalProfitVisit;
+    private int _totalProfitMonth;
+    private int _totalProfitSixMonth;
+    private int _totalProfitYear;
+    private int _totalSaleEquipment;
     
-    private int _purchaseEquipment;
+    private int _totalPurchaseEquipment;
     
     private int _taxMonthly;
     private int _moneyOnStartMonth;
@@ -35,5 +35,55 @@ public class LevelAccounting : MonoBehaviour
         if (_taxMonthly < 0) _taxMonthly = 0;
         
         return _taxMonthly;
+    }
+
+    public void AddTotalProfitVisit(int value)
+    {
+        _totalProfitVisit += value;
+    }
+    
+    public void RemoveTotalProfitVisit(int value)
+    {
+        _totalProfitVisit -= value;
+    }
+
+    public void AddTotalProfitMonth(int value)
+    {
+        _totalProfitMonth += value;
+    }
+    
+    public void RemoveTotalProfitMonth(int value)
+    {
+        _totalProfitMonth -= value;
+    }
+    
+    public void AddTotalProfitSixMonth(int value)
+    {
+        _totalProfitSixMonth += value;
+    }
+    
+    public void RemoveTotalProfitSixMonth(int value)
+    {
+        _totalProfitSixMonth -= value;
+    }
+    
+    public void AddTotalProfitYear(int value)
+    {
+        _totalProfitYear += value;
+    }
+    
+    public void RemoveTotalProfitYear(int value)
+    {
+        _totalProfitYear -= value;
+    }
+    
+    public void AddTotalSaleEquipment(int value)
+    {
+        _totalSaleEquipment += value;
+    }
+    
+    public void AddTotalPurchaseEquipment(int value)
+    {
+        _totalPurchaseEquipment += value;
     }
 }

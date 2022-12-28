@@ -152,6 +152,7 @@ namespace HumanClient
             switch (_humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
             {
                 case 0:
+                    _humanClientData.SetPriceEntry();
                     PlayerData.AddMoney(_humanClientData.GetPriceEntry());
                     _humanReactionControl.SetMoneyAboveHuman();
                     _humanReactionControl.SetTextAboveHuman("+" + _humanClientData.GetPriceEntry());

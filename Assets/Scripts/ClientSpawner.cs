@@ -17,40 +17,40 @@ public class ClientSpawner : MonoBehaviour
 
     private void CreateClientVisit()
     {
-        InstantiateHumanClient(LevelManager.Instance.GetPricePerVisit());
+        InstantiateHumanClient(SubscriptionType.Visit);
         
         Invoke(nameof(CreateClientVisit), LevelManager.Instance.GetTimeSpawnClientVisit());
     }
     
     private void CreateClientMonth()
     {
-        InstantiateHumanClient(LevelManager.Instance.GetPricePerMonth());
+        InstantiateHumanClient(SubscriptionType.Month);
         
         Invoke(nameof(CreateClientMonth), LevelManager.Instance.GetTimeSpawnClientMonth());
     }
     
     private void CreateClientSixMonth()
     {
-        InstantiateHumanClient(LevelManager.Instance.GetPricePerSixMonth());
+        InstantiateHumanClient(SubscriptionType.SixMonth);
         
         Invoke(nameof(CreateClientSixMonth), LevelManager.Instance.GetTimeSpawnClientSixMonth());
     }
     
     private void CreateClientYear()
     {
-        InstantiateHumanClient(LevelManager.Instance.GetPricePerYear());
+        InstantiateHumanClient(SubscriptionType.Year);
         
         Invoke(nameof(CreateClientYear), LevelManager.Instance.GetTimeSpawnClientYear());
     }
 
-    private void InstantiateHumanClient(int price)
+    private void InstantiateHumanClient(SubscriptionType type)
     {
         var currentHumanClient = Instantiate(prefabHumanClient, transform);
         var humanClientData = currentHumanClient.GetComponent<HumanClientData>();
         
         GameObject humanModel = Instantiate(prefabsHumansModels[Random.Range(0,2)], currentHumanClient.transform);
         
-        humanClientData.SetPriceEntry(price);
+        humanClientData.SetSubscriptionType(type);
         
         if (humanModel.CompareTag("Male"))
         {

@@ -6,6 +6,8 @@ namespace HumanClient
     public class HumanClientData : MonoBehaviour
     {
         private Gender _gender;
+        private SubscriptionType _subscriptionType;
+
         private int _priceEntry;
         
         private int _mood;
@@ -71,15 +73,38 @@ namespace HumanClient
         {
             return _mood;
         }
-        
+
+        public void SetSubscriptionType(SubscriptionType type)
+        {
+            _subscriptionType = type;
+        }
+
         public int GetPriceEntry()
         {
             return _priceEntry;
         }
-
-        public void SetPriceEntry(int value)
+        
+        public void SetPriceEntry()
         {
-            _priceEntry = value;
+            _priceEntry = DeterminePriceEntry();
+        }
+        
+        private int DeterminePriceEntry()
+        {
+            switch (_subscriptionType)
+            {
+                case SubscriptionType.Visit:
+                    return LevelManager.Instance.GetPricePerVisit();
+                case SubscriptionType.Month:
+                    return LevelManager.Instance.GetPricePerMonth();
+                case SubscriptionType.SixMonth:
+                    return LevelManager.Instance.GetPricePerSixMonth();
+                case SubscriptionType.Year:
+                    return LevelManager.Instance.GetPricePerYear();
+                
+                default:
+                    return 0;
+            }
         }
     }
 }
