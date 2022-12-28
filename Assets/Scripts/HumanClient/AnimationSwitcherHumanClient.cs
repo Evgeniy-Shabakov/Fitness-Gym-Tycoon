@@ -1,76 +1,78 @@
-using System.Collections;
-using System.Collections.Generic;
-using HumanClient;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AnimationSwitcherHumanClient : MonoBehaviour
+namespace HumanClient
 {
-    private Animator animator;
-    private NavMeshAgent navMeshAgent;
-    private HumanControls humanControls;
-
-    private GameObject barbellInHands;
-
-    void Start()
+    public class AnimationSwitcherHumanClient : MonoBehaviour
     {
-        animator = GetComponentInChildren<Animator>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        humanControls = GetComponent<HumanControls>();
-        
-        humanControls.humanDoActionStart.AddListener(AnimationDoActionStart);
-        humanControls.humanDoActionStop.AddListener(AnimationDoActionStop);
-    }
+        private Animator _animator;
+        private NavMeshAgent _navMeshAgent;
+        private HumanControls _humanControls;
 
-    void AnimationDoActionStart()
-    {
-        int i = humanControls.currentGameObjectForAction.GetComponent<ObjectData>().indexInBuildingManagerList;
-        animator.runtimeAnimatorController =
-            BuildingManager.Instance.objectsForBuilding[i].animatorOverrideController;
-        
-        animator.SetBool("DoAction", true);
+        private GameObject _barbellInHands;
+        private static readonly int DoAction = Animator.StringToHash("DoAction");
+        private static readonly int IsWalk = Animator.StringToHash("IsWalk");
 
-        if (BuildingManager.Instance.objectsForBuilding[i].needBarbellInHands)
+        void Start()
         {
-            barbellInHands = FindNestedChild(transform, "Barbell 1").gameObject; 
-            barbellInHands.SetActive(true);
+            _animator = GetComponentInChildren<Animator>();
+            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _humanControls = GetComponent<HumanControls>();
+        
+            _humanControls.humanDoActionStart.AddListener(AnimationDoActionStart);
+            _humanControls.humanDoActionStop.AddListener(AnimationDoActionStop);
+        }
+
+        void AnimationDoActionStart()
+        {
+            int i = _humanControls.currentGameObjectForAction.GetComponent<ObjectData>().indexInBuildingManagerList;
+            _animator.runtimeAnimatorController =
+                BuildingManager.Instance.objectsForBuilding[i].animatorOverrideController;
+        
+            _animator.SetBool(DoAction, true);
+
+            if (BuildingManager.Instance.objectsForBuilding[i].needBarbellInHands)
+            {
+                _barbellInHands = FindNestedChild(transform, "Barbell 1").gameObject; 
+                _barbellInHands.SetActive(true);
             
-            humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().HideElements();
+                _humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().HideElements();
+            }
         }
-    }
     
-    void AnimationDoActionStop()
-    {
-        if (barbellInHands != null)
+        void AnimationDoActionStop()
         {
-            barbellInHands.SetActive(false);
-            humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().ShowElements();
+            if (_barbellInHands != null)
+            {
+                _barbellInHands.SetActive(false);
+                _humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().ShowElements();
+            }
+            _barbellInHands = null;
+            _animator.SetBool(DoAction, false);
         }
-        barbellInHands = null;
-        animator.SetBool("DoAction", false);
-    }
     
-    void Update()
-    {
-        if (navMeshAgent.velocity.magnitude > 0) animator.SetBool("IsWalk", true);
-        else animator.SetBool("IsWalk", false);
-    }
-    
-    private Transform FindNestedChild(Transform me, string childName)
-    {
-        for (int i = 0; i < me.childCount; ++i)
+        void Update()
         {
-            var child = me.GetChild(i);
- 
-            if (child.name == childName)
-                return child;
- 
-            var next = FindNestedChild(child, childName);
- 
-            if (next != null)
-                return next;
+            if (_navMeshAgent.velocity.magnitude > 0) _animator.SetBool(IsWalk, true);
+            else _animator.SetBool(IsWalk, false);
         }
+    
+        private Transform FindNestedChild(Transform me, string childName)
+        {
+            for (var i = 0; i < me.childCount; ++i)
+            {
+                var child = me.GetChild(i);
  
-        return null;
+                if (child.name == childName)
+                    return child;
+ 
+                var next = FindNestedChild(child, childName);
+ 
+                if (next != null)
+                    return next;
+            }
+ 
+            return null;
+        }
     }
 }

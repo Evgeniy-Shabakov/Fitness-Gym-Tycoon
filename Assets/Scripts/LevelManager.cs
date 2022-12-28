@@ -47,7 +47,6 @@ public class LevelManager : MonoBehaviour
     private const int MinPricePerYear = 100;
     private const int MaxPricePerYear = 10000;
     
-    
     private const float TimeSpawnClientBase = 4;
     
     private int _rating;
