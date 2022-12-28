@@ -1,7 +1,6 @@
 using System.Collections;
 using UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,8 +10,8 @@ public class LevelManager : MonoBehaviour
     
     public const int MoneyStartGame = 50000;
     
-    private const int RentMonthly = 5000;
-    private const int InterestOnProfit = 20;
+    public const int RentMonthly = 5000;
+    public const int InterestOnProfit = 20;
     
     public const int NumberTargetsHumanClient = 15;
     
@@ -69,10 +68,6 @@ public class LevelManager : MonoBehaviour
     private int _numberMen;
     private int _numberWomen;
     
-    private int _taxMonthly;
-    private int _moneyOnStartMonth;
-    private int _moneyOnEndMonth;
-    
     private void Awake()
     {
         Instance = this;
@@ -80,8 +75,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        _moneyOnEndMonth = PlayerData.GetMoney();
-        
         StartCoroutine(CountNumberLockers(0.1f));
         Invoke(nameof(SetTimeSpawnClient), 1f);
     }
@@ -277,23 +270,14 @@ public class LevelManager : MonoBehaviour
         _numberWomen--;
         UIManagerMain.Instance.SetTextNumberWomen(_numberWomen);
     }
-
+    
     public void DoOnStartNewMonth()
     {
-        PlayerData.SpendMoney(RentMonthly);
-        UIManagerMain.Instance.AddNewMessage("rent: -" + RentMonthly + "$");
+        PlayerData.SpendMoney(LevelManager.RentMonthly);
+        UIManagerMain.Instance.AddNewMessage("rent: -" + LevelManager.RentMonthly + "$");
 
-        CountTaxMonthly();
-        PlayerData.SpendMoney(_taxMonthly);
-        UIManagerMain.Instance.AddNewMessage("tax: -" + _taxMonthly + "$");
-    }
-
-    private void CountTaxMonthly()
-    {
-        _moneyOnStartMonth = _moneyOnEndMonth;
-        _moneyOnEndMonth = PlayerData.GetMoney();
-        
-        _taxMonthly = (_moneyOnEndMonth - _moneyOnStartMonth) * InterestOnProfit/100;
-        if (_taxMonthly < 0) _taxMonthly = 0;
+        var tax = LevelAccounting.Instance.CountTaxMonthly();
+        PlayerData.SpendMoney(tax);
+        UIManagerMain.Instance.AddNewMessage("tax: -" + tax + "$");
     }
 }
