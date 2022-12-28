@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     
     public const int MoneyStartGame = 50000;
     
-    private const int RentMonthly = 100;
+    private const int RentMonthly = 10000;
     private const int InterestOnProfit = 20;
     
     public const int NumberTargetsHumanClient = 15;
@@ -47,7 +47,10 @@ public class LevelManager : MonoBehaviour
     private const int MinPricePerYear = 100;
     private const int MaxPricePerYear = 10000;
     
-    private const float TimeSpawnClientBase = 4;
+    private const float TimeSpawnClientBaseVisit = 10;
+    private const float TimeSpawnClientBaseMonth = 4;
+    private const float TimeSpawnClientBaseSixMonth = 15;
+    private const float TimeSpawnClientBaseYear = 30;
     
     private int _rating;
     
@@ -56,7 +59,10 @@ public class LevelManager : MonoBehaviour
     private int _pricePerSixMonth;
     private int _pricePerYear;
     
-    private float _timeSpawnClient;
+    private float _timeSpawnClientVisit;
+    private float _timeSpawnClientMonth;
+    private float _timeSpawnClientSixMonth;
+    private float _timeSpawnClientYear;
     
     private int _numberMenLockers;
     private int _numberWomenLockers;
@@ -91,7 +97,22 @@ public class LevelManager : MonoBehaviour
         if (_pricePerVisit <= PricePerVisitOnStart) k2 = 0.5f;
         else k2 = (_pricePerVisit - PricePerVisitOnStart) / 100f + 1f;
         
-        _timeSpawnClient = TimeSpawnClientBase * k1 * k2;
+        _timeSpawnClientVisit = TimeSpawnClientBaseVisit * k1 * k2;
+        
+        if (_pricePerMonth <= PricePerMonthOnStart) k2 = 0.5f;
+        else k2 = (_pricePerMonth - PricePerMonthOnStart) / 100f + 1f;
+        
+        _timeSpawnClientMonth = TimeSpawnClientBaseMonth * k1 * k2;
+        
+        if (_pricePerSixMonth <= PricePerSixMonthOnStart) k2 = 0.5f;
+        else k2 = (_pricePerSixMonth - PricePerSixMonthOnStart) / 100f + 1f;
+        
+        _timeSpawnClientSixMonth = TimeSpawnClientBaseSixMonth * k1 * k2;
+        
+        if (_pricePerYear <= PricePerYearOnStart) k2 = 0.5f;
+        else k2 = (_pricePerYear - PricePerYearOnStart) / 100f + 1f;
+        
+        _timeSpawnClientYear = TimeSpawnClientBaseYear * k1 * k2;
     }
     
     public void AddRating(int n)
@@ -152,6 +173,8 @@ public class LevelManager : MonoBehaviour
         
         if (_pricePerMonth < MinPricePerMonth) _pricePerMonth = MinPricePerMonth;
         if (_pricePerMonth > MaxPricePerMonth) _pricePerMonth = MaxPricePerMonth;
+        
+        SetTimeSpawnClient();
     }
     
     public int GetPricePerSixMonth()
@@ -165,6 +188,8 @@ public class LevelManager : MonoBehaviour
         
         if (_pricePerSixMonth < MinPricePerSixMonth) _pricePerSixMonth = MinPricePerSixMonth;
         if (_pricePerSixMonth > MaxPricePerSixMonth) _pricePerSixMonth = MaxPricePerSixMonth;
+        
+        SetTimeSpawnClient();
     }
     
     public int GetPricePerYear()
@@ -178,11 +203,28 @@ public class LevelManager : MonoBehaviour
         
         if (_pricePerYear < MinPricePerYear) _pricePerYear = MinPricePerYear;
         if (_pricePerYear > MaxPricePerYear) _pricePerYear = MaxPricePerYear;
+        
+        SetTimeSpawnClient();
     }
 
-    public float GetTimeSpawnClient()
+    public float GetTimeSpawnClientVisit()
     {
-        return _timeSpawnClient;
+        return _timeSpawnClientVisit;
+    }
+    
+    public float GetTimeSpawnClientMonth()
+    {
+        return _timeSpawnClientMonth;
+    }
+    
+    public float GetTimeSpawnClientSixMonth()
+    {
+        return _timeSpawnClientSixMonth;
+    }
+    
+    public float GetTimeSpawnClientYear()
+    {
+        return _timeSpawnClientYear;
     }
 
     public IEnumerator CountNumberLockers(float wait)

@@ -1,13 +1,13 @@
 {
-    "money": 37198,
-    "day": 27,
-    "month": 7,
-    "year": 0,
+    "money": 17167,
+    "day": 5,
+    "month": 1,
+    "year": 1,
     "listLevelsDataSave": [
         {
             "level": 1,
-            "rating": 19,
-            "pricePerVisit": 60,
+            "rating": 5,
+            "pricePerVisit": 20,
             "pricePerMonth": 100,
             "pricePerSixMonth": 500,
             "pricePerYear": 900,
