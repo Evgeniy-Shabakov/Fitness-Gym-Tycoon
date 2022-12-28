@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     
     public const int MoneyStartGame = 50000;
     
-    private const int RentMonthly = 10000;
+    private const int RentMonthly = 5000;
     private const int InterestOnProfit = 20;
     
     public const int NumberTargetsHumanClient = 15;
