@@ -273,8 +273,8 @@ public class LevelManager : MonoBehaviour
     
     public void DoOnStartNewMonth()
     {
-        PlayerData.SpendMoney(LevelManager.RentMonthly);
-        UIManagerMain.Instance.AddNewMessage("rent: -" + LevelManager.RentMonthly + "$");
+        PlayerData.SpendMoney(RentMonthly);
+        UIManagerMain.Instance.AddNewMessage("rent: -" + RentMonthly + "$");
 
         var tax = LevelAccounting.Instance.CountTaxMonthly();
         PlayerData.SpendMoney(tax);
