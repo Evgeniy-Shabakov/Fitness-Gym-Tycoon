@@ -1,14 +1,15 @@
 using HumanClient;
+using UI;
 using UnityEngine;
 
 public class LevelAccounting : MonoBehaviour
 {
     public static LevelAccounting Instance;
     
-    private int _totalProfitVisit;
-    private int _totalProfitMonth;
-    private int _totalProfitSixMonth;
-    private int _totalProfitYear;
+    private int _totalRevenueVisit;
+    private int _totalRevenueMonth;
+    private int _totalRevenueSixMonth;
+    private int _totalRevenueYear;
     private int _totalSaleEquipment;
     
     private int _totalPurchaseEquipment;
@@ -16,6 +17,8 @@ public class LevelAccounting : MonoBehaviour
     private int _taxMonthly;
     private int _moneyOnStartMonth;
     private int _moneyOnEndMonth;
+    
+    private int _totalMonthly;
 
     private void Awake()
     {
@@ -43,16 +46,16 @@ public class LevelAccounting : MonoBehaviour
         switch (type)
         {
             case SubscriptionType.Visit:
-                _totalProfitVisit += value;
+                _totalRevenueVisit += value;
                 break;
             case SubscriptionType.Month:
-                _totalProfitMonth += value;
+                _totalRevenueMonth += value;
                 break;
             case SubscriptionType.SixMonth:
-                _totalProfitSixMonth += value;
+                _totalRevenueSixMonth += value;
                 break;
             case SubscriptionType.Year:
-                _totalProfitYear += value;
+                _totalRevenueYear += value;
                 break;
         }
     }
@@ -65,5 +68,39 @@ public class LevelAccounting : MonoBehaviour
     public void AddTotalPurchaseEquipment(int value)
     {
         _totalPurchaseEquipment += value;
+    }
+
+    public void UpdateAccounting()
+    {
+        UIManagerPanelAccounting.Instance.SetTextTotalVisit(_totalRevenueVisit);
+        UIManagerPanelAccounting.Instance.SetTextTotalMonth(_totalRevenueMonth);
+        UIManagerPanelAccounting.Instance.SetTextTotalSixMonth(_totalRevenueSixMonth);
+        UIManagerPanelAccounting.Instance.SetTextTotalYear(_totalRevenueYear);
+        UIManagerPanelAccounting.Instance.SetTextSaleEquipment(_totalSaleEquipment);
+        
+        UIManagerPanelAccounting.Instance.SetTextRent(-LevelManager.RentMonthly);
+        UIManagerPanelAccounting.Instance.SetTextPurchaseEquipment(-_totalPurchaseEquipment);
+        UIManagerPanelAccounting.Instance.SetTextTax(-_taxMonthly);
+        
+        CountTotalMonthly();
+        UIManagerPanelAccounting.Instance.SetTextTotal(_totalMonthly);
+
+        _totalRevenueVisit = 0;
+        _totalRevenueMonth = 0;
+        _totalRevenueSixMonth = 0;
+        _totalRevenueYear = 0;
+        _totalSaleEquipment = 0;
+        _totalPurchaseEquipment = 0;
+
+    }
+
+    private void CountTotalMonthly()
+    {
+        var totalRevenue = _totalRevenueVisit + _totalRevenueMonth + _totalRevenueSixMonth + _totalRevenueYear +
+                          _totalSaleEquipment;
+
+        var totalConsumption = LevelManager.RentMonthly + _totalPurchaseEquipment + _taxMonthly;
+
+        _totalMonthly = totalRevenue - totalConsumption;
     }
 }

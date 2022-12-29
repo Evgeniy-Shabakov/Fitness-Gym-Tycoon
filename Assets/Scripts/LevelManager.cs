@@ -279,5 +279,7 @@ public class LevelManager : MonoBehaviour
         var tax = LevelAccounting.Instance.CountTaxMonthly();
         PlayerData.SpendMoney(tax);
         UIManagerMain.Instance.AddNewMessage("tax: -" + tax + "$");
+        
+        LevelAccounting.Instance.UpdateAccounting();
     }
 }
