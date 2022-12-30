@@ -1,19 +1,18 @@
+using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Worker
 {
     public abstract class WorkerData : MonoBehaviour
     {
-        private int _salary;
+        protected NavMeshAgent NavMeshAgent;
+        
+        public int Salary { get; set; }
 
-        public int GetSalary()
+        public virtual void Start()
         {
-            return _salary;
-        }
-
-        public void SetSalary(int value)
-        {
-            _salary = value;
+            NavMeshAgent = GetComponent<NavMeshAgent>();
         }
     }
 }
