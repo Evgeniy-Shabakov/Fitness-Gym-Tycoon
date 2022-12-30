@@ -86,7 +86,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -225,23 +225,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: ae7afcffe47afcff86c9fcff3205fdff9418fdff9e19fdffd419fdff9628fdffcc28fdff0e2cfdff442cfdff0038fdff3638fdff9c68fdffd268fdffb06cfdffe66cfdff6c76ffff2280ffff049cffff10a6ffffc4bfffff88e4ffff8cedffff24fbffff1caf0000f4c0000038c20000
+      m_SelectedIDs: 2889ffff
+      m_LastClickedID: -30424
+      m_ExpandedIDs: 6e93ffff6ea0ffff7ea2fffff2b0ffff9ec6ffff26cdffffe4cfffff24fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Puddle
+        m_OriginalName: Puddle
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -29072
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 654
     height: 454
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -558,9 +558,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -19.017998, y: 0.38098323, z: 18.416122}
+    m_Target: {x: -25.233826, y: 1.0378623, z: 48.63363}
     speed: 2
-    m_Value: {x: -19.017998, y: 0.38098323, z: 18.416122}
+    m_Value: {x: -25.233826, y: 1.0378623, z: 48.63363}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -607,13 +607,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.17720947, y: -0.22369312, z: 0.041399106, w: 0.95752424}
+    m_Target: {x: 0.33028653, y: -0.402225, z: 0.15832786, w: 0.8390879}
     speed: 2
-    m_Value: {x: 0.17720872, y: -0.22369218, z: 0.041398935, w: 0.95752025}
+    m_Value: {x: 0.33028483, y: -0.40222293, z: 0.15832706, w: 0.8390836}
   m_Size:
-    m_Target: 3.9557257
+    m_Target: 3.0134375
     speed: 2
-    m_Value: 3.9557257
+    m_Value: 2.8836722
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -721,8 +721,8 @@ MonoBehaviour:
     y: 0
     width: 200
     height: 454
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -796,22 +796,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Characters
+    - Assets/Prefabs/Trash
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 81
   m_LastFolders:
-  - Assets/Prefabs/Characters
+  - Assets/Prefabs/Trash
   m_LastFoldersGridSize: 81
   m_LastProjectPath: D:\Unity\Projects\Fitness Gym Tycoon\Fitness Gym Tycoon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 308}
-    m_SelectedIDs: cec20000
-    m_LastClickedID: 49870
-    m_ExpandedIDs: 00000000e8700000ea700000ec700000ee700000f0700000f2700000f4700000f6700000f8700000047100000c71000056a9000070a90000
+    scrollPos: {x: 0, y: 228}
+    m_SelectedIDs: 827c0000
+    m_LastClickedID: 31874
+    m_ExpandedIDs: 00000000f0730000f2730000f4730000f6730000f8730000fa730000fc730000fe7300000074000002740000047400001c7400003274000072760000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -839,7 +839,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000e8700000ea700000ec700000ee700000f0700000f2700000f4700000f6700000f8700000047100000c71000056a9000070a90000
+    m_ExpandedIDs: 00000000f0730000f2730000f4730000f6730000f8730000fa730000fc730000fe7300000074000002740000047400001c7400003274000072760000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -864,8 +864,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 2889ffff
+    m_LastClickedInstanceID: -30424
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000da6a0000fc620000085d0000665e0000000000005a820000808200004aa50000ea74000086870000948d0000326b0000467e0000988c00009e8c0000a2aa0000aaaa0000dca80000
     m_RenameOverlay:
