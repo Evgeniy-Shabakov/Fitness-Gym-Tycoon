@@ -9,6 +9,7 @@ TagManager:
   - Plane
   - Male
   - Female
+  - Trash
   layers:
   - Default
   - TransparentFX

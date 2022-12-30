@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6386662222892323909}
   - component: {fileID: 5750097580126495950}
   - component: {fileID: 6396451140616378185}
+  - component: {fileID: 727678932146757522}
   m_Layer: 0
   m_Name: HumanClient
   m_TagString: HumanClient
@@ -88,6 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32216d34da76c8345aacbb273443dff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetsArray: 
+  targetsStatus: 
+  indexInTargetsArray: 0
+  trainingIsFinished: 0
 --- !u!114 &8212214914722088276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,11 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71531ee40422f0f4fba755bcfae3ec29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countTargets: 0
-  targetsArray: 
-  indexInTargetsArray: 0
-  targetsStatus: 
-  trainingIsFinished: 0
   currentGameObjectForAction: {fileID: 0}
   humanDoActionStart:
     m_PersistentCalls:
@@ -157,6 +157,19 @@ MonoBehaviour:
   spriteCrystal: {fileID: 21300000, guid: 5bc978cbc67207243a4c65557165b971, type: 3}
   spriteMoney: {fileID: 21300000, guid: bc6927113b5b16f40af06409988c3ec2, type: 3}
   textPay: {fileID: 4879369998548770695}
+--- !u!114 &727678932146757522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722272628031528814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fc96952432c3f46b69bfe99e67c5bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabTrash: {fileID: 6552515215875583928, guid: 0ad64807f5f1ed043a02d917956ac079, type: 3}
 --- !u!1 &3264908348021678863
 GameObject:
   m_ObjectHideFlags: 0

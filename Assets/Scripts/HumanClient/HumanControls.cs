@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UI;
 using UnityEngine;
 using UnityEngine.AI;
@@ -133,6 +134,7 @@ namespace HumanClient
         {
             if (_humanClientData.indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
             if (_humanDoAction) return;
+            if (other.gameObject.GetComponent<ObjectData>() == false) return;
             if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != _humanClientData.targetsArray[_humanClientData.indexInTargetsArray]) return;
             if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false) return;
         
