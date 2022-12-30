@@ -5,29 +5,48 @@ namespace Worker
     public class AdministratorData : WorkerData
     {
         private GameObject _parentAllDynamicObjects;
+        private GameObject _pivot;
         
         public override void Start()
         {
             base.Start();
             _parentAllDynamicObjects = GameObject.Find("DynamicObjectsForSaveLoad");
-            
-            NavMeshAgent.SetDestination(FindReception());
+
+            Invoke(nameof(FindAndSetPath), 0.3f);
         }
 
-        private Vector3 FindReception()
+        private void FindAndSetPath()
         {
-            Vector3 target = new Vector3();
-
+            _pivot = FindReception();
+            NavMeshAgent.SetDestination(_pivot.transform.position);
+            Invoke(nameof(CheckDestination), 0.3f);
+        }
+        
+        private void CheckDestination()
+        {
+            if (NavMeshAgent.remainingDistance < 0.1f)
+            {
+                transform.position = _pivot.transform.position;
+                transform.rotation = _pivot.transform.rotation;
+            }
+            else
+            {
+                Invoke(nameof(CheckDestination), 0.3f);
+            }
+        }
+        
+        private GameObject FindReception()
+        {
             foreach (Transform child in _parentAllDynamicObjects.transform)
             {
                 if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == 0)
                 {
-                    target = child.Find("PivotForAdministrator").position;
-                    break;
+                    var target = child.Find("PivotForAdministrator").gameObject;
+                    return target;
                 }
             }
 
-            return target;
+            return null;
         }
     }
 }
