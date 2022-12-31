@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 64305484083016179}
   - component: {fileID: 2918231246586934143}
   - component: {fileID: 5797272891089707128}
+  - component: {fileID: 95494560380130882}
   m_Layer: 0
   m_Name: CupAndPuddle
   m_TagString: Trash
@@ -64,6 +65,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.19, y: 1.11, z: 1.27}
   m_Center: {x: -0.12, y: 0.55, z: 0.53}
+--- !u!114 &95494560380130882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552515215875583928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de13539b6f4c304ba5fed6dfb0702d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1642334858632005487
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     public const int MoodRangeMax = 100;
     public const int CountMoodAdd = 10;
     public const int CountMoodTakeAway = 15;
+    public const int CountMoodTakeAwayTrash = 5;
 
     public const float MinTimeExercise = 4;
     public const float MaxTimeExercise = 7;

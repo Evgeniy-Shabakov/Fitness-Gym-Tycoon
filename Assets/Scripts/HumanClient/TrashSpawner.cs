@@ -44,7 +44,7 @@ namespace HumanClient
         {
             if (other.CompareTag("Trash"))
             {
-                _humanClientData.TakeAwayMood(10);
+                _humanClientData.TakeAwayMood(LevelManager.CountMoodTakeAwayTrash);
                 
                 if (gameObject != UIManagerPanelHumanClient.Instance.currentGameObjectForPanelHumanClient) return;
                 UIManagerPanelHumanClient.Instance.UpdateData();
