@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,13 +6,15 @@ namespace Worker
 {
     public abstract class WorkerData : MonoBehaviour
     {
-        protected NavMeshAgent NavMeshAgent;
+        protected NavMeshAgent NavMeshAgentComponent;
+        protected AnimatorControllerWorkers AnimatorControllerWorkers;
         
         public int Salary { get; set; }
 
         public virtual void Start()
         {
-            NavMeshAgent = GetComponent<NavMeshAgent>();
+            NavMeshAgentComponent = GetComponent<NavMeshAgent>();
+            AnimatorControllerWorkers = GetComponent<AnimatorControllerWorkers>();
         }
     }
 }

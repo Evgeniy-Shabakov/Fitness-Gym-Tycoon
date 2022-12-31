@@ -16,6 +16,11 @@ namespace Worker
             _animator = GetComponentInChildren<Animator>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
         }
+
+        public void SetDoAction(bool value)
+        {
+            _animator.SetBool(DoAction, value);
+        }
         
         void Update()
         {
