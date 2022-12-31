@@ -10,12 +10,12 @@ public class HumanCanvasRotation : MonoBehaviour
     void Start()
     {
         _mainCamera = Camera.main;
-        //_canvasTransformPosOnStart = canvas.transform.position;
+        _canvasTransformPosOnStart = canvas.transform.localPosition;
     }
 
     void Update()
     {
         canvas.transform.rotation = _mainCamera.transform.rotation;
-        //canvas.transform.position = transform.position + _canvasTransformPosOnStart;
+        canvas.transform.position = transform.position + _canvasTransformPosOnStart;
     }
 }
