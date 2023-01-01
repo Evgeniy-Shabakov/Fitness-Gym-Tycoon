@@ -5,7 +5,8 @@ namespace Worker
 {
     public class JanitorData : WorkerData
     {
-        [SerializeField] private GameObject _parentAllTrash;
+        private GameObject _parentAllTrash;
+        private GameObject _currentTrash;
         
         public override void Start()
         {
@@ -25,28 +26,36 @@ namespace Worker
                 Invoke(nameof(MoveTo),2f);
                 return;
             }
-            NavMeshAgentComponent.SetDestination(target.transform.position);
+            navMeshAgentComponent.SetDestination(target.transform.position);
+            
+            Invoke(nameof(CheckOnNoWork), 2f);
         }
 
-        private GameObject _currentTrash;
         private void OnTriggerStay(Collider other)
         {
-            if (other.CompareTag("Trash"))
-            {
-                if (_currentTrash != null) return;
-                
-                NavMeshAgentComponent.ResetPath();
-                _currentTrash = other.gameObject;
-                AnimatorControllerWorkers.SetDoAction(true);
-                Invoke(nameof(StopDoActionWithTrash), 2f);
-            }
+            if (_currentTrash != null) return;
+            if (other.CompareTag("Trash") != true) return;
+            
+            navMeshAgentComponent.ResetPath();
+            _currentTrash = other.gameObject;
+            animatorControllerWorkers.SetDoAction(true);
+            Invoke(nameof(StopDoActionWithTrash), 2f);
         }
 
         private void StopDoActionWithTrash()
         {
             Destroy(_currentTrash);
-            AnimatorControllerWorkers.SetDoAction(false);
+            animatorControllerWorkers.SetDoAction(false);
             Invoke(nameof(MoveTo),1);
+        }
+
+        private void CheckOnNoWork()
+        {
+            if (navMeshAgentComponent.velocity.magnitude == 0 && _currentTrash == null)
+            {
+                MoveTo();
+            }
+            else Invoke(nameof(CheckOnNoWork), 2f);
         }
 
         private GameObject FindTrash()

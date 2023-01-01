@@ -18,13 +18,13 @@ namespace Worker
         private void FindAndSetPath()
         {
             _pivot = FindReception();
-            NavMeshAgentComponent.SetDestination(_pivot.transform.position);
+            navMeshAgentComponent.SetDestination(_pivot.transform.position);
             Invoke(nameof(CheckDestination), 0.3f);
         }
         
         private void CheckDestination()
         {
-            if (NavMeshAgentComponent.remainingDistance < 0.1f)
+            if (navMeshAgentComponent.remainingDistance < 0.1f)
             {
                 transform.position = _pivot.transform.position;
                 transform.rotation = _pivot.transform.rotation;
