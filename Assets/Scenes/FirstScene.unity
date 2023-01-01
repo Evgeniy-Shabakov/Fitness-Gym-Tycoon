@@ -9086,6 +9086,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 597318353}
+  textNumberReceptionist: {fileID: 146274376}
+  textNumberJanitor: {fileID: 995156294}
 --- !u!1 &859966242
 GameObject:
   m_ObjectHideFlags: 0

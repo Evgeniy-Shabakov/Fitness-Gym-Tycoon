@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using TMPro;
 using Worker;
 
 namespace UI
@@ -9,6 +9,9 @@ namespace UI
         public static UIManagerPanelHireWorkers Instance;
         
         public GameObject panel;
+        
+        [SerializeField] private TextMeshProUGUI textNumberReceptionist;
+        [SerializeField] private TextMeshProUGUI textNumberJanitor;
 
         private void Awake()
         {
@@ -23,26 +26,33 @@ namespace UI
         public void Open()
         {
             panel.SetActive(true);
+
+            textNumberReceptionist.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Receptionist) + "";
+            textNumberJanitor.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) + "";
         }
 
         public void AddReceptionist()
         {
             WorkerManager.Instance.AddWorker(WorkerType.Receptionist);
+            textNumberReceptionist.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Receptionist) + "";
         }
 
         public void RemoveReceptionist()
         {
             WorkerManager.Instance.RemoveReceptionist(WorkerType.Receptionist);
+            textNumberReceptionist.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Receptionist) + "";
         }
         
         public void AddJanitor()
         {
             WorkerManager.Instance.AddWorker(WorkerType.Janitor);
+            textNumberJanitor.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) + "";
         }
 
         public void RemoveJanitor()
         {
             WorkerManager.Instance.RemoveReceptionist(WorkerType.Janitor);
+            textNumberJanitor.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) + "";
         }
     }
 }
