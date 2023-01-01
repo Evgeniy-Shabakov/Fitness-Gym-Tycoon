@@ -33,7 +33,7 @@ namespace Worker
             Instantiate(prefab, transform);
         }
 
-        public void RemoveReceptionist(WorkerType type)
+        public void RemoveWorker(WorkerType type)
         {
             string tag;
             

@@ -39,7 +39,7 @@ namespace UI
 
         public void RemoveReceptionist()
         {
-            WorkerManager.Instance.RemoveReceptionist(WorkerType.Receptionist);
+            WorkerManager.Instance.RemoveWorker(WorkerType.Receptionist);
             textNumberReceptionist.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Receptionist) + "";
         }
         
@@ -51,7 +51,7 @@ namespace UI
 
         public void RemoveJanitor()
         {
-            WorkerManager.Instance.RemoveReceptionist(WorkerType.Janitor);
+            WorkerManager.Instance.RemoveWorker(WorkerType.Janitor);
             textNumberJanitor.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) + "";
         }
     }
