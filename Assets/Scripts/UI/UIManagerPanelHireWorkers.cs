@@ -10,10 +10,6 @@ namespace UI
         
         public GameObject panel;
 
-        [SerializeField] private GameObject workersContainer;
-        [SerializeField] private GameObject prefabReceptionist;
-        [SerializeField] private GameObject prefabJanitor;
-        
         private void Awake()
         {
             Instance = this;
@@ -31,36 +27,22 @@ namespace UI
 
         public void AddReceptionist()
         {
-            Instantiate(prefabReceptionist, workersContainer.transform);
+            WorkerManager.Instance.AddWorker(WorkerType.Receptionist);
         }
 
         public void RemoveReceptionist()
         {
-            foreach (Transform child in workersContainer.transform)
-            {
-                if (child.CompareTag("Receptionist"))
-                {
-                    Destroy(child.gameObject);
-                    return;
-                }
-            }
+            WorkerManager.Instance.RemoveReceptionist(WorkerType.Receptionist);
         }
         
         public void AddJanitor()
         {
-            Instantiate(prefabJanitor, workersContainer.transform);
+            WorkerManager.Instance.AddWorker(WorkerType.Janitor);
         }
 
         public void RemoveJanitor()
         {
-            foreach (Transform child in workersContainer.transform)
-            {
-                if (child.CompareTag("Janitor"))
-                {
-                    Destroy(child.gameObject);
-                    return;
-                }
-            }
+            WorkerManager.Instance.RemoveReceptionist(WorkerType.Janitor);
         }
     }
 }
