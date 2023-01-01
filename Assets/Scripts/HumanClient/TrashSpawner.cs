@@ -20,7 +20,7 @@ namespace HumanClient
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _humanClientData = GetComponent<HumanClientData>();
-            _parentForAllTrash = GameObject.Find("TrashParent");
+            _parentForAllTrash = GameObject.Find("TrashContainer");
             
             _wait = Random.Range(20f, 40f);
             Invoke(nameof(CreateTrash), _wait);

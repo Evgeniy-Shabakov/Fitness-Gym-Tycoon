@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Worker
 {
@@ -11,7 +12,7 @@ namespace Worker
         public override void Start()
         {
             base.Start();
-            _parentAllTrash = GameObject.Find("TrashParent");
+            _parentAllTrash = GameObject.Find("TrashContainer");
             
             Invoke(nameof(MoveTo),2f);
         }
@@ -61,7 +62,9 @@ namespace Worker
         private GameObject FindTrash()
         {
             if (_parentAllTrash.transform.childCount == 0) return null;
-            return _parentAllTrash.transform.GetChild(0).gameObject;
+            
+            int r = Random.Range(0, _parentAllTrash.transform.childCount);
+            return _parentAllTrash.transform.GetChild(r).gameObject;
         }
         
     }
