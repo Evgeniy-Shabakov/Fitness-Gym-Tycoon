@@ -135,6 +135,11 @@ namespace UI
             {
                 UIManagerPanelAccounting.Instance.Close();
             }
+            
+            if (UIManagerPanelHireWorkers.Instance.panel.activeSelf)
+            {
+                UIManagerPanelHireWorkers.Instance.Close();
+            }
         }
     
         public bool IsPointerOverUIObject() {

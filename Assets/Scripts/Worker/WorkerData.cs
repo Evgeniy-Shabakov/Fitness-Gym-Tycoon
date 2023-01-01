@@ -5,8 +5,8 @@ namespace Worker
 {
     public abstract class WorkerData : MonoBehaviour
     {
-        public NavMeshAgent navMeshAgentComponent;
-        public AnimatorControllerWorkers animatorControllerWorkers;
+        [HideInInspector] public NavMeshAgent navMeshAgentComponent;
+        [HideInInspector] public AnimatorControllerWorkers animatorControllerWorkers;
         
         public int Salary { get; set; }
 

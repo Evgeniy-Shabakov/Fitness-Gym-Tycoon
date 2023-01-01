@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Worker
 {
-    public class AdministratorData : WorkerData
+    public class ReceptionistData : WorkerData
     {
         private GameObject _parentAllDynamicObjects;
         private GameObject _pivot;
