@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using Worker;
 
 public class SaveLoadManager : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class SaveLoadManager : MonoBehaviour
         public int pricePerMonth;
         public int pricePerSixMonth;
         public int pricePerYear;
+        public int numberReceptionists;
+        public int numberJanitor;
         
         public List<ObjectDataSave> listObjectsDataSave = new List<ObjectDataSave>();
     }
@@ -74,6 +77,10 @@ public class SaveLoadManager : MonoBehaviour
         levelDataSave.pricePerMonth = LevelManager.Instance.GetPricePerMonth();
         levelDataSave.pricePerSixMonth = LevelManager.Instance.GetPricePerSixMonth();
         levelDataSave.pricePerYear = LevelManager.Instance.GetPricePerYear();
+        
+        levelDataSave.numberReceptionists = WorkerManager.Instance.CountNumberWorkers(WorkerType.Receptionist);
+        levelDataSave.numberJanitor = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor);
+        
         levelDataSave.listObjectsDataSave = FormListObjectsDataSave();
         
         AllDataSave allDataSave = new AllDataSave();
@@ -117,6 +124,16 @@ public class SaveLoadManager : MonoBehaviour
         LevelManager.Instance.SetPricePerMonth(levelDataSave.pricePerMonth);
         LevelManager.Instance.SetPricePerSixMonth(levelDataSave.pricePerSixMonth);
         LevelManager.Instance.SetPricePerYear(levelDataSave.pricePerYear);
+
+        for (int i = 0; i < levelDataSave.numberReceptionists; i++)
+        {
+            WorkerManager.Instance.AddWorker(WorkerType.Receptionist);
+        }
+        
+        for (int i = 0; i < levelDataSave.numberJanitor; i++)
+        {
+            WorkerManager.Instance.AddWorker(WorkerType.Janitor);
+        }
         
         foreach (var objDataSave in levelDataSave.listObjectsDataSave)
         {

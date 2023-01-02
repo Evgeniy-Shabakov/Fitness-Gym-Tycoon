@@ -1,6 +1,6 @@
 {
-    "money": -255701,
-    "day": 0,
+    "money": -253001,
+    "day": 24,
     "month": 9,
     "year": 10,
     "listLevelsDataSave": [
@@ -11,6 +11,8 @@
             "pricePerMonth": 300,
             "pricePerSixMonth": 600,
             "pricePerYear": 1100,
+            "numberReceptionists": 1,
+            "numberJanitor": 2,
             "listObjectsDataSave": [
                 {
                     "position": {
