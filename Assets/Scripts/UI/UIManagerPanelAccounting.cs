@@ -15,6 +15,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI textTotalYear;
         [SerializeField] private TextMeshProUGUI textSaleEquipment;
         [SerializeField] private TextMeshProUGUI textRent;
+        [SerializeField] private TextMeshProUGUI textSalaries;
         [SerializeField] private TextMeshProUGUI textPurchaseEquipment;
         [SerializeField] private TextMeshProUGUI textTax;
         [SerializeField] private TextMeshProUGUI textTotal;
@@ -61,6 +62,11 @@ namespace UI
         public void SetTextRent(int value)
         {
             textRent.text = value + " $";
+        }
+        
+        public void SetTextSalaries(int value)
+        {
+            textSalaries.text = value + " $";
         }
         
         public void SetTextPurchaseEquipment(int value)

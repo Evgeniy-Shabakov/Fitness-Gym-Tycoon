@@ -10,11 +10,11 @@ public class LevelManager : MonoBehaviour
     
     public const int MoneyStartGame = 50000;
     
-    public const int RentMonthly = 5000;
+    public const int RentMonthly = 2000;
     public const int TaxInterestOnProfit = 20;
 
-    public const int SalaryReceptionist = 2000;
-    public const int SalaryJanitor = 2000;
+    public const int SalaryReceptionist = 500;
+    public const int SalaryJanitor = 300;
     
     public const int NumberTargetsHumanClient = 15;
     

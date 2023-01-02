@@ -9148,6 +9148,7 @@ MonoBehaviour:
   textTotalYear: {fileID: 1694770088}
   textSaleEquipment: {fileID: 169264364}
   textRent: {fileID: 498159234}
+  textSalaries: {fileID: 1543569183}
   textPurchaseEquipment: {fileID: 736809263}
   textTax: {fileID: 854754110}
   textTotal: {fileID: 704538281}
@@ -9164,6 +9165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 597318353}
+  textSalaryReceptionist: {fileID: 2022196719}
+  textSalaryJanitor: {fileID: 1778321184}
   textNumberReceptionist: {fileID: 146274376}
   textNumberJanitor: {fileID: 995156294}
 --- !u!1 &859966242

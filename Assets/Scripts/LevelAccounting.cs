@@ -14,6 +14,7 @@ public class LevelAccounting : MonoBehaviour
     private int _totalSaleEquipment;
     
     private int _totalPurchaseEquipment;
+    private int _totalSalaries;
     
     private int _taxMonthly;
     private int _moneyOnStartMonth;
@@ -80,6 +81,7 @@ public class LevelAccounting : MonoBehaviour
         UIManagerPanelAccounting.Instance.SetTextSaleEquipment(_totalSaleEquipment);
         
         UIManagerPanelAccounting.Instance.SetTextRent(-LevelManager.RentMonthly);
+        UIManagerPanelAccounting.Instance.SetTextSalaries(-_totalSalaries);
         UIManagerPanelAccounting.Instance.SetTextPurchaseEquipment(-_totalPurchaseEquipment);
         UIManagerPanelAccounting.Instance.SetTextTax(-_taxMonthly);
         
@@ -103,8 +105,8 @@ public class LevelAccounting : MonoBehaviour
         int totalSalaryJanitors = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) *
                                   LevelManager.SalaryJanitor;
 
-        int totalSalary = totalSalaryReceptionists + totalSalaryJanitors;
-        return totalSalary;
+        _totalSalaries = totalSalaryReceptionists + totalSalaryJanitors;
+        return _totalSalaries;
     }
     
     private void CountTotalMonthly()
@@ -112,7 +114,7 @@ public class LevelAccounting : MonoBehaviour
         var totalRevenue = _totalRevenueVisit + _totalRevenueMonth + _totalRevenueSixMonth + _totalRevenueYear +
                           _totalSaleEquipment;
 
-        var totalConsumption = LevelManager.RentMonthly + _totalPurchaseEquipment + _taxMonthly;
+        var totalConsumption = LevelManager.RentMonthly + _totalSalaries + _totalPurchaseEquipment + _taxMonthly;
 
         _totalMonthly = totalRevenue - totalConsumption;
     }

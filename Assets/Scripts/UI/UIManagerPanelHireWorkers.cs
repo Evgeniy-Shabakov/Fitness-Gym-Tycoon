@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using Worker;
 
 namespace UI
@@ -10,12 +11,21 @@ namespace UI
         
         public GameObject panel;
         
+        [SerializeField] private TextMeshProUGUI textSalaryReceptionist;
+        [SerializeField] private TextMeshProUGUI textSalaryJanitor;
+        
         [SerializeField] private TextMeshProUGUI textNumberReceptionist;
         [SerializeField] private TextMeshProUGUI textNumberJanitor;
-
+        
         private void Awake()
         {
             Instance = this;
+        }
+
+        public void Start()
+        {
+            textSalaryReceptionist.text = LevelManager.SalaryReceptionist + "$";
+            textSalaryJanitor.text = LevelManager.SalaryJanitor + "$";
         }
         
         public void Close()
