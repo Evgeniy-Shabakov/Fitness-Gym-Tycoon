@@ -35,15 +35,15 @@ namespace Worker
 
         public void RemoveWorker(WorkerType type)
         {
-            string tag;
+            string tagname;
             
             switch (type)
             {
                 case WorkerType.Receptionist:
-                    tag = prefabReceptionist.tag;
+                    tagname = prefabReceptionist.tag;
                     break;
                 case WorkerType.Janitor:
-                    tag = prefabJanitor.tag;
+                    tagname = prefabJanitor.tag;
                     break;
                 default:
                     return;
@@ -51,7 +51,7 @@ namespace Worker
             
             foreach (Transform child in transform)
             {
-                if (child.CompareTag(tag))
+                if (child.CompareTag(tagname))
                 {
                     child.parent = null;
                     Destroy(child.gameObject);

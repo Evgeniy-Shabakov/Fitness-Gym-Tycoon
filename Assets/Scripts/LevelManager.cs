@@ -11,7 +11,10 @@ public class LevelManager : MonoBehaviour
     public const int MoneyStartGame = 50000;
     
     public const int RentMonthly = 5000;
-    public const int InterestOnProfit = 20;
+    public const int TaxInterestOnProfit = 20;
+
+    public const int SalaryReceptionist = 2000;
+    public const int SalaryJanitor = 2000;
     
     public const int NumberTargetsHumanClient = 15;
     
@@ -277,6 +280,10 @@ public class LevelManager : MonoBehaviour
         PlayerData.SpendMoney(RentMonthly);
         UIManagerMain.Instance.AddNewMessage("rent: -" + RentMonthly + "$");
 
+        int totalSalary = LevelAccounting.Instance.CountTotalSalary();
+        PlayerData.SpendMoney(totalSalary);
+        UIManagerMain.Instance.AddNewMessage("salaries: -" + totalSalary + "$");
+        
         var tax = LevelAccounting.Instance.CountTaxMonthly();
         PlayerData.SpendMoney(tax);
         UIManagerMain.Instance.AddNewMessage("tax: -" + tax + "$");

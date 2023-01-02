@@ -36,7 +36,7 @@ public class LevelAccounting : MonoBehaviour
         _moneyOnStartMonth = _moneyOnEndMonth;
         _moneyOnEndMonth = PlayerData.GetMoney();
         
-        _taxMonthly = (_moneyOnEndMonth - _moneyOnStartMonth) * LevelManager.InterestOnProfit/100;
+        _taxMonthly = (_moneyOnEndMonth - _moneyOnStartMonth) * LevelManager.TaxInterestOnProfit/100;
         if (_taxMonthly < 0) _taxMonthly = 0;
         
         return _taxMonthly;
@@ -95,6 +95,18 @@ public class LevelAccounting : MonoBehaviour
 
     }
 
+    public int CountTotalSalary()
+    {
+        int totalSalaryReceptionists = WorkerManager.Instance.CountNumberWorkers(WorkerType.Receptionist) *
+                                      LevelManager.SalaryReceptionist;
+        
+        int totalSalaryJanitors = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) *
+                                  LevelManager.SalaryJanitor;
+
+        int totalSalary = totalSalaryReceptionists + totalSalaryJanitors;
+        return totalSalary;
+    }
+    
     private void CountTotalMonthly()
     {
         var totalRevenue = _totalRevenueVisit + _totalRevenueMonth + _totalRevenueSixMonth + _totalRevenueYear +
