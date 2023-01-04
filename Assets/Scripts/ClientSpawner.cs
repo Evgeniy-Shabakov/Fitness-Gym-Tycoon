@@ -5,7 +5,10 @@ using UnityEngine;
 public class ClientSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefabHumanClient;
-    [SerializeField] private List<GameObject> prefabsHumansModels;
+    [SerializeField] private GameObject prefabHumanModel;
+
+    [SerializeField] private List<Mesh> femaleMeshes;
+    [SerializeField] private List<Mesh> maleMeshes;
 
     void Start()
     {
@@ -48,16 +51,22 @@ public class ClientSpawner : MonoBehaviour
         var currentHumanClient = Instantiate(prefabHumanClient, transform);
         var humanClientData = currentHumanClient.GetComponent<HumanClientData>();
         
-        GameObject humanModel = Instantiate(prefabsHumansModels[Random.Range(0,2)], currentHumanClient.transform);
+        GameObject humanModel = Instantiate(prefabHumanModel, currentHumanClient.transform);
         
         humanClientData.SetSubscriptionType(type);
         
-        if (humanModel.CompareTag("Male"))
+        int gender = Random.Range(0, 2);
+        
+        if (gender == 0)
         {
+            int i = Random.Range(0, maleMeshes.Count);
+            humanModel.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh = maleMeshes[i];
             humanClientData.SetGender(Gender.Male);
         }
         else
         {
+            int i = Random.Range(0, femaleMeshes.Count);
+            humanModel.GetComponentInChildren<SkinnedMeshRenderer>().sharedMesh = femaleMeshes[i];
             humanClientData.SetGender(Gender.Female);
         }
     }
