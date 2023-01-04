@@ -1,42 +1,51 @@
 using BuildingSystem;
 using UI;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class ObjectSettings : MonoBehaviour
 {
-   private Camera mainCamera;
-   private Vector3 cameraPositionMouseDown;
+   private Camera _mainCamera;
+   private Vector3 _cameraPositionMouseDown;
    
-   private LayerMask layerMaskObjects;
+   private LayerMask _layerMaskObjects;
    
    private void Start()
    {
-      mainCamera = Camera.main;
-      layerMaskObjects =  LayerMask.GetMask("Objects");
+      _mainCamera = Camera.main;
+      _layerMaskObjects =  LayerMask.GetMask("Objects");
    }
-   
+
    void Update()
    {
       if (UIManagerMain.Instance.IsPointerOverUIObject()) return;
       if (Input.touchCount >= 2) return;
-        
-      if (Input.GetMouseButtonDown(0)) cameraPositionMouseDown = mainCamera.transform.position;
 
+      if (Input.GetMouseButtonDown(0)) _cameraPositionMouseDown = _mainCamera.transform.position;
+      
       if (Input.GetMouseButtonUp(0))
       {
-         if (mainCamera.transform.position != cameraPositionMouseDown) return;
+         if (_mainCamera.transform.position != _cameraPositionMouseDown) return;
             
-         Ray ray = new Ray(mainCamera.ScreenToWorldPoint(Input.mousePosition), mainCamera.transform.forward);
+         Ray ray = new Ray(_mainCamera.ScreenToWorldPoint(Input.mousePosition), _mainCamera.transform.forward);
          RaycastHit hit; 
          
-         if (Physics.Raycast(ray, out hit, 100f, layerMaskObjects) == false) return;
+         if (Physics.Raycast(ray, out hit, 100f, _layerMaskObjects) == false) return;
          if (hit.transform.gameObject != gameObject) return;
          
          if (BuildingManager.Instance.objectForBuild != null) return;
-         if (cameraPositionMouseDown != mainCamera.transform.position) return;
-
+         if (_cameraPositionMouseDown != _mainCamera.transform.position) return;
+         
+         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+         List<RaycastResult> results = new List<RaycastResult>();
+         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+         
+         if (results.Count > 0) return;
+         
          UIManagerPanelObject.Instance.Open(transform.parent.gameObject);
+         _cameraPositionMouseDown = new Vector3();
       }
    }
 
@@ -46,7 +55,7 @@ public class ObjectSettings : MonoBehaviour
       gameObject.AddComponent<PreBuildingMoving>();
 
       BuildingManager.Instance.objectForBuild = transform.parent.gameObject;
-      transform.parent.transform.SetParent(mainCamera.transform);
+      transform.parent.transform.SetParent(_mainCamera.transform);
       
       Destroy(gameObject.GetComponent<ObjectSettings>());
    }

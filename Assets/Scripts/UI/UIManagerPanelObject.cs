@@ -19,7 +19,7 @@ public class UIManagerPanelObject : MonoBehaviour
     [SerializeField] private GameObject btActivateMove;
     [SerializeField] private GameObject btSell;
     
-    private GameObject currentGameObjectForPanel;
+    private GameObject _currentGameObjectForPanel;
     
     private void Awake()
     {
@@ -28,19 +28,19 @@ public class UIManagerPanelObject : MonoBehaviour
     
     public void Close()
     {
-        if (currentGameObjectForPanel.GetComponentInChildren<ObjectData>().isNew == false 
+        if (_currentGameObjectForPanel.GetComponentInChildren<ObjectData>().isNew == false 
             && BuildingManager.Instance.objectForBuild != null)
         {
-            ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
+            ObjectData objectData = _currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
 
-            currentGameObjectForPanel.transform.position = objectData.positionBeforeMove;
-            currentGameObjectForPanel.transform.rotation = objectData.rotationBeforeMove;
+            _currentGameObjectForPanel.transform.position = objectData.positionBeforeMove;
+            _currentGameObjectForPanel.transform.rotation = objectData.rotationBeforeMove;
             
-            currentGameObjectForPanel.GetComponentInChildren<PreBuildingCollision>().SetInstallationAllowed(true);
+            _currentGameObjectForPanel.GetComponentInChildren<PreBuildingCollision>().SetInstallationAllowed(true);
             BuildingManager.Instance.SetObject();
         }
         
-        currentGameObjectForPanel = null;
+        _currentGameObjectForPanel = null;
         
         BuildingManager.Instance.DeleteObject();
         panelObject.SetActive(false);
@@ -50,7 +50,7 @@ public class UIManagerPanelObject : MonoBehaviour
     {
         UIManagerMain.Instance.CloseAllPanels();
         
-        currentGameObjectForPanel = current;
+        _currentGameObjectForPanel = current;
             
         panelObject.SetActive(true);
 
@@ -79,7 +79,7 @@ public class UIManagerPanelObject : MonoBehaviour
 
     public void BtSetPressed()
     {
-        ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
+        ObjectData objectData = _currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
         
         if (objectData.isNew)
         {
@@ -123,11 +123,11 @@ public class UIManagerPanelObject : MonoBehaviour
 
     public void BtSellPressed()
     {
-        ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
+        ObjectData objectData = _currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
         PlayerData.AddMoney(objectData.price);
         LevelAccounting.Instance.AddTotalSaleEquipment(objectData.price);
         
-        Destroy(currentGameObjectForPanel);
+        Destroy(_currentGameObjectForPanel);
         Close();
         
         if (objectData.indexInBuildingManagerList == 1)
@@ -143,11 +143,11 @@ public class UIManagerPanelObject : MonoBehaviour
         btActivateMove.SetActive(false);
         btSell.SetActive(false);
         
-        currentGameObjectForPanel.GetComponentInChildren<ObjectSettings>().ActivateMoveObject();
+        _currentGameObjectForPanel.GetComponentInChildren<ObjectSettings>().ActivateMoveObject();
         
-        ObjectData objectData = currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
+        ObjectData objectData = _currentGameObjectForPanel.GetComponentInChildren<ObjectData>();
         
-        objectData.positionBeforeMove = currentGameObjectForPanel.transform.position;
-        objectData.rotationBeforeMove = currentGameObjectForPanel.transform.rotation;
+        objectData.positionBeforeMove = _currentGameObjectForPanel.transform.position;
+        objectData.rotationBeforeMove = _currentGameObjectForPanel.transform.rotation;
     }
 }
