@@ -13939,7 +13939,7 @@ MonoBehaviour:
   prefabHumanClient: {fileID: 722272628031528814, guid: c87774d8b1bd81049b45a20975de7dea, type: 3}
   prefabsHumansModels:
   - {fileID: 722272628031528814, guid: 75838df0a41bbbe42b4f2da3a28784d4, type: 3}
-  - {fileID: 250956813875147594, guid: 239e03f88eac3984a8662d5722baa73d, type: 3}
+  - {fileID: 7827541570592580468, guid: a44228eac41794d45804be4a70225e28, type: 3}
 --- !u!4 &1334723698
 Transform:
   m_ObjectHideFlags: 0
@@ -15281,7 +15281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabReceptionist: {fileID: 835903149327941967, guid: 32178197382070f47b1fe2442d4ef292, type: 3}
-  prefabJanitor: {fileID: 7107595476230070606, guid: fdfc2a76300d75147973ef4461a05dcc, type: 3}
+  prefabJanitor: {fileID: 7107595476230070606, guid: eee9b84d74deb44499f3cc59de568aed, type: 3}
 --- !u!1001 &1464406463
 PrefabInstance:
   m_ObjectHideFlags: 0
