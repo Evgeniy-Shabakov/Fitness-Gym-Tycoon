@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using BuildingSystem;
 using Worker;
 
 public class SaveLoadManager : MonoBehaviour

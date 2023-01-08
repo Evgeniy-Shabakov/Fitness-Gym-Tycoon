@@ -13,6 +13,6 @@ public class ObjectForBuilding : ScriptableObject
     
     public int price;
     public string description;
-    public float damageInPersent;
+    public float damageInPercent;
     public int maxCountClients;
 }

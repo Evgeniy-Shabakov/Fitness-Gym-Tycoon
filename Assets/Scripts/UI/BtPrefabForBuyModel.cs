@@ -1,3 +1,4 @@
+using BuildingSystem;
 using UnityEngine;
 
 public class BtPrefabForBuyModel : MonoBehaviour
