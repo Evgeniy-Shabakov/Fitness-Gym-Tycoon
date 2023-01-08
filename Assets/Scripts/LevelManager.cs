@@ -15,6 +15,8 @@ public class LevelManager : MonoBehaviour
 
     public const int SalaryReceptionist = 500;
     public const int SalaryJanitor = 300;
+    public const int SalaryTrainer = 800;
+    public const int SalaryEngineer = 700;
     
     public const int NumberTargetsHumanClient = 15;
     

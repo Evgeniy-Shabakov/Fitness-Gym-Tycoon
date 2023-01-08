@@ -5454,7 +5454,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &549388012
 GameObject:
@@ -6410,7 +6410,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 608797197}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859158134}
+        m_TargetAssemblyTypeName: UI.UIManagerPanelHireWorkers, Assembly-CSharp
+        m_MethodName: RemoveEngineer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &608797197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8186,7 +8198,7 @@ RectTransform:
   - {fileID: 1979757688}
   - {fileID: 795502695}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9459,7 +9471,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854754108
 GameObject:
@@ -9632,7 +9644,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &859158128
 MonoBehaviour:
@@ -9778,8 +9790,12 @@ MonoBehaviour:
   panel: {fileID: 597318353}
   textSalaryReceptionist: {fileID: 2022196719}
   textSalaryJanitor: {fileID: 1778321184}
+  textSalaryTrainer: {fileID: 236557371}
+  textSalaryEngineer: {fileID: 986958703}
   textNumberReceptionist: {fileID: 146274376}
   textNumberJanitor: {fileID: 995156294}
+  textNumberTrainer: {fileID: 81461704}
+  textNumberEngineer: {fileID: 1393986766}
 --- !u!1 &859966242
 GameObject:
   m_ObjectHideFlags: 0
@@ -11112,7 +11128,7 @@ Transform:
   - {fileID: 705507995}
   - {fileID: 932471955}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 30, y: -45, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -11428,7 +11444,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &994615094
 MonoBehaviour:
@@ -12612,7 +12628,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1098849302
 GameObject:
@@ -12697,7 +12713,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1098849305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859158134}
+        m_TargetAssemblyTypeName: UI.UIManagerPanelHireWorkers, Assembly-CSharp
+        m_MethodName: RemoveTrainer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1098849305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14360,7 +14388,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1210118460}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859158134}
+        m_TargetAssemblyTypeName: UI.UIManagerPanelHireWorkers, Assembly-CSharp
+        m_MethodName: AddTrainer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1210118460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15018,7 +15058,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1280858818
 MonoBehaviour:
@@ -15194,7 +15234,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1335035675
 GameObject:
@@ -15668,7 +15708,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1359602106}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859158134}
+        m_TargetAssemblyTypeName: UI.UIManagerPanelHireWorkers, Assembly-CSharp
+        m_MethodName: AddEngineer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1359602106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16092,7 +16144,7 @@ Transform:
   - {fileID: 1052969118}
   - {fileID: 335355871}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1390176878 stripped
 Transform:
@@ -16730,63 +16782,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418979729}
   m_CullTransparentMesh: 1
---- !u!1001 &1442140656
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -28.124187
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 59226090687880181, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 835903149327941967, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
-      propertyPath: m_Name
-      value: HumanTrainer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
 --- !u!4 &1449401976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8126113380326649911, guid: 26167c267c120b84e8ede7a6eeca9bcb, type: 3}
@@ -16956,7 +16951,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1462093500
 MonoBehaviour:
@@ -16972,6 +16967,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabReceptionist: {fileID: 835903149327941967, guid: 32178197382070f47b1fe2442d4ef292, type: 3}
   prefabJanitor: {fileID: 7107595476230070606, guid: eee9b84d74deb44499f3cc59de568aed, type: 3}
+  prefabTrainer: {fileID: 835903149327941967, guid: 2225d91de02d0c642852ffe8bed4640a, type: 3}
+  prefabEngineer: {fileID: 835903149327941967, guid: 068c8797112719c4aaa5a5f27e2d1098, type: 3}
 --- !u!1001 &1464406463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21359,7 +21356,7 @@ Transform:
   - {fileID: 679935402}
   - {fileID: 1062260848}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902032291
 GameObject:
@@ -22775,7 +22772,7 @@ Transform:
   - {fileID: 820183705}
   - {fileID: 1746587740}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2001723471 stripped
 Transform:
@@ -23809,7 +23806,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2133558637
 GameObject:

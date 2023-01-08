@@ -13,9 +13,13 @@ namespace UI
         
         [SerializeField] private TextMeshProUGUI textSalaryReceptionist;
         [SerializeField] private TextMeshProUGUI textSalaryJanitor;
+        [SerializeField] private TextMeshProUGUI textSalaryTrainer;
+        [SerializeField] private TextMeshProUGUI textSalaryEngineer;
         
         [SerializeField] private TextMeshProUGUI textNumberReceptionist;
         [SerializeField] private TextMeshProUGUI textNumberJanitor;
+        [SerializeField] private TextMeshProUGUI textNumberTrainer;
+        [SerializeField] private TextMeshProUGUI textNumberEngineer;
         
         private void Awake()
         {
@@ -26,6 +30,8 @@ namespace UI
         {
             textSalaryReceptionist.text = LevelManager.SalaryReceptionist + "$";
             textSalaryJanitor.text = LevelManager.SalaryJanitor + "$";
+            textSalaryTrainer.text = LevelManager.SalaryTrainer + "$";
+            textSalaryEngineer.text = LevelManager.SalaryEngineer + "$";
         }
         
         public void Close()
@@ -39,6 +45,8 @@ namespace UI
 
             textNumberReceptionist.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Receptionist) + "";
             textNumberJanitor.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) + "";
+            textNumberTrainer.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Trainer) + "";
+            textNumberEngineer.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Engineer) + "";
         }
 
         public void AddReceptionist()
@@ -63,6 +71,30 @@ namespace UI
         {
             WorkerManager.Instance.RemoveWorker(WorkerType.Janitor);
             textNumberJanitor.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) + "";
+        }
+        
+        public void AddTrainer()
+        {
+            WorkerManager.Instance.AddWorker(WorkerType.Trainer);
+            textNumberTrainer.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Trainer) + "";
+        }
+
+        public void RemoveTrainer()
+        {
+            WorkerManager.Instance.RemoveWorker(WorkerType.Trainer);
+            textNumberTrainer.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Trainer) + "";
+        }
+        
+        public void AddEngineer()
+        {
+            WorkerManager.Instance.AddWorker(WorkerType.Engineer);
+            textNumberEngineer.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Engineer) + "";
+        }
+
+        public void RemoveEngineer()
+        {
+            WorkerManager.Instance.RemoveWorker(WorkerType.Engineer);
+            textNumberEngineer.text = WorkerManager.Instance.CountNumberWorkers(WorkerType.Engineer) + "";
         }
     }
 }

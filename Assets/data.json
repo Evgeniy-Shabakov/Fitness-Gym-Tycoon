@@ -1,7 +1,7 @@
 {
-    "money": 48775,
-    "day": 5,
-    "month": 7,
+    "money": 45615,
+    "day": 0,
+    "month": 10,
     "year": 1,
     "listLevelsDataSave": [
         {
@@ -11,8 +11,10 @@
             "pricePerMonth": 300,
             "pricePerSixMonth": 710,
             "pricePerYear": 900,
-            "numberReceptionists": 0,
-            "numberJanitor": 1,
+            "numberReceptionists": 1,
+            "numberJanitor": 2,
+            "numberTrainer": 1,
+            "numberEngineer": 3,
             "listObjectsDataSave": [
                 {
                     "position": {

@@ -6,6 +6,5 @@ namespace Worker
         Janitor,
         Engineer,
         Trainer,
-        Manager
     };
 }

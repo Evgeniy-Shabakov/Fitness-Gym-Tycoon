@@ -8,6 +8,8 @@ namespace Worker
         
         [SerializeField] private GameObject prefabReceptionist;
         [SerializeField] private GameObject prefabJanitor;
+        [SerializeField] private GameObject prefabTrainer;
+        [SerializeField] private GameObject prefabEngineer;
         
         private void Awake()
         {
@@ -25,6 +27,12 @@ namespace Worker
                     break;
                 case WorkerType.Janitor:
                     prefab = prefabJanitor;
+                    break;
+                case WorkerType.Trainer:
+                    prefab = prefabTrainer;
+                    break;
+                case WorkerType.Engineer:
+                    prefab = prefabEngineer;
                     break;
                 default:
                     return;
@@ -44,6 +52,12 @@ namespace Worker
                     break;
                 case WorkerType.Janitor:
                     tagname = prefabJanitor.tag;
+                    break;
+                case WorkerType.Trainer:
+                    tagname = prefabTrainer.tag;
+                    break;
+                case WorkerType.Engineer:
+                    tagname = prefabEngineer.tag;
                     break;
                 default:
                     return;
@@ -71,6 +85,12 @@ namespace Worker
                     break;
                 case WorkerType.Janitor:
                     tagsname = prefabJanitor.tag;
+                    break;
+                case WorkerType.Trainer:
+                    tagsname = prefabTrainer.tag;
+                    break;
+                case WorkerType.Engineer:
+                    tagsname = prefabEngineer.tag;
                     break;
                 default:
                     return 0;

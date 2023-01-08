@@ -104,8 +104,14 @@ public class LevelAccounting : MonoBehaviour
         
         int totalSalaryJanitors = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor) *
                                   LevelManager.SalaryJanitor;
+        
+        int totalSalaryTrainers = WorkerManager.Instance.CountNumberWorkers(WorkerType.Trainer) *
+                                  LevelManager.SalaryTrainer;
+        
+        int totalSalaryEngineer = WorkerManager.Instance.CountNumberWorkers(WorkerType.Engineer) *
+                                  LevelManager.SalaryEngineer;
 
-        _totalSalaries = totalSalaryReceptionists + totalSalaryJanitors;
+        _totalSalaries = totalSalaryReceptionists + totalSalaryJanitors + totalSalaryTrainers + totalSalaryEngineer;
         return _totalSalaries;
     }
     

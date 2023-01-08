@@ -51,6 +51,8 @@ public class SaveLoadManager : MonoBehaviour
         public int pricePerYear;
         public int numberReceptionists;
         public int numberJanitor;
+        public int numberTrainer;
+        public int numberEngineer;
         
         public List<ObjectDataSave> listObjectsDataSave = new List<ObjectDataSave>();
     }
@@ -81,6 +83,8 @@ public class SaveLoadManager : MonoBehaviour
         
         levelDataSave.numberReceptionists = WorkerManager.Instance.CountNumberWorkers(WorkerType.Receptionist);
         levelDataSave.numberJanitor = WorkerManager.Instance.CountNumberWorkers(WorkerType.Janitor);
+        levelDataSave.numberTrainer = WorkerManager.Instance.CountNumberWorkers(WorkerType.Trainer);
+        levelDataSave.numberEngineer = WorkerManager.Instance.CountNumberWorkers(WorkerType.Engineer);
         
         levelDataSave.listObjectsDataSave = FormListObjectsDataSave();
         
@@ -134,6 +138,16 @@ public class SaveLoadManager : MonoBehaviour
         for (int i = 0; i < levelDataSave.numberJanitor; i++)
         {
             WorkerManager.Instance.AddWorker(WorkerType.Janitor);
+        }
+        
+        for (int i = 0; i < levelDataSave.numberTrainer; i++)
+        {
+            WorkerManager.Instance.AddWorker(WorkerType.Trainer);
+        }
+        
+        for (int i = 0; i < levelDataSave.numberEngineer; i++)
+        {
+            WorkerManager.Instance.AddWorker(WorkerType.Engineer);
         }
         
         foreach (var objDataSave in levelDataSave.listObjectsDataSave)

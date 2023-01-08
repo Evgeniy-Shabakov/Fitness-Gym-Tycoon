@@ -12,6 +12,8 @@ TagManager:
   - Trash
   - Janitor
   - Receptionist
+  - Trainer
+  - Engineer
   layers:
   - Default
   - TransparentFX
