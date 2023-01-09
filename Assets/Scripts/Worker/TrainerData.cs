@@ -40,14 +40,14 @@ namespace Worker
         private Vector3 FindTargetPosition()
         {
             int i;
-            int index;
+            ObjectType type;
             
             do
             {
                 i = Random.Range(0, _parentAllDynamicObjects.transform.childCount);
-                index = _parentAllDynamicObjects.transform.GetChild(i).GetComponentInChildren<ObjectData>().indexInBuildingManagerList;
+                type = _parentAllDynamicObjects.transform.GetChild(i).GetComponentInChildren<ObjectData>().type;
             } 
-            while (BuildingManager.Instance.objectsForBuilding[index].layerFloor != LayerMask.GetMask("FloorGym"));
+            while (BuildingManager.Instance.FindObject(type).layerFloor != LayerMask.GetMask("FloorGym"));
 
             return _parentAllDynamicObjects.transform.GetChild(i).position;
         }
