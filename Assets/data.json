@@ -1,8 +1,8 @@
 {
-    "money": 45615,
-    "day": 0,
-    "month": 10,
-    "year": 1,
+    "money": 50553,
+    "day": 7,
+    "month": 7,
+    "year": 2,
     "listLevelsDataSave": [
         {
             "level": 1,
@@ -13,8 +13,8 @@
             "pricePerYear": 900,
             "numberReceptionists": 1,
             "numberJanitor": 2,
-            "numberTrainer": 1,
-            "numberEngineer": 3,
+            "numberTrainer": 0,
+            "numberEngineer": 0,
             "listObjectsDataSave": [
                 {
                     "position": {

@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3568120503127356154}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0.985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8138102360523315327}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &76440271112851396
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6138171374459367450, guid: e065037f9d6a28d47b3306348d4c8e60, type: 3}
       propertyPath: m_Name
-      value: Barbell Stand (full)
+      value: Barbell stand
       objectReference: {fileID: 0}
     - target: {fileID: 8214507442664513375, guid: e065037f9d6a28d47b3306348d4c8e60, type: 3}
       propertyPath: m_RootOrder
@@ -716,15 +716,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 965629656184933318, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Center.z
-      value: 0
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 965629656184933318, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Extents.x
-      value: 0.825
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 965629656184933318, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Extents.z
-      value: 0.275
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: 8199137148365870960, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Name
@@ -780,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8199137148365870967, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Size.z
-      value: 1.0413486
+      value: 1.5289158
       objectReference: {fileID: 0}
     - target: {fileID: 8199137148365870967, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Center.x
@@ -788,7 +788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8199137148365870967, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
       propertyPath: m_Center.z
-      value: -0.011493027
+      value: 0.23229063
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c04effb9ec9850c47b4ce1a0ee477c45, type: 3}
