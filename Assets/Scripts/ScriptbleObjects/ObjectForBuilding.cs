@@ -10,6 +10,7 @@ public class ObjectForBuilding : ScriptableObject
 
     public AnimatorOverrideController animatorOverrideController;
     public bool needBarbellInHands;
+    public bool needDumbbellsInHands;
     
     public int price;
     public string description;

@@ -11,6 +11,8 @@ namespace HumanClient
         private HumanControls _humanControls;
 
         private GameObject _barbellInHands;
+        private GameObject _dumbbellOneInHands;
+        private GameObject _dumbbellTwoInHands;
         private static readonly int DoAction = Animator.StringToHash("DoAction");
         private static readonly int IsWalk = Animator.StringToHash("IsWalk");
 
@@ -39,6 +41,17 @@ namespace HumanClient
             
                 _humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().HideElements();
             }
+            
+            if (BuildingManager.Instance.objectsForBuilding[i].needDumbbellsInHands)
+            {
+                _dumbbellOneInHands = FindNestedChild(transform, "Dumbbells 1-1").gameObject; 
+                _dumbbellOneInHands.SetActive(true);
+                
+                _dumbbellTwoInHands = FindNestedChild(transform, "Dumbbells 1-2").gameObject; 
+                _dumbbellTwoInHands.SetActive(true);
+            
+                _humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().HideElements();
+            }
         }
     
         void AnimationDoActionStop()
@@ -47,8 +60,19 @@ namespace HumanClient
             {
                 _barbellInHands.SetActive(false);
                 _humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().ShowElements();
+                
+                _barbellInHands = null;
             }
-            _barbellInHands = null;
+
+            if (_dumbbellOneInHands != null)
+            {
+                _dumbbellOneInHands.SetActive(false);
+                _dumbbellTwoInHands.SetActive(false);
+                
+                _dumbbellOneInHands = null;
+                _dumbbellTwoInHands = null;
+            }
+            
             _animator.SetBool(DoAction, false);
         }
     

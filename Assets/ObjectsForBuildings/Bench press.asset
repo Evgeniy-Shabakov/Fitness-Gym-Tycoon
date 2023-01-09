@@ -17,7 +17,7 @@ MonoBehaviour:
   layerFloor:
     serializedVersion: 2
     m_Bits: 512
-  animatorOverrideController: {fileID: 22100000, guid: e2b3222a291a70948a03beb1649a738d, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: ca64a03d6d6b119489b39b9bab3bc5d0, type: 2}
   needBarbellInHands: 1
   price: 2500
   description: Strengthens chest muscles

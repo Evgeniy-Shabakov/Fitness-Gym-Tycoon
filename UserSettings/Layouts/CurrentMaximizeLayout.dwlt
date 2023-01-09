@@ -86,7 +86,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -224,24 +224,24 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 220}
-      m_SelectedIDs: 2c9afeff
-      m_LastClickedID: -91604
-      m_ExpandedIDs: 8095feffb895feff1497feff4c97feff2c9afeff729afeff369dfeff3a9dfeff3e9dfeff429dfeff469dfeffca9dfeffce9dfeffd29dfeff069efeff0a9efeff109efeff1e0cffff560cffff9012ffffd612ffff24fbffff6e6200003c650000c0650000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 8095feffb895feff1497feff4c97feffae98feffe698feff2c9afeff729afeff369dfeff3a9dfeff3e9dfeff429dfeff469dfeffca9dfeffce9dfeffd29dfeff069efeff0a9efeff109efeff1e0cffff560cffff9012ffffd612ffff24fbffff6e6200003c650000c0650000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: PivotForHuman
+        m_OriginalName: PivotForHuman
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -91604
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -558,9 +558,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -36.764816, y: 1.2366931, z: 46.886448}
+    m_Target: {x: -37.50685, y: 0.6509509, z: 46.064636}
     speed: 2
-    m_Value: {x: -36.764816, y: 1.2366931, z: 46.886448}
+    m_Value: {x: -37.50685, y: 0.6509509, z: 46.064636}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -607,13 +607,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.21671769, y: -0.29613534, z: 0.06918229, w: 0.9276682}
+    m_Target: {x: 0.23511349, y: -0.33693886, z: 0.08729488, w: 0.90752226}
     speed: 2
-    m_Value: {x: 0.2153241, y: -0.29623625, z: 0.06873741, w: 0.92798424}
+    m_Value: {x: 0.23511077, y: -0.33693495, z: 0.08729387, w: 0.9075118}
   m_Size:
-    m_Target: 1.1731849
+    m_Target: 1.3286526
     speed: 2
-    m_Value: 1.1731849
+    m_Value: 1.3286526
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -796,21 +796,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ObjectsForBuildings
+    - Assets/Animations/AnimatorControllers
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 88
   m_LastFolders:
-  - Assets/ObjectsForBuildings
+  - Assets/Animations/AnimatorControllers
   m_LastFoldersGridSize: 88
   m_LastProjectPath: D:\Unity\Projects\Fitness Gym Tycoon\Fitness Gym Tycoon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e87d0000
-    m_LastClickedID: 32232
+    m_SelectedIDs: dc7d0000
+    m_LastClickedID: 32220
     m_ExpandedIDs: 00000000a27d0000a47d0000a67d0000a87d0000ac7d0000ae7d0000b07d0000b27d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -864,9 +864,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 2c9afeff
-    m_LastClickedInstanceID: -91604
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000da6a0000fc620000085d0000665e0000000000005a820000808200004aa50000ea74000086870000948d0000326b0000467e0000988c00009e8c0000a2aa0000aaaa0000dca800004aa00000b0f4000098aa0000e89100004287000070880000ca8a0000b4a4000008b40000e4840000548e00007eb0000024ae000066b60000c6ab0000f4ac0000b0830000ce970000a09d000036b5000010a70000cc9e00003ca80000429400007abd0000069a00004abc0000d89800002aa10000a09600006ca9000072950000d6bf00008282000092b700002280000016930000f88b0000dab200009e8900001486000086a30000a6be0000268d0000709c000058a20000b2900000aeb10000349b0000f47e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -942,8 +942,8 @@ MonoBehaviour:
     y: 0
     width: 372
     height: 767
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
