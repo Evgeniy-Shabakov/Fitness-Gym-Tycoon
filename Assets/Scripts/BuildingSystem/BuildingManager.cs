@@ -47,6 +47,7 @@ namespace BuildingSystem
         
             objectForBuild.transform.SetParent(_mainCamera.transform);
 
+            objectForBuild.GetComponentInChildren<ObjectData>().type = objectsForBuilding[indexOfListModels].type;
             objectForBuild.GetComponentInChildren<ObjectData>().isNew = true;
             objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
             objectForBuild.GetComponentInChildren<ObjectData>().price = objectsForBuilding[indexOfListModels].price;
@@ -76,6 +77,7 @@ namespace BuildingSystem
         
             objectForBuild.transform.SetParent(parentForAllDynamicObjects.transform);
         
+            objectForBuild.GetComponentInChildren<ObjectData>().type = objectsForBuilding[indexOfListModels].type;
             objectForBuild.GetComponentInChildren<ObjectData>().isNew = false;
             objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
             objectForBuild.GetComponentInChildren<ObjectData>().price = objectsForBuilding[indexOfListModels].price;

@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 10224
+  controlID: -1
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 10225
+  controlID: -1
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 10226
+  controlID: -1
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,10 +224,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 132}
-      m_SelectedIDs: 
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 58680000
       m_LastClickedID: 0
-      m_ExpandedIDs: 72b1fcffaab1fcffd0b3fcffeeb3fcffae25fdff8095feffb895feff1497feff4c97feffae98feffe698feff2c9afeff729afeff369dfeff3a9dfeff3e9dfeff429dfeff469dfeffca9dfeffce9dfeffd29dfeff069efeff0a9efeff109efeff1e0cffff560cffff9012ffffd612ffff24fbffff6e6200003c650000c065000014670000
+      m_ExpandedIDs: e47dfcff327efcff3481fcff72b1fcffaab1fcffd0b3fcffeeb3fcffae25fdff8095feffb895feff1497feff4c97feffae98feffe698feff2c9afeff729afeff369dfeff3a9dfeff3e9dfeff429dfeff469dfeffca9dfeffce9dfeffd29dfeff069efeff0a9efeff109efeff1e0cffff560cffff9012ffffd612ffff24fbffff6e6200003c650000c065000014670000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 652
     height: 454
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -558,9 +558,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -31.388037, y: 0.71448684, z: 45.08194}
+    m_Target: {x: -33.22368, y: -0.42689312, z: 44.25522}
     speed: 2
-    m_Value: {x: -0.40197352, y: 0.17252111, z: -0.15622586}
+    m_Value: {x: -33.22368, y: -0.42689312, z: 44.25522}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
       m_Fade:
         m_Target: 0
         speed: 2
-        m_Value: 1
+        m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
       m_Size: {x: 1, y: 1}
@@ -607,13 +607,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.005986653, y: -0.06595262, z: 0.00039614344, w: 0.9978175}
+    m_Target: {x: 0.19176479, y: -0.27267867, z: 0.05556118, w: 0.94117564}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0, w: 1}
+    m_Value: {x: 0.1917623, y: -0.27267513, z: 0.05556046, w: 0.9411634}
   m_Size:
-    m_Target: 1.3833495
+    m_Target: 3.049433
     speed: 2
-    m_Value: 2.1694248
+    m_Value: 3.049433
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -796,21 +796,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ObjectsForBuildings
+    - Assets/Prefabs/BuildingKit
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 88
   m_LastFolders:
-  - Assets/ObjectsForBuildings
+  - Assets/Prefabs/BuildingKit
   m_LastFoldersGridSize: 88
   m_LastProjectPath: D:\Unity\Projects\Fitness Gym Tycoon\Fitness Gym Tycoon
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 308}
-    m_SelectedIDs: e87d0000
-    m_LastClickedID: 32232
+    scrollPos: {x: 0, y: 420}
+    m_SelectedIDs: ea7d0000
+    m_LastClickedID: 32234
     m_ExpandedIDs: 00000000a27d0000a47d0000a67d0000a87d0000aa7d0000ac7d0000ae7d0000b07d0000b27d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -839,7 +839,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a27d0000a47d0000a67d0000a87d0000ac7d0000ae7d0000b07d0000b27d0000
+    m_ExpandedIDs: 00000000a27d0000a47d0000a67d0000a87d0000aa7d0000ac7d0000ae7d0000b07d0000b27d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -864,8 +864,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 58680000
+    m_LastClickedInstanceID: 26712
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000da6a0000fc620000085d0000665e0000000000005a820000808200004aa50000ea74000086870000948d0000326b0000467e0000988c00009e8c0000a2aa0000aaaa0000dca800004aa00000b0f4000098aa0000e89100004287000070880000ca8a0000b4a4000008b40000e4840000548e00007eb0000024ae000066b60000c6ab0000f4ac0000b0830000ce970000a09d000036b5000010a70000cc9e00003ca80000429400007abd0000069a00004abc0000d89800002aa10000a09600006ca9000072950000d6bf00008282000092b700002280000016930000f88b0000dab200009e8900001486000086a30000a6be0000268d0000709c000058a20000b2900000aeb10000349b0000f47e000038020100
     m_RenameOverlay:
@@ -891,7 +891,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 14}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 88
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 223
@@ -942,8 +942,8 @@ MonoBehaviour:
     y: 0
     width: 372
     height: 767
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
