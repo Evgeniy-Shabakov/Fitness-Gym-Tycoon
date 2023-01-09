@@ -28,13 +28,14 @@ namespace HumanClient
 
         void AnimationDoActionStart()
         {
-            int i = _humanControls.currentGameObjectForAction.GetComponent<ObjectData>().indexInBuildingManagerList;
-            _animator.runtimeAnimatorController =
-                BuildingManager.Instance.objectsForBuilding[i].animatorOverrideController;
-        
+            ObjectType type = _humanControls.currentGameObjectForAction.GetComponent<ObjectData>().type;
+            ObjectForBuilding objectForBuilding = BuildingManager.Instance.FindObject(type);
+                
+            _animator.runtimeAnimatorController = objectForBuilding.animatorOverrideController;
+            
             _animator.SetBool(DoAction, true);
 
-            if (BuildingManager.Instance.objectsForBuilding[i].needBarbellInHands)
+            if (objectForBuilding.needBarbellInHands)
             {
                 _barbellInHands = FindNestedChild(transform, "Barbell 1").gameObject; 
                 _barbellInHands.SetActive(true);
@@ -42,7 +43,7 @@ namespace HumanClient
                 _humanControls.currentGameObjectForAction.GetComponent<HidingObjectElements>().HideElements();
             }
             
-            if (BuildingManager.Instance.objectsForBuilding[i].needDumbbellsInHands)
+            if (objectForBuilding.needDumbbellsInHands)
             {
                 _dumbbellOneInHands = FindNestedChild(transform, "Dumbbells 1-1").gameObject; 
                 _dumbbellOneInHands.SetActive(true);

@@ -91,6 +91,16 @@ namespace BuildingSystem
             objectForBuild = null;
         }
 
+        public ObjectForBuilding FindObject(ObjectType type)
+        {
+            foreach (ObjectForBuilding obj in objectsForBuilding)
+            {
+                if (obj.type == type) return obj;
+            }
+
+            return null;
+        }
+        
         public void RotateObject()
         {
             if (objectForBuild == null) return;

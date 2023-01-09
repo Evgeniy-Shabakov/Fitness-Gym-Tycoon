@@ -24,7 +24,7 @@ namespace BuildingSystem
             _mr.material = BuildingManager.Instance.materialForPreview;
 
             _objectData = GetComponent<ObjectData>();
-            _allowedLayer = BuildingManager.Instance.objectsForBuilding[_objectData.indexInBuildingManagerList].layerFloor;
+            _allowedLayer = BuildingManager.Instance.FindObject(_objectData.type).layerFloor;
         }
 
         private void Update()

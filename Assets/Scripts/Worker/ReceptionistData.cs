@@ -40,7 +40,7 @@ namespace Worker
         {
             foreach (Transform child in _parentAllDynamicObjects.transform)
             {
-                if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == 0)
+                if (child.GetComponentInChildren<ObjectData>().type == ObjectType.Reсeption)
                 {
                     var target = child.Find("PivotForAdministrator").gameObject;
                     return target;

@@ -236,7 +236,7 @@ public class LevelManager : MonoBehaviour
 
         foreach (Transform child in parentAllDynamicObjects.transform)
         {
-            if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == 1)
+            if (child.GetComponentInChildren<ObjectData>().type == ObjectType.Lockers)
             {
                 if (LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorMenLockerRoom"))
                 {
