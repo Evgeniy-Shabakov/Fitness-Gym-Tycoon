@@ -37,7 +37,7 @@ public class SaveLoadManager : MonoBehaviour
     {
         public Vector3 position;
         public Quaternion rotation;
-        public int indexInBuildingManagerList;
+        public ObjectType type;
     }
 
     [Serializable]
@@ -152,8 +152,7 @@ public class SaveLoadManager : MonoBehaviour
         
         foreach (var objDataSave in levelDataSave.listObjectsDataSave)
         {
-            BuildingManager.Instance.CreateAndSetObjectForLoad(objDataSave.indexInBuildingManagerList, 
-                objDataSave.position, objDataSave.rotation);
+            BuildingManager.Instance.CreateAndSetObjectForLoad(objDataSave.type, objDataSave.position, objDataSave.rotation);
         }
     }
 
@@ -167,7 +166,7 @@ public class SaveLoadManager : MonoBehaviour
             
             obj.position = gameObj.transform.position;
             obj.rotation = gameObj.transform.rotation;
-            obj.indexInBuildingManagerList = gameObj.GetComponentInChildren<ObjectData>().indexInBuildingManagerList;
+            obj.type = gameObj.GetComponentInChildren<ObjectData>().type;
             
             list.Add(obj);
         }

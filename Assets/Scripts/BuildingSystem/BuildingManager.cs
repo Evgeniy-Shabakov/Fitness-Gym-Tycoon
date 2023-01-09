@@ -49,7 +49,6 @@ namespace BuildingSystem
 
             objectForBuild.GetComponentInChildren<ObjectData>().type = objectsForBuilding[indexOfListModels].type;
             objectForBuild.GetComponentInChildren<ObjectData>().isNew = true;
-            objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
             objectForBuild.GetComponentInChildren<ObjectData>().price = objectsForBuilding[indexOfListModels].price;
         
             UIManagerPanelGameShop.Instance.Close();
@@ -71,16 +70,15 @@ namespace BuildingSystem
             SaveLoadManager.Instance.Save();
         }
 
-        public void CreateAndSetObjectForLoad(int indexOfListModels, Vector3 pos, Quaternion rotation)
+        public void CreateAndSetObjectForLoad(ObjectType type, Vector3 pos, Quaternion rotation)
         {
-            objectForBuild = Instantiate(objectsForBuilding[indexOfListModels].prefab, pos, rotation);
+            objectForBuild = Instantiate(FindObject(type).prefab, pos, rotation);
         
             objectForBuild.transform.SetParent(parentForAllDynamicObjects.transform);
         
-            objectForBuild.GetComponentInChildren<ObjectData>().type = objectsForBuilding[indexOfListModels].type;
+            objectForBuild.GetComponentInChildren<ObjectData>().type = type;
             objectForBuild.GetComponentInChildren<ObjectData>().isNew = false;
-            objectForBuild.GetComponentInChildren<ObjectData>().indexInBuildingManagerList = indexOfListModels;
-            objectForBuild.GetComponentInChildren<ObjectData>().price = objectsForBuilding[indexOfListModels].price;
+            objectForBuild.GetComponentInChildren<ObjectData>().price = FindObject(type).price;
         
             _childHelperObjectForBuild = objectForBuild.transform.Find(prefabHelperBuildingSystem.name).gameObject;
         

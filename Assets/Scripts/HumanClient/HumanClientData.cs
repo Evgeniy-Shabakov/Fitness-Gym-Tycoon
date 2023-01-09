@@ -13,7 +13,7 @@ namespace HumanClient
         
         private int _mood;
         
-        public int[] targetsArray;
+        public ObjectType[] targetsArray;
         public bool[] targetsStatus;
         
         public int indexInTargetsArray;
@@ -22,7 +22,7 @@ namespace HumanClient
         private void Start()
         {
             _mood = Random.Range(LevelManager.MoodRangeMin, LevelManager.MoodRangeMax + 1);
-            targetsArray = new int[LevelManager.NumberTargetsHumanClient];
+            targetsArray = new ObjectType[LevelManager.NumberTargetsHumanClient];
             targetsStatus = new bool[LevelManager.NumberTargetsHumanClient];
             trainingIsFinished = false;
             
@@ -41,21 +41,21 @@ namespace HumanClient
         
         private void SetTargetsArray()
         {
-            targetsArray[0] = 0;
-            targetsArray[1] = 1;
+            targetsArray[0] = ObjectType.Reсeption;
+            targetsArray[1] = ObjectType.Lockers;
         
             for (int i = 2; i < LevelManager.NumberTargetsHumanClient - 2; i++)
             {
-                targetsArray[i] = Random.Range(3, BuildingManager.Instance.objectsForBuilding.Count);
+                targetsArray[i] = (ObjectType)Random.Range(3, BuildingManager.Instance.objectsForBuilding.Count);
             
                 while(targetsArray[i] == targetsArray[i-1])
                 {
-                    targetsArray[i] = Random.Range(3, BuildingManager.Instance.objectsForBuilding.Count);
+                    targetsArray[i] = (ObjectType)Random.Range(3, BuildingManager.Instance.objectsForBuilding.Count);
                 }
             }
 
-            targetsArray[LevelManager.NumberTargetsHumanClient - 2] = 2;
-            targetsArray[LevelManager.NumberTargetsHumanClient - 1] = 1;
+            targetsArray[LevelManager.NumberTargetsHumanClient - 2] = ObjectType.Shower;
+            targetsArray[LevelManager.NumberTargetsHumanClient - 1] = ObjectType.Lockers;
         }
         
         public void AddMood(int countMood)

@@ -108,7 +108,7 @@ namespace HumanClient
         {
             if (_humanClientData.indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
             if (other.gameObject.GetComponent<ObjectData>() == null) return;
-            if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != _humanClientData.targetsArray[_humanClientData.indexInTargetsArray]) return;    
+            if (other.gameObject.GetComponent<ObjectData>().type != _humanClientData.targetsArray[_humanClientData.indexInTargetsArray]) return;    
         
             if (_navMeshAgent.enabled) _navMeshAgent.ResetPath();
 
@@ -136,7 +136,7 @@ namespace HumanClient
             if (_humanClientData.indexInTargetsArray >= LevelManager.NumberTargetsHumanClient) return;
             if (_humanDoAction) return;
             if (other.gameObject.GetComponent<ObjectData>() == false) return;
-            if (other.gameObject.GetComponent<ObjectData>().indexInBuildingManagerList != _humanClientData.targetsArray[_humanClientData.indexInTargetsArray]) return;
+            if (other.gameObject.GetComponent<ObjectData>().type != _humanClientData.targetsArray[_humanClientData.indexInTargetsArray]) return;
             if (other.gameObject.GetComponent<ObjectData>().objectIsFree == false) return;
         
             currentGameObjectForAction = other.gameObject;
@@ -155,14 +155,15 @@ namespace HumanClient
 
             switch (_humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
             {
-                case 0:
+                case ObjectType.Reсeption:
                     _humanClientData.SetPriceEntry();
                     PlayerData.AddMoney(_humanClientData.GetPriceEntry());
                     LevelAccounting.Instance.ChangeTotalProfitPerSubscription(_humanClientData.GetPriceEntry(), _humanClientData.GetSubscriptionType());
                     _humanReactionControl.SetMoneyAboveHuman();
                     _humanReactionControl.SetTextAboveHuman("+" + _humanClientData.GetPriceEntry());
                     break;
-                case 1:
+                
+                case ObjectType.Lockers:
                     if (_humanClientData.indexInTargetsArray == 1)
                     {
                         _locker = currentGameObjectForAction;
@@ -178,6 +179,7 @@ namespace HumanClient
                         }
                     }
                     break;
+                
                 default:
                     _navMeshAgent.enabled = false;
 
@@ -194,10 +196,10 @@ namespace HumanClient
 
             switch (_humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
             {
-                case 0:
+                case ObjectType.Reсeption:
                     _humanReactionControl.SetTextAboveHuman("");
                     break;
-                case 1:
+                case ObjectType.Lockers:
                     if (_humanClientData.indexInTargetsArray == LevelManager.NumberTargetsHumanClient - 1)
                     {
                         currentGameObjectForAction.GetComponent<ObjectData>().RemoveClient(gameObject);
@@ -247,7 +249,7 @@ namespace HumanClient
         
             foreach(Transform child in _parentAllDynamicObjects.transform)
             {
-                if (child.GetComponentInChildren<ObjectData>().indexInBuildingManagerList == _humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
+                if (child.GetComponentInChildren<ObjectData>().type == _humanClientData.targetsArray[_humanClientData.indexInTargetsArray])
                 {
                     if (child.GetComponentInChildren<ObjectData>().objectIsFree)
                     {

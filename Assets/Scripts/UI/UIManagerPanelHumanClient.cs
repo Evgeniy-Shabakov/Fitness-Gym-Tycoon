@@ -68,8 +68,8 @@ public class UIManagerPanelHumanClient : MonoBehaviour
         {
             GameObject image = Instantiate(prefabImageTargetPanelHumanClient, panelHumanClientTargets.transform);
             
-            int j = humanClientData.targetsArray[i];
-            image.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.objectsForBuilding[j].sprite;
+            ObjectType type = humanClientData.targetsArray[i];
+            image.transform.GetChild(0).GetComponent<Image>().sprite = BuildingManager.Instance.FindObject(type).sprite;
         }
 
         Invoke("UpdateData", Time.deltaTime);

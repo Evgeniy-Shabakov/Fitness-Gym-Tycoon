@@ -55,7 +55,7 @@ public class UIManagerPanelObject : MonoBehaviour
         panelObject.SetActive(true);
 
         ObjectData objectData = current.GetComponentInChildren<ObjectData>();
-        int i = objectData.indexInBuildingManagerList;
+        ObjectForBuilding obj = BuildingManager.Instance.FindObject(objectData.type);
 
         if (objectData.isNew)
         {
@@ -72,9 +72,9 @@ public class UIManagerPanelObject : MonoBehaviour
             btSell.SetActive(true);
         }
             
-        spriteObject.sprite = BuildingManager.Instance.objectsForBuilding[i].sprite;
+        spriteObject.sprite = obj.sprite;
         textPriceObject.text = objectData.price + "";
-        textDescriptionObject.text = BuildingManager.Instance.objectsForBuilding[i].description;
+        textDescriptionObject.text = obj.description;
     }
 
     public void BtSetPressed()
@@ -83,7 +83,7 @@ public class UIManagerPanelObject : MonoBehaviour
         
         if (objectData.isNew)
         {
-            int price = BuildingManager.Instance.objectsForBuilding[objectData.indexInBuildingManagerList].price;
+            int price = BuildingManager.Instance.FindObject(objectData.type).price;
 
             if (PlayerData.GetMoney() < price)
             {
@@ -98,7 +98,7 @@ public class UIManagerPanelObject : MonoBehaviour
                 LevelAccounting.Instance.AddTotalPurchaseEquipment(price);
                 objectData.isNew = false;
                 
-                if (objectData.indexInBuildingManagerList == 1)
+                if (objectData.type == ObjectType.Lockers)
                 {
                     StartCoroutine(LevelManager.Instance.CountNumberLockers(0f));
                 }
@@ -112,7 +112,7 @@ public class UIManagerPanelObject : MonoBehaviour
         if (BuildingManager.Instance.objectForBuild == null)
         {
             
-            if (objectData.indexInBuildingManagerList == 1)
+            if (objectData.type == ObjectType.Lockers)
             {
                 StartCoroutine(LevelManager.Instance.CountNumberLockers(0f));
             }
@@ -130,7 +130,7 @@ public class UIManagerPanelObject : MonoBehaviour
         Destroy(_currentGameObjectForPanel);
         Close();
         
-        if (objectData.indexInBuildingManagerList == 1)
+        if (objectData.type == ObjectType.Lockers)
         {
             StartCoroutine(LevelManager.Instance.CountNumberLockers(0.1f));
         }

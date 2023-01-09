@@ -15,6 +15,7 @@ namespace BuildingSystem
         Butterfly,
         Barbell,
         BenchStraight,
-        BenchUniversal
+        BenchUniversal,
+        WaterСooler
     };
 }
