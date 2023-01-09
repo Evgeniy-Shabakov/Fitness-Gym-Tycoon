@@ -17,9 +17,10 @@ MonoBehaviour:
   layerFloor:
     serializedVersion: 2
     m_Bits: 512
-  animatorOverrideController: {fileID: 22100000, guid: e2b3222a291a70948a03beb1649a738d, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 30865313dc3d0c840b1f0e21d1f8ba77, type: 2}
   needBarbellInHands: 0
+  needDumbbellsInHands: 1
   price: 800
   description: To work with dumbbells
-  damageInPersent: 0.1
+  damageInPercent: 0
   maxCountClients: 1

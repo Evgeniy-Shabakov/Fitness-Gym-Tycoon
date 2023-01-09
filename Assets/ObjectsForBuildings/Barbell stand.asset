@@ -17,9 +17,10 @@ MonoBehaviour:
   layerFloor:
     serializedVersion: 2
     m_Bits: 512
-  animatorOverrideController: {fileID: 22100000, guid: 6385b56217501764983aa5640e9bada6, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 59df663408a26574c9a2066b3b0ce262, type: 2}
   needBarbellInHands: 0
+  needDumbbellsInHands: 1
   price: 4000
   description: For all muscle groups
-  damageInPersent: 0.01
+  damageInPercent: 0
   maxCountClients: 1
