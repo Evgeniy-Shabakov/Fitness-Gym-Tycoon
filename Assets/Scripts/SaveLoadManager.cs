@@ -101,7 +101,7 @@ public class SaveLoadManager : MonoBehaviour
         File.WriteAllText(savePath, JsonUtility.ToJson(allDataSave, true));
     }
 
-    public void Load()
+    private void Load()
     {
         if (File.Exists(savePath) == false)
         {
