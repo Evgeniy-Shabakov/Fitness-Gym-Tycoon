@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
   m_Name: Barbell stand
   m_EditorClassIdentifier: 
+  type: 8
   prefab: {fileID: 6062047762597263162, guid: 840bea5c4c870cd4bac23da54c48173e, type: 3}
   sprite: {fileID: 21300000, guid: 82c577c33e3e0bf458aee204ec1a0660, type: 3}
   layerFloor:

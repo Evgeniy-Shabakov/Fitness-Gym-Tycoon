@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
   m_Name: Bench press
   m_EditorClassIdentifier: 
+  type: 6
   prefab: {fileID: 7824014895548530952, guid: 63cc7ab74f4222d4494407e1bafd7abd, type: 3}
   sprite: {fileID: 21300000, guid: f8064796b76e70f498ed077cc549a9f6, type: 3}
   layerFloor:
@@ -19,6 +20,7 @@ MonoBehaviour:
     m_Bits: 512
   animatorOverrideController: {fileID: 22100000, guid: ca64a03d6d6b119489b39b9bab3bc5d0, type: 2}
   needBarbellInHands: 1
+  needDumbbellsInHands: 0
   price: 2500
   description: Strengthens chest muscles
   damageInPercent: 0

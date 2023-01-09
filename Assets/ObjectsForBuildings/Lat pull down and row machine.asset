@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
   m_Name: Lat pull down and row machine
   m_EditorClassIdentifier: 
+  type: 9
   prefab: {fileID: 2234009454482266267, guid: 6e291fc23ffe5c1478b193c56b2bb184, type: 3}
   sprite: {fileID: 21300000, guid: b23db5dedb91b344e858597d86703817, type: 3}
   layerFloor:
@@ -19,7 +20,8 @@ MonoBehaviour:
     m_Bits: 512
   animatorOverrideController: {fileID: 22100000, guid: 30865313dc3d0c840b1f0e21d1f8ba77, type: 2}
   needBarbellInHands: 0
+  needDumbbellsInHands: 0
   price: 1800
   description: For the latissimus dorsi
-  damageInPersent: 0.1
+  damageInPercent: 0
   maxCountClients: 1

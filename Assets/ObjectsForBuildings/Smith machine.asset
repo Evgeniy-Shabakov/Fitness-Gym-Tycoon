@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
   m_Name: Smith machine
   m_EditorClassIdentifier: 
+  type: 7
   prefab: {fileID: 1153611784423229753, guid: 6913cf9a659a7bf4089cee1c6296d9d6, type: 3}
   sprite: {fileID: 21300000, guid: 84091bb8ff5f47d449347bd02f78d130, type: 3}
   layerFloor:
@@ -19,7 +20,8 @@ MonoBehaviour:
     m_Bits: 512
   animatorOverrideController: {fileID: 22100000, guid: 3d117fe5ab9b81d4c8c7480ad0d85e82, type: 2}
   needBarbellInHands: 1
+  needDumbbellsInHands: 0
   price: 5000
   description: Allows you to perform strength exercises safely
-  damageInPersent: 0.1
+  damageInPercent: 0
   maxCountClients: 1

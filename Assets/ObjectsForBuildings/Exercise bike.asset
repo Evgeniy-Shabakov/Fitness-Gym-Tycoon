@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
   m_Name: Exercise bike
   m_EditorClassIdentifier: 
+  type: 4
   prefab: {fileID: 5300719671309677289, guid: 03ca75e399f361442b652e6f3517d6ac, type: 3}
   sprite: {fileID: 21300000, guid: 5f10e2afc679aab419a3ce43c98913a6, type: 3}
   layerFloor:
@@ -19,7 +20,8 @@ MonoBehaviour:
     m_Bits: 512
   animatorOverrideController: {fileID: 22100000, guid: e2b3222a291a70948a03beb1649a738d, type: 2}
   needBarbellInHands: 0
+  needDumbbellsInHands: 0
   price: 1500
   description: Cardio - strengthens the heart and muscles
-  damageInPersent: 0.1
+  damageInPercent: 0
   maxCountClients: 1

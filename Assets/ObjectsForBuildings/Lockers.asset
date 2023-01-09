@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
   m_Name: Lockers
   m_EditorClassIdentifier: 
+  type: 1
   prefab: {fileID: 1537529156563862, guid: 295c35978ca7e4642b6c11047f81f2c2, type: 3}
   sprite: {fileID: 21300000, guid: 86e8086ab1ec0d14d82f496773747dbd, type: 3}
   layerFloor:
@@ -19,7 +20,8 @@ MonoBehaviour:
     m_Bits: 6144
   animatorOverrideController: {fileID: 22100000, guid: 6385b56217501764983aa5640e9bada6, type: 2}
   needBarbellInHands: 0
+  needDumbbellsInHands: 0
   price: 500
   description: Without a locker, customers will not be able to change clothes
-  damageInPersent: 0
+  damageInPercent: 0
   maxCountClients: 5
