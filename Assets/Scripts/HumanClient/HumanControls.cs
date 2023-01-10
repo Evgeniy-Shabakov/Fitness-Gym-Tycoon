@@ -253,7 +253,7 @@ namespace HumanClient
                 {
                     if (child.GetComponentInChildren<ObjectData>().objectIsFree)
                     {
-                        if (_humanClientData.indexInTargetsArray is 1 or 13)
+                        if (_humanClientData.targetsArray[_humanClientData.indexInTargetsArray] is ObjectType.Lockers or ObjectType.Shower)
                         {
                             if (_humanClientData.GetGender() == Gender.Male &&
                                 LayerDetected.GetLayerUnderObject(child.gameObject) == LayerMask.NameToLayer("FloorMenLockerRoom"))
