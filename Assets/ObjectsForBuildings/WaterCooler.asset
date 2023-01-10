@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 14
   prefab: {fileID: 2284140965200411027, guid: 87ab00e08b63618458b05089157cd274, type: 3}
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: bd0a2c7c7efd8a348a4d11b778e2dc3e, type: 3}
   layerFloor:
     serializedVersion: 2
     m_Bits: 512
