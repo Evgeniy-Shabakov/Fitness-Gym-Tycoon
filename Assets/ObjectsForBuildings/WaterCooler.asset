@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc049d71dd2aee408880d49c76a6151, type: 3}
+  m_Name: WaterCooler
+  m_EditorClassIdentifier: 
+  type: 14
+  prefab: {fileID: 2284140965200411027, guid: 87ab00e08b63618458b05089157cd274, type: 3}
+  sprite: {fileID: 0}
+  layerFloor:
+    serializedVersion: 2
+    m_Bits: 512
+  animatorOverrideController: {fileID: 22100000, guid: d173b5593c1eaae42b23ab6904c7d79e, type: 2}
+  needBarbellInHands: 0
+  needDumbbellsInHands: 0
+  price: 650
+  description: Quenches thirst
+  damageInPercent: 0.01
+  maxCountClients: 1
