@@ -17,7 +17,7 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: bd0a2c7c7efd8a348a4d11b778e2dc3e, type: 3}
   layerFloor:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   animatorOverrideController: {fileID: 22100000, guid: d173b5593c1eaae42b23ab6904c7d79e, type: 2}
   needBarbellInHands: 0
   needDumbbellsInHands: 0
